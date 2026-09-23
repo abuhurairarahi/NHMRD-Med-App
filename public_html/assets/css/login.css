@@ -134,14 +134,6 @@ body {
   pointer-events: none;
 }
 
-.input-icon-right {
-  position: absolute;
-  right: 16px;
-  color: #92B0B5;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: color 0.2s;
-}
 
 .input-icon-right:hover {
   color: #025E73;

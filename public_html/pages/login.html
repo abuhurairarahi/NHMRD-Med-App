@@ -4,18 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>National Health & Medical Record Directory</title>
-  <link rel="stylesheet" href="/public_html/css/login.css">
-  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="/public_html/assets/css/login.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Google Fonts for typography -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <div class="login-container">
-    <!-- Header / Logo Area -->
+    <!-- Header -->
     <header class="header">
       <div class="logo-box">
         <svg class="logo-icon" viewBox="0 0 48 56" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,16 +26,16 @@
     <main class="card">
       <form onsubmit="event.preventDefault();">
         
-        <!-- UserID / NID Field -->
+        <!-- UserID -->
         <div class="form-group">
           <label for="userid" class="form-label">UserID or NID</label>
           <div class="input-wrapper">
             <i class="fa-solid fa-at input-icon-left"></i>
-            <input type="text" id="userid" placeholder="@ UserID or NID" required>
+            <input type="text" id="userid" required>
           </div>
         </div>
 
-        <!-- Password Field -->
+        <!-- Password -->
         <div class="form-group">
           <div class="label-row">
             <label for="password" class="form-label">Password</label>
@@ -48,12 +43,11 @@
           </div>
           <div class="input-wrapper">
             <i class="fa-solid fa-lock input-icon-left"></i>
-            <input type="password" id="password" placeholder="••••••••••••" required>
-            <i class="fa-regular fa-eye-slash input-icon-right toggle-password"></i>
+            <input type="password" id="password" required>
           </div>
         </div>
 
-        <!-- Submit Button -->
+        <!-- Submit -->
         <button type="submit" class="btn-submit">Log In</button>
       </form>
     </main>
