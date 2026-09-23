@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Patient Profile Access</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/req-profile-access.css">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div>
+        <div class="logo">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>NHMRD</span>
+        </div>
+
+        <nav class="nav-menu">
+          <a href="#" class="nav-item">
+            <i class="fa-solid fa-table-cells-large"></i> 
+            <span>Dashboard</span>
+          </a>
+          <a href="#" class="nav-item">
+            <i class="fa-solid fa-notes-medical"></i> 
+            <span>Clinical Records</span>
+          </a>
+          <a href="#" class="nav-item active">
+            <i class="fa-solid fa-user-clock"></i> 
+            <span>Patient Requests</span>
+          </a>
+          <a href="#" class="nav-item">
+            <i class="fa-solid fa-user-doctor"></i> 
+            <span>Doctor Profile</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+
+      <!-- Top Header Bar -->
+      <header class="top-header">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search patient MRN, name, vitals...">
+        </div>
+
+        <div class="header-right">
+          <div class="header-status-pill">
+            <i class="fa-regular fa-clock"></i>
+            <span>Shift: Morning Clinical Rounds (07:00 - 15:30)</span>
+          </div>
+          <div class="header-status-pill">
+            <i class="fa-solid fa-rotate-sharp"></i>
+            <span>EMR Synced</span>
+          </div>
+          <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+          
+          <div class="doctor-profile-badge">
+            <div class="doctor-info-text">
+              <span class="doctor-name">Dr. Nusrat Jahan, MD</span>
+              <span class="doctor-dept">Internal Medicine & Therapeutics</span>
+            </div>
+            <div class="doctor-avatar">
+              <img src="https://i.pravatar.cc/100?img=47" alt="Dr. Nusrat Jahan">
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content Area -->
+      <main class="content-body">
+
+        <!-- Breadcrumb & Page Header -->
+        <div class="page-header-container">
+          <div class="breadcrumb">
+            <i class="fa-solid fa-folder-open"></i> Clinical Inbox / Patient Requests / <span>Profile Access Verification</span>
+          </div>
+          
+          <div class="title-flex">
+            <div>
+              <h1 class="page-title">Patient Profile Access Authorization</h1>
+              <p class="page-subtitle">Secure HIPAA & EMR Verification Protocol for Restricted Patient Records</p>
+            </div>
+
+            <!-- Handshake Badge -->
+            <div class="handshake-badge">
+              <i class="fa-solid fa-lock"></i>
+              <div>
+                <span class="badge-title">&bull; 256-BIT ENCRYPTED HANDSHAKE</span>
+                <span class="badge-sub">Dual-Factor Patient Consent Enforced</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2-Column Main Layout -->
+        <div class="access-grid">
+
+          <!-- Left Column: OTP Verification Panel -->
+          <div class="card verification-card">
+            
+            <!-- Security Info Banner -->
+            <div class="security-banner">
+              <i class="fa-solid fa-shield-halved"></i>
+              <div>
+                <strong>HIPAA SECURITY STANDARD RULE § 164.312</strong>
+                <p>To protect patient confidentiality and comply with regional health data access protocols, entering a real-time one-time password (OTP) authorized by the patient is required before unlocking full longitudinal medical records.</p>
+              </div>
+            </div>
+
+            <!-- Patient Metadata Inputs / Display -->
+            <div class="patient-fields-grid">
+              <div class="field-group">
+                <label>
+                  Patient Full Name 
+                  <span class="verified-tag"><i class="fa-solid fa-circle-check"></i> Verified Identity</span>
+                </label>
+                <div class="input-with-icon">
+                  <i class="fa-regular fa-user"></i>
+                  <input type="text" value="Farhana Rahman" readonly>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Date of Birth (DOB)</label>
+                <div class="input-with-icon">
+                  <i class="fa-regular fa-calendar"></i>
+                  <input type="text" value="11/07/1988 (DD/MM/YYYY)" readonly>
+                </div>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label>CLINICAL CONTINUITY REFERENCE</label>
+              <div class="mrn-wrapper">
+                <span class="mrn-label">Medical Record Number (MRN)</span>
+                <div class="mrn-badge">
+                  <span>MRN - 449102</span>
+                  <i class="fa-regular fa-copy"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- OTP Input Section -->
+            <div class="otp-section">
+              <div class="otp-header">
+                <i class="fa-solid fa-border-all"></i>
+                <strong>Patient One-Time Password (OTP)</strong>
+              </div>
+              <p class="otp-desc">Patient provides this 6-digit verification code via SMS or authenticated health portal app to authorize provider access.</p>
+
+              <div class="otp-inputs">
+                <input type="text" maxlength="1" class="otp-box">
+                <input type="text" maxlength="1" class="otp-box">
+                <input type="text" maxlength="1" class="otp-box">
+                <span class="otp-divider">-</span>
+                <input type="text" maxlength="1" class="otp-box">
+                <input type="text" maxlength="1" class="otp-box">
+                <input type="text" maxlength="1" class="otp-box">
+              </div>
+
+              <div class="otp-footer">
+                <span class="timer-text"><i class="fa-regular fa-clock"></i> Code expires in <strong>00:28</strong></span>
+                <button class="btn-link"><i class="fa-solid fa-rotate-right"></i> Resend SMS Code</button>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+              <button class="btn-primary">
+                <i class="fa-solid fa-lock-open"></i> Access Profile / Verify & Unlock
+              </button>
+              <button class="btn-secondary">
+                <i class="fa-solid fa-arrow-left"></i> Cancel
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Request Summary & Audit Log -->
+          <div class="side-panel">
+            
+            <!-- Active Access Request Card -->
+            <div class="card request-card">
+              <div class="card-header-flex">
+                <span class="card-section-title">ACTIVE ACCESS REQUEST</span>
+                <span class="status-badge red-light">&bull; High Priority Clearance</span>
+              </div>
+
+              <div class="patient-profile-summary">
+                <img src="https://i.pravatar.cc/100?img=32" alt="Farhana Rahman" class="patient-avatar">
+                <div>
+                  <h3 class="patient-name">Farhana Rahman</h3>
+                  <p class="patient-details">36 y/o &bull; Female &bull; Blood: A+</p>
+                  <p class="patient-phone"><i class="fa-solid fa-phone"></i> +880 1711-304829</p>
+                </div>
+              </div>
+
+              <div class="context-box">
+                <span class="context-title"><i class="fa-solid fa-address-card"></i> ENCOUNTER CONTEXT</span>
+                <h4 class="encounter-heading">Telehealth Consultation & CGRP Migraine History Review</h4>
+                <p class="encounter-desc">Seeking prescription renewal and neurological evaluation for refractory chronic migraine episodes. Longitudinal chart review needed.</p>
+              </div>
+
+              <div class="vitals-grid">
+                <div class="vital-item">
+                  <span class="vital-label">RECENT BP</span>
+                  <span class="vital-value">118/76</span>
+                </div>
+                <div class="vital-item">
+                  <span class="vital-label">HEART RATE</span>
+                  <span class="vital-value text-teal">72 <small>bpm</small></span>
+                </div>
+                <div class="vital-item">
+                  <span class="vital-label">KNOWN ALLERGIES</span>
+                  <span class="vital-value text-red">Sulfa (Mod)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Audit & Compliance Log Card -->
+            <div class="card audit-card">
+              <div class="card-section-title"><i class="fa-solid fa-chart-line"></i> Audit & Compliance Log</div>
+              
+              <ul class="audit-list">
+                <li>
+                  <i class="fa-regular fa-clock"></i>
+                  <span>Access grants a strictly temporary <strong>2-hour audit-logged</strong> clinical chart view. Time-stamped to National EMR Registry.</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-id-card-clip"></i>
+                  <span>Authorized Attending Physician: <strong>Dr. Nusrat Jahan, MD</strong> (Internal Medicine &bull; Duty Station 04).</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-shield-check"></i>
+                  <span>Session keystrokes, diagnostic note downloads, and lab history queries will be logged per CJIS/HIPAA protocols.</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+
+      </main>
+
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Patient Full Medical Profile</title>
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/patient-med-profile.css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i> 
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="nav-item active">
+          <i class="fa-solid fa-notes-medical"></i> 
+          <span>Clinical Records</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-user-clock"></i> 
+          <span>Patient Requests</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-user-doctor"></i> 
+          <span>Doctor Profile</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      <!-- Top Header Bar -->
+      <header class="top-header">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search patient MRN, name, vitals...">
+        </div>
+
+        <div class="header-right">
+          <div class="header-status-pill">
+            <i class="fa-regular fa-clock"></i>
+            <span>Shift: Morning Clinical Rounds (07:00 - 15:30)</span>
+          </div>
+          <div class="header-status-pill">
+            <i class="fa-solid fa-rotate"></i>
+            <span>EMR Synced</span>
+          </div>
+          <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+          
+          <div class="doctor-profile-badge">
+            <div class="doctor-info-text">
+              <span class="doctor-name">Dr. Nusrat Jahan, MD</span>
+              <span class="doctor-dept">Internal Medicine & Therapeutics</span>
+            </div>
+            <div class="doctor-avatar">
+              <img src="https://i.pravatar.cc/100?img=47" alt="Dr. Nusrat Jahan">
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Sub Header Navigation Bar -->
+      <div class="subheader-bar">
+        <div class="subheader-left">
+          <span class="ehr-tag"><i class="fa-solid fa-folder-open"></i> Patient Electronic Health Record</span>
+          <span class="status-pill-green">Active Clinical Encounter</span>
+        </div>
+        <div class="subheader-right">
+          <div class="session-timer">
+            <i class="fa-solid fa-user-clock"></i> Session: <span>01:58:40</span>
+            <span class="tag-interactive">INTERACTIVE</span>
+          </div>
+          <button class="btn-write-rx"><i class="fa-solid fa-pen-to-square"></i> Write Prescription</button>
+        </div>
+      </div>
+
+      <!-- Module Navigation Tabs -->
+      <div class="module-tabs">
+        <button class="tab-btn active"><i class="fa-solid fa-user"></i> Patient Profile</button>
+        <button class="tab-btn"><i class="fa-solid fa-capsules"></i> Prescription Records</button>
+        <button class="tab-btn"><i class="fa-solid fa-scalpel"></i> Surgery Records</button>
+        <button class="tab-btn"><i class="fa-solid fa-vial"></i> Test Records</button>
+        <button class="tab-btn"><i class="fa-solid fa-syringe"></i> Vaccine Records</button>
+      </div>
+
+      <!-- Main Content Body -->
+      <main class="content-body">
+
+        <!-- Patient Info Card -->
+        <div class="patient-card">
+          <div class="patient-main-info">
+            <div class="patient-avatar-wrap">
+              <img src="https://i.pravatar.cc/120?img=32" alt="Tanjila Akter Sultana">
+              <span class="blood-badge">A+</span>
+            </div>
+
+            <div class="patient-details">
+              <div class="patient-name-row">
+                <h2>Tanjila Akter Sultana</h2>
+                <span class="mrn-code">MRN-449102</span>
+                <span class="otp-badge"><i class="fa-solid fa-lock-open"></i> Unlocked via OTP</span>
+              </div>
+
+              <div class="patient-meta-grid">
+                <span><i class="fa-regular fa-calendar"></i> DOB: Nov 07, 1988 (36 y/o)</span>
+                <span><i class="fa-solid fa-venus"></i> Female</span>
+                <span><i class="fa-solid fa-phone"></i> +880 1712-304829</span>
+                <span><i class="fa-regular fa-envelope"></i> tanjila.sultana@healthmail.bd</span>
+              </div>
+
+              <div class="patient-tags-row">
+                <span class="attending-tag">Attending: <strong>Dr. Nusrat Jahan, MD</strong></span>
+                <span class="allergy-alert"><i class="fa-solid fa-triangle-exclamation"></i> Allergy Alert: Sulfonamides (Mild Urticaria)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vitals & Donor Widgets Grid -->
+        <div class="vitals-grid">
+          <!-- Blood Pressure Card -->
+          <div class="vital-card">
+            <div class="vital-header">
+              <span class="vital-title">BLOOD PRESSURE</span>
+              <span class="status-indicator-dot green"></span>
+            </div>
+            <div class="vital-body">
+              <span class="vital-value">118/76 <small>mmHg</small></span>
+            </div>
+            <div class="vital-footer">
+              <span class="tag-status-normal"><i class="fa-solid fa-circle-check"></i> Normal</span>
+              <span class="vital-time">Today 08:30</span>
+            </div>
+          </div>
+
+          <!-- Weight & Height Card -->
+          <div class="vital-card">
+            <div class="vital-header">
+              <span class="vital-title">WEIGHT / HEIGHT</span>
+              <i class="fa-solid fa-ruler-vertical vital-icon"></i>
+            </div>
+            <div class="vital-body">
+              <span class="vital-value">64.2 <small>kg</small></span>
+              <span class="vital-subtext">168 cm (5' 6")</span>
+            </div>
+            <div class="vital-footer">
+              <span class="vital-note">141.5 lbs</span>
+              <span class="vital-change">-0.4kg (3mo)</span>
+            </div>
+          </div>
+
+          <!-- Organ Donor Card -->
+          <div class="vital-card donor-card">
+            <div class="vital-header">
+              <span class="vital-title"><i class="fa-solid fa-heart-pulse green-text"></i> Organ & Blood Donor</span>
+              <span class="active-verified-badge">ACTIVE VERIFIED</span>
+            </div>
+            <div class="donor-details">
+              <strong>Tareq Hasan Chowdhury</strong>
+              <span>Spouse / Proxy</span>
+              <span>+880 1819-304981</span>
+            </div>
+            <div class="donor-footer">
+              <span>Registry Key:</span>
+              <strong>0003-PER-4882194</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lifetime Prescribed Medications Section -->
+        <div class="medications-section">
+          <div class="section-header">
+            <div class="section-title-wrap">
+              <i class="fa-solid fa-capsules section-icon"></i>
+              <div>
+                <div class="title-with-badge">
+                  <h3>Lifetime Prescribed Medications (Full Life Cycle History)</h3>
+                  <span class="counter-badge">14 TOTAL LIFETIME COURSES</span>
+                </div>
+                <p class="section-subtitle">
+                  Complete longitudinal pharmaceutical record from pediatric care to current adult regimen &bull; Verified via NHMRD HIE & National Rx Registry
+                </p>
+              </div>
+            </div>
+
+            <div class="section-actions">
+              <div class="search-mini">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search drug name, ATC class, prescriber...">
+              </div>
+              <button class="btn-export"><i class="fa-solid fa-file-export"></i> Export Record</button>
+            </div>
+          </div>
+
+          <!-- Timeline Group 1: Adult Current & Recent -->
+          <div class="timeline-group">
+            <div class="timeline-header">
+              <span class="group-title"><i class="fa-solid fa-bookmark"></i> Adult Current & Recent <small>2020 - Present (Ages 32–36)</small></span>
+              <a href="#" class="view-all">View All</a>
+            </div>
+
+            <div class="med-cards-list">
+              <!-- Item 1 -->
+              <div class="med-item green-border">
+                <div class="med-icon green-bg"><i class="fa-solid fa-capsules"></i></div>
+                <div class="med-info">
+                  <div class="med-title">Ubrogepant (Ubrelvy) 50 mg</div>
+                  <div class="med-details">Indication: Acute Migraine with Aura &bull; 1 tablet PO at onset, repeated once in 2h PRN (max 200mg/24h)</div>
+                  <div class="med-meta">Prescribed: Oct 2023 - Present &bull; Prescriber: Dr. Nusrat Jahan, MD (Internal Med) &bull; Refills: 4 Remaining</div>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="med-item green-border">
+                <div class="med-icon green-bg"><i class="fa-solid fa-pills"></i></div>
+                <div class="med-info">
+                  <div class="med-title">Propranolol HCl 40 mg ER</div>
+                  <div class="med-details">Indication: Migraine Prophylaxis & Essential Tremor &bull; 1 cap PO QAM with food</div>
+                  <div class="med-meta">Prescribed: Jan 2022 - Present &bull; Prescriber: Dr. Md. Mahmudul Hasan, MD (Neurology) &bull; Adherence: 98%</div>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="med-item gray-border">
+                <div class="med-icon gray-bg"><i class="fa-solid fa-ban"></i></div>
+                <div class="med-info">
+                  <div class="med-title text-muted">Sumatriptan (Imitrex) 50 mg</div>
+                  <div class="med-details text-muted">Indication: Acute Migraine &bull; Substituted Oct 2023 due to transient chest tightness & poor tolerance; transitioned to Ubrogepant.</div>
+                  <div class="med-meta">Prescribed: Mid 2020 - Sep 2023 (3.5 yrs) &bull; Prescriber: Dr. Md. Mahmudul Hasan, MD &bull; Outcome: Safely Discontinued</div>
+                </div>
+              </div>
+
+              <!-- Item 4 -->
+              <div class="med-item blue-border">
+                <div class="med-icon blue-bg"><i class="fa-solid fa-check"></i></div>
+                <div class="med-info">
+                  <div class="med-title">Amoxicillin/Clavulanate (Augmentin) 875/125 mg</div>
+                  <div class="med-details">Indication: Acute Bacterial Rhinosinusitis &bull; 1 tab PO BID x 10 days</div>
+                  <div class="med-meta">Prescribed: Nov 12, 2021 - Nov 22, 2021 &bull; Prescriber: Dr. Nusrat Jahan, MD &bull; Outcome: Resolved without complications</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Group 2: Young Adult & University Years -->
+          <div class="timeline-group">
+            <div class="timeline-header">
+              <span class="group-title"><i class="fa-solid fa-graduation-cap"></i> Young Adult & University Years <small>2007 - 2019 (Ages 19–31)</small></span>
+              <a href="#" class="view-all">View All</a>
+            </div>
+
+            <div class="med-cards-list">
+              <!-- Item 1 - Allergy Red Alert -->
+              <div class="med-item red-border red-bg-card">
+                <div class="med-icon red-bg"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <div class="med-info">
+                  <div class="med-title red-text flex-title">
+                    Trimethoprim / Sulfamethoxazole (Bactrim DS) 800/160 mg
+                    <span class="allergy-tag-red">ALLERGY CONTRAINDICATION</span>
+                  </div>
+                  <div class="med-details red-text">
+                    CRITICAL EVENT (Oct 2009): Triggered acute urticarial reaction with pruritic maculopapular rash within 36 hours. Prompted emergency cessation. Permanent class contraindication tagged to patient clinical record.
+                  </div>
+                  <div class="med-meta red-text-sub">
+                    Prescribed: Oct 14, 2009 (Uncomplicated UTI) &bull; Hospital: DU Medical Centre &bull; <strong>EHR Permanent Alert #AL-0941</strong>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="med-item gray-border">
+                <div class="med-icon purple-bg"><i class="fa-solid fa-venus"></i></div>
+                <div class="med-info">
+                  <div class="med-title">Ethinylestradiol / Drospirenone (Yaz) 0.03/3 mg</div>
+                  <div class="med-details">Indication: Oral Contraception & Cycle Regulation &bull; 1 tablet PO daily (28-day cycle)</div>
+                  <div class="med-meta">Prescribed: Jun 2012 - Aug 2019 (7 yrs) &bull; Prescriber: Dr. Farhana Chowdhury, OB/GYN &bull; Outcome: Ceased electively without sequelae</div>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="med-item blue-border">
+                <div class="med-icon blue-bg"><i class="fa-solid fa-check"></i></div>
+                <div class="med-info">
+                  <div class="med-title">Azithromycin (Zithromax Z-Pak) 250 mg</div>
+                  <div class="med-details">Indication: Acute Bronchitis &bull; 500 mg Day 1, then 250 mg PO daily Days 2–5</div>
+                  <div class="med-meta">Prescribed: Feb 2017 (5-day course) &bull; Prescriber: Ibn Sina Urgent Care Centre &bull; Outcome: Complete clinical resolution</div>
+                </div>
+              </div>
+
+              <!-- Item 4 -->
+              <div class="med-item gray-border">
+                <div class="med-icon gray-bg"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                <div class="med-info">
+                  <div class="med-title text-muted">Naproxen Sodium 500 mg</div>
+                  <div class="med-details text-muted">Indication: Tension Headache / Dysmenorrhea &bull; 1 tablet PO Q12H PRN with food</div>
+                  <div class="med-meta">Prescribed: Sep 2018 - Dec 2018 &bull; Prescriber: Dr. Farhana Chowdhury, OB/GYN &bull; Status: Inactive / OTC Transitioned</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Group 3: Pediatric & Adolescent Care -->
+          <div class="timeline-group">
+            <div class="timeline-header">
+              <span class="group-title"><i class="fa-solid fa-child"></i> Pediatric & Adolescent Care <small>1988 - 2006 (Ages 0–18)</small></span>
+              <a href="#" class="view-all">View All</a>
+            </div>
+
+            <div class="med-cards-list">
+              <!-- Item 1 -->
+              <div class="med-item blue-border">
+                <div class="med-icon blue-bg"><i class="fa-solid fa-check"></i></div>
+                <div class="med-info">
+                  <div class="med-title">Amoxicillin 250 mg/5 mL</div>
+                  <div class="med-details">Indication: Acute Otitis Media &bull; 1 tsp (5 mL) PO TID x 10 days</div>
+                  <div class="med-meta">Prescribed: Jan 1994 (age 5) & Nov 1997 (age 9) &bull; Prescriber: Dr. Kazi Humayun Kabir, Pediatrics &bull; Record: Archived Legacy Chart #PED-1132</div>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="med-item gray-border">
+                <div class="med-icon light-blue-bg"><i class="fa-solid fa-spray-can"></i></div>
+                <div class="med-info">
+                  <div class="med-title">Albuterol Sulfate Inhalation Aerosol 90 mcg</div>
+                  <div class="med-details">Indication: Childhood Reactive Airway Disease / Post-viral wheeze &bull; 1-2 puffs Q4-6H PRN with spacer</div>
+                  <div class="med-meta">Prescribed: 1996 - 2001 (Ages 8-13) &bull; Prescriber: Dr. Kazi Humayun Kabir, Pediatrics &bull; Note: Outgrown in adolescence; no adult recurrence</div>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="med-item blue-border">
+                <div class="med-icon blue-bg"><i class="fa-solid fa-check"></i></div>
+                <div class="med-info">
+                  <div class="med-title">Cefdinir 125 mg/5 mL</div>
+                  <div class="med-details">Indication: Streptococcal Pharyngitis &bull; 7 mL PO once daily x 10 days</div>
+                  <div class="med-meta">Prescribed: Dec 2002 (Age 14) &bull; Prescriber: Dr. Kazi Humayun Kabir, Pediatrics &bull; Outcome: Resolved completely</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+</body>
+</html>

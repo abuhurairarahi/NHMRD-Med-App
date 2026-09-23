@@ -1,0 +1,541 @@
+/* ==========================================================================
+   RESET & GLOBAL STYLES
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #f3f5f8;
+  color: #334155;
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* App Layout */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+
+/* ==========================================================================
+   CONTENT BODY & TOP CONTROLS
+   ========================================================================== */
+.content-body {
+  padding: 24px 28px;
+  flex: 1;
+}
+
+.top-controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.breadcrumb-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+}
+
+.bc-item i {
+  margin-right: 4px;
+}
+
+.bc-sep {
+  color: #cbd5e1;
+}
+
+.controls-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.session-pill {
+  background-color: #e0e7ff;
+  color: #3730a3;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot-active {
+  color: #4f46e5;
+  font-size: 14px;
+}
+
+.session-pill .sep {
+  color: #a5b4fc;
+}
+
+.btn-end-encounter {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s;
+}
+
+.btn-end-encounter:hover {
+  background-color: #f8fafc;
+}
+
+.btn-write-prescription {
+  background-color: #0d624a;
+  border: none;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.btn-write-prescription:hover {
+  background-color: #094735;
+}
+
+/* ==========================================================================
+   RECORDS NAVIGATION TABS
+   ========================================================================== */
+.records-tabs-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 20px;
+}
+
+.tab-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  color: #64748b;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.tab-link:hover {
+  color: #0f172a;
+}
+
+.tab-link.active {
+  color: #0d624a;
+  border-bottom-color: #0d624a;
+  background-color: #ffffff;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.badge-active-view {
+  background-color: #0d624a;
+  color: #ffffff;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   PATIENT INFO CARD
+   ========================================================================== */
+.patient-card {
+  background-color: #e0f2fe;
+  border: 1px solid #bae6fd;
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.patient-avatar-box {
+  width: 48px;
+  height: 48px;
+  background-color: #0284c7;
+  color: #ffffff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.patient-card-info {
+  flex: 1;
+}
+
+.patient-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.patient-name {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0369a1;
+}
+
+.patient-meta {
+  font-size: 12px;
+  color: #0284c7;
+  font-weight: 500;
+}
+
+.mrn-badge {
+  background-color: #ffffff;
+  color: #0369a1;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.blood-badge {
+  background-color: #bae6fd;
+  color: #0369a1;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.allergy-badge {
+  background-color: #fef2f2;
+  color: #dc2626;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid #fca5a5;
+}
+
+.donor-badge {
+  background-color: #dcfce7;
+  color: #15803d;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid #86efac;
+}
+
+.attending-info {
+  font-size: 12px;
+  color: #0369a1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ==========================================================================
+   FILTER BAR
+   ========================================================================== */
+.filter-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 16px;
+}
+
+.filter-search-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 8px 14px;
+  flex: 1;
+  max-width: 500px;
+}
+
+.filter-search-input i {
+  color: #94a3b8;
+}
+
+.filter-search-input input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 13px;
+  color: #334155;
+}
+
+.filter-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-pill {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-pill.active {
+  background-color: #0d624a;
+  color: #ffffff;
+  border-color: #0d624a;
+}
+
+.download-icon-btn {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   SURGERY RECORD CARDS
+   ========================================================================== */
+.surgery-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  position: relative;
+}
+
+.surgery-card.border-green {
+  border-left: 4px solid #10b981;
+}
+
+.surgery-card.border-blue {
+  border-left: 4px solid #3b82f6;
+}
+
+.surgery-card.border-gray {
+  border-left: 4px solid #94a3b8;
+}
+
+.surgery-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.header-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.tag-green {
+  background-color: #d1fae5;
+  color: #047857;
+}
+
+.tag-blue {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+.tag-gray {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+.cpt-code {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.meta-dot {
+  color: #cbd5e1;
+}
+
+.record-date {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.verified-badge {
+  text-align: right;
+  font-size: 12px;
+  color: #10b981;
+}
+
+.verified-badge i {
+  margin-right: 2px;
+}
+
+.verified-badge strong {
+  color: #047857;
+}
+
+.archived-badge {
+  text-align: right;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.facility-info {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.surgery-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.surgery-indication {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+/* Details Grid */
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  background-color: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.detail-col label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.detail-val {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.detail-sub {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.text-green {
+  color: #10b981;
+}
+
+/* Findings Box */
+.findings-box {
+  font-size: 12px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.findings-box strong {
+  color: #1e293b;
+}
+
+/* Footer & Technique Tags */
+.surgery-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 16px;
+}
+
+.technique-tags {
+  display: flex;
+  gap: 8px;
+}
+
+.tech-tag {
+  background-color: #f1f5f9;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.link-btn {
+  color: #0d624a;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.link-btn:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Vaccine Records</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/vaccine-rec.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="logo">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>NHMRD</span>
+        </div>
+
+        <nav class="nav-menu">
+          <a href="#" class="nav-item">
+            <i class="fa-solid fa-table-cells-large"></i> 
+            <span>Dashboard</span>
+          </a>
+          <a href="#" class="nav-item active">
+            <i class="fa-solid fa-notes-medical"></i> 
+            <span>Clinical Records</span>
+          </a>
+          <a href="#" class="nav-item">
+            <i class="fa-solid fa-user-clock"></i> 
+            <span>Patient Requests</span>
+          </a>
+          <a href="#" class="nav-item">
+            <i class="fa-solid fa-user-doctor"></i> 
+            <span>Doctor Profile</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+      
+      <!-- Top Header Bar -->
+      <header class="top-header">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search patient MRN, name, vitals...">
+        </div>
+
+        <div class="header-right">
+          <div class="header-status-pill">
+            <i class="fa-regular fa-clock"></i>
+            <span>Shift: Morning Clinical Rounds (07:00 - 15:30)</span>
+          </div>
+          <div class="header-status-pill">
+            <i class="fa-solid fa-rotate-sharp"></i>
+            <span>EMR Synced</span>
+          </div>
+          <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+          
+          <div class="doctor-profile-badge">
+            <div class="doctor-info-text">
+              <span class="doctor-name">Dr. Nusrat Jahan, MD</span>
+              <span class="doctor-dept">Internal Medicine &amp; Therapeutics</span>
+            </div>
+            <div class="doctor-avatar">
+              <img src="https://i.pravatar.cc/100?img=47" alt="Dr. Nusrat Jahan">
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content Area -->
+      <main class="content-body">
+
+        <!-- Top Controls / Breadcrumbs Row -->
+        <div class="top-controls-row">
+          <div class="breadcrumb-links">
+            <span class="bc-item"><i class="fa-regular fa-folder-open"></i> PATIENT EHR</span>
+            <span class="bc-sep">/</span>
+            <span class="bc-item bold-text">Active Clinical Encounter</span>
+          </div>
+
+          <div class="controls-right">
+            <div class="session-pill">
+              <span class="dot-active">&bull;</span>
+              <span>Session: 01:44:30</span>
+              <span class="sep">&bull;</span>
+              <span>HIPAA ACTIVE</span>
+            </div>
+
+            <button class="btn-clinical-log">
+              <i class="fa-solid fa-rotate-left"></i> Clinical Log
+            </button>
+
+            <button class="btn-write-prescription">
+              <i class="fa-solid fa-file-signature"></i> Write Prescription
+            </button>
+          </div>
+        </div>
+
+        <!-- Section Navigation Tabs -->
+        <nav class="records-tabs-nav">
+          <a href="#" class="tab-link"><i class="fa-regular fa-user"></i> Patient Profile</a>
+          <a href="#" class="tab-link"><i class="fa-solid fa-prescription"></i> Prescription Records</a>
+          <a href="#" class="tab-link"><i class="fa-solid fa-user-nurse"></i> Surgery Records</a>
+          <a href="#" class="tab-link"><i class="fa-solid fa-vial-circle-check"></i> Test Records</a>
+          <a href="#" class="tab-link active"><i class="fa-solid fa-syringe"></i> Vaccine Records</a>
+        </nav>
+
+        <!-- Compact Patient Info Banner -->
+        <div class="patient-compact-banner">
+          <div class="patient-avatar-sm">
+            <img src="https://i.pravatar.cc/100?img=32" alt="Sanjana Farhin">
+          </div>
+          
+          <div class="patient-banner-details">
+            <div class="banner-line-1">
+              <h2 class="p-name">Sanjana Farhin</h2>
+              <span class="p-mrn">MRN-449102</span>
+              <span class="p-dob">DOB: 12/04/1988</span>
+            </div>
+            
+            <div class="banner-line-2">
+              <span>36 y/o Female</span>
+              <span class="dot">&bull;</span>
+              <span>Blood Group: A+ (Rh Pos)</span>
+              <span class="dot">&bull;</span>
+              <span class="p-allergy"><i class="fa-solid fa-triangle-exclamation"></i> Allergy: Sulfonamides</span>
+              <span class="dot">&bull;</span>
+              <span>Attending: Dr. Nusrat Jahan, MD</span>
+            </div>
+          </div>
+
+          <div class="banner-status-right">
+            <span class="iis-badge"><i class="fa-regular fa-square-check"></i> IIS STATUS: <strong>Active &amp; Verified</strong></span>
+            <button class="icon-sub-btn"><i class="fa-solid fa-user-pen"></i></button>
+            <button class="icon-sub-btn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+          </div>
+        </div>
+
+        <!-- Section 1: Adult Immunizations -->
+        <div class="section-card">
+          <div class="section-card-header">
+            <div class="sec-title flex-center gap-2">
+              <i class="fa-solid fa-shield-virus sec-icon"></i>
+              <h3>Adult Immunizations</h3>
+              <span class="sec-subtitle">(Current &amp; Routine)</span>
+            </div>
+            <span class="active-count-badge">3 Active Records</span>
+          </div>
+
+          <!-- Vaccine Item 1 -->
+          <div class="vaccine-row-card">
+            <div class="vac-icon-box bg-teal-light text-teal">
+              <i class="fa-solid fa-virus-covid"></i>
+            </div>
+            <div class="vac-details">
+              <div class="vac-title-row">
+                <h4 class="vac-name">COVID-19 Updated Booster (2024–2025 Formula)</h4>
+                <span class="status-tag tag-emerald">Valid &amp; Active</span>
+              </div>
+              <div class="vac-sub">Pfizer-BioNTech Comirnaty (30mcg / 0.3mL IM)</div>
+              <div class="vac-meta-row">
+                <span>Administered: Sep 28, 2024</span>
+                <span>Lot: #FL8902</span>
+                <span>Route: Deltoid (L)</span>
+                <span>Provider: Metro Care Health</span>
+              </div>
+            </div>
+            <div class="vac-right-meta">
+              <span class="ndc-code">NDC 59267-4315-2</span>
+              <i class="fa-regular fa-circle-info info-icon"></i>
+            </div>
+          </div>
+
+          <!-- Vaccine Item 2 -->
+          <div class="vaccine-row-card">
+            <div class="vac-icon-box bg-blue-light text-blue">
+              <i class="fa-solid fa-syringe"></i>
+            </div>
+            <div class="vac-details">
+              <div class="vac-title-row">
+                <h4 class="vac-name">Seasonal Influenza Vaccine (Quadrivalent Fluzone)</h4>
+                <span class="status-tag tag-sky-blue">Valid thru Aug 2025</span>
+              </div>
+              <div class="vac-sub">Sanofi Pasteur High-Dose Quadrivalent (0.5mL IM)</div>
+              <div class="vac-meta-row">
+                <span>Administered: Sep 28, 2024</span>
+                <span>Lot: #IN24-912</span>
+                <span>Route: Deltoid (R)</span>
+                <span>Provider: Metro Care Health</span>
+              </div>
+            </div>
+            <div class="vac-right-meta">
+              <span class="ndc-code">NDC 49281-424-58</span>
+              <i class="fa-regular fa-circle-info info-icon"></i>
+            </div>
+          </div>
+
+          <!-- Vaccine Item 3 -->
+          <div class="vaccine-row-card">
+            <div class="vac-icon-box bg-slate-light text-slate">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div class="vac-details">
+              <div class="vac-title-row">
+                <h4 class="vac-name">Tdap (Tetanus, Diphtheria, Pertussis)</h4>
+                <span class="status-tag tag-emerald-light">Boostrix Booster Valid</span>
+              </div>
+              <div class="vac-sub">GlaxoSmithKline Biologicals (0.5mL IM)</div>
+              <div class="vac-meta-row">
+                <span>Administered: May 14, 2020</span>
+                <span>Lot: #TD-4401</span>
+                <span>Booster Due: <strong>May 2030 (in 6 yrs)</strong></span>
+              </div>
+            </div>
+            <div class="vac-right-meta">
+              <span class="ndc-code">NDC 58160-842-11</span>
+              <i class="fa-regular fa-circle-info info-icon"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Vaccine History Table -->
+        <div class="section-card">
+          <div class="section-card-header align-start">
+            <div>
+              <div class="sec-title flex-center gap-2">
+                <i class="fa-solid fa-filter sec-icon"></i>
+                <h3>Vaccine History</h3>
+              </div>
+              <p class="sec-subtitle">Birth to present &bull; 18 recorded doses</p>
+            </div>
+            <span class="uptodate-label">Up to date through 2024</span>
+          </div>
+
+          <!-- Sub Filter Bar -->
+          <div class="table-filter-bar">
+            <span class="filter-label">Filter vaccination data</span>
+            <div class="filter-pills">
+              <button class="pill-btn active">All vaccines</button>
+              <button class="pill-btn">Recent only</button>
+              <button class="pill-btn">Completed</button>
+            </div>
+            <a href="#" class="link-view-all">View all 18 doses</a>
+          </div>
+
+          <!-- Data Table -->
+          <div class="table-responsive">
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th>DATE</th>
+                  <th>VACCINE</th>
+                  <th>DOSE</th>
+                  <th>ADMINISTERED BY</th>
+                  <th>VERIFICATION</th>
+                  <th>STATUS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="date-col">11/12/2023</td>
+                  <td class="vac-col">Bivalent COVID-19</td>
+                  <td>Booster</td>
+                  <td>Retail clinic</td>
+                  <td><span class="state-badge">STATE VERIFIED</span></td>
+                  <td><span class="status-completed">COMPLETED</span></td>
+                </tr>
+                <tr>
+                  <td class="date-col">10/12/2023</td>
+                  <td class="vac-col">Influenza</td>
+                  <td>Seasonal</td>
+                  <td>Retail clinic</td>
+                  <td><span class="state-badge">STATE VERIFIED</span></td>
+                  <td><span class="status-completed">COMPLETED</span></td>
+                </tr>
+                <tr>
+                  <td class="date-col">09/12/2016</td>
+                  <td class="vac-col">Meningococcal ACWY</td>
+                  <td>Dose 2</td>
+                  <td>Family medicine</td>
+                  <td><span class="state-badge">STATE VERIFIED</span></td>
+                  <td><span class="status-completed">COMPLETED</span></td>
+                </tr>
+                <tr>
+                  <td class="date-col">08/12/2011</td>
+                  <td class="vac-col">HPV</td>
+                  <td>Dose 3</td>
+                  <td>Family medicine</td>
+                  <td><span class="state-badge">STATE VERIFIED</span></td>
+                  <td><span class="status-completed">COMPLETED</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+</body>
+</html>

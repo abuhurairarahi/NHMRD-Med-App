@@ -1,0 +1,682 @@
+/* ==========================================================================
+   RESET & GLOBAL VARIABLES
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #f3f5f8;
+  color: #334155;
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+
+/* ==========================================================================
+   CONTENT BODY & PAGE HEADER
+   ========================================================================== */
+.content-body {
+  padding: 24px 28px;
+  flex: 1;
+}
+
+.page-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.dept-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: #0d624a;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+}
+
+.page-subtitle {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.page-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-rx-renewal {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0284c7;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-rx-renewal:hover {
+  background-color: #f8fafc;
+}
+
+.btn-export-summary {
+  background-color: #0d624a;
+  border: none;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-export-summary:hover {
+  background-color: #094735;
+}
+
+/* ==========================================================================
+   KPI METRICS GRID
+   ========================================================================== */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.kpi-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.kpi-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.5px;
+}
+
+.kpi-val-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 6px 0 2px;
+}
+
+.kpi-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.kpi-change {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.kpi-target {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.text-emerald {
+  color: #059669;
+}
+
+.kpi-subtext {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.kpi-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.bg-emerald-soft { background-color: #d1fae5; color: #059669; }
+.bg-blue-soft { background-color: #dbeafe; color: #2563eb; }
+.bg-teal-soft { background-color: #ccfbf1; color: #0d9488; }
+.bg-sky-soft { background-color: #e0f2fe; color: #0284c7; }
+
+/* ==========================================================================
+   FILTER CONTROLS ROW
+   ========================================================================== */
+.filter-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.search-input-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 20px;
+  padding: 8px 16px;
+  flex: 1;
+  color: #94a3b8;
+}
+
+.search-input-pill input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 12px;
+  color: #334155;
+}
+
+.pill-filters-group {
+  display: flex;
+  gap: 6px;
+}
+
+.pill-tab {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.pill-tab.active {
+  background-color: #0d624a;
+  color: #ffffff;
+  border-color: #0d624a;
+}
+
+.btn-time-filter {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   SPLIT DASHBOARD LAYOUT (LEFT ROSTER + RIGHT DETAIL PANEL)
+   ========================================================================== */
+.dashboard-split-layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* --- Left Column: Patient Roster --- */
+.roster-container {
+  flex: 1;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 16px;
+  min-width: 0;
+}
+
+.roster-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.roster-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.case-count {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 500;
+  margin-left: 6px;
+}
+
+.roster-sort {
+  font-size: 11px;
+  color: #64748b;
+  cursor: pointer;
+}
+
+/* Roster Table */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.roster-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.roster-table th {
+  background-color: #f8fafc;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.roster-table td {
+  padding: 12px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: top;
+  font-size: 12px;
+}
+
+.roster-table tr.row-active {
+  background-color: #f0fdf4;
+  border-left: 3px solid #16a34a;
+}
+
+.patient-id-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.patient-avatar-square {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 11px;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.avatar-green { background-color: #10b981; }
+.avatar-blue { background-color: #3b82f6; }
+.avatar-purple { background-color: #8b5cf6; }
+.avatar-teal { background-color: #14b8a6; }
+.avatar-emerald { background-color: #059669; }
+.avatar-slate { background-color: #64748b; }
+
+.patient-name {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.patient-mrn {
+  font-size: 10px;
+  color: #64748b;
+}
+
+.text-secondary {
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.diag-title {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.diag-icd {
+  font-size: 10px;
+  color: #0284c7;
+  font-weight: 600;
+}
+
+.rx-item {
+  font-weight: 500;
+  color: #334155;
+}
+
+.rx-sub {
+  font-size: 10px;
+  color: #64748b;
+}
+
+.vitals-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 11px;
+  color: #64748b;
+}
+
+.vitals-block strong {
+  font-size: 13px;
+  color: #0f172a;
+}
+
+.roster-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.showing-text {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pg-btn {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pg-btn.active {
+  background-color: #0d624a;
+  color: #ffffff;
+  border-color: #0d624a;
+}
+
+.pg-dots {
+  color: #94a3b8;
+  padding: 0 4px;
+}
+
+/* --- Right Column: Patient Detail Panel --- */
+.detail-panel {
+  width: 380px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 16px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detail-patient-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.detail-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.dp-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dp-name {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.status-managed-tag {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.dp-meta {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.dp-attending {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+/* Panel Sections */
+.panel-section {
+  background-color: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.panel-sec-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.panel-sec-header h4 {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.clear-badge {
+  font-size: 10px;
+  color: #059669;
+  font-weight: 700;
+}
+
+.rx-card-item {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+}
+
+.rx-card-item:last-child {
+  margin-bottom: 0;
+}
+
+.rx-card-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #0f172a;
+}
+
+.badge-adherent {
+  background-color: #d1fae5;
+  color: #047857;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.rx-card-sub {
+  font-size: 10px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.rx-refill {
+  font-size: 9px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.specimen-date {
+  font-size: 10px;
+  color: #94a3b8;
+}
+
+/* Labs Grid */
+.lab-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.lab-cell {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 8px;
+  text-align: center;
+}
+
+.lab-lbl {
+  font-size: 9px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.lab-val {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 2px 0;
+}
+
+.lab-tag {
+  font-size: 8px;
+  display: block;
+  font-weight: 600;
+}
+
+.tag-controlled { color: #059669; }
+.tag-normal { color: #0284c7; }
+.tag-target { color: #059669; }
+
+.lab-sub-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #64748b;
+}
+
+.cmp-status {
+  color: #0284c7;
+  font-weight: 600;
+}
+
+/* Clinical SOAP Note */
+.encounter-type {
+  font-size: 10px;
+  color: #64748b;
+}
+
+.soap-block {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.soap-item label {
+  font-size: 9px;
+  font-weight: 800;
+  color: #0d624a;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.soap-item p {
+  font-size: 11px;
+  color: #334155;
+  line-height: 1.4;
+}
+
+.btn-append-note {
+  width: 100%;
+  background-color: #0d624a;
+  color: #ffffff;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-append-note:hover {
+  background-color: #094735;
+}
