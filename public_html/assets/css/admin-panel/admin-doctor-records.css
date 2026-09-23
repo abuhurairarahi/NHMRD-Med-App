@@ -26,6 +26,74 @@
   --radius-lg: 14px;
 }
 
+/* Page Title Header Container */
+.page-title-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb {
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+/* Page Title */
+.page-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #004d5a;
+  line-height: 1.2;
+}
+
+/* Header Actions Wrapper */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Status Pill */
+.dghs-pill {
+  background-color: #ccfbf1;
+  color: #0f766e;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Button Component */
+.btn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-dark {
+  background-color: #005a70;
+  color: #ffffff;
+}
+
+.btn-dark:hover {
+  background-color: #003845;
+}
+
 /* Dashboard Body Layout */
 .dashboard-body {
   padding: 20px 24px;

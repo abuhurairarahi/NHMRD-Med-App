@@ -1,392 +1,447 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NHMRD - Doctor Records</title>
-  <link rel="stylesheet" href="/public_html/assets/css/admin-panel/admin-doctor-records.css">
-  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHMRD - Doctor Records</title>
+    <link rel="stylesheet" href="/public_html/assets/css/admin-panel/admin-doctor-records.css">
+    <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-  <div class="app-container">
-    <!-- Sidebar -->
-    <aside class="sidebar admin">
-      <div class="logo">
-        <i class="fa-solid fa-shield-halved"></i>
-        <span>NHMRD</span>
-      </div>
-      <nav class="nav-menu">
-        <a href="/public_html/pages/admin-panel/admin-dashboard.html" class="nav-item"><i class="fa-solid fa-table-cells-large"></i> Dashboard</a>
-        <a href="/public_html/pages/admin-panel/admin-patient-records.html" class="nav-item"><i class="fa-solid fa-user-group"></i> Patient Records</a>
-        <a href="/public_html/pages/admin-panel/admin-doctor-records.html" class="nav-item active"><i class="fa-solid fa-user-doctor"></i> Doctor Records</a>
-                <a href="/public_html/pages/admin-panel/admin-hospital-records.html" class="nav-item"><i class="fa-solid fa-hospital"></i> Hospital Records</a>
-        <a href="#" class="nav-item"><i class="fa-solid fa-clipboard-check"></i> Request Management</a>
-        <a href="#" class="nav-item"><i class="fa-solid fa-chart-line"></i> Analytics</a>
-        <a href="#" class="nav-item"><i class="fa-solid fa-bullhorn"></i> Notice Broadcast</a>
-      </nav>
-      <div class="sidebar-footer">
-        <a href="#"><button class="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button></a>
-      </div>
-    </aside>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar admin">
+            <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>NHMRD</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="/public_html/pages/admin-panel/admin-dashboard.html" class="nav-item"><i
+                        class="fa-solid fa-table-cells-large"></i> Dashboard</a>
+                <a href="/public_html/pages/admin-panel/admin-patient-records.html" class="nav-item"><i
+                        class="fa-solid fa-user-group"></i> Patient Records</a>
+                <a href="/public_html/pages/admin-panel/admin-doctor-records.html" class="nav-item active"><i
+                        class="fa-solid fa-user-doctor"></i> Doctor Records</a>
+                <a href="/public_html/pages/admin-panel/admin-hospital-records.html" class="nav-item"><i
+                        class="fa-solid fa-hospital"></i> Hospital Records</a>
+                <a href="/public_html/pages/admin-panel/admin-request-management.html" class="nav-item"><i
+                        class="fa-solid fa-clipboard-check"></i> Request Management</a>
+                <a href="/public_html/pages/admin-panel/admin-analytics.html" class="nav-item"><i
+                        class="fa-solid fa-chart-line"></i> Analytics</a>
+                <a href="/public_html/pages/admin-panel/admin-notice-broadcast.html" class="nav-item"><i
+                        class="fa-solid fa-bullhorn"></i> Notice Broadcast</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#"><button class="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        Logout</button></a>
+            </div>
+        </aside>
 
-    <!-- Main Content -->
-    <div class="main-wrapper">
-      <!-- Top Header -->
-      <header class="top-header">
-        <div class="search-bar">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Search records, MRNs, clinicians...">
+        <!-- Main Content -->
+        <div class="main-wrapper">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search records, MRNs, clinicians...">
+                </div>
+                <div class="user-profile">
+                    <div class="user-info">
+                        <span class="user-name">Dr. Sarah F.</span>
+                        <span class="user-role">Super Admin</span>
+                    </div>
+                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <main class="dashboard-body">
+                <!-- Top Metrics Cards Grid -->
+                <div class="page-title-header">
+                    <div>
+                        <div class="breadcrumb">NHMRD REGISTRY / DOCTOR DIRECTORY</div>
+                        <h1 class="page-title">Doctor Records</h1>
+                    </div>
+                    <div class="header-actions">
+                        <span class="pill dghs-pill">• Real-Time DGHS Sync: Active</span>
+                        <a href="/public_html/pages/admin-panel/admin-sub-pages/register-new-doctor.html" style="text-decoration: none;"><button class="btn btn-dark"><i class="fa-solid fa-hospital-user"></i> Register New
+                            Doctor</button></a>
+                    </div>
+                </div>
+                <section class="summary-cards">
+                    <!-- Card 1 -->
+                    <div class="card stat-card">
+                        <div class="card-top">
+                            <div class="icon-box teal"><i class="fa-solid fa-user-doctor"></i></div>
+                            <span class="pill green-pill"><i class="fa-solid fa-arrow-trend-up"></i> 5.2%</span>
+                        </div>
+                        <span class="stat-label">Total Registered Doctors</span>
+                        <span class="stat-value">30,033</span>
+                        <div class="card-footer-info">
+                            <span>National Cadre <strong>23,410</strong></span>
+                            <span>Private <strong>6,623</strong></span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="card stat-card">
+                        <div class="card-top">
+                            <div class="icon-box green"><i class="fa-solid fa-stethoscope"></i></div>
+                            <span class="pill mint-pill">• Active Rota</span>
+                        </div>
+                        <span class="stat-label">Currently On-Duty</span>
+                        <span class="stat-value">14,280</span>
+                        <div class="card-footer-info">
+                            <span>Ward/ER: <strong>8,920</strong></span>
+                            <span>ICU/CCU: <strong>5,360</strong></span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="card stat-card">
+                        <div class="card-top">
+                            <div class="icon-box cyan"><i class="fa-solid fa-shield-halved"></i></div>
+                            <span class="pill dark-teal-pill">98.4% Secured</span>
+                        </div>
+                        <span class="stat-label">BMDC Biometric Verified</span>
+                        <span class="stat-value">29,552</span>
+                        <div class="card-footer-info">
+                            <span>Pending Auth: <strong>481</strong></span>
+                            <span>NID Matched</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="card stat-card">
+                        <div class="card-top">
+                            <div class="icon-box teal"><i class="fa-solid fa-user-ninja"></i></div>
+                            <span class="pill green-pill"><i class="fa-solid fa-arrow-up"></i> 41.3%</span>
+                        </div>
+                        <span class="stat-label">Specialist Physicians</span>
+                        <span class="stat-value">12,410</span>
+                        <div class="card-footer-info">
+                            <span>FCPS/MD/MS: <strong>9,840</strong></span>
+                            <span>Fellows: <strong>2,570</strong></span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Mirroring Banner -->
+                <section class="banner-card">
+                    <div class="banner-left">
+                        <div class="banner-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+                        <div class="banner-text">
+                            <div class="banner-title">
+                                BMDC National Registry Central Mirroring: Active <span class="dot-green"></span>
+                            </div>
+                            <div class="banner-sub">
+                                Last synchronized with Bangladesh Medical and Dental Council portal: Today at 11:42 AM.
+                                Digital signatures authentic.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="banner-right">
+                        <span class="protocol-code">Protocol v4.1.2-EHR</span>
+                        <button class="btn btn-outline-dark"><i class="fa-solid fa-rotate"></i> Force Sync</button>
+                    </div>
+                </section>
+
+                <!-- Main Workspace Split Grid -->
+                <section class="main-grid">
+                    <!-- Left Main Area: Search, Filters & Doctors List -->
+                    <div class="doctors-section">
+                        <!-- Search & Filters -->
+                        <div class="filter-box">
+                            <div class="search-and-action">
+                                <div class="search-input-box">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input type="text"
+                                        placeholder="Search by BMDC ID, Doctor name, or Specialization...">
+                                </div>
+                                <button class="btn btn-dark"><i class="fa-solid fa-user-plus"></i> + Register New
+                                    Doctor</button>
+                            </div>
+
+                            <div class="filter-dropdowns">
+                                <select class="filter-select">
+                                    <option>Specialty: All Specialties</option>
+                                </select>
+                                <select class="filter-select">
+                                    <option>Status: All Statuses</option>
+                                </select>
+                                <select class="filter-select">
+                                    <option>Division: Dhaka Division</option>
+                                </select>
+                                <button class="btn-reset"><i class="fa-solid fa-arrow-rotate-left"></i> Reset</button>
+                            </div>
+                        </div>
+
+                        <!-- Doctor Cards List -->
+                        <div class="doctor-cards-list">
+                            <!-- Doctor 1 -->
+                            <div class="card doctor-card">
+                                <div class="doctor-card-content">
+                                    <img src="https://i.pravatar.cc/100?img=5" alt="Prof. Dr. Farhana Sultana"
+                                        class="doctor-avatar">
+                                    <div class="doctor-details">
+                                        <div class="doctor-header-row">
+                                            <h3 class="doctor-name">Prof. Dr. Farhana Sultana</h3>
+                                            <span class="pill status-on-duty">On-Duty</span>
+                                        </div>
+                                        <div class="bmdc-id"><i class="fa-solid fa-id-card"></i> BMDC: A-49821</div>
+                                        <p class="doctor-role-text">Head of Interventional Cardiology • MBBS, FCPS
+                                            (Cardiology), MD</p>
+                                        <div class="meta-info">
+                                            <span><i class="fa-solid fa-hospital-user"></i> Dhaka Medical College
+                                                Hospital (DMCH)</span>
+                                            <span><i class="fa-regular fa-clock"></i> Morning Shift (08:00 -
+                                                15:00)</span>
+                                            <span><i class="fa-solid fa-briefcase"></i> 18 Yrs Exp</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="doctor-card-actions">
+                                    <button class="btn btn-outline"><i class="fa-solid fa-id-badge"></i>
+                                        Credentials</button>
+                                    <button class="btn btn-outline"><i class="fa-solid fa-building-user"></i> Assign
+                                        Ward</button>
+                                    <button class="btn-icon"><i class="fa-solid fa-rectangle-list"></i></button>
+                                </div>
+                            </div>
+
+                            <!-- Doctor 2 -->
+                            <div class="card doctor-card">
+                                <div class="doctor-card-content">
+                                    <img src="https://i.pravatar.cc/100?img=12" alt="Dr. Mahmudul Hasan"
+                                        class="doctor-avatar">
+                                    <div class="doctor-details">
+                                        <div class="doctor-header-row">
+                                            <h3 class="doctor-name">Dr. Mahmudul Hasan</h3>
+                                            <span class="pill status-on-duty">On-Duty</span>
+                                        </div>
+                                        <div class="bmdc-id"><i class="fa-solid fa-id-card"></i> BMDC: A-61204</div>
+                                        <p class="doctor-role-text">Associate Specialist, Neonatal ICU • MBBS, DCH, FCPS
+                                            (Paediatrics)</p>
+                                        <div class="meta-info">
+                                            <span><i class="fa-solid fa-hospital-user"></i> Dhaka Shishu (Children)
+                                                Hospital</span>
+                                            <span><i class="fa-regular fa-clock"></i> Night Roster (20:00 -
+                                                08:00)</span>
+                                            <span><i class="fa-solid fa-briefcase"></i> 11 Yrs Exp</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="doctor-card-actions">
+                                    <button class="btn btn-outline"><i class="fa-solid fa-id-badge"></i>
+                                        Credentials</button>
+                                    <button class="btn btn-outline"><i class="fa-solid fa-building-user"></i> Assign
+                                        Ward</button>
+                                    <button class="btn-icon"><i class="fa-solid fa-rectangle-list"></i></button>
+                                </div>
+                            </div>
+
+                            <!-- Doctor 3 -->
+                            <div class="card doctor-card">
+                                <div class="doctor-card-content">
+                                    <img src="https://i.pravatar.cc/100?img=47" alt="Dr. Sabrina Chowdhury"
+                                        class="doctor-avatar">
+                                    <div class="doctor-details">
+                                        <div class="doctor-header-row">
+                                            <h3 class="doctor-name">Dr. Sabrina Chowdhury</h3>
+                                            <span class="pill status-off-duty">Off-Duty</span>
+                                        </div>
+                                        <div class="bmdc-id"><i class="fa-solid fa-id-card"></i> BMDC: A-52119</div>
+                                        <p class="doctor-role-text">Assistant Professor, General & Laparoscopic Surgery
+                                            • MBBS, MS (General Surgery)</p>
+                                        <div class="meta-info">
+                                            <span><i class="fa-solid fa-hospital-user"></i> Sir Salimullah Medical
+                                                College Hospital</span>
+                                            <span><i class="fa-regular fa-clock"></i> Next Rota: Tomorrow 08:00</span>
+                                            <span><i class="fa-solid fa-briefcase"></i> 9 Yrs Exp</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="doctor-card-actions">
+                                    <button class="btn btn-outline"><i class="fa-solid fa-id-badge"></i>
+                                        Credentials</button>
+                                    <button class="btn btn-outline"><i class="fa-solid fa-building-user"></i> Assign
+                                        Ward</button>
+                                    <button class="btn-icon"><i class="fa-solid fa-rectangle-list"></i></button>
+                                </div>
+                            </div>
+
+                            <!-- Doctor 4 -->
+                            <div class="card doctor-card">
+                                <div class="doctor-card-content">
+                                    <img src="https://i.pravatar.cc/100?img=60" alt="Dr. Tariqul Alam"
+                                        class="doctor-avatar">
+                                    <div class="doctor-details">
+                                        <div class="doctor-header-row">
+                                            <h3 class="doctor-name">Dr. Tariqul Alam</h3>
+                                            <span class="pill status-on-duty">On-Duty</span>
+                                        </div>
+                                        <div class="bmdc-id"><i class="fa-solid fa-id-card"></i> BMDC: A-38740</div>
+                                        <p class="doctor-role-text">Senior Consultant, Infectious Disease & Epidemiology
+                                            • MBBS, FCPS, MPH (Epidemiology)</p>
+                                        <div class="meta-info">
+                                            <span><i class="fa-solid fa-hospital-user"></i> Infectious Diseases
+                                                Hospital, Mohakhali</span>
+                                            <span><i class="fa-regular fa-clock"></i> Active Surveillance (09:00 -
+                                                17:00)</span>
+                                            <span><i class="fa-solid fa-briefcase"></i> 15 Yrs Exp</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="doctor-card-actions">
+                                    <button class="btn btn-outline"><i class="fa-solid fa-id-badge"></i>
+                                        Credentials</button>
+                                    <button class="btn btn-outline"><i class="fa-solid fa-building-user"></i> Assign
+                                        Ward</button>
+                                    <button class="btn-icon"><i class="fa-solid fa-rectangle-list"></i></button>
+                                </div>
+                            </div>
+
+                            <!-- Doctor 5 -->
+                            <div class="card doctor-card">
+                                <div class="doctor-card-content">
+                                    <img src="https://i.pravatar.cc/100?img=32" alt="Dr. Nafisa Kamal"
+                                        class="doctor-avatar">
+                                    <div class="doctor-details">
+                                        <div class="doctor-header-row">
+                                            <h3 class="doctor-name">Dr. Nafisa Kamal</h3>
+                                            <span class="pill status-leave">Official Leave</span>
+                                        </div>
+                                        <div class="bmdc-id"><i class="fa-solid fa-id-card"></i> BMDC: A-74910</div>
+                                        <p class="doctor-role-text">Registrar, Internal Medicine • MBBS, FCPS Part-II
+                                        </p>
+                                        <div class="meta-info">
+                                            <span><i class="fa-solid fa-hospital-user"></i> Kurmitola General
+                                                Hospital</span>
+                                            <span><i class="fa-regular fa-calendar-xmark"></i> Returns:
+                                                14-Oct-2026</span>
+                                            <span><i class="fa-solid fa-briefcase"></i> 6 Yrs Exp</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="doctor-card-actions">
+                                    <button class="btn btn-outline"><i class="fa-solid fa-id-badge"></i>
+                                        Credentials</button>
+                                    <button class="btn btn-outline"><i class="fa-solid fa-building-user"></i> Assign
+                                        Ward</button>
+                                    <button class="btn-icon"><i class="fa-solid fa-rectangle-list"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Pagination -->
+                        <div class="pagination-footer">
+                            <span>Showing 1 - 5 of 30,033 registered physicians</span>
+                            <div class="pagination">
+                                <button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                                <button class="page-btn active">1</button>
+                                <button class="page-btn">2</button>
+                                <button class="page-btn">3</button>
+                                <span class="dots">...</span>
+                                <button class="page-btn">601</button>
+                                <button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Sidebar Panels -->
+                    <div class="right-sidebar">
+                        <!-- Panel 1: Specialist Roster Chart -->
+                        <div class="card side-panel">
+                            <div class="panel-header">
+                                <h3><i class="fa-solid fa-chart-pie"></i> Specialist Roster</h3>
+                                <span class="pill dark-pill">Live Shift</span>
+                            </div>
+                            <div class="donut-chart-box">
+                                <div class="donut-ring">
+                                    <div class="donut-center">
+                                        <span class="donut-num">14.2k</span>
+                                        <span class="donut-label">PHYSICIANS ACTIVE</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <span class="legend-dot blue"></span>
+                                    <span class="legend-label">Internal Medicine & Cardiology</span>
+                                    <span class="legend-val">35%</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-dot teal"></span>
+                                    <span class="legend-label">General Surgery & Ortho</span>
+                                    <span class="legend-val">25%</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-dot mint"></span>
+                                    <span class="legend-label">Pediatrics & Neonatology</span>
+                                    <span class="legend-val">22%</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-dot soft-cyan"></span>
+                                    <span class="legend-label">Infectious & Critical Care</span>
+                                    <span class="legend-val">18%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 2: Pending Verifications -->
+                        <div class="card side-panel">
+                            <div class="panel-header">
+                                <h3>Pending Verifications</h3>
+                                <span class="pill mint-pill">4 Requests</span>
+                            </div>
+                            <div class="verification-list">
+                                <div class="verif-item">
+                                    <div class="verif-meta">07-09-2026 • ID #RQ-9182</div>
+                                    <div class="verif-title">New Doctor Registration Request</div>
+                                    <div class="verif-sub">MBBS: Dhaka Medical College Hospital</div>
+                                </div>
+                                <div class="verif-item">
+                                    <div class="verif-meta">07-09-2026 • ID #RQ-9183</div>
+                                    <div class="verif-title">Specialty Accreditation Upgrade</div>
+                                    <div class="verif-sub">FCPS: National Inst. of Neurosciences</div>
+                                </div>
+                                <div class="verif-item">
+                                    <div class="verif-meta">06-09-2026 • ID #RQ-9177</div>
+                                    <div class="verif-title">BMDC License Renewal (Renewal Cycle 2026)</div>
+                                    <div class="verif-sub">MBBS: Sir Salimullah Medical College</div>
+                                </div>
+                                <div class="verif-item">
+                                    <div class="verif-meta">06-09-2026 • ID #RQ-9174</div>
+                                    <div class="verif-title">Foreign Degree Recognition (FRCS)</div>
+                                    <div class="verif-sub">UK Royal College: MOHFW Evaluation Cell</div>
+                                </div>
+                            </div>
+                            <button class="btn-link-center">View All Licensing Inquiries (48)</button>
+                        </div>
+
+                        <!-- Panel 3: License Expiration Advisory -->
+                        <div class="card side-panel warning-panel">
+                            <div class="advisory-header">
+                                <i class="fa-solid fa-triangle-exclamation text-danger"></i>
+                                <span class="advisory-title">License Expiration Advisory</span>
+                            </div>
+                            <p class="advisory-desc">
+                                142 clinicians across divisional medical colleges require mandatory triennial renewal of
+                                BMDC practice certificates prior to October 31, 2026.
+                            </p>
+                            <div class="advisory-actions">
+                                <button class="btn btn-danger-sm">Send Batch Reminders</button>
+                                <button class="btn btn-outline-sm">Audit List</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
         </div>
-        <div class="user-profile">
-          <div class="user-info">
-            <span class="user-name">Dr. Sarah F.</span>
-            <span class="user-role">Super Admin</span>
-          </div>
-          <div class="avatar"><i class="fa-solid fa-user"></i></div>
-        </div>
-      </header>
-
-      <!-- Dashboard Content -->
-      <main class="dashboard-body">
-        <!-- Top Metrics Cards Grid -->
-        <section class="summary-cards">
-          <!-- Card 1 -->
-          <div class="card stat-card">
-            <div class="card-top">
-              <div class="icon-box teal"><i class="fa-solid fa-user-doctor"></i></div>
-              <span class="pill green-pill"><i class="fa-solid fa-arrow-trend-up"></i> 5.2%</span>
-            </div>
-            <span class="stat-label">Total Registered Doctors</span>
-            <span class="stat-value">30,033</span>
-            <div class="card-footer-info">
-              <span>National Cadre <strong>23,410</strong></span>
-              <span>Private <strong>6,623</strong></span>
-            </div>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="card stat-card">
-            <div class="card-top">
-              <div class="icon-box green"><i class="fa-solid fa-stethoscope"></i></div>
-              <span class="pill mint-pill">• Active Rota</span>
-            </div>
-            <span class="stat-label">Currently On-Duty</span>
-            <span class="stat-value">14,280</span>
-            <div class="card-footer-info">
-              <span>Ward/ER: <strong>8,920</strong></span>
-              <span>ICU/CCU: <strong>5,360</strong></span>
-            </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="card stat-card">
-            <div class="card-top">
-              <div class="icon-box cyan"><i class="fa-solid fa-shield-halved"></i></div>
-              <span class="pill dark-teal-pill">98.4% Secured</span>
-            </div>
-            <span class="stat-label">BMDC Biometric Verified</span>
-            <span class="stat-value">29,552</span>
-            <div class="card-footer-info">
-              <span>Pending Auth: <strong>481</strong></span>
-              <span>NID Matched</span>
-            </div>
-          </div>
-
-          <!-- Card 4 -->
-          <div class="card stat-card">
-            <div class="card-top">
-              <div class="icon-box teal"><i class="fa-solid fa-user-ninja"></i></div>
-              <span class="pill green-pill"><i class="fa-solid fa-arrow-up"></i> 41.3%</span>
-            </div>
-            <span class="stat-label">Specialist Physicians</span>
-            <span class="stat-value">12,410</span>
-            <div class="card-footer-info">
-              <span>FCPS/MD/MS: <strong>9,840</strong></span>
-              <span>Fellows: <strong>2,570</strong></span>
-            </div>
-          </div>
-        </section>
-
-        <!-- Mirroring Banner -->
-        <section class="banner-card">
-          <div class="banner-left">
-            <div class="banner-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
-            <div class="banner-text">
-              <div class="banner-title">
-                BMDC National Registry Central Mirroring: Active <span class="dot-green"></span>
-              </div>
-              <div class="banner-sub">
-                Last synchronized with Bangladesh Medical and Dental Council portal: Today at 11:42 AM. Digital signatures authentic.
-              </div>
-            </div>
-          </div>
-          <div class="banner-right">
-            <span class="protocol-code">Protocol v4.1.2-EHR</span>
-            <button class="btn btn-outline-dark"><i class="fa-solid fa-rotate"></i> Force Sync</button>
-          </div>
-        </section>
-
-        <!-- Main Workspace Split Grid -->
-        <section class="main-grid">
-          <!-- Left Main Area: Search, Filters & Doctors List -->
-          <div class="doctors-section">
-            <!-- Search & Filters -->
-            <div class="filter-box">
-              <div class="search-and-action">
-                <div class="search-input-box">
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                  <input type="text" placeholder="Search by BMDC ID, Doctor name, or Specialization...">
-                </div>
-                <button class="btn btn-dark"><i class="fa-solid fa-user-plus"></i> + Register New Doctor</button>
-              </div>
-
-              <div class="filter-dropdowns">
-                <select class="filter-select">
-                  <option>Specialty: All Specialties</option>
-                </select>
-                <select class="filter-select">
-                  <option>Status: All Statuses</option>
-                </select>
-                <select class="filter-select">
-                  <option>Division: Dhaka Division</option>
-                </select>
-                <button class="btn-reset"><i class="fa-solid fa-arrow-rotate-left"></i> Reset</button>
-              </div>
-            </div>
-
-            <!-- Doctor Cards List -->
-            <div class="doctor-cards-list">
-              <!-- Doctor 1 -->
-              <div class="card doctor-card">
-                <div class="doctor-card-content">
-                  <img src="https://i.pravatar.cc/100?img=5" alt="Prof. Dr. Farhana Sultana" class="doctor-avatar">
-                  <div class="doctor-details">
-                    <div class="doctor-header-row">
-                      <h3 class="doctor-name">Prof. Dr. Farhana Sultana</h3>
-                      <span class="pill status-on-duty">On-Duty</span>
-                    </div>
-                    <div class="bmdc-id"><i class="fa-solid fa-id-card"></i> BMDC: A-49821</div>
-                    <p class="doctor-role-text">Head of Interventional Cardiology • MBBS, FCPS (Cardiology), MD</p>
-                    <div class="meta-info">
-                      <span><i class="fa-solid fa-hospital-user"></i> Dhaka Medical College Hospital (DMCH)</span>
-                      <span><i class="fa-regular fa-clock"></i> Morning Shift (08:00 - 15:00)</span>
-                      <span><i class="fa-solid fa-briefcase"></i> 18 Yrs Exp</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="doctor-card-actions">
-                  <button class="btn btn-outline"><i class="fa-solid fa-id-badge"></i> Credentials</button>
-                  <button class="btn btn-outline"><i class="fa-solid fa-building-user"></i> Assign Ward</button>
-                  <button class="btn-icon"><i class="fa-solid fa-rectangle-list"></i></button>
-                </div>
-              </div>
-
-              <!-- Doctor 2 -->
-              <div class="card doctor-card">
-                <div class="doctor-card-content">
-                  <img src="https://i.pravatar.cc/100?img=12" alt="Dr. Mahmudul Hasan" class="doctor-avatar">
-                  <div class="doctor-details">
-                    <div class="doctor-header-row">
-                      <h3 class="doctor-name">Dr. Mahmudul Hasan</h3>
-                      <span class="pill status-on-duty">On-Duty</span>
-                    </div>
-                    <div class="bmdc-id"><i class="fa-solid fa-id-card"></i> BMDC: A-61204</div>
-                    <p class="doctor-role-text">Associate Specialist, Neonatal ICU • MBBS, DCH, FCPS (Paediatrics)</p>
-                    <div class="meta-info">
-                      <span><i class="fa-solid fa-hospital-user"></i> Dhaka Shishu (Children) Hospital</span>
-                      <span><i class="fa-regular fa-clock"></i> Night Roster (20:00 - 08:00)</span>
-                      <span><i class="fa-solid fa-briefcase"></i> 11 Yrs Exp</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="doctor-card-actions">
-                  <button class="btn btn-outline"><i class="fa-solid fa-id-badge"></i> Credentials</button>
-                  <button class="btn btn-outline"><i class="fa-solid fa-building-user"></i> Assign Ward</button>
-                  <button class="btn-icon"><i class="fa-solid fa-rectangle-list"></i></button>
-                </div>
-              </div>
-
-              <!-- Doctor 3 -->
-              <div class="card doctor-card">
-                <div class="doctor-card-content">
-                  <img src="https://i.pravatar.cc/100?img=47" alt="Dr. Sabrina Chowdhury" class="doctor-avatar">
-                  <div class="doctor-details">
-                    <div class="doctor-header-row">
-                      <h3 class="doctor-name">Dr. Sabrina Chowdhury</h3>
-                      <span class="pill status-off-duty">Off-Duty</span>
-                    </div>
-                    <div class="bmdc-id"><i class="fa-solid fa-id-card"></i> BMDC: A-52119</div>
-                    <p class="doctor-role-text">Assistant Professor, General & Laparoscopic Surgery • MBBS, MS (General Surgery)</p>
-                    <div class="meta-info">
-                      <span><i class="fa-solid fa-hospital-user"></i> Sir Salimullah Medical College Hospital</span>
-                      <span><i class="fa-regular fa-clock"></i> Next Rota: Tomorrow 08:00</span>
-                      <span><i class="fa-solid fa-briefcase"></i> 9 Yrs Exp</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="doctor-card-actions">
-                  <button class="btn btn-outline"><i class="fa-solid fa-id-badge"></i> Credentials</button>
-                  <button class="btn btn-outline"><i class="fa-solid fa-building-user"></i> Assign Ward</button>
-                  <button class="btn-icon"><i class="fa-solid fa-rectangle-list"></i></button>
-                </div>
-              </div>
-
-              <!-- Doctor 4 -->
-              <div class="card doctor-card">
-                <div class="doctor-card-content">
-                  <img src="https://i.pravatar.cc/100?img=60" alt="Dr. Tariqul Alam" class="doctor-avatar">
-                  <div class="doctor-details">
-                    <div class="doctor-header-row">
-                      <h3 class="doctor-name">Dr. Tariqul Alam</h3>
-                      <span class="pill status-on-duty">On-Duty</span>
-                    </div>
-                    <div class="bmdc-id"><i class="fa-solid fa-id-card"></i> BMDC: A-38740</div>
-                    <p class="doctor-role-text">Senior Consultant, Infectious Disease & Epidemiology • MBBS, FCPS, MPH (Epidemiology)</p>
-                    <div class="meta-info">
-                      <span><i class="fa-solid fa-hospital-user"></i> Infectious Diseases Hospital, Mohakhali</span>
-                      <span><i class="fa-regular fa-clock"></i> Active Surveillance (09:00 - 17:00)</span>
-                      <span><i class="fa-solid fa-briefcase"></i> 15 Yrs Exp</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="doctor-card-actions">
-                  <button class="btn btn-outline"><i class="fa-solid fa-id-badge"></i> Credentials</button>
-                  <button class="btn btn-outline"><i class="fa-solid fa-building-user"></i> Assign Ward</button>
-                  <button class="btn-icon"><i class="fa-solid fa-rectangle-list"></i></button>
-                </div>
-              </div>
-
-              <!-- Doctor 5 -->
-              <div class="card doctor-card">
-                <div class="doctor-card-content">
-                  <img src="https://i.pravatar.cc/100?img=32" alt="Dr. Nafisa Kamal" class="doctor-avatar">
-                  <div class="doctor-details">
-                    <div class="doctor-header-row">
-                      <h3 class="doctor-name">Dr. Nafisa Kamal</h3>
-                      <span class="pill status-leave">Official Leave</span>
-                    </div>
-                    <div class="bmdc-id"><i class="fa-solid fa-id-card"></i> BMDC: A-74910</div>
-                    <p class="doctor-role-text">Registrar, Internal Medicine • MBBS, FCPS Part-II</p>
-                    <div class="meta-info">
-                      <span><i class="fa-solid fa-hospital-user"></i> Kurmitola General Hospital</span>
-                      <span><i class="fa-regular fa-calendar-xmark"></i> Returns: 14-Oct-2026</span>
-                      <span><i class="fa-solid fa-briefcase"></i> 6 Yrs Exp</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="doctor-card-actions">
-                  <button class="btn btn-outline"><i class="fa-solid fa-id-badge"></i> Credentials</button>
-                  <button class="btn btn-outline"><i class="fa-solid fa-building-user"></i> Assign Ward</button>
-                  <button class="btn-icon"><i class="fa-solid fa-rectangle-list"></i></button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Bottom Pagination -->
-            <div class="pagination-footer">
-              <span>Showing 1 - 5 of 30,033 registered physicians</span>
-              <div class="pagination">
-                <button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                <button class="page-btn active">1</button>
-                <button class="page-btn">2</button>
-                <button class="page-btn">3</button>
-                <span class="dots">...</span>
-                <button class="page-btn">601</button>
-                <button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Sidebar Panels -->
-          <div class="right-sidebar">
-            <!-- Panel 1: Specialist Roster Chart -->
-            <div class="card side-panel">
-              <div class="panel-header">
-                <h3><i class="fa-solid fa-chart-pie"></i> Specialist Roster</h3>
-                <span class="pill dark-pill">Live Shift</span>
-              </div>
-              <div class="donut-chart-box">
-                <div class="donut-ring">
-                  <div class="donut-center">
-                    <span class="donut-num">14.2k</span>
-                    <span class="donut-label">PHYSICIANS ACTIVE</span>
-                  </div>
-                </div>
-              </div>
-              <div class="chart-legend">
-                <div class="legend-item">
-                  <span class="legend-dot blue"></span>
-                  <span class="legend-label">Internal Medicine & Cardiology</span>
-                  <span class="legend-val">35%</span>
-                </div>
-                <div class="legend-item">
-                  <span class="legend-dot teal"></span>
-                  <span class="legend-label">General Surgery & Ortho</span>
-                  <span class="legend-val">25%</span>
-                </div>
-                <div class="legend-item">
-                  <span class="legend-dot mint"></span>
-                  <span class="legend-label">Pediatrics & Neonatology</span>
-                  <span class="legend-val">22%</span>
-                </div>
-                <div class="legend-item">
-                  <span class="legend-dot soft-cyan"></span>
-                  <span class="legend-label">Infectious & Critical Care</span>
-                  <span class="legend-val">18%</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Panel 2: Pending Verifications -->
-            <div class="card side-panel">
-              <div class="panel-header">
-                <h3>Pending Verifications</h3>
-                <span class="pill mint-pill">4 Requests</span>
-              </div>
-              <div class="verification-list">
-                <div class="verif-item">
-                  <div class="verif-meta">07-09-2026 • ID #RQ-9182</div>
-                  <div class="verif-title">New Doctor Registration Request</div>
-                  <div class="verif-sub">MBBS: Dhaka Medical College Hospital</div>
-                </div>
-                <div class="verif-item">
-                  <div class="verif-meta">07-09-2026 • ID #RQ-9183</div>
-                  <div class="verif-title">Specialty Accreditation Upgrade</div>
-                  <div class="verif-sub">FCPS: National Inst. of Neurosciences</div>
-                </div>
-                <div class="verif-item">
-                  <div class="verif-meta">06-09-2026 • ID #RQ-9177</div>
-                  <div class="verif-title">BMDC License Renewal (Renewal Cycle 2026)</div>
-                  <div class="verif-sub">MBBS: Sir Salimullah Medical College</div>
-                </div>
-                <div class="verif-item">
-                  <div class="verif-meta">06-09-2026 • ID #RQ-9174</div>
-                  <div class="verif-title">Foreign Degree Recognition (FRCS)</div>
-                  <div class="verif-sub">UK Royal College: MOHFW Evaluation Cell</div>
-                </div>
-              </div>
-              <button class="btn-link-center">View All Licensing Inquiries (48)</button>
-            </div>
-
-            <!-- Panel 3: License Expiration Advisory -->
-            <div class="card side-panel warning-panel">
-              <div class="advisory-header">
-                <i class="fa-solid fa-triangle-exclamation text-danger"></i>
-                <span class="advisory-title">License Expiration Advisory</span>
-              </div>
-              <p class="advisory-desc">
-                142 clinicians across divisional medical colleges require mandatory triennial renewal of BMDC practice certificates prior to October 31, 2026.
-              </p>
-              <div class="advisory-actions">
-                <button class="btn btn-danger-sm">Send Batch Reminders</button>
-                <button class="btn btn-outline-sm">Audit List</button>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
     </div>
-  </div>
 </body>
+
 </html>

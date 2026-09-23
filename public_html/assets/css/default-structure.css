@@ -3,6 +3,7 @@
   --bg-sidebar: #005a70;
   --bg-card: #ffffff;
   --header-color: #f3fdff;
+  --sidebar-admin: #034c53;
   --text-primary: #1e293b;
   --text-muted: #49515e;
   --primary-color: #007084;
@@ -58,7 +59,7 @@ body {
 
 .admin {
   width: 230px;
-  background-color: var(--bg-sidebar);
+  background-color: var(--sidebar-admin);
   color: #ffffff;
   display: flex;
   flex-direction: column;

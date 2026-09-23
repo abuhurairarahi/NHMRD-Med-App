@@ -1,0 +1,183 @@
+:root {
+  --bg-main: #dcf5fa;
+  --bg-sidebar: #005a70;
+  --bg-card: #ffffff;
+  --header-bg: #e6f5f8;
+
+  --text-primary: #0f172a;
+  --text-muted: #475569;
+
+  --primary-color: #007084;
+  --primary-dark: #003845;
+  --accent-cyan: #e0f2fe;
+
+  --danger-color: #dc2626;
+
+  --border-color: #b2e0e8;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+}
+
+/* Dashboard Content Area */
+.dashboard-body {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Telemetry Banner */
+.telemetry-banner { display: flex; flex-direction: column; gap: 6px; }
+
+.telemetry-info { display: flex; align-items: center; gap: 10px; }
+.defcon-pill { background-color: #fee2e2; color: #dc2626; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 10px; }
+.update-text { font-size: 10px; color: var(--text-muted); font-weight: 600; }
+
+.page-title { font-size: 20px; font-weight: 800; color: var(--primary-dark); }
+
+.banner-controls { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
+
+.time-filters { display: flex; gap: 4px; }
+
+.filter-btn {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filter-btn.active { background-color: #005a70; color: white; border-color: #005a70; }
+
+.action-buttons { display: flex; gap: 8px; }
+
+.btn {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-export { background-color: #ffffff; border: 1px solid var(--border-color); color: var(--text-primary); }
+.btn-dispatch { background-color: #dc2626; color: white; }
+
+/* Stat Cards */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  border: 1px solid var(--border-color);
+}
+
+.stat-card {
+  background-color: #bcecf6;
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+
+.icon-box.teal {
+  width: 28px;
+  height: 28px;
+  background-color: #007084;
+  color: white;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pill { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 12px; }
+.dark-teal-pill { background-color: #005a70; color: white; }
+.dark-pill { background-color: #003845; color: white; }
+
+.stat-label { font-size: 11px; font-weight: 600; color: var(--text-muted); }
+.stat-value { font-size: 22px; font-weight: 800; color: var(--primary-dark); display: flex; align-items: baseline; gap: 8px; }
+.sub-label { font-size: 10px; font-weight: 600; color: var(--text-muted); }
+
+/* Main Split Grid */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 16px;
+}
+
+.panel-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
+.panel-title { font-size: 14px; font-weight: 800; color: var(--primary-dark); }
+.panel-sub { font-size: 10px; color: var(--text-muted); }
+
+/* Curve Panel */
+.curve-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #e6f7fa;
+  border-color: #bcecf6;
+}
+
+.chart-legend { display: flex; gap: 12px; font-size: 10px; font-weight: 600; color: var(--text-muted); }
+.legend-item { display: flex; align-items: center; gap: 4px; }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+.legend-dot.blue { background-color: #003845; }
+.legend-dot.dashed { border: 1px dashed #007084; background: transparent; }
+
+.chart-container { margin: 16px 0 8px; }
+.chart-svg { width: 100%; height: 140px; }
+
+.axis-labels { display: flex; justify-content: space-between; font-size: 9px; font-weight: 700; color: var(--text-muted); text-align: center; }
+.peak-label { color: #dc2626; }
+
+.parameters-row { display: flex; justify-content: space-between; border-top: 1px dashed #b2e0e8; padding-top: 10px; margin-top: 10px; }
+.param-item { display: flex; flex-direction: column; gap: 2px; }
+.param-label { font-size: 9px; font-weight: 700; color: var(--text-muted); }
+.param-val { font-size: 13px; font-weight: 800; color: var(--primary-dark); }
+.param-sub { font-size: 9px; color: var(--text-muted); }
+
+/* Threat Index Panel */
+.threat-panel { display: flex; flex-direction: column; gap: 12px; background-color: #e6f7fa; border-color: #bcecf6; }
+
+.threat-list { display: flex; flex-direction: column; gap: 10px; }
+
+.threat-item { display: flex; flex-direction: column; gap: 3px; }
+.threat-header { display: flex; justify-content: space-between; font-weight: 800; font-size: 11px; }
+.threat-name { color: var(--primary-dark); }
+
+.progress-bar { height: 6px; background-color: #b2e0e8; border-radius: 3px; overflow: hidden; }
+.progress-fill { height: 100%; background-color: #005a70; border-radius: 3px; }
+
+.threat-footer { display: flex; justify-content: space-between; font-size: 8px; color: var(--text-muted); font-weight: 600; }
+
+.btn-full-dark {
+  width: 100%;
+  background-color: #005a70;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 11px;
+  cursor: pointer;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Helper Utilities */
+.red-text { color: #dc2626; font-weight: 700; }
