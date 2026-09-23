@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Diagnostic & Pathology Tests - NHMRD</title>
+  <link rel="stylesheet" href="/public_html/assets/css/patient-panel/medical-test-req.css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i> 
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-file-prescription"></i> 
+          <span>Prescription Records</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-scalpel"></i> 
+          <span>Surgery Records</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-vial"></i> 
+          <span>Test Records</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-syringe"></i> 
+          <span>Vaccine Records</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-calendar-plus"></i> 
+          <span>Request Appointment</span>
+        </a>
+        <a href="#" class="nav-item active">
+          <i class="fa-solid fa-notes-medical"></i> 
+          <span>Request Medical Test</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-shield-virus"></i> 
+          <span>Request Vaccine</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-id-card"></i> 
+          <span>Patient Info</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+      <!-- Top Header Bar -->
+      <header class="top-header">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search Queries">
+        </div>
+
+        <div class="header-right">
+          <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+          <div class="user-badge-avatar">SR</div>
+          <span class="user-name">Shishir Rahaman</span>
+        </div>
+      </header>
+
+      <!-- Main Content Area -->
+      <main class="content-body">
+
+        <!-- Page Sub-Header / Breadcrumb -->
+        <div class="page-top-bar">
+          <div class="left-head">
+            <div class="breadcrumb">
+              <span>NHMRD</span> &rsaquo; <span>Diagnostic Services</span> &rsaquo; <span class="active">Test Request</span>
+            </div>
+            <h1>Request Diagnostic & Pathology Tests</h1>
+            <p class="subtitle">Book certified home sample collection or direct hospital laboratory walk-in testing.</p>
+          </div>
+        </div>
+
+        <!-- 2-Column Grid Layout -->
+        <div class="request-grid">
+
+          <!-- Left Column: Form & Steps -->
+          <div class="request-left-col">
+            
+            <!-- Step 1: Collection Center & Mode -->
+            <div class="card step-card">
+              <div class="step-card-header">
+                <div class="step-title">
+                  <span class="step-number">1</span>
+                  <h2>Select Collection Center & Mode</h2>
+                </div>
+              </div>
+              <p class="step-subtext">Choose between doorstep home sample collection or visiting an accredited diagnostic branch.</p>
+
+              <div class="form-group">
+                <label>SAMPLE COLLECTION CENTER / BRANCH</label>
+                <div class="select-wrapper">
+                  <select>
+                    <option selected>Home Sample Collection (Doorstep Phlebotomy)</option>
+                    <option>LABAID Specialized Hospital Main Lab</option>
+                    <option>Dhanmondi Diagnostic Center</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down select-icon"></i>
+                </div>
+              </div>
+
+              <!-- Address Info Banner -->
+              <div class="info-banner-blue">
+                <div class="info-banner-left">
+                  <i class="fa-solid fa-house-medical icon-blue"></i>
+                  <div>
+                    <strong>Doorstep Phlebotomist Visit</strong>
+                    <p>House 24, Road 11, Dhanmondi R/A, Dhaka - 1209 (Patient Profile Address)</p>
+                  </div>
+                </div>
+                <div class="fee-tag">Fee: &#2547;200</div>
+              </div>
+            </div>
+
+            <!-- Step 2: Select Diagnostic Tests -->
+            <div class="card step-card">
+              <div class="step-card-header">
+                <div class="step-title">
+                  <span class="step-number">2</span>
+                  <h2>Select Diagnostic Tests</h2>
+                </div>
+                <a href="#" class="link-btn">Select Advised</a>
+              </div>
+
+              <!-- Test Search Bar -->
+              <div class="test-search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search tests by name, keyword or code...">
+              </div>
+
+              <!-- Test List Selection -->
+              <div class="test-list">
+
+                <!-- Item 1 (Selected) -->
+                <div class="test-item selected">
+                  <div class="test-checkbox">
+                    <input type="checkbox" id="test1" checked>
+                  </div>
+                  <div class="test-details">
+                    <div class="test-header-line">
+                      <label for="test1" class="test-title-text">Liver Function Test (LFT) Profile</label>
+                      <span class="pill-badge doctor-advised">Doctor Advised</span>
+                      <span class="test-price">&#2547;1,200</span>
+                    </div>
+                    <p class="test-subdesc">SGPT, SGOT, Bilirubin Total/Direct, Alk. Phosphatase, Albumin/Globulin Ratio.</p>
+                    <div class="test-meta">
+                      <span><i class="fa-regular fa-clock"></i> 10-12h Fasting</span>
+                      <span><i class="fa-solid fa-vial"></i> Serum Blood (3ml)</span>
+                      <span class="report-time">12h Report</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Item 2 (Selected) -->
+                <div class="test-item selected">
+                  <div class="test-checkbox">
+                    <input type="checkbox" id="test2" checked>
+                  </div>
+                  <div class="test-details">
+                    <div class="test-header-line">
+                      <label for="test2" class="test-title-text">Fasting Lipid Profile</label>
+                      <span class="pill-badge popular">Popular</span>
+                      <span class="test-price">&#2547;950</span>
+                    </div>
+                    <p class="test-subdesc">Total Cholesterol, HDL, LDL, VLDL, and Triglycerides with risk ratio.</p>
+                    <div class="test-meta">
+                      <span><i class="fa-regular fa-clock"></i> 12h Fasting</span>
+                      <span><i class="fa-solid fa-vial"></i> Serum Blood</span>
+                      <span class="report-time">8h Report</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="test-item">
+                  <div class="test-checkbox">
+                    <input type="checkbox" id="test3">
+                  </div>
+                  <div class="test-details">
+                    <div class="test-header-line">
+                      <label for="test3" class="test-title-text">Complete Blood Count (CBC) with ESR</label>
+                      <span class="test-price">&#2547;600</span>
+                    </div>
+                    <p class="test-subdesc">Automated 24-parameter hemogram including Hb, TC, DC, Platelets, and ESR.</p>
+                    <div class="test-meta">
+                      <span><i class="fa-regular fa-circle-xmark"></i> No Fasting</span>
+                      <span><i class="fa-solid fa-vial"></i> EDTA Whole Blood</span>
+                      <span class="report-time">4h Report</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="test-item">
+                  <div class="test-checkbox">
+                    <input type="checkbox" id="test4">
+                  </div>
+                  <div class="test-details">
+                    <div class="test-header-line">
+                      <label for="test4" class="test-title-text">HbA1c (Glycated Hemoglobin)</label>
+                      <span class="test-price">&#2547;800</span>
+                    </div>
+                    <p class="test-subdesc">Gold standard HPLC test assessing 3-month average blood glucose control.</p>
+                    <div class="test-meta">
+                      <span><i class="fa-regular fa-circle-xmark"></i> No Fasting</span>
+                      <span><i class="fa-solid fa-vial"></i> Whole Blood</span>
+                      <span class="report-time">6h Report</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Test Notice Bar -->
+              <div class="info-banner-gray">
+                <i class="fa-regular fa-circle-question"></i>
+                <span>Some tests are not available for home sample collection and require hospital visit.</span>
+              </div>
+            </div>
+
+            <!-- Step 3: Appointment Date & Slot -->
+            <div class="card step-card">
+              <div class="step-card-header">
+                <div class="step-title">
+                  <span class="step-number">3</span>
+                  <h2>Appointment Date & Slot</h2>
+                </div>
+              </div>
+
+              <div class="date-slot-inputs">
+                <div class="form-group flex-1">
+                  <label>DATE</label>
+                  <div class="input-with-icon">
+                    <input type="text" value="09 /18/2026">
+                  </div>
+                </div>
+                <div class="form-group flex-1">
+                  <label>TIME SLOT</label>
+                  <div class="input-with-icon">
+                    <input type="text" value="08:00 AM - 09:30 AM">
+                  </div>
+                </div>
+              </div>
+
+              <div class="info-banner-gray fasting-note">
+                <i class="fa-regular fa-circle-question"></i>
+                <span>10–12 hours overnight water-only fasting is required for selected liver & lipid profiles.</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Summary & Prescription -->
+          <div class="request-right-col">
+            
+            <!-- Doctor's Prescription Card -->
+            <div class="card prescription-card">
+              <div class="presc-header">
+                <h2>Doctor's Prescription</h2>
+                <span class="linked-badge">Linked</span>
+              </div>
+
+              <div class="presc-file-box">
+                <i class="fa-regular fa-file-lines presc-icon"></i>
+                <div class="presc-info">
+                  <strong>Rx_Dr_Farhana_Ahmed.pdf</strong>
+                  <p>Prescribed on 11-09-2026 &bull; 1.4 MB</p>
+                </div>
+                <button class="remove-btn"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+
+              <button class="btn-upload-more">
+                <i class="fa-regular fa-file-arrow-up"></i> Upload additional prescription file
+              </button>
+            </div>
+
+            <!-- Request Summary Card -->
+            <div class="card summary-card">
+              <h2>Request Summary</h2>
+
+              <div class="summary-box">
+                <div class="summary-row">
+                  <span>Selected Tests (2 tests)</span>
+                  <span class="val">&#2547;2150.00</span>
+                </div>
+                <div class="summary-row">
+                  <span>Home Sample Collection Fee</span>
+                  <span class="val">&#2547;5.00</span>
+                </div>
+                <div class="summary-row subsidy">
+                  <span>NHMRD Portal Digital Surcharge</span>
+                  <span class="val">Waived (Govt. Subsidy)</span>
+                </div>
+
+                <div class="summary-total-row">
+                  <span>Total Payable</span>
+                  <span class="total-amount">&#2547;2155.00</span>
+                </div>
+              </div>
+
+              <button class="btn-submit-request">
+                <i class="fa-solid fa-puzzle-piece"></i> Submit Test Request
+              </button>
+
+              <p class="confirmation-note">
+                Confirmed request ID & collection timing will be sent via SMS.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+</body>
+</html>

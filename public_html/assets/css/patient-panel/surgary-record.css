@@ -1,0 +1,464 @@
+:root {
+  --bg-main: #f0f4f9;
+  --bg-sidebar: #3b82f6;
+  --bg-card: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --primary-blue: #1d4ed8;
+  --light-blue-bg: #e0f2fe;
+  --border-color: #e2e8f0;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.4;
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+
+
+/* ================= CONTENT BODY ================= */
+.content-body {
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* User Banner */
+.user-banner {
+  background-color: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-info-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.user-photo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--text-secondary);
+}
+
+.name-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.name-badge-row h2 {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.verified-pill {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.user-ids {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.blood-group {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.banner-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-primary {
+  background-color: #1d4ed8;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Section Header & Filter Tabs */
+.section-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.section-top-bar h1 {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.subtitle {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 6px;
+  background-color: #e2e8f0;
+  padding: 3px;
+  border-radius: 8px;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background-color: #1d4ed8;
+  color: white;
+}
+
+/* Vitals Cards Grid */
+.vitals-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.vital-card {
+  background-color: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.vital-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.vital-icon.blood { background-color: #fee2e2; color: #dc2626; }
+.vital-icon.risk { background-color: #dbeafe; color: #1d4ed8; }
+.vital-icon.allergy { background-color: #e0f2fe; color: #0284c7; }
+.vital-icon.airway { background-color: #e0e7ff; color: #4338ca; }
+
+.vital-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.vital-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.vital-val {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 2px 0;
+}
+
+.vital-sub {
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+/* Procedure Record Card General */
+.card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.procedure-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.procedure-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.proc-title-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.proc-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #1d4ed8;
+  background-color: #dbeafe;
+}
+
+.proc-title-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.proc-title-line h3 {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.sub-name {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.proc-meta-id {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.proc-tags {
+  display: flex;
+  gap: 8px;
+}
+
+.status-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-badge.success {
+  background-color: #16a34a;
+  color: white;
+}
+
+.status-badge.dark-blue {
+  background-color: #1d4ed8;
+  color: white;
+}
+
+.type-badge {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.type-badge.emergency {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+/* Metadata 4-Column Row */
+.meta-columns-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: #f8fafc;
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  gap: 16px;
+}
+
+.meta-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.col-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.col-val {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 2px;
+}
+
+.col-sub {
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+/* Narrative & Documents Grid */
+.proc-body-grid {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 20px;
+}
+
+.narrative-box h4,
+.documents-box h4 {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1d4ed8;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.narrative-box p {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  background-color: #f8fafc;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.narrative-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.info-pill {
+  background-color: #eff6ff;
+  color: #1e40af;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Documents List */
+.doc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.doc-item {
+  background-color: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.doc-icon {
+  font-size: 16px;
+  color: #ef4444;
+}
+
+.doc-info {
+  flex-grow: 1;
+}
+
+.doc-info strong {
+  font-size: 11px;
+  color: var(--text-primary);
+  display: block;
+}
+
+.doc-info p {
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+.doc-dl-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.doc-dl-btn:hover {
+  color: #1d4ed8;
+}
