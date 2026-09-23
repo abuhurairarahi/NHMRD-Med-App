@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prescription Records - NHMRD</title>
+  <link rel="stylesheet" href="/public_html/assets/css/patient-panel/prescription-record.css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i> 
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="nav-item active">
+          <i class="fa-solid fa-file-prescription"></i> 
+          <span>Prescription Records</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-scalpel"></i> 
+          <span>Surgery Records</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-vial"></i> 
+          <span>Test Records</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-syringe"></i> 
+          <span>Vaccine Records</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-calendar-plus"></i> 
+          <span>Request Appointment</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-notes-medical"></i> 
+          <span>Request Medical Test</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-shield-virus"></i> 
+          <span>Request Vaccine</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-id-card"></i> 
+          <span>Patient Info</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      <!-- Top Header Navigation -->
+      <header class="top-header">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search Queries">
+        </div>
+
+        <div class="header-right">
+          <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+          <div class="user-badge-avatar">SR</div>
+          <span class="user-name">Shishir Rahaman</span>
+        </div>
+      </header>
+
+      <!-- Main Scrollable Body Container -->
+      <main class="content-body">
+        
+        <!-- Patient Banner Card -->
+        <section class="patient-card">
+          <div class="patient-profile">
+            <img src="https://i.pravatar.cc/100?img=12" alt="Shishir Rahaman" class="profile-img">
+            <div class="patient-details">
+              <div class="name-row">
+                <h2>Shishir Rahaman</h2>
+                <span class="id-tag">ID #48291</span>
+              </div>
+              <p class="patient-meta">
+                NID: 0123456789 &bull; Blood Group: <strong>AB+</strong> &bull; Gender: Male (36y)
+              </p>
+            </div>
+          </div>
+          <div class="banner-actions">
+            <button class="btn btn-outline-blue"><i class="fa-solid fa-print"></i> Print Roster</button>
+            <button class="btn btn-primary"><i class="fa-solid fa-download"></i> Download Full History (PDF)</button>
+          </div>
+        </section>
+
+        <!-- Page Section Header & Filters -->
+        <section class="section-header">
+          <div>
+            <span class="sub-heading">ELECTRONIC MEDICAL DOSSIER</span>
+            <h1>Prescription Records</h1>
+          </div>
+
+          <div class="filter-controls">
+            <div class="search-filter-input">
+              <i class="fa-solid fa-filter"></i>
+              <input type="text" placeholder="Filter by medicine, doctor, hospital">
+            </div>
+            <div class="pill-tabs">
+              <button class="tab-pill active">All</button>
+              <button class="tab-pill">Active</button>
+              <button class="tab-pill">Past</button>
+              <button class="tab-pill">Chronic</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Metric Overview Cards -->
+        <section class="metrics-grid">
+          <div class="card metric-card">
+            <div class="metric-info">
+              <span class="metric-title">CURRENT ACTIVE COURSES</span>
+              <div class="metric-value">3 Prescriptions</div>
+              <span class="metric-sub">5 ongoing oral medications</span>
+            </div>
+            <div class="metric-icon icon-blue">
+              <i class="fa-solid fa-pills"></i>
+            </div>
+          </div>
+
+          <div class="card metric-card">
+            <div class="metric-info">
+              <span class="metric-title">COMPLETED COURSES</span>
+              <div class="metric-value">14 Prescriptions</div>
+              <span class="metric-sub">Full compliance verified</span>
+            </div>
+            <div class="metric-icon icon-cyan">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+          </div>
+
+          <div class="card metric-card">
+            <div class="metric-info">
+              <span class="metric-title">PRESCRIBING DOCTORS</span>
+              <div class="metric-value">5 Specialists</div>
+              <span class="metric-sub">Across 3 verified clinical centers</span>
+            </div>
+            <div class="metric-icon icon-light-blue">
+              <i class="fa-solid fa-hospital-user"></i>
+            </div>
+          </div>
+        </section>
+
+        <!-- Prescription List -->
+        <section class="prescriptions-container">
+
+          <!-- Prescription Card 1 (Active) -->
+          <div class="card rx-card">
+            <div class="rx-header">
+              <div class="doctor-info">
+                <div class="doc-avatar avatar-blue">FA</div>
+                <div>
+                  <div class="doc-name-row">
+                    <h3>Dr. Farhana Ahmed</h3>
+                    <span class="specialty">Hepatology Specialist</span>
+                    <span class="hospital-tag">LABAID Specialized Hospital</span>
+                  </div>
+                  <div class="rx-meta">
+                    RxID: #RX-2026-0941 &bull; Issued: 11-09-2026 &bull; Next Review: 11-10-2026
+                  </div>
+                </div>
+              </div>
+              <span class="status-badge badge-active">ACTIVE</span>
+            </div>
+
+            <div class="regimen-header">
+              <span>PRESCRIBED REGIMEN (3 MEDICINES)</span>
+              <span class="protocol-tag">Hepatic Support Protocol</span>
+            </div>
+
+            <div class="medications-grid">
+              <!-- Drug 1 -->
+              <div class="med-card">
+                <div class="med-header">
+                  <div>
+                    <h4>Ursodeoxycholic Acid</h4>
+                    <span class="med-type">Tablet &bull; Oral Administration</span>
+                  </div>
+                  <span class="dose-tag">300 mg</span>
+                </div>
+                <div class="med-details">
+                  <div class="detail-row"><span class="label">Dosage:</span> <span>1 - 0 - 1 (Morning & Night)</span></div>
+                  <div class="detail-row"><span class="label">Timing:</span> <span>After food</span></div>
+                  <div class="detail-row"><span class="label">Duration:</span> <span>30 Days (Day 8 of 30)</span></div>
+                </div>
+              </div>
+
+              <!-- Drug 2 -->
+              <div class="med-card">
+                <div class="med-header">
+                  <div>
+                    <h4>Silymarin</h4>
+                    <span class="med-type">Capsule &bull; Liver Protection</span>
+                  </div>
+                  <span class="dose-tag">140 mg</span>
+                </div>
+                <div class="med-details">
+                  <div class="detail-row"><span class="label">Dosage:</span> <span>1 - 0 - 1 (Twice Daily)</span></div>
+                  <div class="detail-row"><span class="label">Timing:</span> <span>Before food</span></div>
+                  <div class="detail-row"><span class="label">Duration:</span> <span>15 Days (Day 8 of 15)</span></div>
+                </div>
+              </div>
+
+              <!-- Drug 3 -->
+              <div class="med-card">
+                <div class="med-header">
+                  <div>
+                    <h4>Vitamin E (Evion)</h4>
+                    <span class="med-type">Softgel &bull; Antioxidant Supplement</span>
+                  </div>
+                  <span class="dose-tag">400 IU</span>
+                </div>
+                <div class="med-details">
+                  <div class="detail-row"><span class="label">Dosage:</span> <span>0 - 1 - 0 (After Lunch)</span></div>
+                  <div class="detail-row"><span class="label">Timing:</span> <span>With main meal</span></div>
+                  <div class="detail-row"><span class="label">Duration:</span> <span>30 Days (Day 8 of 30)</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Doctor Advice Box -->
+            <div class="advice-box">
+              <i class="fa-regular fa-user"></i>
+              <p><strong>Doctor's Advice:</strong> Avoid heavy fatty foods. Low sodium intake advised. Repeat Liver Function Test (LFT) and Serum Bilirubin prior to next appointment.</p>
+            </div>
+
+            <!-- Card Actions -->
+            <div class="rx-footer-actions">
+              <button class="btn btn-sm-outline"><i class="fa-regular fa-eye"></i> View Digital Rx</button>
+              <button class="btn btn-sm-primary"><i class="fa-solid fa-cart-shopping"></i> Order Refill</button>
+              <button class="btn btn-sm-outline"><i class="fa-solid fa-download"></i> Download PDF</button>
+            </div>
+          </div>
+
+          <!-- Prescription Card 2 (Active) -->
+          <div class="card rx-card">
+            <div class="rx-header">
+              <div class="doctor-info">
+                <div class="doc-avatar avatar-dark-blue">TH</div>
+                <div>
+                  <div class="doc-name-row">
+                    <h3>Dr. Tanvir Hossain</h3>
+                    <span class="specialty">Cardiology Consultant</span>
+                    <span class="hospital-tag">Square Hospital</span>
+                  </div>
+                  <div class="rx-meta">
+                    RxID: #RX-2026-0812 &bull; Issued: 20-08-2026 &bull; Routine Ongoing
+                  </div>
+                </div>
+              </div>
+              <span class="status-badge badge-active">ACTIVE</span>
+            </div>
+
+            <div class="regimen-header">
+              <span>PRESCRIBED REGIMEN (2 MEDICINES)</span>
+              <span class="protocol-tag">Cardiovascular Maintenance</span>
+            </div>
+
+            <div class="medications-grid grid-2-col">
+              <!-- Drug 1 -->
+              <div class="med-card">
+                <div class="med-header">
+                  <div>
+                    <h4>Rosuvastatin (Crestor)</h4>
+                    <span class="med-type">Tablet &bull; Lipid Regulator</span>
+                  </div>
+                  <span class="dose-tag">10 mg</span>
+                </div>
+                <div class="med-details">
+                  <div class="detail-row"><span class="label">Dosage:</span> <span>0 - 0 - 1 (At Bedtime)</span></div>
+                  <div class="detail-row"><span class="label">Timing:</span> <span>Nightly after food</span></div>
+                  <div class="detail-row"><span class="label">Duration:</span> <span>Long Term / Ongoing</span></div>
+                </div>
+              </div>
+
+              <!-- Drug 2 -->
+              <div class="med-card">
+                <div class="med-header">
+                  <div>
+                    <h4>Telmisartan</h4>
+                    <span class="med-type">Tablet &bull; Antihypertensive</span>
+                  </div>
+                  <span class="dose-tag">40 mg</span>
+                </div>
+                <div class="med-details">
+                  <div class="detail-row"><span class="label">Dosage:</span> <span>1 - 0 - 0 (Morning)</span></div>
+                  <div class="detail-row"><span class="label">Timing:</span> <span>Daily Morning Post-Breakfast</span></div>
+                  <div class="detail-row"><span class="label">Duration:</span> <span>Long Term / Ongoing</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Doctor Advice Box -->
+            <div class="advice-box">
+              <i class="fa-regular fa-heart"></i>
+              <p><strong>Doctor's Advice:</strong> Monitor BP twice weekly. Maintain regular 30 min morning walk. Check Lipid profile after 3 months.</p>
+            </div>
+
+            <!-- Card Actions -->
+            <div class="rx-footer-actions">
+              <button class="btn btn-sm-outline"><i class="fa-regular fa-eye"></i> View Digital Rx</button>
+              <button class="btn btn-sm-primary"><i class="fa-solid fa-cart-shopping"></i> Order Refill</button>
+              <button class="btn btn-sm-outline"><i class="fa-solid fa-download"></i> Download PDF</button>
+            </div>
+          </div>
+
+          <!-- Prescription Card 3 (Completed) -->
+          <div class="card rx-card">
+            <div class="rx-header">
+              <div class="doctor-info">
+                <div class="doc-avatar avatar-grey">RI</div>
+                <div>
+                  <div class="doc-name-row">
+                    <h3>Dr. Rafiqul Islam</h3>
+                    <span class="specialty">Internal Medicine</span>
+                    <span class="hospital-tag">Apollo Hospital</span>
+                  </div>
+                  <div class="rx-meta">
+                    RxID: #RX-2026-0429 &bull; Issued: 15-05-2026 &bull; Completed on 20-05-2026
+                  </div>
+                </div>
+              </div>
+              <span class="status-badge badge-completed">COMPLETED</span>
+            </div>
+
+            <div class="regimen-header">
+              <span>PRESCRIBED REGIMEN (1 MEDICINE)</span>
+              <span class="protocol-tag text-muted-tag">Course Finished</span>
+            </div>
+
+            <div class="medications-grid grid-outcome">
+              <!-- Drug 1 -->
+              <div class="med-card">
+                <div class="med-header">
+                  <div>
+                    <h4>Azithromycin (Zithromax)</h4>
+                    <span class="med-type">Tablet &bull; Broad-spectrum Antibiotic</span>
+                  </div>
+                  <span class="dose-tag">500 mg</span>
+                </div>
+                <div class="med-details">
+                  <div class="detail-row"><span class="label">Dosage:</span> <span>1 - 0 - 0 (Once Daily)</span></div>
+                  <div class="detail-row"><span class="label">Timing:</span> <span>1 hr before meal</span></div>
+                  <div class="detail-row"><span class="label">Duration:</span> <span>5 Days Course (Completed)</span></div>
+                </div>
+              </div>
+
+              <!-- Clinical Outcome Container -->
+              <div class="outcome-card">
+                <span class="outcome-title">CLINICAL OUTCOME</span>
+                <p>Upper Respiratory Tract Infection resolved. Full course completed successfully with no adverse drug reactions reported.</p>
+              </div>
+            </div>
+
+            <!-- Card Actions -->
+            <div class="rx-footer-actions">
+              <button class="btn btn-sm-outline"><i class="fa-regular fa-eye"></i> View Archived Rx</button>
+              <button class="btn btn-sm-outline"><i class="fa-solid fa-download"></i> Download PDF</button>
+            </div>
+          </div>
+
+        </section>
+      </main>
+    </div>
+  </div>
+
+</body>
+</html>
