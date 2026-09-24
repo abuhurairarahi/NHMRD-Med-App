@@ -35,6 +35,17 @@
   --doc-border-color: #e5e7eb;
   --doc-radius-sm: 6px;
   --doc-radius-md: 10px;
+
+  --exe-primary-bg: #1e293b;
+  --exe-sidebar-bg: #1b2537;
+  --exe-main-bg: #f1f5f9;
+  --exe-card-bg: #ffffff;
+  --exe-accent-blue: #0284c7;
+  --exe-accent-blue-hover: #0369a1;
+  --exe-accent-red: #ef4444;
+  --exe-text-main: #0f172a;
+  --exe-text-muted: #64748b;
+  --exe-border-color: #e2e8f0;
 }
 
 * {
@@ -86,7 +97,17 @@ body {
 }
 
 .executive {
+  width: 230px;
   background-color: var(--sidebar-executive);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0px 0px 0px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .doctor {
@@ -195,6 +216,28 @@ body {
 }
 
 .search-bar input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 12px;
+}
+
+.exe-search-bar {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-main);
+  padding: 0px 14px;
+  border-radius: 20px;
+  width: 320px;
+  gap: 8px;
+  color: var(--text-muted);
+  border-width: 0.2px;
+  border-color: #cecece;
+  border-style: solid;
+}
+
+.exe-search-bar > input {
   border: none;
   background: transparent;
   outline: none;
