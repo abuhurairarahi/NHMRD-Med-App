@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Doctor Dashboard</title>
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="dashboard-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <svg class="brand-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 8v8M8 12h8"></path>
+        </svg>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#" class="nav-item active">
+          <span class="icon">📊</span> Dashboard
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon">📋</span> Clinical Records
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon">👥</span> Patient Requests
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon">👤</span> Doctor Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">Logout</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search patient MRN, name, vitals...">
+        </div>
+        <div class="top-bar-right">
+          <div class="shift-info">
+            <span class="clock-icon">🕒</span> Shift: Morning Clinical Rounds (07:00 - 15:30)
+          </div>
+          <div class="status-badge">
+            <span class="dot"></span> EMR Synced
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">FA</div>
+            <div class="user-info">
+              <div class="user-name">Dr. Farhana Ahmed, MD</div>
+              <div class="user-role">Internal Medicine & Therapeutics</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="content-area">
+        
+        <!-- Left Column -->
+        <div class="primary-column">
+          
+          <!-- Banner Header -->
+          <div class="command-banner">
+            <div class="command-info">
+              <span class="banner-icon">🩺</span>
+              <div>
+                <h2>Internal Medicine Clinical Command <span class="badge badge-active">ACTIVE ROUNDING</span></h2>
+                <p class="banner-sub">Station 04 • Service Ward 3B • EMR Session ID: #IM-8842-DX</p>
+              </div>
+            </div>
+            <div class="banner-actions">
+              <button class="btn btn-outline">📞 Call Triage</button>
+              <button class="btn btn-crimson">➕ New Encounter</button>
+            </div>
+          </div>
+
+          <!-- Top Metrics Row -->
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-header">
+                <span>TODAY'S CONSULTATIONS</span>
+                <span class="icon">📅</span>
+              </div>
+              <div class="metric-value">18 <span class="unit">total</span> <span class="trend positive">↗ +12%</span></div>
+              <div class="metric-pills">
+                <span class="pill pill-green">• 11 Done</span>
+                <span class="pill pill-yellow">• 7 Pending</span>
+                <span class="pill pill-gray">1 In Exam</span>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-header">
+                <span>RX REVIEWS PENDING</span>
+                <span class="icon">📋</span>
+              </div>
+              <div class="metric-value">14 <span class="unit">queued</span> <span class="badge badge-urgent">! 4 Urgent</span></div>
+              <div class="metric-subtext">
+                Polypharmacy check: 5 flag <span class="link">Batch Sign →</span>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-header">
+                <span>DIAGNOSTIC CRITICAL ALERTS</span>
+                <span class="icon">⚠️</span>
+              </div>
+              <div class="metric-value text-danger">3 <span class="unit">abnormal</span> <span class="badge badge-danger">Stat Attention</span></div>
+              <div class="metric-subtext text-danger">
+                ⚠️ Troponin, K+ imbalance, HbA1c 11
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-header">
+                <span>OUTPATIENT CARE INDEX</span>
+                <span class="icon">👍</span>
+              </div>
+              <div class="metric-value">94.2% <span class="sub-small">satisfaction <strong>98th Pctl</strong></span></div>
+              <div class="metric-subtext">
+                Average Wait: 8.4 mins <span class="quality">Quality Tier A</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Schedule & Queue Section -->
+          <div class="section-container">
+            <div class="section-header">
+              <div>
+                <h3>Patient Schedule & Encounter Queue</h3>
+                <p class="subtext">Daily clinical throughput & continuous charting roster</p>
+              </div>
+              <button class="btn btn-light-btn">Today (Oct 24) 🗓️</button>
+            </div>
+
+            <div class="queue-list">
+              <!-- Item 1 -->
+              <div class="queue-item status-in-progress">
+                <div class="time">09:15 AM</div>
+                <div class="patient-info">
+                  <div class="patient-title">
+                    <strong>Abdul Karim</strong> <span class="demographics">62 y/o • M</span>
+                    <span class="badge badge-progress">In Progress</span>
+                  </div>
+                  <div class="complaint">
+                    <strong>Chief Complaint:</strong> Type 2 Diabetes follow-up, symptomatic hyperglycemia, mild peripheral neuropathy
+                  </div>
+                  <div class="vitals">
+                    <span>BP: 138/86</span> <span>HR: 74 bpm</span> <span class="text-danger">HbA1c: 9.8% ↑</span>
+                  </div>
+                </div>
+                <div class="queue-actions">
+                  <button class="btn btn-sm btn-outline">📂 Records</button>
+                  <button class="btn btn-sm btn-crimson">📉 Active Chart</button>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="queue-item">
+                <div class="time">09:45 AM</div>
+                <div class="patient-info">
+                  <div class="patient-title">
+                    <strong>Nasreen Sultana</strong> <span class="demographics">48 y/o • F</span>
+                    <span class="badge badge-waiting">Waiting (Exam 2)</span>
+                  </div>
+                  <div class="complaint">
+                    <strong>Chief Complaint:</strong> Refractory Hypertension review, morning occipital headaches, pedal edema
+                  </div>
+                  <div class="vitals">
+                    <span class="text-danger">BP: 162/98 ↑</span> <span>HR: 88 bpm</span> <span>BMI: 29.4</span>
+                  </div>
+                </div>
+                <div class="queue-actions">
+                  <button class="btn btn-sm btn-outline">📂 Records</button>
+                  <button class="btn btn-sm btn-outline">📲 Call In</button>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="queue-item">
+                <div class="time">10:15 AM</div>
+                <div class="patient-info">
+                  <div class="patient-title">
+                    <strong>Dr. Mahmudul Hasan</strong> <span class="demographics">54 y/o • M</span>
+                    <span class="badge badge-scheduled">Scheduled</span>
+                  </div>
+                  <div class="complaint">
+                    <strong>Chief Complaint:</strong> Chronic Fatigue evaluation, unexplained weight loss (4kg / 2 mo), post-viral malaise
+                  </div>
+                  <div class="vitals">
+                    <span>TSH: Pending</span> <span class="text-danger">Ferritin: 14 ng/mL ↓</span>
+                  </div>
+                </div>
+                <div class="queue-actions">
+                  <button class="btn btn-sm btn-outline">📂 Records</button>
+                  <button class="btn btn-sm btn-outline">💊 Meds List</button>
+                </div>
+              </div>
+
+              <!-- Item 4 -->
+              <div class="queue-item">
+                <div class="time">10:45 AM</div>
+                <div class="patient-info">
+                  <div class="patient-title">
+                    <strong>Rizia Begum</strong> <span class="demographics">79 y/o • F</span>
+                    <span class="badge badge-scheduled">Scheduled</span>
+                  </div>
+                  <div class="complaint">
+                    <strong>Chief Complaint:</strong> Polypharmacy audit (9 active Rx), renal dosing adjustment, mild cognitive changes
+                  </div>
+                  <div class="vitals">
+                    <span class="text-danger">eGFR: 42 mL/min ↓</span> <span>Cr: 1.4 mg/dL</span>
+                  </div>
+                </div>
+                <div class="queue-actions">
+                  <button class="btn btn-sm btn-outline">💊 Meds List</button>
+                  <button class="btn btn-sm btn-icon">⋮</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Diagnostic Telemetry -->
+          <div class="section-container">
+            <div class="section-header">
+              <div>
+                <h3>Recent Diagnostic & Lab Telemetry</h3>
+                <p class="subtext">Live feeds from NHMRD Central Pathology and Bedside Vitals</p>
+              </div>
+              <span class="telemetry-status">• Telemetry Online</span>
+            </div>
+
+            <table class="telemetry-table">
+              <thead>
+                <tr>
+                  <th>PATIENT & MRN</th>
+                  <th>TEST PANEL</th>
+                  <th>OBSERVED VALUE</th>
+                  <th>REF RANGE</th>
+                  <th>CLINICAL IMPACT</th>
+                  <th>ACTION</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Jahangir Alam</strong><br><small>MRN-7892-C</small></td>
+                  <td>Cardiac Troponin I<br><small>STAT Telemetry</small></td>
+                  <td><span class="text-danger font-bold">0.18 ng/mL ↑</span></td>
+                  <td>&lt; 0.04 ng/mL</td>
+                  <td><span class="badge badge-critical">Critical High</span></td>
+                  <td><button class="btn btn-xs btn-danger">Page Cardiology</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Rizia Begum</strong><br><small>MRN-9021-A</small></td>
+                  <td>Comprehensive Renal (BUN/Cr)<br><small>Automated Lab Feed</small></td>
+                  <td><strong>BUN: 28 • Cr: 1.4</strong></td>
+                  <td>Cr: 0.5 - 1.1 mg/dL</td>
+                  <td><span class="badge badge-warning">Stage 3a CKD</span></td>
+                  <td><button class="btn btn-xs btn-outline">Adjust Rx</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Abdul Karim</strong><br><small>MRN-3310-F</small></td>
+                  <td>HbA1c & Fasting Glucose<br><small>Point-of-Care Cartridge</small></td>
+                  <td><span class="text-danger font-bold">9.8% • 214 mg/dL</span></td>
+                  <td>&lt; 5.7% • &lt; 100 mg/dL</td>
+                  <td><span class="badge badge-warning">Poor Glycemic Control</span></td>
+                  <td><button class="btn btn-xs btn-outline">Titrate Insulin</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Laila Khanam</strong><br><small>MRN-5541-M</small></td>
+                  <td>Complete Blood Count (CBC)<br><small>Morning Rounds</small></td>
+                  <td>WBC: 6.8 • Hgb: 14.1</td>
+                  <td>WBC: 4.5 - 11.0 K/uL</td>
+                  <td><span class="badge badge-normal">Normative</span></td>
+                  <td><button class="btn btn-xs btn-outline">Sign Off</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+        <!-- Right Side Panel -->
+        <aside class="detail-panel">
+          
+          <!-- Prescriber Section -->
+          <div class="panel-card">
+            <div class="panel-card-header">
+              <strong>Quick Prescriber & Titration</strong>
+              <small class="text-muted">Formulary V4.2</small>
+            </div>
+            
+            <div class="prescriber-form">
+              <label class="form-label">FAST MEDICATION LOOKUP</label>
+              <div class="search-input-group">
+                <span>🔍</span>
+                <input type="text" value="Metformin Hydrochloride">
+              </div>
+
+              <div class="form-row">
+                <div>
+                  <label class="form-label">Dosage Form</label>
+                  <input type="text" class="form-control" value="1000 mg ER Tablet">
+                </div>
+                <div>
+                  <label class="form-label">Frequency</label>
+                  <input type="text" class="form-control" value="Twice Daily (BID) with meals">
+                </div>
+              </div>
+
+              <div class="safety-box">
+                <p>Renal Clearance Check: <strong>eGFR 72 mL/min (Safe)</strong></p>
+                <p class="text-muted">Max Daily Threshold: 2000 mg/day</p>
+              </div>
+
+              <div class="prescriber-actions">
+                <button class="btn btn-outline">Clear</button>
+                <button class="btn btn-crimson flex-1">▶ Queue for Patient</button>
+              </div>
+
+              <div class="quick-picks">
+                <label class="form-label">COMMON INTERNAL MED QUICK-PICK</label>
+                <div class="chip-grid">
+                  <span class="chip">Lisinopril 10mg</span>
+                  <span class="chip">Atorvastatin 40mg</span>
+                  <span class="chip">Amlodipine 5mg</span>
+                  <span class="chip">Levothyroxine 50mcg</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rapid SOAP Scribe Pad -->
+          <div class="panel-card">
+            <div class="panel-card-header">
+              <strong>Rapid SOAP Scribe Pad</strong>
+              <small class="text-muted">Auto-saving</small>
+            </div>
+            
+            <div class="scribe-area">
+              <textarea placeholder="Dictate or type clinical encounter observations, differential diagnoses, or patient care instructions..."></textarea>
+            </div>
+
+            <div class="scribe-actions">
+              <button class="btn btn-link">🎙️ Voice recognition active</button>
+              <button class="btn btn-outline">Append to Chart</button>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </main>
+  </div>
+</body>
+</html>

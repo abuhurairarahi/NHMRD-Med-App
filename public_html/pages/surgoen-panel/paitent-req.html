@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Patient Requests & In-Basket</title>
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/paitent-req.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="dashboard-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <svg class="brand-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 8v8M8 12h8"></path>
+        </svg>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#" class="nav-item">
+          <span class="icon">📊</span> Dashboard
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon">📋</span> Clinical Records
+        </a>
+        <a href="#" class="nav-item active">
+          <span class="icon">👥</span> Patient Requests
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon">👤</span> Doctor Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">Logout</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search patient MRN, name, vitals..." value="">
+        </div>
+        <div class="top-bar-right">
+          <div class="shift-info">
+            <span class="clock-icon">🕒</span> Shift: Morning Clinical Rounds (07:00 - 15:30)[cite: 13]
+          </div>
+          <div class="status-badge">
+            <span class="dot"></span> EMR Synced[cite: 13]
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">TA</div>
+            <div class="user-info">
+              <div class="user-name">Dr. Tanzim Ahmed, MD[cite: 13]</div>
+              <div class="user-role">Internal Medicine &amp; Therapeutics[cite: 13]</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="content-area">
+        <div class="record-scroll-container">
+          
+          <!-- Top Title & Metrics Header -->
+          <div class="inbox-header-banner">
+            <div class="inbox-title-col">
+              <div class="breadcrumb-small">CLINICAL INBOX / TRIAGE &amp; ENCOUNTERS[cite: 13]</div>
+              <div class="title-with-badge">
+                <h2>Patient Requests &amp; In-Basket</h2>
+                <span class="critical-pill">5 Critical Today[cite: 13]</span>
+              </div>
+              <p>Review pending prescription renewals, asynchronous patient updates, diagnostic reviews, and specialist authorizations.[cite: 13]</p>
+            </div>
+            
+            <div class="inbox-metrics-group">
+              <div class="metric-card-mini">
+                <span class="metric-icon">🕒</span>
+                <div class="metric-info">
+                  <span class="metric-lbl">AVG TURNAROUND</span>
+                  <span class="metric-val">1.8 hrs[cite: 13]</span>
+                </div>
+              </div>
+              <div class="metric-card-mini alert">
+                <span class="metric-icon-alert">!</span>
+                <div class="metric-info">
+                  <span class="metric-lbl">DUE IN &lt;2H</span>
+                  <span class="metric-val">3 Urgent[cite: 13]</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filter & Action Tabs Bar -->
+          <div class="filter-actions-bar">
+            <div class="filter-tabs">
+              <button class="filter-tab active">All Requests <span class="badge-count">32</span>[cite: 13]</button>
+              <button class="filter-tab">Rx Refills <span class="badge-count">14</span>[cite: 13]</button>
+              <button class="filter-tab">Appointments <span class="badge-count">8</span>[cite: 13]</button>
+            </div>
+            <div class="sort-dropdown-box">
+              <span>Sort: All Urgencies</span> 🔽[cite: 13]
+            </div>
+          </div>
+
+          <!-- Bulk Action Toolbar -->
+          <div class="bulk-toolbar">
+            <div class="bulk-left">
+              <input type="checkbox" id="selectAll">
+              <label for="selectAll">Select All Pending (5 Visible)[cite: 13]</label>
+            </div>
+            <span class="bulk-divider">|</span>
+            <span class="bulk-hint">Bulk actions require EMR audit log record[cite: 13]</span>
+            <div class="bulk-actions-right">
+              <button class="btn-action-tool approve">✓ Approve Selected Refills[cite: 13]</button>
+              <button class="btn-action-tool forward">✉ Forward to Nurse Triage[cite: 13]</button>
+              <button class="btn-action-tool review">✓ Mark Reviewed[cite: 13]</button>
+            </div>
+          </div>
+
+          <!-- Requests List Stack -->
+          <div class="requests-stack">
+            
+            <!-- Request Item 1 -->
+            <div class="request-card">
+              <div class="req-top-row">
+                <div class="req-identity">
+                  <input type="checkbox">
+                  <div class="patient-avatar-sm">RI</div>
+                  <div class="req-name-meta">
+                    <strong>Rafiqul Islam, 67M</strong>
+                    <span class="mrn-meta">MRN-884920 • DOB: 04/12/1957[cite: 13]</span>
+                    <span class="cond-meta">Hypertension • Hyperlipidemia • Primary: Dr. Tanzim Ahmed[cite: 13]</span>
+                  </div>
+                </div>
+                <div class="req-urgency-badge red">
+                  <span>🚨 High Priority • Runs out in 24h</span>
+                  <span class="time-stamp">⏱ 18m ago[cite: 13]</span>
+                </div>
+              </div>
+
+              <div class="req-content-box">
+                <div class="sub-section-title">PRESCRIPTION REFILL <span>90–Day Standard Maintenance Maintenance</span>[cite: 13]</div>
+                
+                <div class="meds-grid-row">
+                  <div class="med-item-mini">
+                    <strong>Amlodipine Besylate 10mg</strong>
+                    <span>Oral Tablet • 1 tab daily • Qty: 90[cite: 13]</span>
+                  </div>
+                  <div class="med-item-mini">
+                    <strong>Atorvastatin Calcium 20mg</strong>
+                    <span>Oral Tablet • 1 tab at bedtime • Qty: 90[cite: 13]</span>
+                  </div>
+                  <div class="badge-egfr-ok">eGFR OK[cite: 13]</div>
+                </div>
+
+                <div class="pharmacy-footer-row">
+                  <span>🏥 Gulshan Pharma #4402 (1842 Gulshan Ave, Dhaka)</span>
+                  <span>Last encounter: 45 days ago (BP 128/82 mmHg)[cite: 13]</span>
+                </div>
+              </div>
+
+              <div class="req-action-footer">
+                <button class="btn-pill-green">✓ Approved Visit[cite: 13]</button>
+                <button class="btn-pill-outline">⏱ Propose Alternative time[cite: 13]</button>
+                <button class="btn-pill-outline">🔒 Request Profile Access[cite: 13]</button>
+              </div>
+            </div>
+
+            <!-- Request Item 2 -->
+            <div class="request-card">
+              <div class="req-top-row">
+                <div class="req-identity">
+                  <input type="checkbox">
+                  <div class="patient-avatar-sm">AA</div>
+                  <div class="req-name-meta">
+                    <strong>Anjuman Ara, 61F</strong>
+                    <span class="mrn-meta">MRN-992014 • DOB: 02/14/1963[cite: 13]</span>
+                    <span class="cond-meta">Essential Hypertension • Lisinopril titration (10mg $\rightarrow$ 20mg)[cite: 13]</span>
+                  </div>
+                </div>
+                <div class="req-urgency-badge orange">
+                  <span>⚠️ Adverse Symptom / Triage</span>
+                  <span class="time-stamp">⏱ 3h ago[cite: 13]</span>
+                </div>
+              </div>
+
+              <div class="req-content-box">
+                <div class="sub-section-title red-text">MEDICATION TOLERANCE INQUIRY <span>Post-titration postural dizziness &amp; lightheadedness</span>[cite: 13]</div>
+                
+                <p class="inquiry-message">
+                  ⚠️ Patient reports mild dizziness upon standing for the past 3 days after stepping up Lisinopril from 10mg to 20mg daily. Home blood pressure recorded at 98/62 mmHg this morning. No syncope, chest pain, or dyspnea noted.[cite: 13]
+                </p>
+
+                <div class="recommended-triage-box">
+                  <strong>Recommended Triage Action:</strong> Temporarily hold 20mg dose; resume 10mg pending orthostatic vitals check.[cite: 13]
+                </div>
+              </div>
+
+              <div class="req-action-footer">
+                <button class="btn-pill-green">✓ Approved Visit[cite: 13]</button>
+                <button class="btn-pill-outline">⏱ Propose Alternative time[cite: 13]</button>
+                <button class="btn-pill-outline">🔒 Request Profile Access[cite: 13]</button>
+              </div>
+            </div>
+
+            <!-- Request Item 3 -->
+            <div class="request-card">
+              <div class="req-top-row">
+                <div class="req-identity">
+                  <input type="checkbox">
+                  <div class="patient-avatar-sm">GM</div>
+                  <div class="req-name-meta">
+                    <strong>Golam Mostafa, 71M</strong>
+                    <span class="mrn-meta">MRN-551029 • DOB: 05/18/1953[cite: 13]</span>
+                    <span class="cond-meta">Type 1 Diabetes Mellitus • Suboptimal glycemic control (HbA1c 8.9%)[cite: 13]</span>
+                  </div>
+                </div>
+                <div class="req-urgency-badge blue">
+                  <span>📥 Specialist Referral Queue</span>
+                  <span class="time-stamp">⏱ 5h ago[cite: 13]</span>
+                </div>
+              </div>
+
+              <div class="req-content-box">
+                <div class="sub-section-title">OUTPATIENT REFERRAL ENDORSEMENT <span>Mass General Endocrinology • Continuous Glucose Monitor (CGM) Onboarding</span>[cite: 13]</div>
+                
+                <p class="inquiry-message">
+                  Referral requested for comprehensive endocrinology evaluation, continuous Dexcom G7 placement, and potential automated insulin delivery (AID) pump therapy. Attached clinical notes from last quarterly review included.[cite: 13]
+                </p>
+
+                <div class="referral-footer-details">
+                  <span>Destination: Endocrinology Department • Dr. Farhan Ahmed, MD</span>
+                  <span>•</span>
+                  <strong>Prior Auth: Pre-approved by BCBS[cite: 13]</strong>
+                </div>
+              </div>
+
+              <div class="req-action-footer">
+                <button class="btn-pill-green">✓ Approved Visit[cite: 13]</button>
+                <button class="btn-pill-outline">⏱ Propose Alternative time[cite: 13]</button>
+                <button class="btn-pill-outline">🔒 Request Profile Access[cite: 13]</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

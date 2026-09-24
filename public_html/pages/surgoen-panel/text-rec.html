@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Test Records</title>
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/test-rec.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="dashboard-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <svg class="brand-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 8v8M8 12h8"></path>
+        </svg>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#" class="nav-item">
+          <span class="icon">📊</span> Dashboard
+        </a>
+        <a href="#" class="nav-item active">
+          <span class="icon">📋</span> Clinical Records
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon">👥</span> Patient Requests
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon">👤</span> Doctor Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">Logout</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search patient MRN, name, vitals...">
+        </div>
+        <div class="top-bar-right">
+          <div class="shift-info">
+            <span class="clock-icon">🕒</span> Shift: Morning Clinical Rounds (07:00 - 15:30)[cite: 15]
+          </div>
+          <div class="status-badge">
+            <span class="dot"></span> EMR Synced[cite: 15]
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">TA</div>
+            <div class="user-info">
+              <div class="user-name">Dr. Tanvir Ahmed, MD</div>
+              <div class="user-role">Internal Medicine &amp; Therapeutics[cite: 15]</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="content-area">
+        <div class="record-scroll-container">
+          
+          <!-- Encounter Top Bar -->
+          <div class="encounter-top-bar">
+            <div class="enc-left">
+              <span>📁 Patient Electronic Health Record / <strong>Active Clinical Encounter</strong>[cite: 15]</span>
+            </div>
+            <div class="enc-center-status">
+              <span class="dot-live"></span> Session: 01:45:50 • HIPAA ACTIVE[cite: 15]
+            </div>
+            <div class="enc-right-actions">
+              <button class="btn-export">📥 Export Log[cite: 15]</button>
+              <button class="btn-prescription">✍️ Write Prescription[cite: 15]</button>
+            </div>
+          </div>
+
+          <!-- Secondary Tabs Bar -->
+          <div class="records-tabs-bar">
+            <button class="r-tab">👤 Patient Profile[cite: 15]</button>
+            <button class="r-tab">💊 Prescription Records[cite: 15]</button>
+            <button class="r-tab">🔪 Surgery Records[cite: 15]</button>
+            <button class="r-tab active">🧪 Test Records <span class="active-pill">Active View</span>[cite: 15]</button>
+            <button class="r-tab">💉 Vaccine Records[cite: 15]</button>
+          </div>
+
+          <!-- Patient Summary Strip -->
+          <div class="patient-summary-strip">
+            <div class="er-badge">ER</div>
+            <div class="p-details">
+              <strong>Farhana Islam</strong>
+              <span>MRN-449102 • Blood: A+[cite: 15]</span>
+              <span class="sub-dob">36 y/o Female • DOB: Mar 14, 1988 • Attending: Dr. Tanvir Ahmed, MD (Internal Medicine)[cite: 15]</span>
+            </div>
+            <div class="p-meta-blocks">
+              <span class="allergy-tag">⚠️ ALLERGY: SULFONAMIDES[cite: 15]</span>
+              <span class="ward-tag">🏥 Ward 3 • Ambulatory Care[cite: 15]</span>
+            </div>
+          </div>
+
+          <!-- Search & Filter Bar -->
+          <div class="filter-search-row">
+            <div class="search-procs">
+              <span>🔍</span>
+              <input type="text" placeholder="Search test records by panel name, LOINC code, specimen, or date (e.g. CBC, Lipid, MRI)..." value="">[cite: 15]
+              <span class="clear-x">✕</span>
+            </div>
+            <div class="filter-actions-right">
+              <button class="btn-filter">🗄️ Filter[cite: 15]</button>
+              <button class="btn-date">📅 Date (Newest)[cite: 15]</button>
+            </div>
+          </div>
+
+          <!-- Filter Pills Row -->
+          <div class="filter-pills-row">
+            <button class="pill active">✓ All Tests (28)[cite: 15]</button>
+            <button class="pill">Hematology (8)[cite: 15]</button>
+            <button class="pill">Chemistry (12)[cite: 15]</button>
+            <button class="pill">Diagnostic Imaging (5)[cite: 15]</button>
+            <button class="pill">Pathology / Biopsy (3)[cite: 15]</button>
+          </div>
+
+          <!-- Records Stack Container -->
+          <div class="test-records-stack">
+            
+            <!-- Record Item 1: CBC -->
+            <div class="test-card">
+              <div class="t-card-header">
+                <span class="t-icon red">🩸</span>
+                <div>
+                  <h2>Complete Blood Count (CBC) with Differential</h2>
+                  <p>Sysmex XN-9100 Automated Hematology Analyzer • Panel ID: #LAB-88410[cite: 15]</p>
+                </div>
+                <div class="t-status-normal ml-auto">
+                  <span>WITHIN NORMAL LIMITS</span>
+                  <span class="t-date-sub">Collected &amp; Finalized<br>Oct 24, 2024 • 08:15 AM[cite: 15]</span>
+                </div>
+              </div>
+
+              <div class="t-metrics-grid">
+                <div class="m-col">
+                  <span class="m-label">White Blood Count (WBC)[cite: 15]</span>
+                  <span class="m-val">6.8 <small>K/uL</small>[cite: 15]</span>
+                  <span class="m-sub">Normal (4.5 - 11.0)[cite: 15]</span>
+                </div>
+                <div class="m-col">
+                  <span class="m-label">Red Blood Count (RBC)[cite: 15]</span>
+                  <span class="m-val">4.45 <small>M/uL</small>[cite: 15]</span>
+                  <span class="m-sub">Normal (4.00 - 5.20)[cite: 15]</span>
+                </div>
+                <div class="m-col">
+                  <span class="m-label">Hemoglobin (Hgb)[cite: 15]</span>
+                  <span class="m-val">13.8 <small>g/dL</small>[cite: 15]</span>
+                  <span class="m-sub">Normal (12.0 - 15.5)[cite: 15]</span>
+                </div>
+                <div class="m-col">
+                  <span class="m-label">Platelets[cite: 15]</span>
+                  <span class="m-val">245 <small>K/uL</small>[cite: 15]</span>
+                  <span class="m-sub">Normal (150 - 450)[cite: 15]</span>
+                </div>
+              </div>
+
+              <div class="t-card-footer">
+                <span class="signed-info">✓ Reviewed &amp; signed off by Dr. Tanvir Ahmed, MD on Oct 24, 2024 at 10:45 AM[cite: 15]</span>
+                <div class="footer-links ml-auto">
+                  <a href="#">📥 Download PDF</a>
+                  <a href="#">View Full Differential Table →[cite: 15]</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Record Item 2: CMP-14 -->
+            <div class="test-card">
+              <div class="t-card-header">
+                <span class="t-icon blue">🧪</span>
+                <div>
+                  <h2>Comprehensive Metabolic Panel (CMP-14)</h2>
+                  <p>Cobas 8000 Clinical Chemistry Suite • Specimen: Serum Venous[cite: 15]</p>
+                </div>
+                <div class="t-status-optimal ml-auto">
+                  <span>OPTIMAL PROFILE</span>
+                  <span class="t-date-sub">Collected &amp; Finalized<br>Oct 24, 2024 • 08:15 AM[cite: 15]</span>
+                </div>
+              </div>
+
+              <div class="t-metrics-grid-5">
+                <div class="m-col">
+                  <span class="m-label">Glucose (Fasting)[cite: 15]</span>
+                  <span class="m-val">92 <small>mg/dL</small>[cite: 15]</span>
+                  <span class="m-sub">70 - 99 mg/dL[cite: 15]</span>
+                </div>
+                <div class="m-col">
+                  <span class="m-label">eGFR Non-Afr.[cite: 15]</span>
+                  <span class="m-val">&gt;90 <small>mL/min</small>[cite: 15]</span>
+                  <span class="m-sub">&gt;60 Optimal[cite: 15]</span>
+                </div>
+                <div class="m-col">
+                  <span class="m-label">Serum Creatinine[cite: 15]</span>
+                  <span class="m-val">0.82 <small>mg/dL</small>[cite: 15]</span>
+                  <span class="m-sub">0.50 - 1.10[cite: 15]</span>
+                </div>
+                <div class="m-col">
+                  <span class="m-label">ALT / AST[cite: 15]</span>
+                  <span class="m-val">18 / 21 <small>U/L</small>[cite: 15]</span>
+                  <span class="m-sub">Liver Enz. Normal[cite: 15]</span>
+                </div>
+                <div class="m-col">
+                  <span class="m-label">Potassium (K+)[cite: 15]</span>
+                  <span class="m-val">4.2 <small>mEq/L</small>[cite: 15]</span>
+                  <span class="m-sub">3.5 - 5.0 mEq/L[cite: 15]</span>
+                </div>
+              </div>
+
+              <div class="t-card-footer">
+                <span class="trend-info">📈 Longitudinal Trend: Renal &amp; hepatic values stable over consecutive 3-year checkups.[cite: 15]</span>
+                <div class="footer-links ml-auto">
+                  <a href="#">📥 Download PDF</a>
+                  <span class="loinc-text">LOINC 24323-8[cite: 15]</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Record Item 3: Brain MRI -->
+            <div class="test-card">
+              <div class="t-card-header">
+                <span class="t-icon gray">🧠</span>
+                <div>
+                  <h2>Diagnostic Brain MRI (Without IV Contrast)</h2>
+                  <p>Indication: Chronic Refractory Migraines • Neuro-Imaging Pavilion • Accession #IMG-99320[cite: 15]</p>
+                </div>
+                <div class="t-status-archived ml-auto">
+                  <span>ARCHIVED IMAGING</span>
+                  <span class="t-date-sub">Procedure Date<br>Sep 12, 2023 • 14:20 PM[cite: 15]</span>
+                </div>
+              </div>
+
+              <div class="radiology-impression">
+                <strong>RADIOLOGIST CLINICAL IMPRESSION</strong>
+                <p>Normal brain MRI. No acute intracranial hemorrhage, mass effect, herniation, or acute territorial infarct. Ventricles and sulci are unremarkable and age-appropriate. No significant white matter microvascular ischemic changes identified. Major intracranial vascular flow-voids appear intact.[cite: 15]</p>
+              </div>
+
+              <div class="t-card-footer">
+                <span class="signed-info">Interpreted by: Dr. Nusrat Jahan, MD (Diagnostic Neuroradiology) • 32 Slices DICOM[cite: 15]</span>
+                <div class="footer-links ml-auto">
+                  <a href="#">📥 Download Report</a>
+                  <a href="#" class="dicom-btn">🖥 Open PACS DICOM Viewer[cite: 15]</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

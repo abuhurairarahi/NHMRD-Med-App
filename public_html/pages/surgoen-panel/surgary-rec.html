@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Surgery Records</title>
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/surgary-rec.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="dashboard-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <svg class="brand-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 8v8M8 12h8"></path>
+        </svg>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#" class="nav-item">
+          <span class="icon">📊</span> Dashboard
+        </a>
+        <a href="#" class="nav-item active">
+          <span class="icon">📋</span> Clinical Records
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon">👥</span> Patient Requests
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon">👤</span> Doctor Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">Logout</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search patient MRN, name, vitals..." value="">
+        </div>
+        <div class="top-bar-right">
+          <div class="shift-info">
+            <span class="clock-icon">🕒</span> Shift: Morning Clinical Rounds (07:00 - 15:30)[cite: 16]
+          </div>
+          <div class="status-badge">
+            <span class="dot"></span> EMR Synced[cite: 16]
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">FT</div>
+            <div class="user-info">
+              <div class="user-name">Dr. Farhan Tanvir, MD</div>
+              <div class="user-role">Internal Medicine &amp; Therapeutics[cite: 16]</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="content-area">
+        <div class="record-scroll-container">
+          
+          <!-- Encounter Top Bar -->
+          <div class="encounter-top-bar">
+            <div class="enc-left">
+              <span class="ico">📁</span>
+              <div>
+                <strong>PATIENT ELECTRONIC HEALTH RECORD</strong>
+                <span>Active Clinical Encounter[cite: 16]</span>
+              </div>
+            </div>
+            <div class="enc-center-status">
+              <span class="dot-live"></span> Session: 01:47:15 • HIPAA ACTIVE[cite: 16]
+            </div>
+            <div class="enc-right-actions">
+              <button class="btn-end-enc">⏱ End Encounter[cite: 16]</button>
+              <button class="btn-prescription">✍️ Write Prescription[cite: 16]</button>
+            </div>
+          </div>
+
+          <!-- Secondary Tabs Bar -->
+          <div class="records-tabs-bar">
+            <button class="r-tab">👤 Patient Profile[cite: 16]</button>
+            <button class="r-tab">💊 Prescription Records[cite: 16]</button>
+            <button class="r-tab active">🔪 Surgery Records <span class="active-pill">Active View</span>[cite: 16]</button>
+            <button class="r-tab">🧪 Test Records[cite: 16]</button>
+            <button class="r-tab">💉 Vaccine Records[cite: 16]</button>
+          </div>
+
+          <!-- Patient Summary Strip -->
+          <div class="patient-summary-strip">
+            <div class="er-badge">ER</div>
+            <div class="p-details">
+              <strong>Nazmul Hossain</strong>
+              <span>36 y/o Female • DOB: Mar 14, 1988[cite: 16]</span>
+            </div>
+            <div class="p-meta-blocks">
+              <span>MRN: 449102[cite: 16]</span>
+              <span>Blood: A Rh+[cite: 16]</span>
+              <span class="allergy-tag">⚠️ Allergy: Sulfonamides[cite: 16]</span>
+              <span class="donor-tag">⚜️ UNOS Organ Donor Active[cite: 16]</span>
+            </div>
+            <div class="attending-doc">
+              Attending: Dr. Farhan Tanvir, MD[cite: 16]
+            </div>
+          </div>
+
+          <!-- Search & Filter Bar -->
+          <div class="filter-search-row">
+            <div class="search-procs">
+              <span>🔍</span>
+              <input type="text" placeholder="Search procedures, CPT codes (e.g. 47562), or surgeons..." value="">[cite: 16]
+            </div>
+            <div class="filter-chips">
+              <button class="chip active">All Procedures (3)[cite: 16]</button>
+              <button class="chip">Major Surgery[cite: 16]</button>
+              <button class="chip">Outpatient / Ambulatory[cite: 16]</button>
+              <button class="chip">Diagnostic[cite: 16]</button>
+              <button class="chip-icon">📥</button>
+            </div>
+          </div>
+
+          <!-- Records Stack Container -->
+          <div class="surgery-records-stack">
+            
+            <!-- Record Item 1 -->
+            <div class="surgery-card">
+              <div class="s-card-header">
+                <span class="s-type-tag red">Major Inpatient</span>
+                <span class="s-cpt">CPT 47562</span>
+                <span class="s-date">Aug 14, 2021 (Age 33)[cite: 16]</span>
+                <div class="verified-op-badge ml-auto">
+                  <span>✓ Verified OP-Note #SURG-8812</span>[cite: 16]
+                  <span class="loc-sub">St. Jude Surgical Pavilion • OR 4[cite: 16]</span>
+                </div>
+              </div>
+
+              <div class="s-card-title">
+                <h2>Laparoscopic Cholecystectomy</h2>
+                <p>Indication: Symptomatic Cholelithiasis with recurrent biliary colic[cite: 16]</p>
+              </div>
+
+              <div class="s-info-grid-3">
+                <div class="s-col">
+                  <strong>SURGICAL TEAM</strong>
+                  <p>Dr. Tariqul Islam, FACS<br>Chief of General Surgery</p>
+                </div>
+                <div class="s-col">
+                  <strong>ANESTHESIA ADMINISTERED</strong>
+                  <p>General Endotracheal (GETA)<br>Agent: Sevoflurane / Fentanyl[cite: 16]</p>
+                </div>
+                <div class="s-col">
+                  <strong>INTRA-OP BLOOD LOSS</strong>
+                  <p class="val-loss">&lt; 25 mL (Minimal)<br>No transfusion required[cite: 16]</p>
+                </div>
+              </div>
+
+              <div class="s-findings-box">
+                <p><strong>Findings:</strong> Chronic cholecystitis with multiple faceted pigmented calculi without perforation or gangrenous changes. Cystic duct and artery doubly clipped and divided safely. Specimen retrieved via Endobag and sent to surgical pathology.[cite: 16]</p>
+                <p><strong>Post-Op Course:</strong> Uneventful PACU recovery. Tolerated oral clear liquids POD 0. Incisions clean, dry, and intact. Discharged POD 1 in stable condition. Pathology confirmed chronic cholecystitis, benign.[cite: 16]</p>
+              </div>
+
+              <div class="s-card-footer">
+                <span>Incision: 4-Port Laparoscopy</span>
+                <span>Closure: Monocryl 4-0 &amp; Dermabond[cite: 16]</span>
+                <a href="#" class="view-sheet-link ml-auto">📄 View Full Operative Sheet[cite: 16]</a>
+              </div>
+            </div>
+
+            <!-- Record Item 2 -->
+            <div class="surgery-card">
+              <div class="s-card-header">
+                <span class="s-type-tag blue">Outpatient Orthopedic</span>
+                <span class="s-cpt">CPT 29881 (Left Knee)</span>
+                <span class="s-date">March 22, 2015 (Age 27)[cite: 16]</span>
+                <div class="verified-op-badge ml-auto">
+                  <span>✓ Verified OP-Note #ORTH-3310</span>[cite: 16]
+                  <span class="loc-sub">University Orthopedic Center • Ambulatory Ste 2[cite: 16]</span>
+                </div>
+              </div>
+
+              <div class="s-card-title">
+                <h2>Diagnostic Knee Arthroscopy &amp; Partial Medial Meniscectomy</h2>
+                <p>Indication: Complex tear of posterior horn medial meniscus post athletic injury[cite: 16]</p>
+              </div>
+
+              <div class="s-info-grid-3">
+                <div class="s-col">
+                  <strong>SURGEON</strong>
+                  <p>Dr. Nazifa Tabassum, MD<br>Orthopedic Sports Medicine[cite: 16]</p>
+                </div>
+                <div class="s-col">
+                  <strong>ANESTHESIA</strong>
+                  <p>Spinal with Monitored Care (MAC)<br>Bupivacaine 0.5% + Midazolam[cite: 16]</p>
+                </div>
+                <div class="s-col">
+                  <strong>TOURNIQUET TIME</strong>
+                  <p>32 Minutes<br>Pressurized 250 mmHg[cite: 16]</p>
+                </div>
+              </div>
+
+              <div class="s-findings-box">
+                <p><strong>Findings:</strong> Anterolateral &amp; anteromedial portals established. Unstable flap tear noted on the posterior third of medial meniscus. ACL and PCL intact. Debridement back to stable contoured rim. Articular cartilage preserved with mild Grade I chondromalacia on patellar facet.[cite: 16]</p>
+                <p><strong>Rehabilitation:</strong> Discharged same day with hinged knee brace locked in extension for ambulation. Completed 8 weeks of progressive physical therapy. Regained 135° flexion with zero residual instability.[cite: 16]</p>
+              </div>
+
+              <div class="s-card-footer">
+                <span>Gait Analysis: Normal</span>
+                <span>No Hardware Implantation[cite: 16]</span>
+                <a href="#" class="view-sheet-link ml-auto">📄 View Arthroscopy Images[cite: 16]</a>
+              </div>
+            </div>
+
+            <!-- Record Item 3 -->
+            <div class="surgery-card">
+              <div class="s-card-header">
+                <span class="s-type-tag gray">Pediatric Ambulatory</span>
+                <span class="s-cpt">CPT 42820</span>
+                <span class="s-date">June 10, 2004 (Age 16)[cite: 16]</span>
+                <div class="verified-op-badge ml-auto">
+                  <span class="archived-text">📁 Archived EMR #ENT-0402</span>[cite: 16]
+                  <span class="loc-sub">Children's Memorial Hospital[cite: 16]</span>
+                </div>
+              </div>
+
+              <div class="s-card-title">
+                <h2>Outpatient Tonsillectomy &amp; Adenoidectomy (T&amp;A)</h2>
+                <p>Indication: Recurrent Group A beta-hemolytic streptococcal pharyngitis &amp; tonsillar hypertrophy[cite: 16]</p>
+              </div>
+
+              <div class="s-info-grid-3">
+                <div class="s-col">
+                  <strong>LEAD SURGEON</strong>
+                  <p>Dr. Aminul Islam, ENT<br>Otolaryngology Specialist[cite: 16]</p>
+                </div>
+                <div class="s-col">
+                  <strong>TECHNIQUE</strong>
+                  <p>Electrocautery Dissection<br>Bovie Coagulation &amp; Suction[cite: 16]</p>
+                </div>
+                <div class="s-col">
+                  <strong>OUTCOME</strong>
+                  <p class="val-green">Cured / Resolved<br>Zero recurrences post-procedure[cite: 16]</p>
+                </div>
+              </div>
+
+              <div class="s-findings-box">
+                <p><strong>Clinical Notes:</strong> Bilateral palatine tonsils and adenoidal tissue excised without primary hemorrhage. Hemostasis secured with packing and electrocautery. Discharge same afternoon. Complete pediatric resolution documented at 6-month wellness review.[cite: 16]</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
