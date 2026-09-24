@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrator Profile & Identity Management - NHMRD</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/executive-panel/executive-profile.css">
+
+  <!-- POSITIONING & LAYOUT OVERRIDES -->
+  <style>
+    /* Fix top header search bar alignment and height */
+    .top-header .search-bar {
+      height: 38px;
+      align-items: center;
+    }
+
+    /* Fix avatar and camera button positioning */
+    .avatar-container {
+      position: relative;
+      width: 72px;
+      height: 72px;
+      flex-shrink: 0;
+    }
+
+    .camera-btn {
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      z-index: 2;
+    }
+
+    /* Ensure text ellipsis on long inputs */
+    .form-group input {
+      box-sizing: border-box;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* Prevent sub-header flex breakage */
+    .security-sub-header {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Toast Notification Styling */
+    .nhmrd-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      font-weight: 600;
+      font-size: 12px;
+      z-index: 9999;
+      transition: opacity 0.3s ease;
+    }
+    .nhmrd-toast.success { background-color: #10b981; }
+    .nhmrd-toast.info { background-color: #2563eb; }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar executive">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="/public_html/pages/medical-executive-panel/executive-dashboard.html" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i> Dashboard
+        </a>
+        <a href="/public_html/pages/medical-executive-panel/executive-add-new-patient.html" class="nav-item">
+          <i class="fa-solid fa-user-plus"></i> Register New Patient
+        </a>
+        <a href="/public_html/pages/medical-executive-panel/executive-register-new-doctor.html" class="nav-item">
+          <i class="fa-solid fa-user-doctor"></i> Register New Doctor
+        </a>
+        <a href="/public_html/pages/medical-executive-panel/executive-register-new-hospital.html" class="nav-item">
+          <i class="fa-solid fa-hospital-user"></i> Register New Hospital
+        </a>
+        <a href="/public_html/pages/medical-executive-panel/executive-issue-death-certificate.html" class="nav-item">
+          <i class="fa-solid fa-file-waveform"></i> Issue Death Certificate
+        </a>
+        <a href="/public_html/pages/medical-executive-panel/executive-vaccination-request.html" class="nav-item">
+          <i class="fa-solid fa-syringe"></i> Vaccination Request
+        </a>
+        <a href="/public_html/pages/medical-executive-panel/executive-profile.html" class="nav-item active">
+          <i class="fa-solid fa-circle-user"></i> Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="/public_html/pages/login.html">
+          <button class="logout-btn">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+          </button>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      
+      <!-- Top Header Navigation -->
+      <header class="top-header">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="globalSearchInput" placeholder="Search records, MRNs, clinicians...">
+        </div>
+
+        <div class="user-profile">
+          <div class="system-status-pills">
+            <div class="status-pill">
+              <i class="fa-regular fa-clock"></i>
+              <span>UTC+00:00 • SYSTEM ACTIVE</span>
+            </div>
+            <div class="status-pill connected">
+              <span class="pulse-dot"></span>
+              <span>Live Registry • Connected</span>
+            </div>
+          </div>
+          <div class="user-info">
+            <span class="user-name">Dr. Sarah F.</span>
+            <span class="user-role">Super Admin</span>
+          </div>
+          <div class="avatar"><i class="fa-solid fa-user"></i></div>
+        </div>
+      </header>
+
+      <!-- Main Content Area -->
+      <main class="content">
+        
+        <!-- Security Clearance Sub-Header -->
+        <div class="security-sub-header">
+          <div class="sub-header-left">
+            <i class="fa-solid fa-shield-cat"></i>
+            <span>Cryptographic Session Layer: <strong>Level-4 Federal Clearance Activated</strong></span>
+          </div>
+          <div class="sub-header-right">
+            <span><i class="fa-solid fa-circle pulse-green"></i> HSM-ENCLAVE-NODE: //09-VANCE-AUTH</span>
+            <span class="divider">|</span>
+            <span id="lastAuditText">Last Root Audit: 24m ago</span>
+            <button class="btn-sync" onclick="syncSecurityState(this)">
+              <i class="fa-solid fa-rotate"></i> Sync State
+            </button>
+          </div>
+        </div>
+
+        <!-- Page Title Row -->
+        <div class="page-title-row">
+          <div>
+            <div class="pill-group">
+              <span class="pill-navy">IDENTITY PROTOCOL</span>
+              <span class="pill-blue-soft">CREDENTIALS & PKI ENCLAVE</span>
+            </div>
+            <h1>Administrator Profile &amp; Identity Management</h1>
+            <p class="subtitle">Manage your national registry credentials, cryptographic key pairs, access privileges, and security settings.</p>
+          </div>
+          <div class="top-action-buttons">
+            <button class="btn btn-outline" onclick="discardChanges()">
+              <i class="fa-solid fa-rotate-left"></i> Discard Changes
+            </button>
+            <button class="btn btn-primary-blue" id="btnSaveProfile" onclick="saveProfileAndCertificate()">
+              <i class="fa-solid fa-key"></i> Save Profile &amp; Update Cryptographic Certificate
+            </button>
+          </div>
+        </div>
+
+        <!-- User Profile Hero Banner -->
+        <div class="profile-hero-card">
+          <div class="hero-left">
+            <div class="avatar-container">
+              <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=150&auto=format&fit=crop&q=80" alt="Dr. Arthur Vance" class="hero-avatar" id="userAvatarImg">
+              <button class="camera-btn" onclick="triggerAvatarUpload()"><i class="fa-solid fa-camera"></i></button>
+              <input type="file" id="avatarFileInput" accept="image/*" style="display: none;" onchange="handleAvatarChange(event)">
+            </div>
+            <div class="hero-details">
+              <div class="name-row">
+                <h2>Dr. Arthur Vance</h2>
+                <span class="badge-status-green"><i class="fa-solid fa-circle"></i> Active &amp; Cryptographically Verified</span>
+              </div>
+              <p class="title-role">Chief National Medical Registrar &amp; System Super-Administrator</p>
+              <p class="meta-org"><i class="fa-solid fa-building-columns"></i> Directorate of National Health Statistics &amp; Vital Records</p>
+              <div class="meta-tags">
+                <span><i class="fa-regular fa-calendar"></i> Member since: March 2019</span>
+                <span class="tag-gray">GOV-ID: REG-0941-FEDERAL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cryptographic Stats Metrics -->
+          <div class="hero-metrics">
+            <div class="metric-box">
+              <span class="metric-label">KEY STRENGTH</span>
+              <span class="metric-value">Ed25519</span>
+              <span class="metric-sub">4096-bit Eqv</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-label">AUTH SCORE</span>
+              <span class="metric-value color-blue">99.8%</span>
+              <span class="metric-sub">Zero Violations</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-label">HSM TOKEN</span>
+              <span class="metric-value">FIPS 140-3</span>
+              <span class="metric-sub color-green">Slot #04 Docked</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 1: Personal & Contact Information -->
+        <div class="card margin-top-card">
+          <div class="card-header space-between">
+            <div class="header-title-group">
+              <i class="fa-solid fa-id-card card-icon"></i>
+              <div>
+                <h2>Personal &amp; Contact Information</h2>
+                <p>Verified civil credentials linked to federal personnel records.</p>
+              </div>
+            </div>
+            <span class="badge-read-only">Read-Only GovSync</span>
+          </div>
+
+          <div class="card-body">
+            <div class="form-row col-3">
+              <div class="form-group">
+                <label>Full Legal Name</label>
+                <div class="input-with-icon">
+                  <i class="fa-regular fa-user icon-left"></i>
+                  <input type="text" value="Dr. Arthur Montgomery Vance" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Official Government Email</label>
+                <div class="input-with-icon">
+                  <span class="at-symbol">@</span>
+                  <input type="text" value="a.vance@registry.health.gov.nhmrd" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Secure Direct Telephony</label>
+                <div class="input-with-icon">
+                  <i class="fa-solid fa-phone icon-left"></i>
+                  <input type="text" value="+1 (202) 555-0184 (Ext. 981)" readonly>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row col-3 margin-top">
+              <div class="form-group">
+                <label>Office Physical Allocation</label>
+                <div class="input-with-icon">
+                  <i class="fa-solid fa-building icon-left"></i>
+                  <input type="text" value="National Health HQ, Wing B, Suite 410" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Operational Timezone</label>
+                <input type="text" value="UTC+00:00 - Greenwich Mean Time (System Default)" readonly>
+              </div>
+              <div class="form-group">
+                <label>Clinical Standard Language</label>
+                <input type="text" value="English (United States - Medical Taxonomy SNOMED)" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Recent Administrative Audit Trail -->
+        <div class="card margin-top-card">
+          <div class="card-header space-between">
+            <div class="header-title-group">
+              <i class="fa-solid fa-clock-rotate-left card-icon"></i>
+              <div>
+                <h2>Recent Administrative Audit Trail</h2>
+                <p>Immutable ledger actions stamped with your cryptographic ID</p>
+              </div>
+            </div>
+            <a href="#" class="link-full-ledger">View Full Ledger &rarr;</a>
+          </div>
+
+          <div class="card-body padding-0">
+            <ul class="audit-list" id="auditList">
+              
+              <li class="audit-item">
+                <div class="audit-icon icon-green">
+                  <i class="fa-solid fa-square-check"></i>
+                </div>
+                <div class="audit-content">
+                  <div class="audit-title">Approved Hospital Accreditation: St. Jude Metropolitan</div>
+                  <div class="audit-details">Level 1 Trauma · Bed Capacity: 840 · Facility ID: #HOS-9941</div>
+                  <div class="audit-hash">TX_HASH: <span>0x98d41...b72e9</span></div>
+                </div>
+                <div class="audit-time">Today, 10:14 UTC</div>
+              </li>
+
+              <li class="audit-item">
+                <div class="audit-icon icon-blue">
+                  <i class="fa-solid fa-id-badge"></i>
+                </div>
+                <div class="audit-content">
+                  <div class="audit-title">Certified Medical License: Dr. Elena Rostova</div>
+                  <div class="audit-details">Board Specialty: Pediatric Oncology · License #LIC-88402</div>
+                  <div class="audit-hash">TX_HASH: <span>0x44a19...d002f</span></div>
+                </div>
+                <div class="audit-time">Yesterday, 16:40 UTC</div>
+              </li>
+
+              <li class="audit-item">
+                <div class="audit-icon icon-purple">
+                  <i class="fa-solid fa-boxes-stacked"></i>
+                </div>
+                <div class="audit-content">
+                  <div class="audit-title">Authorized Vaccine Emergency Allocation</div>
+                  <div class="audit-details">Batch: MMR-V-904 (50,000 Units to Northwest Sector Distribution)</div>
+                  <div class="audit-hash">TX_HASH: <span>0x31fc8...991c0</span></div>
+                </div>
+                <div class="audit-time">Mar 28, 09:22 UTC</div>
+              </li>
+
+              <li class="audit-item">
+                <div class="audit-icon icon-gray">
+                  <i class="fa-solid fa-stamp"></i>
+                </div>
+                <div class="audit-content">
+                  <div class="audit-title">Coroner Sign-Off Protocol Attestation</div>
+                  <div class="audit-details">Case #CRN-2024-8849 · Verification Hash matched autopsy registry</div>
+                  <div class="audit-hash">TX_HASH: <span>0x73b01...aa541</span></div>
+                </div>
+                <div class="audit-time">Mar 27, 18:05 UTC</div>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+  </div>
+
+  <!-- EMBEDDED JAVASCRIPT FUNCTIONS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initSearchFilter();
+    });
+
+    /**
+     * Synchronizes security state and animates button icon
+     */
+    function syncSecurityState(buttonElement) {
+      const icon = buttonElement.querySelector('i');
+      const auditText = document.getElementById('lastAuditText');
+
+      icon.classList.add('fa-spin');
+      buttonElement.disabled = true;
+      buttonElement.style.opacity = '0.7';
+
+      setTimeout(() => {
+        icon.classList.remove('fa-spin');
+        buttonElement.disabled = false;
+        buttonElement.style.opacity = '1';
+        
+        if (auditText) {
+          auditText.textContent = 'Last Root Audit: Just now';
+        }
+
+        showToast('Cryptographic enclave session successfully synchronized.', 'success');
+      }, 1200);
+    }
+
+    /**
+     * Handles updating profile and certificates
+     */
+    function saveProfileAndCertificate() {
+      const btn = document.getElementById('btnSaveProfile');
+      const originalHTML = btn.innerHTML;
+
+      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Updating Certificate...`;
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.innerHTML = originalHTML;
+        btn.disabled = false;
+        showToast('Profile & Cryptographic Certificate updated!', 'success');
+      }, 1500);
+    }
+
+    /**
+     * Discard form changes
+     */
+    function discardChanges() {
+      if (confirm('Are you sure you want to discard unsaved changes?')) {
+        showToast('Form changes discarded.', 'info');
+      }
+    }
+
+    /**
+     * Avatar image upload trigger
+     */
+    function triggerAvatarUpload() {
+      document.getElementById('avatarFileInput').click();
+    }
+
+    /**
+     * Process avatar upload change
+     */
+    function handleAvatarChange(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('userAvatarImg').src = e.target.result;
+          showToast('Profile avatar updated.', 'success');
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    /**
+     * Filter audit items dynamically via search bar
+     */
+    function initSearchFilter() {
+      const searchInput = document.getElementById('globalSearchInput');
+      const auditItems = document.querySelectorAll('#auditList .audit-item');
+
+      if (!searchInput) return;
+
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+
+        auditItems.forEach(item => {
+          const text = item.textContent.toLowerCase();
+          item.style.display = text.includes(query) ? 'flex' : 'none';
+        });
+      });
+    }
+
+    /**
+     * Utility toast notification banner
+     */
+    function showToast(message, type = 'info') {
+      const existingToast = document.querySelector('.nhmrd-toast');
+      if (existingToast) existingToast.remove();
+
+      const toast = document.createElement('div');
+      toast.className = `nhmrd-toast ${type}`;
+      toast.textContent = message;
+
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>

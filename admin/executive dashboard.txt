@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health System & Broadcast Center</title>
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Stylesheet -->
+    <style>
+      :root {
+        --bg-main: #f1f5f9;
+        --bg-sidebar: #005a70;
+        --bg-card: #ffffff;
+        --header-color: #ffffff;
+        --sidebar-admin: #034c53;
+        --sidebar-executive: #1a2836;
+        --text-primary: #0f172a;
+        --text-muted: #64748b;
+        --primary-color: #0284c7;
+        --primary-hover: #0369a1;
+        --primary-light: #e0f2fe;
+        --accent-cyan: #00f2fe;
+        --danger-color: #ef4444;
+        --danger-bg: #fef2f2;
+        --warning-color: #d97706;
+        --warning-bg: #fffbe3;
+        --success-color: #10b981;
+        --success-bg: #d1fae5;
+        --info-color: #0284c7;
+        --info-bg: #e0f2fe;
+        --border-color: #e2e8f0;
+        --radius-sm: 6px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+
+        --doc-bg-main: #f4f6f8;
+        --doc-sidebar: #064e3b;
+        --srug-bg-sidebar: #8b1528;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      }
+
+      body {
+        background-color: var(--bg-main);
+        color: var(--text-primary);
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .app-container {
+        display: flex;
+        min-height: 100vh;
+      }
+
+      /* Sidebar Navigation */
+      .sidebar {
+        width: 230px;
+        background-color: var(--bg-sidebar);
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 0 0 0;
+        flex-shrink: 0;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto; 
+        transition: background-color 0.3s ease;
+      }
+
+      .sidebar.admin { background-color: var(--sidebar-admin); }
+      .sidebar.executive { background-color: var(--sidebar-executive); }
+      .sidebar.doctor { background-color: var(--doc-sidebar); }
+      .sidebar.surgeon { background-color: var(--srug-bg-sidebar); }
+
+      .sidebar.surgeon > .nav-menu > .nav-item:hover,
+      .sidebar.surgeon > .nav-menu > .nav-item.active {
+        background-color: rgba(61, 5, 5, 0.15);
+        color: #ffffff;
+        border-left: 4px solid rgb(255, 116, 116);
+      }
+
+      .sidebar.executive > .nav-menu > .nav-item:hover, 
+      .sidebar.executive > .nav-menu > .nav-item.active {
+        background-color: #283C68;
+        color: #ffffff;
+        border-left: 4px solid #6886c9;
+      }
+
+      .logo {
+        font-size: 20px;
+        font-weight: 800;
+        padding: 0 20px 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        letter-spacing: 0.5px;
+      }
+
+      .nav-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        flex-grow: 1;
+      }
+
+      .nav-item {
+        color: #b2d8d8;
+        text-decoration: none;
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 13px;
+        transition: all 0.2s ease;
+      }
+
+      .nav-item:hover, .nav-item.active {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        border-left: 4px solid var(--accent-cyan);
+      }
+
+      .sidebar-footer {
+        padding: 0px;
+      }
+
+      .logout-btn {
+        width: 100%;
+        padding: 12px;
+        padding-left: 20px;
+        background-color: #ff4d4f;
+        color: white;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+        transition: background 0.2s ease;
+      }
+
+      .logout-btn:hover {
+        background-color: #d9363e;
+      }
+
+      /* Main Content Wrapper */
+      .main-wrapper {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        overflow-y: auto; 
+      }
+
+      /* Top Header */
+      .top-header {
+        background-color: var(--header-color);
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .search-bar {
+        display: flex;
+        align-items: center;
+        background-color: #ffffff;
+        padding: 8px 14px;
+        border-radius: 20px;
+        width: 320px;
+        gap: 8px;
+        color: var(--text-muted);
+        border: 1px solid var(--border-color);
+      }
+
+      .search-bar input {
+        border: none;
+        background: transparent;
+        outline: none;
+        width: 100%;
+        font-size: 12px;
+      }
+
+      .breadcrumb-nav {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        color: var(--text-muted);
+        font-weight: 600;
+      }
+
+      .breadcrumb-nav .sep {
+        font-size: 9px;
+        opacity: 0.5;
+      }
+
+      .active-crumb {
+        color: var(--text-primary);
+        font-weight: 700;
+      }
+
+      .system-status-pills {
+        display: flex;
+        gap: 8px;
+      }
+
+      .status-pill {
+        background: #f8fafc;
+        border: 1px solid var(--border-color);
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 10px;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 600;
+      }
+
+      .status-pill.connected {
+        background: #f0fdf4;
+        border-color: #bbf7d0;
+        color: #166534;
+      }
+
+      .pulse-dot {
+        width: 6px;
+        height: 6px;
+        background-color: #22c55e;
+        border-radius: 50%;
+      }
+
+      .user-profile {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .user-info {
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .user-name {
+        font-weight: 700;
+        font-size: 13px;
+      }
+
+      .user-role {
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+
+      .avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: #e2e8f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        font-weight: 700;
+      }
+
+      /* Content Body */
+      .content-body {
+        padding: 24px 28px;
+        max-width: 1400px;
+      }
+
+      /* Metrics Grid */
+      .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      .metric-card {
+        background: var(--bg-card);
+        padding: 16px;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+      }
+
+      .metric-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+
+      .metric-title {
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--text-muted);
+        letter-spacing: 0.5px;
+      }
+
+      .metric-icon {
+        background: var(--primary-light);
+        color: var(--primary-color);
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+      }
+
+      .metric-value {
+        font-size: 22px;
+        font-weight: 800;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .metric-footer {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 10px;
+      }
+
+      .trend.positive {
+        color: #10b981;
+        font-weight: 700;
+      }
+
+      .trend-label {
+        color: var(--text-muted);
+      }
+
+      /* Cards */
+      .card {
+        background: var(--bg-card);
+        border-radius: var(--radius-lg);
+        padding: 20px 24px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+      }
+
+      /* Broadcast Section */
+      .broadcast-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 16px;
+      }
+
+      .title-with-badge {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 4px;
+      }
+
+      .accent-bar {
+        color: var(--primary-color);
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .section-title {
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .pill-badge.red-pill {
+        background: var(--danger-bg);
+        color: var(--danger-color);
+        border: 1px solid #f8cece;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 10px;
+        font-weight: 700;
+      }
+
+      .section-subtitle {
+        color: var(--text-muted);
+        font-size: 11px;
+      }
+
+      .header-action-group {
+        display: flex;
+        gap: 8px;
+      }
+
+      .icon-refresh-btn {
+        background: white;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-sm);
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .icon-refresh-btn:hover {
+        background-color: var(--bg-main);
+      }
+
+      /* Filter Bar */
+      .filter-bar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 12px;
+      }
+
+      .filter-label {
+        font-size: 11px;
+        color: var(--text-muted);
+        font-weight: 700;
+        margin-right: 4px;
+      }
+
+      .filter-btn {
+        background: #f8fafc;
+        border: 1px solid var(--border-color);
+        padding: 4px 12px;
+        border-radius: 14px;
+        font-size: 11px;
+        cursor: pointer;
+        color: var(--text-muted);
+        font-weight: 600;
+        transition: all 0.2s ease;
+      }
+
+      .filter-btn.active {
+        background: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+      }
+
+      /* Feed List */
+      .feed-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .feed-item {
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        padding: 16px;
+        background: #ffffff;
+      }
+
+      .feed-item.emergency { border-left: 4px solid var(--danger-color); }
+      .feed-item.advisory { border-left: 4px solid var(--warning-color); }
+      .feed-item.info { border-left: 4px solid var(--info-color); }
+
+      .feed-meta-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+
+      .feed-tag-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .feed-tag {
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.3px;
+      }
+
+      .tag-emergency { color: var(--danger-color); }
+      .tag-advisory { color: var(--warning-color); }
+      .tag-info { color: var(--info-color); }
+
+      .feed-id {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+
+      .feed-time {
+        font-size: 10px;
+        color: var(--text-muted);
+      }
+
+      .feed-title {
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      .feed-description {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-bottom: 12px;
+        line-height: 1.4;
+      }
+
+      .feed-actions-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #f8fafc;
+        padding: 8px 12px;
+        border-radius: var(--radius-sm);
+      }
+
+      .scope-chip {
+        font-size: 11px;
+        color: var(--text-muted);
+        font-weight: 600;
+      }
+
+      .status-chip {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--text-muted);
+      }
+
+      .status-chip.success-text {
+        color: #10b981;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 8px;
+      }
+
+      .btn-group.align-right {
+        margin-left: auto;
+      }
+
+      /* Buttons */
+      .btn {
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 12px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border: none;
+      }
+
+      .btn-sm {
+        padding: 4px 10px;
+        font-size: 11px;
+      }
+
+      .btn-primary {
+        background: var(--primary-color);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-hover);
+      }
+
+      .btn-outline {
+        background: white;
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+      }
+
+      .btn-outline:hover {
+        background: #f8fafc;
+      }
+
+      .broadcast-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        padding-top: 12px;
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar admin" id="appSidebar">
+            <div class="logo">
+                <i class="fa-solid fa-hospital-user"></i>
+                <span>MED-CORE</span>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Broadcasts</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <span>Patients</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>System Log</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <!-- INLINE TRIGGER: Calls handleLogout directly -->
+                <button class="logout-btn" onclick="handleLogout()">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper">
+            
+            <!-- TOP HEADER -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <!-- INLINE TRIGGER: Performs search on input -->
+                    <input type="text" id="globalSearch" placeholder="Search broadcasts, IDs..." oninput="handleSearch(this.value)">
+                </div>
+
+                <div class="breadcrumb-nav">
+                    <span>System</span>
+                    <span class="sep">/</span>
+                    <span class="active-crumb">Broadcast Center</span>
+                </div>
+
+                <div class="system-status-pills">
+                    <div class="status-pill connected">
+                        <span class="pulse-dot"></span> System Online
+                    </div>
+                </div>
+
+                <!-- VIEW ROLE SWITCHER -->
+                <div style="display: flex; gap: 4px; align-items: center;">
+                    <span style="font-size: 10px; color: var(--text-muted); font-weight: 600;">Role:</span>
+                    <button class="filter-btn" onclick="setAppRole('admin')">Admin</button>
+                    <button class="filter-btn" onclick="setAppRole('executive')">Exec</button>
+                    <button class="filter-btn" onclick="setAppRole('doctor')">Doc</button>
+                    <button class="filter-btn" onclick="setAppRole('surgeon')">Surgeon</button>
+                </div>
+
+                <div class="user-profile">
+                    <div class="user-info">
+                        <span class="user-name">Dr. Alex Smith</span>
+                        <span class="user-role" id="userRoleTitle">Administrator</span>
+                    </div>
+                    <div class="avatar">AS</div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT BODY -->
+            <main class="content-body">
+                
+                <!-- METRICS GRID -->
+                <section class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">TOTAL BROADCASTS</span>
+                            <div class="metric-icon"><i class="fa-solid fa-signal"></i></div>
+                        </div>
+                        <div class="metric-value" id="totalCount">3</div>
+                        <div class="metric-footer">
+                            <span class="trend positive"><i class="fa-solid fa-arrow-up"></i> Live</span>
+                            <span class="trend-label">System Active</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">EMERGENCY ALERTS</span>
+                            <div class="metric-icon" style="background: var(--danger-bg); color: var(--danger-color);">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+                        </div>
+                        <div class="metric-value">1</div>
+                        <div class="metric-footer">
+                            <span class="trend" style="color: var(--danger-color); font-weight:700;">High Priority</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">ADVISORIES</span>
+                            <div class="metric-icon" style="background: var(--warning-bg); color: var(--warning-color);">
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                            </div>
+                        </div>
+                        <div class="metric-value">1</div>
+                        <div class="metric-footer">
+                            <span class="trend-label">Action Recommended</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <span class="metric-title">SYSTEM HEALTH</span>
+                            <div class="metric-icon" style="background: var(--success-bg); color: var(--success-color);">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="metric-value">99.8%</div>
+                        <div class="metric-footer">
+                            <span class="trend positive">Optimal</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- BROADCAST FEED CARD -->
+                <section class="card">
+                    <div class="broadcast-header">
+                        <div>
+                            <div class="title-with-badge">
+                                <span class="accent-bar">|</span>
+                                <h2 class="section-title">Broadcast Feed</h2>
+                                <span class="pill-badge red-pill">Live Alerts</span>
+                            </div>
+                            <p class="section-subtitle">Real-time system notifications and priority transmissions</p>
+                        </div>
+                        <div class="header-action-group">
+                            <!-- INLINE TRIGGER: Calls refreshFeed directly -->
+                            <button class="icon-refresh-btn" id="refreshBtn" title="Refresh Feed" onclick="refreshFeed()">
+                                <i class="fa-solid fa-rotate-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- FILTER BAR -->
+                    <div class="filter-bar">
+                        <span class="filter-label">Filter:</span>
+                        <!-- INLINE TRIGGERS: Calls filterFeed directly -->
+                        <button class="filter-btn active" onclick="filterFeed('all', this)">All</button>
+                        <button class="filter-btn" onclick="filterFeed('emergency', this)">Emergency</button>
+                        <button class="filter-btn" onclick="filterFeed('advisory', this)">Advisory</button>
+                        <button class="filter-btn" onclick="filterFeed('info', this)">Info</button>
+                    </div>
+
+                    <!-- FEED LIST -->
+                    <div class="feed-list" id="feedList">
+                        
+                        <!-- EMERGENCY ITEM -->
+                        <div class="feed-item emergency" data-type="emergency" data-id="BC-1092">
+                            <div class="feed-meta-row">
+                                <div class="feed-tag-group">
+                                    <span class="feed-tag tag-emergency">EMERGENCY</span>
+                                    <span class="feed-id">#BC-1092</span>
+                                </div>
+                                <span class="feed-time">2 mins ago</span>
+                            </div>
+                            <h3 class="feed-title">ICU Auxiliary Power Backup Inspection</h3>
+                            <p class="feed-description">Scheduled auxiliary generator check in Block B. Primary power remains uninterrupted during test sequence.</p>
+                            
+                            <div class="feed-actions-row">
+                                <span class="scope-chip">Scope: ICU Ward</span>
+                                <span class="status-chip" id="status-BC-1092">Pending Acknowledgment</span>
+                                <div class="btn-group align-right">
+                                    <!-- INLINE TRIGGERS for Alert Actions -->
+                                    <button class="btn btn-sm btn-outline" onclick="updateAlertStatus('BC-1092', 'Acknowledged')">Acknowledge</button>
+                                    <button class="btn btn-sm btn-primary" onclick="updateAlertStatus('BC-1092', 'Resolved')">Resolve</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ADVISORY ITEM -->
+                        <div class="feed-item advisory" data-type="advisory" data-id="BC-1088">
+                            <div class="feed-meta-row">
+                                <div class="feed-tag-group">
+                                    <span class="feed-tag tag-advisory">ADVISORY</span>
+                                    <span class="feed-id">#BC-1088</span>
+                                </div>
+                                <span class="feed-time">15 mins ago</span>
+                            </div>
+                            <h3 class="feed-title">Pharmacy Inventory Re-stock Delay</h3>
+                            <p class="feed-description">Shipment of specialized surgical antiseptics delayed by 2 hours due to transit routing. Emergency stock available.</p>
+                            
+                            <div class="feed-actions-row">
+                                <span class="scope-chip">Scope: Central Pharmacy</span>
+                                <span class="status-chip" id="status-BC-1088">Pending Acknowledgment</span>
+                                <div class="btn-group align-right">
+                                    <button class="btn btn-sm btn-outline" onclick="updateAlertStatus('BC-1088', 'Acknowledged')">Acknowledge</button>
+                                    <button class="btn btn-sm btn-primary" onclick="updateAlertStatus('BC-1088', 'Resolved')">Resolve</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- INFO ITEM -->
+                        <div class="feed-item info" data-type="info" data-id="BC-1075">
+                            <div class="feed-meta-row">
+                                <div class="feed-tag-group">
+                                    <span class="feed-tag tag-info">INFO</span>
+                                    <span class="feed-id">#BC-1075</span>
+                                </div>
+                                <span class="feed-time">1 hour ago</span>
+                            </div>
+                            <h3 class="feed-title">New EHR Protocol Update Applied</h3>
+                            <p class="feed-description">System software updated to version 4.2.1. Standardized digital triage forms are now active for all wards.</p>
+                            
+                            <div class="feed-actions-row">
+                                <span class="scope-chip">Scope: All Wards</span>
+                                <span class="status-chip success-text" id="status-BC-1075">Completed</span>
+                                <div class="btn-group align-right">
+                                    <button class="btn btn-sm btn-outline" onclick="updateAlertStatus('BC-1075', 'Acknowledged')">Acknowledge</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="broadcast-footer">
+                        <span>Showing live system broadcast logs</span>
+                        <span>Med-Core Core System v4.2</span>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- JAVASCRIPT FUNCTIONS - Embedded directly before </body>           -->
+    <!-- ================================================================= -->
+    <script>
+        // 1. DOM Initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            initSidebarNavigation();
+        });
+
+        /**
+         * Dynamic Sidebar Active State Manager
+         */
+        function initSidebarNavigation() {
+            const navItems = document.querySelectorAll('.nav-menu .nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        }
+
+        /**
+         * Filter Broadcast Feed Items
+         * @param {string} category - 'all', 'emergency', 'advisory', 'info'
+         * @param {HTMLElement} element - Button clicked
+         */
+        function filterFeed(category, element) {
+            // Update Active Filter Button
+            const buttons = document.querySelectorAll('.filter-bar .filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+
+            // Filter Feed Items
+            const items = document.querySelectorAll('.feed-item');
+            items.forEach(item => {
+                const itemType = item.getAttribute('data-type');
+                if (category === 'all' || itemType === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        /**
+         * Live Search Broadcast Feed by Keyword or ID
+         * @param {string} query
+         */
+        function handleSearch(query) {
+            const searchTerm = query.toLowerCase().trim();
+            const items = document.querySelectorAll('.feed-item');
+
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        /**
+         * Action Handler for Alert Feed Items
+         * @param {string} broadcastId
+         * @param {string} newStatus
+         */
+        function updateAlertStatus(broadcastId, newStatus) {
+            const statusLabel = document.getElementById(`status-${broadcastId}`);
+            if (statusLabel) {
+                statusLabel.textContent = newStatus;
+                if (newStatus === 'Resolved' || newStatus === 'Completed') {
+                    statusLabel.className = 'status-chip success-text';
+                } else {
+                    statusLabel.className = 'status-chip';
+                }
+            }
+        }
+
+        /**
+         * Refresh Animation & Trigger Handler
+         */
+        function refreshFeed() {
+            const icon = document.querySelector('#refreshBtn i');
+            if (icon) {
+                icon.style.transition = 'transform 0.5s ease';
+                icon.style.transform = 'rotate(360deg)';
+                setTimeout(() => {
+                    icon.style.transform = 'rotate(0deg)';
+                }, 500);
+            }
+            console.log('Broadcast feed synchronized.');
+        }
+
+        /**
+         * Switch Role View (Admin, Exec, Doc, Surgeon)
+         * @param {string} role
+         */
+        function setAppRole(role) {
+            const sidebar = document.getElementById('appSidebar');
+            const roleLabel = document.getElementById('userRoleTitle');
+            
+            if (!sidebar) return;
+
+            sidebar.classList.remove('admin', 'executive', 'doctor', 'surgeon');
+
+            switch (role.toLowerCase()) {
+                case 'admin':
+                    sidebar.classList.add('admin');
+                    roleLabel.textContent = 'Administrator';
+                    break;
+                case 'executive':
+                    sidebar.classList.add('executive');
+                    roleLabel.textContent = 'Executive Officer';
+                    break;
+                case 'doctor':
+                    sidebar.classList.add('doctor');
+                    roleLabel.textContent = 'Attending Physician';
+                    break;
+                case 'surgeon':
+                    sidebar.classList.add('surgeon');
+                    roleLabel.textContent = 'Lead Surgeon';
+                    break;
+            }
+        }
+
+        /**
+         * User Session Logout Handler
+         */
+        function handleLogout() {
+            if (confirm('Are you sure you want to log out of Med-Core?')) {
+                alert('Session terminated.');
+                // window.location.href = '/login.html';
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Immunization Program & Vaccine Allocation Portal - NHMRD</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: #ffffff;
+            --bg-sidebar: #005a70;
+            --bg-card: #ffffff;
+            --header-color: #f3fdff;
+            --sidebar-admin: #034c53;
+            --sidebar-executive: #1b2537;
+            --text-primary: #1e293b;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --primary-color: #007084;
+            --primary-blue: #2563eb;
+            --primary-blue-hover: #1d4ed8;
+            --border-color: #e2e8f0;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 14px;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: var(--text-primary);
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        /* Cleaned Layout Positions */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 230px;
+            min-width: 230px;
+            background-color: var(--sidebar-executive);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            padding: 0 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .nav-item {
+            color: #b2d8d8;
+            text-decoration: none;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background-color: #283C68;
+            color: #ffffff;
+            border-left: 4px solid #6886c9;
+        }
+
+        .sidebar-footer {
+            padding: 0;
+        }
+
+        .sidebar-footer > a {
+            text-decoration: none;
+        }
+
+        .logout-btn {
+            width: 100%;
+            padding: 12px 20px;
+            background-color: #ff4d4f;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s;
+        }
+
+        .logout-btn:hover {
+            background-color: #d9363e;
+        }
+
+        .main-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .top-header {
+            background-color: var(--header-color);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: var(--bg-main);
+            padding: 8px 14px;
+            border-radius: 20px;
+            width: 320px;
+            gap: 8px;
+            color: var(--text-muted);
+            border: 1px solid #cecece;
+        }
+
+        .search-bar input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+            font-size: 12px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .system-status-pills {
+            display: flex;
+            gap: 8px;
+        }
+
+        .status-pill {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 10px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+        }
+
+        .status-pill.connected {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+            color: #166534;
+        }
+
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #22c55e;
+            border-radius: 50%;
+        }
+
+        .user-info {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-name {
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .user-role {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+        }
+
+        /* Content Area */
+        .content {
+            padding: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .pill-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .pill-navy {
+            background-color: var(--primary-blue);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+        }
+
+        .pill-text {
+            font-size: 10px;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .page-title-row h1 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.4px;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin-top: 2px;
+        }
+
+        .top-action-buttons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .badge-blue-compliance {
+            background-color: #dbeafe;
+            color: #1e40af;
+            padding: 8px 12px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge-blue-compliance strong {
+            display: block;
+            font-size: 11px;
+        }
+
+        .badge-blue-compliance span {
+            font-size: 10px;
+            color: var(--primary-blue);
+        }
+
+        .btn-outline {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            padding: 10px 14px;
+            border-radius: var(--radius-md);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .margin-top-card {
+            margin-top: 16px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 10px;
+            margin-bottom: 14px;
+        }
+
+        .card-header.space-between {
+            justify-content: space-between;
+        }
+
+        .header-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-num {
+            background-color: #0f172a;
+            color: white;
+            font-weight: 800;
+            font-size: 11px;
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-header h2 {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .mandatory-protocol {
+            font-size: 10px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* Forms */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .form-group label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-secondary);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 8px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            outline: none;
+            background-color: #f8fafc;
+            color: var(--text-primary);
+        }
+
+        .form-row {
+            display: grid;
+            gap: 12px;
+        }
+
+        .form-row.col-2 { grid-template-columns: 1fr 1fr; }
+        .form-row.col-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+        .margin-top {
+            margin-top: 12px;
+        }
+
+        .input-with-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-with-icon input {
+            width: 100%;
+            padding-right: 30px;
+        }
+
+        .icon-alert {
+            position: absolute;
+            right: 10px;
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        /* Table */
+        .table-container {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+
+        .vaccine-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .vaccine-table th {
+            background-color: #f1f5f9;
+            padding: 10px 12px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .vaccine-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 11px;
+            vertical-align: middle;
+        }
+
+        .vaccine-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .vaccine-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .icon-blue { background-color: #e0f2fe; color: #0284c7; }
+        .icon-purple { background-color: #f3e8ff; color: #9333ea; }
+        .icon-orange { background-color: #ffedd5; color: #ea580c; }
+        .icon-green { background-color: #dcfce7; color: #16a34a; }
+
+        .vaccine-name {
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .vaccine-code {
+            font-size: 9px;
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+
+        .table-qty-input {
+            width: 70px;
+            text-align: center;
+            padding: 4px !important;
+            background-color: #f1f5f9 !important;
+            font-weight: 700;
+            border: 1px solid var(--border-color) !important;
+            border-radius: 18px !important;
+        }
+
+        .btn-icon-trash {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .btn-icon-trash:hover {
+            color: #ef4444;
+        }
+
+        .text-center { text-align: center; }
+
+        .table-summary-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background-color: #fafafa;
+            border: 1px solid var(--border-color);
+            border-top: none;
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .info-text i {
+            color: var(--primary-blue);
+        }
+
+        /* Pill Checkboxes */
+        .pill-checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .pill-checkbox {
+            background-color: #f1f5f9;
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            user-select: none;
+        }
+
+        .pill-checkbox.active-blue {
+            background-color: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        /* Action Bar */
+        .bottom-action-bar {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-action-light {
+            flex: 1;
+            background-color: white;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .btn-action-submit {
+            flex: 2;
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+        }
+
+        .btn-action-submit:hover {
+            background-color: var(--primary-blue-hover);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar executive">
+            <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>NHMRD</span>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-border-all"></i>
+                    Dashboard
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-user-plus"></i>
+                    Register New Patient
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    Register New Doctor
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-hospital-user"></i>
+                    Register New Hospital
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-file-waveform"></i> Issue Death Certificate
+                </a>
+                <a href="#" class="nav-item active">
+                    <i class="fa-solid fa-syringe"></i> Vaccination Request
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-circle-user"></i> Profile
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#">
+                    <button class="logout-btn">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                    </button>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Wrapper -->
+        <div class="main-wrapper">
+
+            <!-- Top Header Navigation -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search records, MRNs, clinicians...">
+                </div>
+
+                <div class="user-profile">
+                    <div class="system-status-pills">
+                        <div class="status-pill">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>UTC+00:00 • SYSTEM ACTIVE</span>
+                        </div>
+                        <div class="status-pill connected">
+                            <span class="pulse-dot"></span>
+                            <span>Live Registry • Connected</span>
+                        </div>
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">Dr. Sarah F.</span>
+                        <span class="user-role">Super Admin</span>
+                    </div>
+                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                </div>
+            </header>
+
+            <!-- Main Content Area -->
+            <main class="content">
+
+                <!-- Page Title Row -->
+                <div class="page-title-row">
+                    <div>
+                        <div class="pill-group">
+                            <span class="pill pill-navy">NHMRD-LOG-SEC.08</span>
+                            <span class="pill-text">FEDERAL VACCINE LOGISTICS & COLD CHAIN GRID</span>
+                        </div>
+                        <h1>National Immunization Program & Vaccine Allocation Portal</h1>
+                        <p class="subtitle">Submit facility batch requisition, emergency stock allocations, or
+                            individual pediatric/booster requests across accredited medical hubs.</p>
+                    </div>
+                    <div class="top-action-buttons">
+                        <div class="badge-blue-compliance">
+                            <i class="fa-solid fa-shield-check"></i>
+                            <div>
+                                <strong>GvP Compliance</strong>
+                                <span>Active</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline"><i class="fa-solid fa-rotate-left"></i> Order History</button>
+                    </div>
+                </div>
+
+                <!-- Section 1: Facility Destination & Demand Classification -->
+                <div class="card">
+                    <div class="card-header space-between">
+                        <div class="header-title-group">
+                            <span class="step-num">1</span>
+                            <h2>Facility Destination & Demand Classification</h2>
+                        </div>
+                        <span class="mandatory-protocol">Mandatory Protocol</span>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="form-row col-3">
+                            <div class="form-group">
+                                <label>Requesting Facility</label>
+                                <input type="text" value="St. Jude Central Metropolitan Hospital (ID: HC-9912)" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Clinical Department</label>
+                                <select>
+                                    <option selected>Central Hospital Pharmacy - Depot 01</option>
+                                    <option>Pediatrics Ward</option>
+                                    <option>Emergency Care Unit</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Urgency Classification</label>
+                                <div class="input-with-icon">
+                                    <input type="text" value="Routine Weekly Allocation (48-72h)" readonly>
+                                    <i class="fa-solid fa-exclamation icon-alert"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Vaccine Allocation Table -->
+                        <div class="table-container margin-top">
+                            <table class="vaccine-table">
+                                <thead>
+                                    <tr>
+                                        <th>VACCINE FORMULA & CODE</th>
+                                        <th>MANUFACTURER / LOT</th>
+                                        <th>DOSE QTY</th>
+                                        <th>PACK UNIT</th>
+                                        <th class="text-center">ACTION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="vaccine-info">
+                                                <div class="vaccine-icon icon-blue"><i class="fa-solid fa-shield-virus"></i></div>
+                                                <div>
+                                                    <div class="vaccine-name">COVID-19 mRNA XBB.1.5</div>
+                                                    <div class="vaccine-code">VAX-COV-9012</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>BioPharma Ltd / LP-8819</td>
+                                        <td><input type="number" value="1200" class="table-qty-input" min="0"></td>
+                                        <td>10-Dose Vial (120 pk)</td>
+                                        <td class="text-center"><button type="button" class="btn-icon-trash"><i class="fa-regular fa-trash-can"></i></button></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <div class="vaccine-info">
+                                                <div class="vaccine-icon icon-purple"><i class="fa-solid fa-syringe"></i></div>
+                                                <div>
+                                                    <div class="vaccine-name">MMR II (Measles, Mumps, Rubella)</div>
+                                                    <div class="vaccine-code">VAX-PED-4410</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Merck Global / MT-9032</td>
+                                        <td><input type="number" value="500" class="table-qty-input" min="0"></td>
+                                        <td>Single-Dose Vial (500 pk)</td>
+                                        <td class="text-center"><button type="button" class="btn-icon-trash"><i class="fa-regular fa-trash-can"></i></button></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <div class="vaccine-info">
+                                                <div class="vaccine-icon icon-orange"><i class="fa-solid fa-virus"></i></div>
+                                                <div>
+                                                    <div class="vaccine-name">Influenza Quadrivalent 2024–25</div>
+                                                    <div class="vaccine-code">VAX-FLU-7741</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Sanofi Pasteur / FL-1102</td>
+                                        <td><input type="number" value="2500" class="table-qty-input" min="0"></td>
+                                        <td>Prefilled Syringes (250 pk)</td>
+                                        <td class="text-center"><button type="button" class="btn-icon-trash"><i class="fa-regular fa-trash-can"></i></button></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <div class="vaccine-info">
+                                                <div class="vaccine-icon icon-green"><i class="fa-solid fa-vial"></i></div>
+                                                <div>
+                                                    <div class="vaccine-name">Hepatitis B Recombinant (Adult)</div>
+                                                    <div class="vaccine-code">VAX-HEP-3004</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>GSK Biologicals / HB-6643</td>
+                                        <td><input type="number" value="300" class="table-qty-input" min="0"></td>
+                                        <td>Single-Dose Vial (30 pk)</td>
+                                        <td class="text-center"><button type="button" class="btn-icon-trash"><i class="fa-regular fa-trash-can"></i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="table-summary-bar">
+                            <span class="info-text"><i class="fa-solid fa-circle-info"></i> Total Units In Request:
+                                <strong id="total-doses-display">4,500 Doses (4 Line Items)</strong></span>
+                            <span class="weight-text">Estimated Gross Weight: <strong id="total-weight-display">28.6 kg</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Receiving Custody & Clinical Justification -->
+                <div class="card margin-top-card">
+                    <div class="card-header space-between">
+                        <div class="header-title-group">
+                            <span class="step-num">2</span>
+                            <h2>Receiving Custody & Clinical Justification</h2>
+                        </div>
+                        <span class="mandatory-protocol">GvP Requirement</span>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="form-row col-2">
+                            <div class="form-group">
+                                <label>Requested Delivery Target Date</label>
+                                <input type="date" id="delivery-date" value="2024-04-11">
+                            </div>
+                            <div class="form-group">
+                                <label>Receiving Pharmacist in Charge (RPIC)</label>
+                                <input type="text" value="Dr. Elena Rostova, PharmD (Lic #PH-49201)" readonly>
+                            </div>
+                        </div>
+
+                        <!-- Target Population Selectors -->
+                        <div class="form-group margin-top">
+                            <label>Primary Target Population Groups</label>
+                            <div class="pill-checkbox-group">
+                                <label class="pill-checkbox active-blue">
+                                    <input type="checkbox" checked> Pediatric Cohort (0-12 yrs)
+                                </label>
+                                <label class="pill-checkbox active-blue">
+                                    <input type="checkbox" checked> Geriatric & Immunocompromised (65+)
+                                </label>
+                                <label class="pill-checkbox active-blue">
+                                    <input type="checkbox" checked> Frontline Healthcare Workers
+                                </label>
+                                <label class="pill-checkbox">
+                                    <input type="checkbox"> General Adult Population
+                                </label>
+                                <label class="pill-checkbox">
+                                    <input type="checkbox"> High-Risk Occupational Workers
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group margin-top">
+                            <label>Clinical Epidemiological Justification</label>
+                            <textarea id="clinical-justification" rows="3">Scheduled bi-weekly intake for Autumn Influenza immunization drive combined with pediatric kindergarten enrollment mandate. Booster doses earmarked for Phase-1 hospital personnel.</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Action Bar -->
+                <div class="bottom-action-bar">
+                    <button type="button" class="btn btn-action-light" id="btn-save-draft">
+                        <i class="fa-solid fa-floppy-disk"></i> Save Requisition Draft
+                    </button>
+                    <button type="button" class="btn btn-action-submit" id="btn-submit-requisition">
+                        <i class="fa-solid fa-paper-plane"></i> Submit Requisition for Federal Approval
+                    </button>
+                </div>
+
+            </main>
+        </div>
+
+    </div>
+
+    <!-- DIRECT EMBEDDED JAVASCRIPT FUNCTIONS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            initTableCalculations();
+            initPillCheckboxes();
+            initActionButtons();
+            initGlobalSearch();
+        });
+
+        /* 1. Recalculate Table Totals and Gross Weight */
+        function initTableCalculations() {
+            const tableBody = document.querySelector('.vaccine-table tbody');
+            if (!tableBody) return;
+
+            tableBody.addEventListener('input', function (e) {
+                if (e.target.classList.contains('table-qty-input')) {
+                    recalculateTotals();
+                }
+            });
+
+            tableBody.addEventListener('click', function (e) {
+                const trashBtn = e.target.closest('.btn-icon-trash');
+                if (trashBtn) {
+                    const row = trashBtn.closest('tr');
+                    if (row) {
+                        row.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+                        row.style.opacity = '0';
+                        row.style.transform = 'translateX(10px)';
+                        
+                        setTimeout(() => {
+                            row.remove();
+                            recalculateTotals();
+                        }, 200);
+                    }
+                }
+            });
+        }
+
+        function recalculateTotals() {
+            const qtyInputs = document.querySelectorAll('.table-qty-input');
+            let totalDoses = 0;
+            let activeItems = qtyInputs.length;
+
+            qtyInputs.forEach(input => {
+                const val = parseInt(input.value, 10);
+                if (!isNaN(val) && val > 0) {
+                    totalDoses += val;
+                }
+            });
+
+            const estimatedWeight = (totalDoses * 0.00635).toFixed(1);
+
+            const dosesDisplay = document.getElementById('total-doses-display');
+            const weightDisplay = document.getElementById('total-weight-display');
+
+            if (dosesDisplay) {
+                dosesDisplay.textContent = `${totalDoses.toLocaleString()} Doses (${activeItems} Line Items)`;
+            }
+            if (weightDisplay) {
+                weightDisplay.textContent = `${estimatedWeight} kg`;
+            }
+        }
+
+        /* 2. Target Population Pill Toggle */
+        function initPillCheckboxes() {
+            const pillLabels = document.querySelectorAll('.pill-checkbox');
+
+            pillLabels.forEach(label => {
+                const checkbox = label.querySelector('input[type="checkbox"]');
+                if (!checkbox) return;
+
+                if (checkbox.checked) {
+                    label.classList.add('active-blue');
+                } else {
+                    label.classList.remove('active-blue');
+                }
+
+                checkbox.addEventListener('change', function () {
+                    if (checkbox.checked) {
+                        label.classList.add('active-blue');
+                    } else {
+                        label.classList.remove('active-blue');
+                    }
+                });
+            });
+        }
+
+        /* 3. Button Action Handlers & Validation */
+        function initActionButtons() {
+            const btnSaveDraft = document.getElementById('btn-save-draft');
+            const btnSubmit = document.getElementById('btn-submit-requisition');
+
+            if (btnSaveDraft) {
+                btnSaveDraft.addEventListener('click', function () {
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Saving...';
+                    this.disabled = true;
+
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fa-solid fa-check"></i> Draft Saved';
+                        setTimeout(() => {
+                            this.innerHTML = originalText;
+                            this.disabled = false;
+                        }, 1500);
+                    }, 600);
+                });
+            }
+
+            if (btnSubmit) {
+                btnSubmit.addEventListener('click', function () {
+                    const activePills = document.querySelectorAll('.pill-checkbox input[type="checkbox"]:checked');
+                    const qtyInputs = document.querySelectorAll('.table-qty-input');
+                    const deliveryDate = document.getElementById('delivery-date');
+                    const justification = document.getElementById('clinical-justification');
+
+                    if (qtyInputs.length === 0) {
+                        alert('Validation Error: Your requisition must contain at least one vaccine item.');
+                        return;
+                    }
+
+                    if (activePills.length === 0) {
+                        alert('Validation Error: Please select at least one Target Population Group.');
+                        return;
+                    }
+
+                    if (deliveryDate && !deliveryDate.value) {
+                        alert('Validation Error: Please select a requested delivery target date.');
+                        return;
+                    }
+
+                    if (justification && justification.value.trim().length < 10) {
+                        alert('Validation Error: Please provide a complete clinical justification (at least 10 characters).');
+                        return;
+                    }
+
+                    alert('Requisition Successful! Request NHMRD-LOG-SEC.08 submitted for Federal Approval.');
+                });
+            }
+        }
+
+        /* 4. Real-time Search Filter for Vaccines */
+        function initGlobalSearch() {
+            const searchInput = document.querySelector('.search-bar input');
+            if (!searchInput) return;
+
+            searchInput.addEventListener('input', function (e) {
+                const query = e.target.value.toLowerCase().trim();
+                const rows = document.querySelectorAll('.vaccine-table tbody tr');
+
+                rows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    if (text.includes(query)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

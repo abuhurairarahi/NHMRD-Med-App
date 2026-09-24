@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DGHS Clinical Facility Registration & Intake</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: #f4f6f9;
+            --bg-sidebar: #005a70;
+            --bg-card: #ffffff;
+            --header-color: #f3fdff;
+            --sidebar-admin: #034c53;
+            --sidebar-executive: #1a2836;
+            
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --text-light: #94a3b8;
+
+            --primary-blue: #0284c7;
+            --primary-blue-hover: #0369a1;
+            --primary-blue-light: #e0f2fe;
+
+            --accent-navy: #1e3a8a;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-green-bg: #d1fae5;
+
+            --danger-red: #ef4444;
+            --warning-amber: #f59e0b;
+            --warning-bg: #fef3c7;
+
+            --border-color: #e2e8f0;
+            --border-dark: #cbd5e1;
+
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Architecture */
+        .sidebar {
+            width: 230px;
+            background-color: var(--bg-sidebar);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0 0 0;
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto; 
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 800;
+            padding: 0 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+            flex-grow: 1;
+        }
+
+        .nav-item {
+            color: #b2d8d8;
+            text-decoration: none;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-left: 4px solid #00f2fe;
+        }
+
+        .sidebar-footer {
+            padding: 0px;
+        }
+
+        .logout-btn {
+            width: 100%;
+            padding: 12px 20px;
+            background-color: #ff4d4f;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 8px;
+        }
+
+        .logout-btn:hover {
+            background-color: #d9363e;
+        }
+
+        /* Main Content Workspace */
+        .main-wrapper {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow-y: auto; 
+        }
+
+        .top-header {
+            background-color: var(--header-color);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 8px 14px;
+            border-radius: 20px;
+            width: 320px;
+            gap: 8px;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+        }
+
+        .search-bar input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+            font-size: 12px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-info {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-name {
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .user-role {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+        }
+
+        /* Content Layout */
+        .content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .page-header {
+            margin-bottom: 4px;
+        }
+
+        .header-pills {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .pill {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: var(--radius-sm);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pill-code {
+            background-color: #e0e7ff;
+            color: #3730a3;
+        }
+
+        .pill-status {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .page-header h1 {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.3px;
+        }
+
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 20px;
+            align-items: start;
+        }
+
+        .left-column, .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Card Elements */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card-header {
+            display: flex;
+            margin-bottom: 14px;
+        }
+
+        .card-header.space-between {
+            justify-content: space-between;
+        }
+
+        .card-header.align-center {
+            align-items: center;
+        }
+
+        .header-title-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .step-num {
+            background-color: #0284c7;
+            color: white;
+            font-weight: 800;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: var(--radius-sm);
+        }
+
+        .card-header h2 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .section-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .facility-code-box {
+            background-color: #f1f5f9;
+            border: 1px solid var(--border-color);
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+            font-family: monospace;
+            font-size: 11px;
+        }
+
+        .code-label {
+            color: var(--text-muted);
+        }
+
+        .code-val {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* Form Components */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-secondary);
+        }
+
+        .required {
+            color: var(--danger-red);
+        }
+
+        .form-group input, .form-group select {
+            padding: 7px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            outline: none;
+            background-color: #fff;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px var(--primary-blue-light);
+        }
+
+        .form-row {
+            display: grid;
+            gap: 12px;
+        }
+
+        .form-row.col-2 { grid-template-columns: 1fr 1fr; }
+        .form-row.col-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+        .button-toggle-group {
+            display: flex;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            background: white;
+            border: none;
+            padding: 7px 4px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .toggle-btn:last-child {
+            border-right: none;
+        }
+
+        .toggle-btn.active {
+            background-color: #f1f5f9;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        /* Departments Selection Grid */
+        .dept-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .dept-card {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 8px 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            background-color: #fafafa;
+            user-select: none;
+        }
+
+        .dept-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .dept-content i {
+            font-size: 12px;
+            color: var(--primary-blue);
+        }
+
+        .dept-content span {
+            font-size: 10px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .input-with-btn {
+            display: flex;
+            gap: 6px;
+        }
+
+        .input-with-btn input {
+            flex-grow: 1;
+        }
+
+        .btn-verify {
+            background-color: #0284c7;
+            color: white;
+            border: none;
+            padding: 0 10px;
+            border-radius: var(--radius-sm);
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        /* Dossier & File List */
+        .dossier-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .dossier-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            background-color: #f8fafc;
+        }
+
+        .dossier-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dossier-info .title {
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .dossier-info .status {
+            font-size: 9px;
+            color: var(--text-muted);
+        }
+
+        .btn-upload {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+            font-size: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+
+        .title-with-icon {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .inspection-icon {
+            color: var(--primary-blue);
+            font-size: 14px;
+        }
+
+        .badge-blue {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .checkbox-container {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+            cursor: pointer;
+        }
+
+        .checkbox-container input {
+            margin-top: 2px;
+        }
+
+        .checkbox-text {
+            font-size: 10px;
+            color: var(--text-secondary);
+            line-height: 1.3;
+        }
+
+        /* Buttons Styling */
+        .btn {
+            padding: 7px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        .btn-secondary-light {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .btn-primary-blue {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .btn-primary-blue:hover {
+            background-color: #1d4ed8;
+        }
+
+        .action-button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .margin-top {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-hospital-user"></i> DGHS Portal
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active"><i class="fa-solid fa-square-plus"></i> Facility Intake</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-clipboard-list"></i> Registrations</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-user-check"></i> Inspections</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button type="button" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <div class="main-wrapper">
+            
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search facilities, license IDs, or records...">
+                </div>
+                <div class="user-profile">
+                    <div class="user-info">
+                        <span class="user-name">Super Admin</span>
+                        <span class="user-role">DGHS Inspector General</span>
+                    </div>
+                    <div class="avatar"><i class="fa-solid fa-user-gear"></i></div>
+                </div>
+            </header>
+
+            <main class="content">
+                <div class="page-header">
+                    <div class="header-pills">
+                        <span class="pill pill-code"><i class="fa-solid fa-barcode"></i> REG-2026-DGHS</span>
+                        <span class="pill pill-status"><i class="fa-solid fa-circle-dot"></i> Active Session</span>
+                    </div>
+                    <h1>Institutional Facility Intake & Clearance</h1>
+                    <p>Statutory healthcare provider onboarding and licensing under the DGHS Clinical Establishment Rules.</p>
+                </div>
+
+                <div class="grid-container">
+                    
+                    <!-- Left Primary Column -->
+                    <div class="left-column">
+                        
+                        <!-- Step 1: Institutional Overview -->
+                        <div class="card">
+                            <div class="card-header space-between align-center">
+                                <div class="header-title-group">
+                                    <span class="step-num">01</span>
+                                    <div>
+                                        <h2>Institutional Overview & Details</h2>
+                                        <p class="section-sub">Enter verified administrative attributes of the facility.</p>
+                                    </div>
+                                </div>
+                                <div class="facility-code-box">
+                                    <span class="code-label">ID: </span>
+                                    <span class="code-val">FAC-99402</span>
+                                </div>
+                            </div>
+
+                            <div class="form-row col-2">
+                                <div class="form-group">
+                                    <label>Facility Name <span class="required">*</span></label>
+                                    <input type="text" placeholder="e.g. Central City Medical Center">
+                                </div>
+                                <div class="form-group">
+                                    <label>Facility Category <span class="required">*</span></label>
+                                    <div class="button-toggle-group">
+                                        <button type="button" class="toggle-btn active">Hospital</button>
+                                        <button type="button" class="toggle-btn">Clinic</button>
+                                        <button type="button" class="toggle-btn">Diagnostic</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row col-3">
+                                <div class="form-group">
+                                    <label>Trade License ID <span class="required">*</span></label>
+                                    <div class="input-with-btn">
+                                        <input type="text" placeholder="TL-883921">
+                                        <button type="button" class="btn-verify">Verify</button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Total Bed Capacity</label>
+                                    <input type="number" placeholder="150">
+                                </div>
+                                <div class="form-group">
+                                    <label>Emergency Service</label>
+                                    <div class="button-toggle-group">
+                                        <button type="button" class="toggle-btn active">24/7</button>
+                                        <button type="button" class="toggle-btn">Limited</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Clinical Departments -->
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="header-title-group">
+                                    <span class="step-num">02</span>
+                                    <div>
+                                        <h2>Clinical Departments & Units</h2>
+                                        <p class="section-sub">Select operational units currently functional at this establishment.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dept-grid">
+                                <label class="dept-card">
+                                    <input type="checkbox" checked>
+                                    <div class="dept-content">
+                                        <i class="fa-solid fa-heart-pulse"></i>
+                                        <span>Cardiology</span>
+                                    </div>
+                                </label>
+                                <label class="dept-card">
+                                    <input type="checkbox">
+                                    <div class="dept-content">
+                                        <i class="fa-solid fa-brain"></i>
+                                        <span>Neurology</span>
+                                    </div>
+                                </label>
+                                <label class="dept-card">
+                                    <input type="checkbox" checked>
+                                    <div class="dept-content">
+                                        <i class="fa-solid fa-baby"></i>
+                                        <span>Pediatrics</span>
+                                    </div>
+                                </label>
+                                <label class="dept-card">
+                                    <input type="checkbox">
+                                    <div class="dept-content">
+                                        <i class="fa-solid fa-bone"></i>
+                                        <span>Orthopedics</span>
+                                    </div>
+                                </label>
+                                <label class="dept-card">
+                                    <input type="checkbox" checked>
+                                    <div class="dept-content">
+                                        <i class="fa-solid fa-truck-medical"></i>
+                                        <span>ICU / CCU</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div> <!-- /.left-column -->
+
+                    <!-- Right Column -->
+                    <div class="right-column">
+                        
+                        <!-- Dossier Document Card -->
+                        <div class="card">
+                            <div class="card-header space-between align-center">
+                                <h2>Required Clearance Dossier</h2>
+                                <span class="badge-blue">3 Required</span>
+                            </div>
+                            <p class="section-sub">Upload statutory documentation for verification.</p>
+
+                            <div class="dossier-list">
+                                <div class="dossier-item">
+                                    <div class="dossier-info">
+                                        <i class="fa-solid fa-file-pdf inspection-icon"></i>
+                                        <div>
+                                            <div class="title">Fire Safety Cert</div>
+                                            <div class="status">Pending upload</div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn-upload">Upload</button>
+                                </div>
+                                <div class="dossier-item">
+                                    <div class="dossier-info">
+                                        <i class="fa-solid fa-file-pdf inspection-icon"></i>
+                                        <div>
+                                            <div class="title">Environment Clearance</div>
+                                            <div class="status">Pending upload</div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn-upload">Upload</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Super Admin Authorization Card -->
+                        <div class="card">
+                            <div class="card-header space-between align-center">
+                                <div class="title-with-icon">
+                                    <i class="fa-solid fa-user-shield inspection-icon"></i>
+                                    <h2>Super Admin Authorization</h2>
+                                </div>
+                                <span class="badge-blue">Form DGHS-H4</span>
+                            </div>
+                            <p class="section-sub">Final statutory declaration and system dispatch.</p>
+
+                            <div class="form-group margin-top">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="declaration-check" required>
+                                    <span class="checkbox-text">
+                                        I hereby certify under the DGHS Clinical Establishment Rules that all provided institutional details, medical licenses, and structural specs are authentic and complete.
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="action-button-group margin-top">
+                                <button type="button" class="btn btn-secondary-light" id="btn-save-draft">
+                                    <i class="fa-solid fa-floppy-disk"></i> Save Draft
+                                </button>
+                                <button type="submit" class="btn btn-primary-blue" id="btn-submit-intake">
+                                    <i class="fa-solid fa-paper-plane"></i> Submit DGHS Intake
+                                </button>
+                            </div>
+                        </div>
+
+                    </div> <!-- /.right-column -->
+
+                </div> <!-- /.grid-container -->
+            </main>
+        </div> <!-- /.main-wrapper -->
+    </div> <!-- /.app-container -->
+
+    <!-- ======================================================== -->
+    <!-- DIRECT JAVASCRIPT FUNCTIONS                              -->
+    <!-- ======================================================== -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            initToggleButtons();
+            initDepartmentSelection();
+            initVerificationButtons();
+            initFileUploadHandlers();
+            initFormSubmission();
+        });
+
+        /* 1. Button Toggle Group Handler (Ownership, Category, Bed Type) */
+        function initToggleButtons() {
+            var toggleGroups = document.querySelectorAll('.button-toggle-group');
+
+            toggleGroups.forEach(function (group) {
+                var buttons = group.querySelectorAll('.toggle-btn');
+                buttons.forEach(function (btn) {
+                    btn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        buttons.forEach(function (b) { b.classList.remove('active'); });
+                        btn.classList.add('active');
+                    });
+                });
+            });
+        }
+
+        /* 2. Department Grid Visual Selection State */
+        function initDepartmentSelection() {
+            var deptCheckboxes = document.querySelectorAll('.dept-card input[type="checkbox"]');
+            
+            deptCheckboxes.forEach(function (checkbox) {
+                // Initialize background color on page load
+                updateCardStyle(checkbox);
+
+                checkbox.addEventListener('change', function () {
+                    updateCardStyle(checkbox);
+                });
+            });
+
+            function updateCardStyle(checkbox) {
+                var parentCard = checkbox.closest('.dept-card');
+                if (checkbox.checked) {
+                    parentCard.style.borderColor = 'var(--primary-blue)';
+                    parentCard.style.backgroundColor = 'var(--primary-blue-light)';
+                } else {
+                    parentCard.style.borderColor = 'var(--border-color)';
+                    parentCard.style.backgroundColor = '#fafafa';
+                }
+            }
+        }
+
+        /* 3. Inline Verification Handlers (License / Trade ID) */
+        function initVerificationButtons() {
+            var verifyBtns = document.querySelectorAll('.btn-verify');
+
+            verifyBtns.forEach(function (btn) {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    var inputField = btn.previousElementSibling;
+                    
+                    if (!inputField || !inputField.value.trim()) {
+                        alert('Please enter a valid Trade License ID to verify.');
+                        return;
+                    }
+
+                    btn.textContent = 'Verifying...';
+                    btn.disabled = true;
+
+                    setTimeout(function () {
+                        btn.textContent = '✓ Verified';
+                        btn.style.backgroundColor = 'var(--accent-green)';
+                        btn.style.color = '#ffffff';
+                        inputField.style.borderColor = 'var(--accent-green)';
+                        inputField.disabled = true;
+                    }, 1000);
+                });
+            });
+        }
+
+        /* 4. Dynamic Document File Upload Tracker */
+        function initFileUploadHandlers() {
+            var uploadBtns = document.querySelectorAll('.dossier-item .btn-upload');
+
+            uploadBtns.forEach(function (btn) {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    var fileInput = document.createElement('input');
+                    fileInput.type = 'file';
+                    fileInput.accept = '.pdf,.png,.jpg,.jpeg';
+
+                    fileInput.addEventListener('change', function () {
+                        if (fileInput.files.length > 0) {
+                            var fileName = fileInput.files[0].name;
+                            var dossierItem = btn.closest('.dossier-item');
+                            var statusSpan = dossierItem.querySelector('.status');
+
+                            if (statusSpan) {
+                                statusSpan.textContent = 'Uploaded: ' + fileName;
+                                statusSpan.style.color = 'var(--accent-green)';
+                                statusSpan.style.fontWeight = '600';
+                            }
+                            
+                            btn.textContent = 'Replace';
+                            btn.style.borderColor = 'var(--accent-green)';
+                        }
+                    });
+
+                    fileInput.click();
+                });
+            });
+        }
+
+        /* 5. Draft Save & Statutory Submission Handler */
+        function initFormSubmission() {
+            var saveDraftBtn = document.getElementById('btn-save-draft');
+            if (saveDraftBtn) {
+                saveDraftBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    alert('Form draft has been successfully saved to system local cache.');
+                });
+            }
+
+            var submitBtn = document.getElementById('btn-submit-intake');
+            if (submitBtn) {
+                submitBtn.addEventListener('click', function (e) {
+                    var authCheckbox = document.getElementById('declaration-check');
+                    
+                    if (authCheckbox && !authCheckbox.checked) {
+                        e.preventDefault();
+                        alert('Please confirm the Super Admin statutory declaration before submitting.');
+                        authCheckbox.focus();
+                        return;
+                    }
+
+                    alert('DGHS Intake Form submitted successfully for statutory verification.');
+                });
+            }
+        }
+    </script>
+</body>
+</html>

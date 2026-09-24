@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Portal Dashboard</title>
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Styles -->
+    <style>
+      :root {
+        --bg-main: #ffffff;
+        --bg-sidebar: #005a70;
+        --bg-card: #ffffff;
+        --header-color: #f3fdff;
+        --sidebar-admin: #034c53;
+        --sidebar-executive: #1a2836;
+        --text-primary: #1e293b;
+        --text-muted: #49515e;
+        --primary-color: #007084;
+        --primary-light: #e6f4f8;
+        --accent-cyan: #e0f7fa;
+        --danger-color: #ef4444;
+        --danger-bg: #fee2e2;
+        --warning-color: #f59e0b;
+        --warning-bg: #fef3c7;
+        --success-color: #10b981;
+        --success-bg: #d1fae5;
+        --info-color: #3b82f6;
+        --info-bg: #dbeafe;
+        --border-color: #e2e8f0;
+        --radius-sm: 6px;
+        --radius-md: 10px;
+        --radius-lg: 14px;
+
+        --doc-bg-main: #f4f6f8;
+        --doc-sidebar: #064e3b;
+        --doc-bg-card: #ffffff;
+        --doc-text-primary: #111827;
+        --doc-text-secondary: #4b5563;
+        --doc-text-muted: #9ca3af;
+        --doc-primary-emerald: #059669;
+        --doc-dark-emerald: #064e3b;
+        --doc-light-emerald: #d1fae5;
+        --doc-border-color: #e5e7eb;
+        --doc-radius-sm: 6px;
+        --doc-radius-md: 10px;
+
+        --exe-primary-bg: #1e293b;
+        --exe-sidebar-bg: #1b2537;
+        --exe-main-bg: #f1f5f9;
+        --exe-card-bg: #ffffff;
+        --exe-accent-blue: #0284c7;
+        --exe-accent-blue-hover: #0369a1;
+        --exe-accent-red: #ef4444;
+        --exe-text-main: #0f172a;
+        --exe-text-muted: #64748b;
+        --exe-border-color: #e2e8f0;
+
+        --srug-primary-crimson: #a81c34;
+        --srug-primary-hover: #8a1529;
+        --srug-bg-sidebar: #8b1528;
+        --srug-bg-main: #f8f9fa;
+        --srug-bg-card: #ffffff;
+        --srug-text-dark: #1e293b;
+        --srug-text-muted: #64748b;
+        --srug-border-color: #e2e8f0;
+        --srug-success-color: #16a34a;
+        --srug-danger-color: #dc2626;
+        --srug-warning-color: #d97706;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      }
+
+      body {
+        background-color: var(--bg-main);
+        color: var(--text-primary);
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .app-container {
+        display: flex;
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        width: 230px;
+        background-color: var(--bg-sidebar);
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 0px 0px 0px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto; 
+      }
+
+      .admin {
+        background-color: var(--sidebar-admin);
+      }
+
+      .executive {
+        background-color: var(--sidebar-executive);
+      }
+
+      .doctor {
+        background-color: var(--doc-sidebar);
+      }
+
+      .surgeon {
+        background-color: var(--srug-bg-sidebar);
+      }
+
+      .sidebar.surgeon > .nav-menu > .nav-item:hover,
+      .sidebar.surgeon > .nav-menu > .nav-item.active {
+        background-color: rgba(61, 5, 5, 0.15);
+        color: #ffffff;
+        border-left: 4px solid rgb(255, 116, 116);
+      }
+
+      .sidebar.surgeon > .nav-menu > .nav-item {
+        color: white;
+      }
+
+      .executive > .nav-menu > .nav-item:hover, 
+      .executive > .nav-menu > .nav-item.active {
+        background-color: #283C68;
+        color: #ffffff;
+        border-left: 4px solid #6886c9;
+      }
+
+      .logo {
+        font-size: 20px;
+        font-weight: 800;
+        padding: 0 20px 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        letter-spacing: 0.5px;
+      }
+
+      .nav-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        flex-grow: 1;
+      }
+
+      .nav-item {
+        color: #b2d8d8;
+        text-decoration: none;
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 13px;
+        transition: all 0.2s ease;
+      }
+
+      .nav-item:hover, .nav-item.active {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        border-left: 4px solid #00f2fe;
+      }
+
+      .sidebar-footer {
+        padding: 0px;
+      }
+
+      .sidebar-footer > a {
+        text-decoration: none;
+      }
+
+      .logout-btn {
+        width: 100%;
+        padding: 12px;
+        padding-left: 20px;
+        background-color: #ff4d4f;
+        color: white;
+        border: none;
+        border-radius: 0;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+      }
+
+      .logout-btn:hover {
+        background-color: #d9363e;
+      }
+
+      .main-wrapper {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        overflow-y: auto; 
+      }
+
+      .top-header {
+        background-color: var(--header-color);
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .search-bar {
+        display: flex;
+        align-items: center;
+        background-color: var(--bg-main);
+        padding: 8px 14px;
+        border-radius: 20px;
+        width: 320px;
+        gap: 8px;
+        color: var(--text-muted);
+        border: 0.2px solid #cecece;
+      }
+
+      .search-bar input {
+        border: none;
+        background: transparent;
+        outline: none;
+        width: 100%;
+        font-size: 12px;
+      }
+
+      .role-switcher {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+      }
+
+      .role-btn {
+        padding: 4px 10px;
+        border: 1px solid var(--border-color);
+        background: white;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 11px;
+      }
+
+      .role-btn:hover {
+        background: #f1f5f9;
+      }
+
+      .user-profile {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .user-info {
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .user-name {
+        font-weight: 700;
+        font-size: 13px;
+      }
+
+      .user-role {
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+
+      .avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: #e2e8f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+      }
+
+      .patient-nav a > span {
+        color: #ffffff;
+      }
+
+      .content-area {
+        padding: 24px;
+      }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- SIDEBAR -->
+        <!-- Default role: surgeon -->
+        <aside class="sidebar surgeon" id="appSidebar">
+            <div class="logo">
+                <i class="fa-solid fa-hospital"></i>
+                <span>MED-CORE</span>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <span>Patients</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-bed-pulse"></i>
+                    <span>Surgeries</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-file-medical"></i>
+                    <span>Records</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <!-- INLINE TRIGGER: Runs handleLogout() directly on click -->
+                <button class="logout-btn" onclick="handleLogout()">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <main class="main-wrapper">
+            
+            <!-- TOP HEADER -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <!-- INLINE TRIGGER: Calls performSearch on 'Enter' keyup -->
+                    <input type="text" id="searchInput" placeholder="Search patient ID, name..." onkeyup="handleSearchKey(event)">
+                </div>
+
+                <!-- ROLE SWITCHER DEMO CONTROLS -->
+                <!-- INLINE TRIGGER: Calls setAppRole() directly with role names -->
+                <div class="role-switcher">
+                    <span style="font-size: 11px; color: var(--text-muted);">Switch View:</span>
+                    <button class="role-btn" onclick="setAppRole('admin')">Admin</button>
+                    <button class="role-btn" onclick="setAppRole('executive')">Executive</button>
+                    <button class="role-btn" onclick="setAppRole('doctor')">Doctor</button>
+                    <button class="role-btn" onclick="setAppRole('surgeon')">Surgeon</button>
+                </div>
+
+                <div class="user-profile">
+                    <div class="user-info">
+                        <span class="user-name" id="userName">Dr. Sarah Connor</span>
+                        <span class="user-role" id="userRole">Lead Surgeon</span>
+                    </div>
+                    <div class="avatar">
+                        <i class="fa-solid fa-user-doctor"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT AREA -->
+            <section class="content-area">
+                <h2>System Overview</h2>
+                <p style="color: var(--text-muted); margin-top: 8px;">Select options from the sidebar or search above.</p>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- JAVASCRIPT FUNCTIONS - Placed directly before closing </body>     -->
+    <!-- ================================================================= -->
+    <script>
+        // 1. Run initialization setups when the DOM content is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigationHighlighting();
+        });
+
+        /**
+         * FUNCTION: Dynamic Active Menu Highlight
+         * Attaches click handlers to sidebar menu links to manage the '.active' CSS class
+         */
+        function initNavigationHighlighting() {
+            const navItems = document.querySelectorAll('.nav-menu .nav-item');
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevents page reload on '#' links
+                    
+                    // Remove 'active' class from all sibling items
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    
+                    // Add 'active' class to the clicked item
+                    this.classList.add('active');
+                });
+            });
+        }
+
+        /**
+         * FUNCTION: Switch Application Roles & Sidebar Colors
+         * Triggered directly by the switch buttons in the header
+         * @param {string} role - Options: 'admin', 'executive', 'doctor', 'surgeon'
+         */
+        function setAppRole(role) {
+            const sidebar = document.getElementById('appSidebar');
+            const roleLabel = document.getElementById('userRole');
+            
+            if (!sidebar) return;
+
+            // Remove previous role theme classes
+            sidebar.classList.remove('admin', 'executive', 'doctor', 'surgeon');
+
+            // Apply selected role class & update header role title
+            switch (role.toLowerCase()) {
+                case 'admin':
+                    sidebar.classList.add('admin');
+                    roleLabel.textContent = 'System Administrator';
+                    break;
+                case 'executive':
+                    sidebar.classList.add('executive');
+                    roleLabel.textContent = 'Executive Management';
+                    break;
+                case 'doctor':
+                    sidebar.classList.add('doctor');
+                    roleLabel.textContent = 'Attending Physician';
+                    break;
+                case 'surgeon':
+                    sidebar.classList.add('surgeon');
+                    roleLabel.textContent = 'Lead Surgeon';
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        /**
+         * FUNCTION: Search Input Listener
+         * Checks if the user pressed the "Enter" key inside the search bar
+         * @param {KeyboardEvent} event 
+         */
+        function handleSearchKey(event) {
+            if (event.key === 'Enter') {
+                const query = event.target.value.trim();
+                if (query.length > 0) {
+                    performSearch(query);
+                }
+            }
+        }
+
+        /**
+         * FUNCTION: Perform Global Search Action
+         * @param {string} query 
+         */
+        function performSearch(query) {
+            alert('Searching database for: ' + query);
+            // Replace with your real lookup / filtering logic
+        }
+
+        /**
+         * FUNCTION: Handle User Logout
+         * Triggered directly by the logout button's onclick attribute
+         */
+        function handleLogout() {
+            const confirmLogout = confirm('Are you sure you want to log out?');
+            if (confirmLogout) {
+                alert('Logging out...');
+                // window.location.href = '/login.html'; // Uncomment to redirect to login page
+            }
+        }
+    </script>
+
+</body>
+</html>

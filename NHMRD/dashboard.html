@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Admin & Clinical Dashboard</title>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Base Reset & Variables */
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    :root {
+      --bg-main: #f4f7f6;
+      --sidebar-bg: #1e293b;
+      --card-bg: #ffffff;
+      --text-main: #334155;
+      --emerald: #10b981;
+      --emerald-dark: #059669;
+      --red: #ef4444;
+      --blue: #3b82f6;
+      --border-color: #e2e8f0;
+    }
+
+    body { background-color: var(--bg-main); color: var(--text-main); display: flex; height: 100vh; overflow: hidden; }
+
+    /* Layout Structure */
+    .app-container { display: flex; width: 100%; height: 100%; }
+    
+    /* Sidebar */
+    .sidebar { width: 250px; background: var(--sidebar-bg); color: #fff; display: flex; flex-direction: column; padding: 20px; }
+    .sidebar .logo { font-size: 1.4rem; font-weight: bold; color: var(--emerald); display: flex; align-items: center; gap: 10px; margin-bottom: 30px; }
+    .nav-menu { display: flex; flex-direction: column; gap: 10px; flex-grow: 1; }
+    .nav-item { color: #94a3b8; text-decoration: none; padding: 12px 15px; border-radius: 8px; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
+    .nav-item:hover, .nav-item.active { background: #334155; color: #fff; }
+    .logout-btn { background: #dc2626; color: white; border: none; padding: 10px; width: 100%; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+
+    /* Main Content */
+    .main-wrapper { flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
+    
+    /* Header */
+    .doc-header { background: #fff; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); }
+    .search-bar { display: flex; align-items: center; background: #f1f5f9; padding: 8px 15px; border-radius: 20px; width: 350px; }
+    .search-bar input { border: none; background: transparent; outline: none; margin-left: 10px; width: 100%; }
+    .header-right { display: flex; align-items: center; gap: 15px; }
+    .header-status-pill { background: #f1f5f9; padding: 6px 12px; border-radius: 15px; font-size: 0.85rem; }
+
+    /* Content Body */
+    .content-body { padding: 25px; }
+    
+    /* Banner */
+    .command-banner { background: #fff; padding: 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-left: 5px solid var(--emerald); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .banner-title-area { display: flex; align-items: center; gap: 15px; }
+    .banner-icon-bg { background: #d1fae5; color: var(--emerald); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    .badge-green { background: #d1fae5; color: var(--emerald-dark); padding: 4px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; }
+    
+    /* Buttons */
+    .btn-emerald { background: var(--emerald); color: white; border: none; padding: 10px 18px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+    .btn-outline-dark { background: transparent; border: 1px solid #64748b; padding: 10px 18px; border-radius: 8px; cursor: pointer; }
+
+    /* Metrics Grid */
+    .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 25px; }
+    .metric-card { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .metric-header { display: flex; justify-content: space-between; font-size: 0.8rem; color: #64748b; font-weight: bold; margin-bottom: 10px; }
+    .metric-value-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
+    .metric-value { font-size: 1.8rem; font-weight: bold; }
+
+    /* Split Section */
+    .dashboard-split { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+    .card { background: #fff; padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+
+    /* Queue Items */
+    .queue-item { display: flex; justify-content: space-between; padding: 15px; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 10px; }
+    .time-col { font-weight: bold; margin-right: 15px; text-align: center; color: #475569; }
+
+    /* Telemetry Table */
+    .telemetry-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    .telemetry-table th, .telemetry-table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-color); }
+    .btn-table-danger { background: #fee2e2; color: var(--red); border: 1px solid var(--red); padding: 5px 10px; border-radius: 6px; cursor: pointer; }
+
+    /* Text Utilities */
+    .text-red { color: var(--red); }
+    .text-emerald { color: var(--emerald); }
+  </style>
+</head>
+
+<script src="script.js"></script>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#" class="nav-item active"><i class="fa-solid fa-table-cells-large"></i> <span>Dashboard</span></a>
+        <a href="#" class="nav-item"><i class="fa-solid fa-notes-medical"></i> <span>Clinical Records</span></a>
+        <a href="#" class="nav-item"><i class="fa-solid fa-user-clock"></i> <span>Patient Requests</span></a>
+        <a href="#" class="nav-item"><i class="fa-solid fa-user-doctor"></i> <span>Doctor Profile</span></a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn" id="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      <header class="doc-header">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="global-search-input" placeholder="Search patient name, MRNs...">
+        </div>
+
+        <div class="header-right">
+          <div class="header-status-pill">
+            <i class="fa-regular fa-clock"></i> <span>Shift: Morning Rounds</span>
+          </div>
+          <button class="btn-emerald" id="notification-bell-btn"><i class="fa-regular fa-bell"></i></button>
+        </div>
+      </header>
+
+      <main class="content-body">
+        <div class="command-banner">
+          <div class="banner-title-area">
+            <div class="banner-icon-bg"><i class="fa-solid fa-stethoscope"></i></div>
+            <div>
+              <div class="banner-title-row">
+                <h2>Internal Medicine Clinical Command</h2>
+                <span class="badge-green">ACTIVE ROUNDING</span>
+              </div>
+              <p>Station 04 &bull; Service Ward 3B</p>
+            </div>
+          </div>
+          <div>
+            <button class="btn-outline-dark" id="btn-call-triage"><i class="fa-solid fa-phone"></i> Call Triage</button>
+            <button class="btn-emerald" id="btn-new-encounter"><i class="fa-solid fa-plus"></i> New Encounter</button>
+          </div>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-header">TODAY'S CONSULTATIONS</div>
+            <div class="metric-value-row">
+              <span class="metric-value" id="consult-count">18</span>
+              <span class="text-emerald">+12%</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-header">RX REVIEWS PENDING</div>
+            <div class="metric-value-row">
+              <span class="metric-value">14</span>
+              <span class="text-red">4 Urgent</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Split -->
+        <div class="dashboard-split">
+          <div class="left-column">
+            <div class="card">
+              <div class="card-header">
+                <h3><i class="fa-solid fa-calendar-day text-emerald"></i> Patient Queue</h3>
+              </div>
+              
+              <!-- Patient Queue Container -->
+              <div id="patient-queue-list">
+                <div class="queue-item" data-name="Arthur Pendelton">
+                  <div class="time-col">09:15<br><small>AM</small></div>
+                  <div>
+                    <strong>Arthur Pendelton</strong> (62 y/o M)<br>
+                    <small>Chief Complaint: Diabetes Follow-up</small>
+                  </div>
+                  <div>
+                    <button class="btn-outline-dark btn-view-records">Records</button>
+                  </div>
+                </div>
+
+                <div class="queue-item" data-name="Eleanor Vance-Croft">
+                  <div class="time-col">09:45<br><small>AM</small></div>
+                  <div>
+                    <strong>Eleanor Vance-Croft</strong> (48 y/o F)<br>
+                    <small>Chief Complaint: Hypertension</small>
+                  </div>
+                  <div>
+                    <button class="btn-outline-dark btn-view-records">Records</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="right-column">
+            <div class="card">
+              <h3>Quick Prescriber</h3>
+              <br>
+              <input type="text" id="prescriber-med-input" value="Metformin 1000mg" style="width:100%; padding: 8px; margin-bottom:10px;">
+              <button class="btn-emerald" id="btn-queue-prescriber" style="width:100%;">Queue Prescription</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- JavaScript Fixes -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initSearch();
+      initQueueActions();
+      initPrescriber();
+      initLogout();
+    });
+
+    // ১. লাইভ পেশেন্ট ফিল্টারিং/সার্চ সিস্টেম
+    function initSearch() {
+      const searchInput = document.getElementById('global-search-input');
+      
+      searchInput.addEventListener('keyup', (e) => {
+        const query = e.target.value.toLowerCase();
+        const patientItems = document.querySelectorAll('.queue-item');
+
+        patientItems.forEach(item => {
+          const patientName = item.getAttribute('data-name').toLowerCase();
+          if (patientName.includes(query)) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    }
+
+    // ২. পেশেন্ট রেকর্ড বাটন হ্যান্ডলার
+    function initQueueActions() {
+      document.getElementById('patient-queue-list').addEventListener('click', (e) => {
+        if (e.target.classList.contains('btn-view-records')) {
+          const queueItem = e.target.closest('.queue-item');
+          const patientName = queueItem.getAttribute('data-name');
+          alert(`Opening clinical records for: ${patientName}`);
+        }
+      });
+    }
+
+    // ৩. প্রিসক্রিপশন কিউ সিস্টেম
+    function initPrescriber() {
+      const queueBtn = document.getElementById('btn-queue-prescriber');
+      const medInput = document.getElementById('prescriber-med-input');
+
+      queueBtn.addEventListener('click', () => {
+        const medicine = medInput.value.trim();
+        if(!medicine) {
+          alert("Please enter a medicine name!");
+          return;
+        }
+        alert(`Prescription queued successfully: ${medicine}`);
+        medInput.value = '';
+      });
+    }
+
+    // ৪. লগআউট কনফার্মেশন
+    function initLogout() {
+      const logoutBtn = document.getElementById('logout-btn');
+      logoutBtn.addEventListener('click', () => {
+        if (confirm('Are you sure you want to log out?')) {
+          alert('Logged out successfully.');
+          // window.location.href = '/login.html'; // এখানে লগইন পেজের লিংক দিন
+        }
+      });
+    }
+  </script>
+</body>
+</html>
