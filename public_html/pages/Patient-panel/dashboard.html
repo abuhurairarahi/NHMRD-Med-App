@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-<body>
+
   <div class="app-container">
     <!-- Sidebar Navigation -->
     <aside class="sidebar">
@@ -21,46 +20,46 @@
       </div>
 
       <nav class="nav-menu patient-nav">
-        <a href="#" class="nav-item">
-          <i class="fa-solid fa-table-cells-large"></i>
+        <a href="/public_html/pages/Patient-panel/dashboard.html" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i> 
           <span>Dashboard</span>
         </a>
-        <a href="#" class="nav-item">
-          <i class="fa-solid fa-file-prescription"></i>
+        <a href="/public_html/pages/Patient-panel/prescription-record.html" class="nav-item">
+          <i class="fa-solid fa-file-prescription"></i> 
           <span>Prescription Records</span>
         </a>
-        <a href="#" class="nav-item">
-          <i class="fa-solid fa-kit-medical"></i>
+        <a href="/public_html/pages/Patient-panel/surgary-record.html" class="nav-item">
+          <i class="fa-solid fa-scalpel"></i> 
           <span>Surgery Records</span>
         </a>
-        <a href="#" class="nav-item active">
-          <i class="fa-solid fa-vial"></i>
+        <a href="/public_html/pages/Patient-panel/lab-test.html" class="nav-item">
+          <i class="fa-solid fa-vial"></i> 
           <span>Test Records</span>
         </a>
-        <a href="#" class="nav-item">
-          <i class="fa-solid fa-syringe"></i>
+        <a href="/public_html/pages/Patient-panel/vaccine-panel.html" class="nav-item active">
+          <i class="fa-solid fa-syringe"></i> 
           <span>Vaccine Records</span>
         </a>
-        <a href="#" class="nav-item">
-          <i class="fa-solid fa-calendar-plus"></i>
+        <a href="/public_html/pages/Patient-panel/req-appointment.html" class="nav-item">
+          <i class="fa-solid fa-calendar-plus"></i> 
           <span>Request Appointment</span>
         </a>
-        <a href="#" class="nav-item">
-          <i class="fa-solid fa-notes-medical"></i>
+        <a href="/public_html/pages/Patient-panel/medical-test-req.html" class="nav-item">
+          <i class="fa-solid fa-notes-medical"></i> 
           <span>Request Medical Test</span>
         </a>
-        <a href="#" class="nav-item">
-          <i class="fa-solid fa-shield-virus"></i>
+        <a href="/public_html/pages/Patient-panel/req-vaccine.html" class="nav-item">
+          <i class="fa-solid fa-shield-virus"></i> 
           <span>Request Vaccine</span>
         </a>
-        <a href="#" class="nav-item">
-          <i class="fa-solid fa-id-card"></i>
+        <a href="/public_html/pages/Patient-panel/paitent-info.html" class="nav-item">
+          <i class="fa-solid fa-id-card"></i> 
           <span>Patient Info</span>
         </a>
       </nav>
 
       <div class="sidebar-footer">
-        <button class="logout-btn">
+        <button class="logout-btn" on-click="handleUserLogout()">
           <i class="fa-solid fa-arrow-right-from-bracket"></i>
           <span>Logout</span>
         </button>
@@ -73,11 +72,11 @@
       <header class="top-header">
         <div class="search-bar">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Search Queries">
+          <input type="text" placeholder="Search Queries" oninput="filterDashboardContent(event)">
         </div>
 
         <div class="header-right">
-          <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+          <button class="icon-btn" onclick="handleNotificationClick()"><i class="fa-regular fa-bell"></i></button>
           <div class="user-badge-avatar">SR</div>
           <div class="user-info-text">
             <span class="user-name">Shishir Rahaman</span>
@@ -122,7 +121,7 @@
             </div>
 
             <div class="header-actions">
-              <button class="btn-secondary">
+              <button class="btn-secondary" onclick="navigateToUpdateProfile()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
                   <polyline points="16 6 12 2 8 6" />
@@ -130,7 +129,7 @@
                 </svg>
                 Update Data
               </button>
-              <button class="btn-primary">
+              <button class="btn-primary" onclick="printPatientCard()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <polyline points="6 9 6 2 18 2 18 9" />
                   <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
@@ -403,7 +402,7 @@
 
             <div class="panel-footer-sync">
               <span class="text-muted">Certified by DGHS Clinical Registry</span>
-              <a href="#" class="link-btn-bold">
+              <a href="#" class="link-btn-bold" onclick="syncExternalLabs()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
                 </svg>
@@ -418,6 +417,10 @@
     </div>
 
   </div>
+
+  <!-- Add this at the bottom of Dashboard.html -->
+  <script src="/public_html/Js_file/paitent/dashboard.js"></script>
+
 </body>
 
 </html>

@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Diagnostic & Lab Test Records - NHMRD</title>
   <link rel="stylesheet" href="/public_html/assets/css/patient-panel/lab-test.css">
-  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+   <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/patient-panel/features/patient-header.css">
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -20,46 +21,45 @@
       </div>
 
       <nav class="nav-menu">
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/dashboard.html" class="nav-item">
           <i class="fa-solid fa-table-cells-large"></i> 
           <span>Dashboard</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/prescription-record.html" class="nav-item">
           <i class="fa-solid fa-file-prescription"></i> 
           <span>Prescription Records</span>
         </a>
-        <a href="#" class="nav-item">
-          <i class="fa-solid fa-kit-medical"></i> 
+        <a href="/public_html/pages/Patient-panel/surgary-record.html" class="nav-item">
+          <i class="fa-solid fa-scalpel"></i> 
           <span>Surgery Records</span>
         </a>
-        <a href="#" class="nav-item active">
+        <a href="/public_html/pages/Patient-panel/lab-test.html" class="nav-item">
           <i class="fa-solid fa-vial"></i> 
           <span>Test Records</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/vaccine-panel.html" class="nav-item active">
           <i class="fa-solid fa-syringe"></i> 
           <span>Vaccine Records</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/req-appointment.html" class="nav-item">
           <i class="fa-solid fa-calendar-plus"></i> 
           <span>Request Appointment</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/medical-test-req.html" class="nav-item">
           <i class="fa-solid fa-notes-medical"></i> 
           <span>Request Medical Test</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/req-vaccine.html" class="nav-item">
           <i class="fa-solid fa-shield-virus"></i> 
           <span>Request Vaccine</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/paitent-info.html" class="nav-item">
           <i class="fa-solid fa-id-card"></i> 
           <span>Patient Info</span>
         </a>
       </nav>
-
       <div class="sidebar-footer">
-        <button class="logout-btn">
+        <button class="logout-btn" onclick="handleUserLogout()">
           <i class="fa-solid fa-arrow-right-from-bracket"></i> 
           <span>Logout</span>
         </button>
@@ -72,11 +72,11 @@
       <header class="patient-header">
         <div class="search-bar">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Search Queries">
+          <input type="text" placeholder="Search Queries" oninput="filterTestRecords(event)">
         </div>
 
         <div class="header-right">
-          <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+          <button class="icon-btn" onclick="handleNotificationClick()"><i class="fa-regular fa-bell"></i></button>
           <div class="user-badge-avatar">SR</div>
           <div class="user-info-text">
             <span class="user-name">Shishir Rahaman</span>
@@ -101,8 +101,8 @@
             </div>
           </div>
           <div class="banner-actions">
-            <button class="btn-outline"><i class="fa-solid fa-download"></i> Export All Records (PDF)</button>
-            <button class="btn-primary-blue"><i class="fa-solid fa-circle-plus"></i> Order New Diagnostic Test</button>
+            <button class="btn-outline" onclick="exportAllRecordsPDF()"><i class="fa-solid fa-download"></i> Export All Records (PDF)</button>
+            <button class="btn-primary-blue" onclick="orderNewTest()"><i class="fa-solid fa-circle-plus"></i> Order New Diagnostic Test</button>
           </div>
         </div>
 
@@ -139,11 +139,11 @@
         <!-- Category Tabs & Date Filter -->
         <div class="filter-row">
           <div class="filter-tabs">
-            <button class="tab-btn active">All Diagnostics (24)</button>
-            <button class="tab-btn">Biochemistry (12)</button>
-            <button class="tab-btn">Hematology (6)</button>
-            <button class="tab-btn">Radiology & USG (3)</button>
-            <button class="tab-btn">Serology (3)</button>
+            <button class="tab-btn active" onclick="filterByCategory(event)">All Diagnostics (24)</button>
+            <button class="tab-btn" onclick="filterByCategory(event)">Biochemistry (12)</button>
+            <button class="tab-btn" onclick="filterByCategory(event)">Hematology (6)</button>
+            <button class="tab-btn" onclick="filterByCategory(event)">Radiology & USG (3)</button>
+            <button class="tab-btn" onclick="filterByCategory(event)">Serology (3)</button>
           </div>
           <div class="date-filter">
             <span class="filter-label">Range:</span>
@@ -173,7 +173,7 @@
                 </p>
               </div>
             </div>
-            <button class="btn-primary-blue btn-sm"><i class="fa-regular fa-file-pdf"></i> View Full Report</button>
+            <button class="btn-primary-blue btn-sm" onclick="viewTestReport(event)"><i class="fa-regular fa-file-pdf"></i> View Full Report</button>
           </div>
 
           <!-- LFT Results Grid -->
@@ -385,6 +385,8 @@
       </main>
     </div>
   </div>
+
+  <script src="/public_html/Js_file/paitent/text_lab.js"></script>
 
 </body>
 </html>

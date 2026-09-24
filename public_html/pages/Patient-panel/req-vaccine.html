@@ -5,73 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book Vaccine & Immunization Dose - NHMRD</title>
   <link rel="stylesheet" href="/public_html/assets/css/patient-panel/req-vaccine.css">
-  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/patient-panel/features/patient-header.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
   <div class="app-container">
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar">
+    <aside class="sidebar patient">
       <div class="logo">
         <i class="fa-solid fa-shield-halved"></i>
         <span>NHMRD</span>
       </div>
 
       <nav class="nav-menu">
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/dashboard.html" class="nav-item">
           <i class="fa-solid fa-table-cells-large"></i> 
           <span>Dashboard</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/prescription-record.html" class="nav-item">
           <i class="fa-solid fa-file-prescription"></i> 
           <span>Prescription Records</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/surgary-record.html" class="nav-item">
           <i class="fa-solid fa-scalpel"></i> 
           <span>Surgery Records</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/lab-test.html" class="nav-item">
           <i class="fa-solid fa-vial"></i> 
           <span>Test Records</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/vaccine-panel.html" class="nav-item active">
           <i class="fa-solid fa-syringe"></i> 
           <span>Vaccine Records</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/req-appointment.html" class="nav-item">
           <i class="fa-solid fa-calendar-plus"></i> 
           <span>Request Appointment</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/medical-test-req.html" class="nav-item">
           <i class="fa-solid fa-notes-medical"></i> 
           <span>Request Medical Test</span>
         </a>
-        <a href="#" class="nav-item active">
+        <a href="/public_html/pages/Patient-panel/req-vaccine.html" class="nav-item">
           <i class="fa-solid fa-shield-virus"></i> 
           <span>Request Vaccine</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/paitent-info.html" class="nav-item">
           <i class="fa-solid fa-id-card"></i> 
           <span>Patient Info</span>
         </a>
       </nav>
 
       <div class="sidebar-footer">
-        <button class="logout-btn">
+        <button class="logout-btn" onclick="handleLogout()">
           <i class="fa-solid fa-arrow-right-from-bracket"></i> 
           <span>Logout</span>
         </button>
       </div>
     </aside>
 
-    <!-- Main Content Wrapper -->
     <div class="main-wrapper">
-      <!-- Top Header Bar -->
-      <header class="top-header">
+      <header class="patient-header">
         <div class="search-bar">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Search Queries">
+          <input type="text" placeholder="Search Queries" oninput="handleGlobalSearch(event)">
         </div>
 
         <div class="header-right">
@@ -81,10 +79,8 @@
         </div>
       </header>
 
-      <!-- Main Content Body -->
       <main class="content-body">
 
-        <!-- Page Header Banner -->
         <div class="page-banner">
           <div class="banner-icon-box">
             <i class="fa-solid fa-syringe"></i>
@@ -95,10 +91,8 @@
           </div>
         </div>
 
-        <!-- 2-Column Grid Layout -->
         <div class="vaccine-grid">
 
-          <!-- Left Column: Available Vaccines -->
           <div class="vaccine-left-col">
             
             <div class="section-header">
@@ -109,11 +103,9 @@
               <span class="section-subtitle">Click to select vaccine dose</span>
             </div>
 
-            <!-- Vaccine List Card Stack -->
             <div class="vaccine-list">
 
-              <!-- Vaccine Item 1 (Selected) -->
-              <div class="vaccine-card selected">
+              <div class="vaccine-card selected" onclick="selectVaccine(this, 'Influenza Seasonal Quadrivalent', '#BN-883902')">
                 <div class="vaccine-card-left">
                   <div class="vaccine-icon-box blue-bg">
                     <i class="fa-solid fa-shield-virus"></i>
@@ -140,8 +132,7 @@
                 </div>
               </div>
 
-              <!-- Vaccine Item 2 -->
-              <div class="vaccine-card">
+              <div class="vaccine-card" onclick="selectVaccine(this, 'Hepatitis B Booster Dose', '#BN-441029')">
                 <div class="vaccine-card-left">
                   <div class="vaccine-icon-box light-blue-bg">
                     <i class="fa-solid fa-wave-square"></i>
@@ -166,8 +157,7 @@
                 </div>
               </div>
 
-              <!-- Vaccine Item 3 -->
-              <div class="vaccine-card">
+              <div class="vaccine-card" onclick="selectVaccine(this, 'COVID-19 Updated Bivalent Booster', '#BN-910283')">
                 <div class="vaccine-card-left">
                   <div class="vaccine-icon-box light-blue-bg">
                     <i class="fa-solid fa-viruses"></i>
@@ -194,8 +184,7 @@
                 </div>
               </div>
 
-              <!-- Vaccine Item 4 -->
-              <div class="vaccine-card">
+              <div class="vaccine-card" onclick="selectVaccine(this, 'Typhoid / Pneumococcal Conjugate', '#BN-230911')">
                 <div class="vaccine-card-left">
                   <div class="vaccine-icon-box light-blue-bg">
                     <i class="fa-solid fa-bacteria"></i>
@@ -226,7 +215,6 @@
 
           </div>
 
-          <!-- Right Column: Appointment Scheduling -->
           <div class="vaccine-right-col">
             
             <div class="card scheduling-card">
@@ -238,17 +226,15 @@
                 <span class="step-pill">Step 2 of 2</span>
               </div>
 
-              <!-- Selected Immunization Box -->
               <div class="selected-imm-box">
                 <div class="imm-info">
                   <span class="imm-label">SELECTED IMMUNIZATION</span>
                   <strong class="imm-name">Influenza Seasonal Quadrivalent</strong>
                   <span class="imm-meta">Batch: #BN-883902 &bull; IM 0.5 mL</span>
                 </div>
-                <button class="change-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                <button class="change-btn" onclick="changeVaccineSelection()"><i class="fa-solid fa-pen-to-square"></i></button>
               </div>
 
-              <!-- Authorized Medical Center -->
               <div class="form-group margin-top-md">
                 <div class="label-with-badge">
                   <label>Authorized Medical Center</label>
@@ -265,7 +251,6 @@
                 </div>
               </div>
 
-              <!-- Target Date & Time Slot Grid -->
               <div class="datetime-grid margin-top-md">
                 <div class="form-group flex-1">
                   <label>Target Date</label>
@@ -288,7 +273,6 @@
                 </div>
               </div>
 
-              <!-- Recipient Profile Box -->
               <div class="recipient-box margin-top-md">
                 <div class="recipient-header">
                   <span class="rec-label">RECIPIENT PROFILE</span>
@@ -307,7 +291,6 @@
                 </div>
               </div>
 
-              <!-- Declaration Checkbox -->
               <div class="declaration-box margin-top-md">
                 <input type="checkbox" id="declCheck" checked>
                 <label for="declCheck">
@@ -315,8 +298,7 @@
                 </label>
               </div>
 
-              <!-- Confirm Button -->
-              <button class="btn-confirm-appointment margin-top-md">
+              <button class="btn-confirm-appointment margin-top-md" onclick="confirmVaccineAppointment()">
                 <i class="fa-regular fa-calendar-check"></i> Confirm Vaccine Appointment
               </button>
             </div>
@@ -325,7 +307,6 @@
 
         </div>
 
-        <!-- Guidelines & Instructions Footer Card -->
         <div class="card guidelines-card">
           <div class="guidelines-header">
             <i class="fa-regular fa-circle-info"></i>
@@ -363,5 +344,6 @@
     </div>
   </div>
 
+  <script src="/public_html/Js_file/paitent/vaccine.js"></script>
 </body>
 </html>

@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prescription Records - NHMRD</title>
   <link rel="stylesheet" href="/public_html/assets/css/patient-panel/prescription-record.css">
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/patient-panel/features/patient-header.css">
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -12,53 +14,52 @@
 
   <div class="app-container">
     <!-- Sidebar Navigation -->
-    <aside class="sidebar">
+    <aside class="sidebar patient">
       <div class="logo">
         <i class="fa-solid fa-shield-halved"></i>
         <span>NHMRD</span>
       </div>
-
       <nav class="nav-menu">
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/dashboard.html" class="nav-item">
           <i class="fa-solid fa-table-cells-large"></i> 
           <span>Dashboard</span>
         </a>
-        <a href="#" class="nav-item active">
+        <a href="/public_html/pages/Patient-panel/prescription-record.html" class="nav-item active">
           <i class="fa-solid fa-file-prescription"></i> 
           <span>Prescription Records</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/surgary-record.html" class="nav-item">
           <i class="fa-solid fa-scalpel"></i> 
           <span>Surgery Records</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/lab-test.html" class="nav-item">
           <i class="fa-solid fa-vial"></i> 
           <span>Test Records</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/vaccine-panel.html" class="nav-item">
           <i class="fa-solid fa-syringe"></i> 
           <span>Vaccine Records</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/req-appointment.html" class="nav-item">
           <i class="fa-solid fa-calendar-plus"></i> 
           <span>Request Appointment</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/medical-test-req.html" class="nav-item">
           <i class="fa-solid fa-notes-medical"></i> 
           <span>Request Medical Test</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/req-vaccine.html" class="nav-item">
           <i class="fa-solid fa-shield-virus"></i> 
           <span>Request Vaccine</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/paitent-info.html" class="nav-item">
           <i class="fa-solid fa-id-card"></i> 
           <span>Patient Info</span>
         </a>
       </nav>
 
       <div class="sidebar-footer">
-        <button class="logout-btn">
+        <button class="logout-btn" onclick="handleLogout()">
           <i class="fa-solid fa-arrow-right-from-bracket"></i> 
           <span>Logout</span>
         </button>
@@ -68,10 +69,10 @@
     <!-- Main Content Area -->
     <div class="main-wrapper">
       <!-- Top Header Navigation -->
-      <header class="top-header">
+      <header class="patient-header">
         <div class="search-bar">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Search Queries">
+          <input type="text" placeholder="Search Queries" oninput="handleGlobalSearch(event)">
         </div>
 
         <div class="header-right">
@@ -99,8 +100,8 @@
             </div>
           </div>
           <div class="banner-actions">
-            <button class="btn btn-outline-blue"><i class="fa-solid fa-print"></i> Print Roster</button>
-            <button class="btn btn-primary"><i class="fa-solid fa-download"></i> Download Full History (PDF)</button>
+            <button class="btn btn-outline-blue" onclick="printRoster()"><i class="fa-solid fa-print"></i> Print Roster</button>
+            <button class="btn btn-primary" onclick="downloadFullHistory()"><i class="fa-solid fa-download"></i> Download Full History (PDF)</button>
           </div>
         </section>
 
@@ -114,13 +115,13 @@
           <div class="filter-controls">
             <div class="search-filter-input">
               <i class="fa-solid fa-filter"></i>
-              <input type="text" placeholder="Filter by medicine, doctor, hospital">
+              <input type="text" placeholder="Filter by medicine, doctor, hospital" oninput="filterByKeyword(event)">
             </div>
             <div class="pill-tabs">
-              <button class="tab-pill active">All</button>
-              <button class="tab-pill">Active</button>
-              <button class="tab-pill">Past</button>
-              <button class="tab-pill">Chronic</button>
+              <button class="tab-pill active" onclick="filterByTab(this, 'ALL')">All</button>
+              <button class="tab-pill" onclick="filterByTab(this, 'ACTIVE')">Active</button>
+              <button class="tab-pill" onclick="filterByTab(this, 'PAST')">Past</button>
+              <button class="tab-pill" onclick="filterByTab(this, 'CHRONIC')">Chronic</button>
             </div>
           </div>
         </section>
@@ -246,9 +247,9 @@
 
             <!-- Card Actions -->
             <div class="rx-footer-actions">
-              <button class="btn btn-sm-outline"><i class="fa-regular fa-eye"></i> View Digital Rx</button>
-              <button class="btn btn-sm-primary"><i class="fa-solid fa-cart-shopping"></i> Order Refill</button>
-              <button class="btn btn-sm-outline"><i class="fa-solid fa-download"></i> Download PDF</button>
+              <button class="btn btn-sm-outline" onclick="viewDigitalRx('#RX-2026-0941')"><i class="fa-regular fa-eye"></i> View Digital Rx</button>
+              <button class="btn btn-sm-primary" onclick="orderRefill('#RX-2026-0941')"><i class="fa-solid fa-cart-shopping"></i> Order Refill</button>
+              <button class="btn btn-sm-outline" onclick="downloadPrescriptionPDF('#RX-2026-0941')"><i class="fa-solid fa-download"></i> Download PDF</button>
             </div>
           </div>
 
@@ -318,9 +319,9 @@
 
             <!-- Card Actions -->
             <div class="rx-footer-actions">
-              <button class="btn btn-sm-outline"><i class="fa-regular fa-eye"></i> View Digital Rx</button>
-              <button class="btn btn-sm-primary"><i class="fa-solid fa-cart-shopping"></i> Order Refill</button>
-              <button class="btn btn-sm-outline"><i class="fa-solid fa-download"></i> Download PDF</button>
+              <button class="btn btn-sm-outline" onclick="viewDigitalRx('#RX-2026-0812')"><i class="fa-regular fa-eye"></i> View Digital Rx</button>
+              <button class="btn btn-sm-primary" onclick="orderRefill('#RX-2026-0812')"><i class="fa-solid fa-cart-shopping"></i> Order Refill</button>
+              <button class="btn btn-sm-outline" onclick="downloadPrescriptionPDF('#RX-2026-0812')"><i class="fa-solid fa-download"></i> Download PDF</button>
             </div>
           </div>
 
@@ -374,8 +375,8 @@
 
             <!-- Card Actions -->
             <div class="rx-footer-actions">
-              <button class="btn btn-sm-outline"><i class="fa-regular fa-eye"></i> View Archived Rx</button>
-              <button class="btn btn-sm-outline"><i class="fa-solid fa-download"></i> Download PDF</button>
+              <button class="btn btn-sm-outline" onclick="viewDigitalRx('#RX-2026-0429')"><i class="fa-regular fa-eye"></i> View Archived Rx</button>
+              <button class="btn btn-sm-outline" onclick="downloadPrescriptionPDF('#RX-2026-0429')"><i class="fa-solid fa-download"></i> Download PDF</button>
             </div>
           </div>
 
@@ -383,6 +384,8 @@
       </main>
     </div>
   </div>
+
+  <script src="/public_html/Js_file/paitent/prescription.js"></script>
 
 </body>
 </html>

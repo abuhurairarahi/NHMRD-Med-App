@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book a Doctor Consultation - NHMRD</title>
   <link rel="stylesheet" href="/public_html/assets/css/patient-panel/request-appointment.css">
+   <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/patient-panel/features/patient-header.css">
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -12,53 +14,53 @@
 
   <div class="app-container">
     <!-- Sidebar Navigation -->
-    <aside class="sidebar">
+    <aside class="sidebar patient">
       <div class="logo">
         <i class="fa-solid fa-shield-halved"></i>
         <span>NHMRD</span>
       </div>
 
-      <nav class="nav-menu">
-        <a href="#" class="nav-item">
+   <nav class="nav-menu">
+        <a href="/public_html/pages/Patient-panel/dashboard.html" class="nav-item">
           <i class="fa-solid fa-table-cells-large"></i> 
           <span>Dashboard</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/prescription-record.html" class="nav-item">
           <i class="fa-solid fa-file-prescription"></i> 
           <span>Prescription Records</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/surgary-record.html" class="nav-item">
           <i class="fa-solid fa-scalpel"></i> 
           <span>Surgery Records</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/lab-test.html" class="nav-item">
           <i class="fa-solid fa-vial"></i> 
           <span>Test Records</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/vaccine-panel.html" class="nav-item active">
           <i class="fa-solid fa-syringe"></i> 
           <span>Vaccine Records</span>
         </a>
-        <a href="#" class="nav-item active">
+        <a href="/public_html/pages/Patient-panel/req-appointment.html" class="nav-item">
           <i class="fa-solid fa-calendar-plus"></i> 
           <span>Request Appointment</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/medical-test-req.html" class="nav-item">
           <i class="fa-solid fa-notes-medical"></i> 
           <span>Request Medical Test</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/req-vaccine.html" class="nav-item">
           <i class="fa-solid fa-shield-virus"></i> 
           <span>Request Vaccine</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/paitent-info.html" class="nav-item">
           <i class="fa-solid fa-id-card"></i> 
           <span>Patient Info</span>
         </a>
       </nav>
 
       <div class="sidebar-footer">
-        <button class="logout-btn">
+       <button class="logout-btn" onclick="handleLogout()">
           <i class="fa-solid fa-arrow-right-from-bracket"></i> 
           <span>Logout</span>
         </button>
@@ -68,10 +70,10 @@
     <!-- Main Content Wrapper -->
     <div class="main-wrapper">
       <!-- Top Navigation Header -->
-      <header class="top-header">
+      <header class="patient-header">
         <div class="search-bar">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Search Queries">
+          <input type="text" placeholder="Search Queries" oninput="handleGlobalSearch(event)">
         </div>
 
         <div class="header-right">
@@ -197,7 +199,7 @@
                     </div>
                   </div>
                   <div class="doc-actions">
-                    <button class="btn-select">Select</button>
+                   <button class="btn-select" onclick="selectDoctor(this, 'Dr. Nusrat Jahan')">Select</button>
                     <span class="slot-badge">Next Slot: Wed, 19:30 PM</span>
                   </div>
                 </div>
@@ -217,7 +219,7 @@
                     </div>
                   </div>
                   <div class="doc-actions">
-                    <button class="btn-select">Select</button>
+                   <button class="btn-select" onclick="selectDoctor(this, 'Dr. Omar Rahman')">Select</button>
                     <span class="slot-badge">Next Slot: Wed, 20:00 PM</span>
                   </div>
                 </div>
@@ -237,7 +239,7 @@
                     </div>
                   </div>
                   <div class="doc-actions">
-                    <button class="btn-select">Select</button>
+                    <button class="btn-select" onclick="selectDoctor(this, 'Dr. Dastagir Abrar Jahan')">Select</button>
                     <span class="slot-badge">Next Slot: Wed, 19:30 PM</span>
                   </div>
                 </div>
@@ -276,34 +278,34 @@
 
                 <div class="date-cell disabled">30</div>
                 <div class="date-cell disabled">31</div>
-                <div class="date-cell">1</div>
-                <div class="date-cell">2</div>
-                <div class="date-cell">3</div>
-                <div class="date-cell">4</div>
+               <div class="date-cell" onclick="selectDate(this)">1</div>
+                <div class="date-cell" onclick="selectDate(this)">2</div>
+                <div class="date-cell" onclick="selectDate(this)">3</div>
+                <div class="date-cell" onclick="selectDate(this)">4</div>
                 <div class="date-cell disabled">5</div>
 
                 <div class="date-cell disabled">6</div>
-                <div class="date-cell">7</div>
-                <div class="date-cell">8</div>
-                <div class="date-cell">9</div>
-                <div class="date-cell">10</div>
-                <div class="date-cell">11</div>
+               <div class="date-cell" onclick="selectDate(this)">7</div>
+                <div class="date-cell" onclick="selectDate(this)">8</div>
+                <div class="date-cell" onclick="selectDate(this)">9</div>
+                <div class="date-cell" onclick="selectDate(this)">10</div>
+                <div class="date-cell" onclick="selectDate(this)">11</div>
                 <div class="date-cell disabled">12</div>
 
                 <div class="date-cell disabled">13</div>
-                <div class="date-cell">14</div>
-                <div class="date-cell">15</div>
-                <div class="date-cell selected">16</div>
-                <div class="date-cell">17</div>
-                <div class="date-cell">18</div>
+               <div class="date-cell" onclick="selectDate(this)">14</div>
+                <div class="date-cell" onclick="selectDate(this)">15</div>
+                <div class="date-cell selected" onclick="selectDate(this)">16</div>
+                <div class="date-cell" onclick="selectDate(this)">17</div>
+                <div class="date-cell" onclick="selectDate(this)">18</div>
                 <div class="date-cell disabled">19</div>
 
                 <div class="date-cell disabled">20</div>
-                <div class="date-cell">21</div>
-                <div class="date-cell">22</div>
-                <div class="date-cell">23</div>
-                <div class="date-cell">24</div>
-                <div class="date-cell">25</div>
+               <div class="date-cell" onclick="selectDate(this)">21</div>
+                <div class="date-cell" onclick="selectDate(this)">22</div>
+                <div class="date-cell" onclick="selectDate(this)">23</div>
+                <div class="date-cell" onclick="selectDate(this)">24</div>
+                <div class="date-cell" onclick="selectDate(this)">25</div>
                 <div class="date-cell disabled">26</div>
               </div>
 
@@ -319,9 +321,9 @@
                   <span class="slots-left text-blue">3 Slots Left</span>
                 </div>
                 <div class="time-slots">
-                  <button class="slot-pill">16:30 PM</button>
-                  <button class="slot-pill">18:00 PM</button>
-                  <button class="slot-pill active">19:00 PM</button>
+                  <button class="slot-pill" onclick="selectSlot(this)">16:30 PM</button>
+                  <button class="slot-pill" onclick="selectSlot(this)">18:00 PM</button>
+                  <button class="slot-pill active" onclick="selectSlot(this)">19:00 PM</button>
                 </div>
               </div>
 
@@ -342,7 +344,7 @@
               </div>
 
               <!-- Confirm Button -->
-              <button class="btn-confirm-appointment">
+              <button class="btn-confirm-appointment" onclick="confirmAppointment()">
                 <i class="fa-regular fa-calendar-check"></i> Confirm & Book Appointment
               </button>
               <p class="deposit-note">No advance deposit required. Cancellations allowed up to 2 hours prior.</p>
@@ -375,8 +377,8 @@
                     <h3>Dr. Farhana Ahmed</h3>
                     <p class="hospital-room">Hospital: LABAID Specialized Hospital Room 412 (OPD)</p>
                     <div class="upcoming-actions">
-                      <button class="btn-action-outline"><i class="fa-solid fa-calendar-days"></i> Reschedule</button>
-                      <button class="btn-action-danger"><i class="fa-regular fa-circle-xmark"></i> Cancel</button>
+                      <button class="btn-action-outline" onclick="rescheduleAppointment('#APP-1309')"><i class="fa-solid fa-calendar-days"></i> Reschedule</button>
+                      <button class="btn-action-danger" onclick="cancelAppointment('#APP-1309')"><i class="fa-regular fa-circle-xmark"></i> Cancel</button>
                     </div>
                   </div>
                 </div>
@@ -410,6 +412,9 @@
       </main>
     </div>
   </div>
+  
+
+  <script src="/public_html/Js_file/paitent/req_appointment.js"></script>
 
 </body>
 </html>

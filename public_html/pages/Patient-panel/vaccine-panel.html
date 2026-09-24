@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vaccine Records - NHMRD</title>
   <link rel="stylesheet" href="/public_html/assets/css/patient-panel/vaccine-panel.css">
+   <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/patient-panel/features/patient-header.css">
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -12,66 +14,66 @@
 
   <div class="app-container">
     <!-- Sidebar Navigation -->
-    <aside class="sidebar">
+    <aside class="sidebar patient">
       <div class="logo">
         <i class="fa-solid fa-shield-halved"></i>
         <span>NHMRD</span>
       </div>
 
       <nav class="nav-menu">
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/dashboard.html" class="nav-item">
           <i class="fa-solid fa-table-cells-large"></i> 
           <span>Dashboard</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/prescription-record.html" class="nav-item">
           <i class="fa-solid fa-file-prescription"></i> 
           <span>Prescription Records</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/surgary-record.html" class="nav-item">
           <i class="fa-solid fa-scalpel"></i> 
           <span>Surgery Records</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/lab-test.html" class="nav-item">
           <i class="fa-solid fa-vial"></i> 
           <span>Test Records</span>
         </a>
-        <a href="#" class="nav-item active">
+        <a href="/public_html/pages/Patient-panel/vaccine-panel.html" class="nav-item active">
           <i class="fa-solid fa-syringe"></i> 
           <span>Vaccine Records</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/req-appointment.html" class="nav-item">
           <i class="fa-solid fa-calendar-plus"></i> 
           <span>Request Appointment</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/medical-test-req.html" class="nav-item">
           <i class="fa-solid fa-notes-medical"></i> 
           <span>Request Medical Test</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/req-vaccine.html" class="nav-item">
           <i class="fa-solid fa-shield-virus"></i> 
           <span>Request Vaccine</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/" class="nav-item">
           <i class="fa-solid fa-id-card"></i> 
           <span>Patient Info</span>
         </a>
       </nav>
 
       <div class="sidebar-footer">
-        <button class="logout-btn">
-          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
-          <span>Logout</span>
-        </button>
+       <button class="logout-btn" onclick="handleLogout()">
+  <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+  <span>Logout</span>
+</button>
       </div>
     </aside>
 
     <!-- Main Content Wrapper -->
     <div class="main-wrapper">
       <!-- Top Header Bar -->
-      <header class="top-header">
+      <header class="patient-header">
         <div class="search-bar">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Search Queries">
+          <input type="text" placeholder="Search Queries" oninput="handleSearch(event)">
         </div>
 
         <div class="header-right">
@@ -91,10 +93,10 @@
             <h1>Vaccination & Immunization History</h1>
             <p class="subtitle">Official verified inoculation schedule and digital credentials for Shishir Rahaman</p>
           </div>
-          <div class="title-actions">
-            <button class="btn-outline"><i class="fa-regular fa-file-lines"></i> Add External Certificate</button>
-            <button class="btn-primary-dark"><i class="fa-solid fa-qrcode"></i> Digital Vaccine Passport</button>
-          </div>
+         <div class="title-actions">
+  <button class="btn-outline" onclick="handleAddExternalCertificate()"><i class="fa-regular fa-file-lines"></i> Add External Certificate</button>
+  <button class="btn-primary-dark" onclick="handleDigitalPassport()"><i class="fa-solid fa-qrcode"></i> Digital Vaccine Passport</button>
+</div>
         </div>
 
         <!-- User Profile Card -->
@@ -113,7 +115,7 @@
               </p>
             </div>
           </div>
-          <button class="btn-primary-blue"><i class="fa-solid fa-circle-plus"></i> Request New Vaccine / Booster</button>
+         <button class="btn-primary-blue" onclick="handleRequestVaccine()"><i class="fa-solid fa-circle-plus"></i> Request New Vaccine / Booster</button>
         </div>
 
         <!-- Stats Grid (3 Columns) -->
@@ -302,5 +304,6 @@
     </div>
   </div>
 
+<script src="/public_html/Js_file/paitent/vaccine-panel.js"></script>
 </body>
 </html>

@@ -5,73 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Surgery & Procedure Records - NHMRD</title>
   <link rel="stylesheet" href="/public_html/assets/css/patient-panel/surgary-record.css">
-  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/patient-panel/features/patient-header.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
   <div class="app-container">
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar">
+    <aside class="sidebar patient">
       <div class="logo">
         <i class="fa-solid fa-shield-halved"></i>
         <span>NHMRD</span>
       </div>
 
       <nav class="nav-menu">
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/dashboard.html" class="nav-item">
           <i class="fa-solid fa-table-cells-large"></i> 
           <span>Dashboard</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/prescription-record.html" class="nav-item">
           <i class="fa-solid fa-file-prescription"></i> 
           <span>Prescription Records</span>
         </a>
-        <a href="#" class="nav-item active">
+        <a href="/public_html/pages/Patient-panel/surgary-record.html" class="nav-item active">
           <i class="fa-solid fa-scalpel"></i> 
           <span>Surgery Records</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/lab-test.html" class="nav-item">
           <i class="fa-solid fa-vial"></i> 
           <span>Test Records</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/vaccine-panel.html" class="nav-item">
           <i class="fa-solid fa-syringe"></i> 
           <span>Vaccine Records</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/req-appointment.html" class="nav-item">
           <i class="fa-solid fa-calendar-plus"></i> 
           <span>Request Appointment</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/medical-test-req.html" class="nav-item">
           <i class="fa-solid fa-notes-medical"></i> 
           <span>Request Medical Test</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/req-vaccine.html" class="nav-item">
           <i class="fa-solid fa-shield-virus"></i> 
           <span>Request Vaccine</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="/public_html/pages/Patient-panel/paitent-info.html" class="nav-item">
           <i class="fa-solid fa-id-card"></i> 
           <span>Patient Info</span>
         </a>
       </nav>
 
       <div class="sidebar-footer">
-        <button class="logout-btn">
+        <button class="logout-btn" onclick="handleLogout()">
           <i class="fa-solid fa-arrow-right-from-bracket"></i> 
           <span>Logout</span>
         </button>
       </div>
     </aside>
 
-    <!-- Main Content Wrapper -->
     <div class="main-wrapper">
-      <!-- Top Header Bar -->
-      <header class="top-header">
+      <header class="patient-header">
         <div class="search-bar">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Search Queries">
+          <input type="text" placeholder="Search Queries" oninput="handleGlobalSearch(event)">
         </div>
 
         <div class="header-right">
@@ -81,10 +79,8 @@
         </div>
       </header>
 
-      <!-- Main Content Body -->
       <main class="content-body">
 
-        <!-- User Profile Banner -->
         <div class="user-banner">
           <div class="user-info-left">
             <div class="user-photo">
@@ -101,26 +97,24 @@
             </div>
           </div>
           <div class="banner-actions">
-            <button class="btn-secondary"><i class="fa-solid fa-arrow-up-from-bracket"></i> Export Log</button>
-            <button class="btn-primary"><i class="fa-solid fa-file-medical"></i> Upload External Report</button>
+            <button class="btn-secondary" onclick="handleExportLog()"><i class="fa-solid fa-arrow-up-from-bracket"></i> Export Log</button>
+            <button class="btn-primary" onclick="handleUploadReport()"><i class="fa-solid fa-file-medical"></i> Upload External Report</button>
           </div>
         </div>
 
-        <!-- Section Header with Filter Tabs -->
         <div class="section-top-bar">
           <div>
             <h1>Surgery & Procedure Records</h1>
             <p class="subtitle">Comprehensive operative history, clinical anesthesia notes, and surgical clearances.</p>
           </div>
           <div class="filter-tabs">
-            <button class="tab-btn active">All Surgeries (2)</button>
-            <button class="tab-btn">Inpatient (2)</button>
-            <button class="tab-btn">Outpatient (0)</button>
-            <button class="tab-btn">Pre-op Assessments</button>
-          </div>
+  <button class="tab-btn active" data-filter="all" onclick="handleTabFilter(this)">All Surgeries (2)</button>
+  <button class="tab-btn" data-filter="inpatient" onclick="handleTabFilter(this)">Inpatient (2)</button>
+  <button class="tab-btn" data-filter="outpatient" onclick="handleTabFilter(this)">Outpatient (0)</button>
+  <button class="tab-btn" data-filter="pre-op" onclick="handleTabFilter(this)">Pre-op Assessments</button>
+</div>
         </div>
 
-        <!-- Vitals & Anesthesia Risk Grid -->
         <div class="vitals-grid">
           <div class="vital-card">
             <div class="vital-icon blood"><i class="fa-solid fa-droplet"></i></div>
@@ -159,7 +153,6 @@
           </div>
         </div>
 
-        <!-- Procedure Record Card 1 -->
         <div class="card procedure-card">
           <div class="procedure-header">
             <div class="proc-title-left">
@@ -178,7 +171,6 @@
             </div>
           </div>
 
-          <!-- Metadata 4-Column Row -->
           <div class="meta-columns-grid">
             <div class="meta-col">
               <span class="col-label">DATE OF OPERATION</span>
@@ -202,7 +194,6 @@
             </div>
           </div>
 
-          <!-- Content Split: Narrative & Documents -->
           <div class="proc-body-grid">
             <div class="narrative-box">
               <h4><i class="fa-solid fa-file-lines"></i> Surgical Narrative & Post-Op Recovery</h4>
@@ -225,7 +216,7 @@
                     <strong>Operative_Note_SUR8841.pdf</strong>
                     <p>1.4 MB &bull; Signed by Dr. Ahmed</p>
                   </div>
-                  <button class="doc-dl-btn"><i class="fa-solid fa-download"></i></button>
+                  <button class="doc-dl-btn" onclick="handleDownloadDocument('Operative_Note_SUR8841.pdf')"><i class="fa-solid fa-download"></i></button>
                 </div>
 
                 <div class="doc-item">
@@ -234,7 +225,7 @@
                     <strong>Discharge_Summary_Signed.pdf</strong>
                     <p>890 KB &bull; Hospital Record</p>
                   </div>
-                  <button class="doc-dl-btn"><i class="fa-solid fa-download"></i></button>
+                  <button class="doc-dl-btn" onclick="handleDownloadDocument('Discharge_Summary_Signed.pdf')"><i class="fa-solid fa-download"></i></button>
                 </div>
 
                 <div class="doc-item">
@@ -243,14 +234,13 @@
                     <strong>PostOp_Ultrasound_DICOM.pd</strong>
                     <p>4.2 MB &bull; High-res Scans</p>
                   </div>
-                  <button class="doc-dl-btn"><i class="fa-solid fa-eye"></i></button>
+                  <button class="doc-dl-btn" onclick="handleViewDocument('PostOp_Ultrasound_DICOM.pdf')"><i class="fa-solid fa-eye"></i></button>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Procedure Record Card 2 -->
         <div class="card procedure-card">
           <div class="procedure-header">
             <div class="proc-title-left">
@@ -269,7 +259,6 @@
             </div>
           </div>
 
-          <!-- Metadata 4-Column Row -->
           <div class="meta-columns-grid">
             <div class="meta-col">
               <span class="col-label">DATE OF OPERATION</span>
@@ -293,7 +282,6 @@
             </div>
           </div>
 
-          <!-- Content Split: Narrative & Documents -->
           <div class="proc-body-grid">
             <div class="narrative-box">
               <h4><i class="fa-solid fa-file-lines"></i> Surgical Narrative & Pathological Outcome</h4>
@@ -315,7 +303,7 @@
                     <strong>DMCH_Emergency_Surgery_Re</strong>
                     <p>2.1 MB &bull; Archival Copy</p>
                   </div>
-                  <button class="doc-dl-btn"><i class="fa-solid fa-download"></i></button>
+                  <button class="doc-dl-btn" onclick="handleDownloadDocument('DMCH_Emergency_Surgery_Re')"><i class="fa-solid fa-download"></i></button>
                 </div>
 
                 <div class="doc-item">
@@ -324,7 +312,7 @@
                     <strong>Discharge_Certificate_2018.pdf</strong>
                     <p>540 KB &bull; Certified Archival</p>
                   </div>
-                  <button class="doc-dl-btn"><i class="fa-solid fa-download"></i></button>
+                  <button class="doc-dl-btn" onclick="handleDownloadDocument('Discharge_Certificate_2018.pdf')"><i class="fa-solid fa-download"></i></button>
                 </div>
               </div>
             </div>
@@ -335,5 +323,6 @@
     </div>
   </div>
 
+  <script src="/public_html/Js_file/paitent/surgary.js"></script>
 </body>
 </html>
