@@ -4,6 +4,7 @@
   --bg-card: #ffffff;
   --header-color: #f3fdff;
   --sidebar-admin: #034c53;
+  --sidebar-executive: #1a2836;
   --text-primary: #1e293b;
   --text-muted: #49515e;
   --primary-color: #007084;
@@ -21,6 +22,19 @@
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
+
+  --doc-bg-main: #f4f6f8;
+  --doc-sidebar: #064e3b;
+  --doc-bg-card: #ffffff;
+  --doc-text-primary: #111827;
+  --doc-text-secondary: #4b5563;
+  --doc-text-muted: #9ca3af;
+  --doc-primary-emerald: #059669;
+  --doc-dark-emerald: #064e3b;
+  --doc-light-emerald: #d1fae5;
+  --doc-border-color: #e5e7eb;
+  --doc-radius-sm: 6px;
+  --doc-radius-md: 10px;
 }
 
 * {
@@ -71,6 +85,19 @@ body {
   overflow-y: auto;
 }
 
+.executive {
+  background-color: var(--sidebar-executive);
+}
+
+.doctor {
+  background-color: var(--doc-sidebar);
+}
+
+.executive > .nav-menu > .nav-item:hover, .nav-item.active {
+  background-color: #283C68;
+  color: #ffffff;
+  border-left: 4px solid #6886c9;
+}
 
 .logo {
   font-size: 20px;

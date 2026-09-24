@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHMRD - Universal Patient Intake & Identity Issuance</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+    <link rel="stylesheet" href="/public_html/assets/css/executive-panel/executive-add-new-patient.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar executive">
+            <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>NHMRD</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="/public_html/pages/medical-executive-panel/executive-dashboard.html" class="nav-item">
+                    <i class="fa-solid fa-table-cells-large"></i> Dashboard
+                </a>
+                <a href="/public_html/pages/medical-executive-panel/executive-add-new-patient.html" class="nav-item active">
+                    <i class="fa-solid fa-user-plus"></i> Register New Patient
+                </a>
+                <a href="/public_html/pages/medical-executive-panel/executive-register-new-doctor.html" class="nav-item">
+                    <i class="fa-solid fa-user-doctor"></i> Register New Doctor
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-hospital-user"></i> Register New Hospital
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-file-invoice"></i> Issue Death Certificate
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-syringe"></i> Vaccination Request
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-circle-user"></i> Profile
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="/public_html/pages/login.html">
+                    <button class="logout-btn">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                    </button>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <!-- Top Navigation Header -->
+            <header class="top-header">
+                <div class="sub-header-left">
+                    <div class="system-status-pills">
+                        <div class="status-pill">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>UTC+00:00 • SYSTEM ACTIVE</span>
+                        </div>
+                        <div class="status-pill connected">
+                            <span class="pulse-dot"></span>
+                            <span>Live Registry • Connected</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="header-right-group">
+                    <div class="notification-bell">
+                        <i class="fa-regular fa-bell"></i>
+                    </div>
+                    <div class="user-profile">
+                        <div class="user-info">
+                            <span class="user-name">Dr. Arthur Vance</span>
+                            <span class="user-role">Super Administrator • ID: 8942</span>
+                        </div>
+                        <div class="avatar"><i class="fa-solid fa-user-gear"></i></div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Section Header -->
+            <div class="page-title-section">
+                <div>
+                    <div class="form-badge">FORM: NHMRD-702 • NATIONAL TIER-1 CLINICAL ENROLLMENT</div>
+                    <h1 class="page-title">Universal Patient Intake & Identity Issuance</h1>
+                    <p class="page-subtitle">Enroll new individual record into the Federated Health Data Grid with
+                        biometric cross-validation.</p>
+                </div>
+                <div class="facility-pill">
+                    <span class="dot-indicator"></span>
+                    <div>
+                        <span class="facility-label">FACILITY GATEWAY</span>
+                        <span class="facility-name">Metropolitan General [REG-401]</span>
+                    </div>
+                </div>
+            </div>
+           
+            <!-- Form Wrapper -->
+            <main class="content-body">
+                <form onsubmit="return false;">
+
+                    <!-- SECTION 1: Legal Identification & Biographics -->
+                    <section class="form-section">
+                        <div class="section-header">
+                            <div class="section-icon"><i class="fa-regular fa-address-card"></i></div>
+                            <div>
+                                <h2 class="section-heading">1. Legal Identification & Biographics</h2>
+                                <p class="section-desc">Verify patient state civil registers and assign NHMRD global
+                                    identifier.</p>
+                            </div>
+                            <span class="mandatory-badge">MANDATORY</span>
+                        </div>
+
+                        <!-- Provisioned Banner -->
+                        <div class="provision-banner">
+                            <div class="banner-info">
+                                <i class="fa-solid fa-fingerprint"></i>
+                                <div>
+                                    <span class="banner-title">PROVISIONED SOCIAL HEALTH NUMBER (SHN)</span>
+                                    <div class="shn-code">NH-8940-9281-7412</div>
+                                </div>
+                            </div>
+                            <span class="crypto-badge"><i class="fa-solid fa-lock"></i> CIP-SHA256 UNALLOCATED</span>
+                        </div>
+
+                        <!-- Form Grid 1 -->
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Full Legal Name *</label>
+                                <input type="text" value="Sayra Banu" placeholder="First Middle Last">
+                            </div>
+
+                            <div class="form-group">
+                                <label>National Civil Identification No. *</label>
+                                <input type="text" value="984-21-4898-C" placeholder="000-00-0000-X">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Date of Birth *</label>
+                                <input type="text" value="06/14/2026" placeholder="MM/DD/YYYY">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Biological Sex at Birth *</label>
+                                <select>
+                                    <option selected>Female</option>
+                                    <option>Male</option>
+                                    <option>Intersex / Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Blood Group & Rh Factor *</label>
+                                <select>
+                                    <option selected>A Positive (A+)</option>
+                                    <option>A Negative (A-)</option>
+                                    <option>B Positive (B+)</option>
+                                    <option>O Positive (O+)</option>
+                                </select>
+                            </div>
+
+                            <!-- Organ Donor Card -->
+                            <div class="donor-card">
+                                <div class="donor-info">
+                                    <i class="fa-regular fa-heart donor-icon"></i>
+                                    <div>
+                                        <span class="donor-title">Organ Donor Registry</span>
+                                        <span class="donor-sub">Authorize nationwide donation</span>
+                                    </div>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- SECTION 2: Contact Demographics & Next of Kin -->
+                    <section class="form-section">
+                        <div class="section-header">
+                            <div class="section-icon"><i class="fa-solid fa-id-badge"></i></div>
+                            <div>
+                                <h2 class="section-heading">2. Contact Demographics & Next of Kin</h2>
+                                <p class="section-desc">Primary coordinates for national health alerts, prescription
+                                    dispatches, and emergency routing.</p>
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Primary Mobile Number *</label>
+                                <div class="input-with-icon">
+                                    <input type="text" value="+1 (555) 392-8012">
+                                    <i class="fa-solid fa-circle-check valid-icon"></i>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Alternate Phone / Landline</label>
+                                <input type="text" value="+1 (555) 781-9920">
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label>Permanent Residential Address *</label>
+                                <input type="text" value="742 Evergreen Terrace, Apt 4B, North District">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Province / State / Jurisdiction *</label>
+                                <input type="text" value="Eastern Maritime Province">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Postal / ZIP Code</label>
+                                <input type="text" value="EMP-90210">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Emergency Contact Name *</label>
+                                <input type="text" value="Marcus Sterling">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Relationship to Enrollee *</label>
+                                <input type="text" value="Spouse">
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- SECTION 3: Clinical Baseline & Immediate Contraindications -->
+                    <section class="form-section">
+                        <div class="section-header">
+                            <div class="section-icon"><i class="fa-solid fa-notes-medical"></i></div>
+                            <div>
+                                <h2 class="section-heading">3. Clinical Baseline & Immediate Contraindications</h2>
+                                <p class="section-desc">Flag critical physiological alerts visible across all hospital
+                                    ER terminals.</p>
+                            </div>
+                            <span class="high-acuity-badge"><i class="fa-solid fa-triangle-exclamation"></i> HIGH ACUITY
+                                DATA</span>
+                        </div>
+
+                        <!-- Tag Component -->
+                        <div class="allergy-container">
+                            <label class="field-label-sm">Documented Severe Allergies</label>
+                            <div class="tag-list">
+                                <span class="tag tag-danger"><i class="fa-solid fa-circle-exclamation"></i> Penicillin
+                                    (Anaphylactic) <i class="fa-solid fa-xmark close"></i></span>
+                                <span class="tag tag-warning">Peanuts / Legumes <i
+                                        class="fa-solid fa-xmark close"></i></span>
+                                <span class="tag tag-muted">Latex Gloves (Mild Dermatitis) <i
+                                        class="fa-solid fa-xmark close"></i></span>
+                                <button type="button" class="add-tag-btn">+ Add Allergy Tag</button>
+                            </div>
+                        </div>
+
+                        <!-- Chronic Conditions Checkbox Grid -->
+                        <div class="checkbox-section">
+                            <label class="field-label-sm">Pre-existing Chronic Conditions (Select all confirmed)</label>
+                            <div class="checkbox-grid">
+
+                                <label class="custom-checkbox checked">
+                                    <input type="checkbox" checked>
+                                    <span class="checkmark"></span>
+                                    <div class="cb-label">
+                                        <span class="cb-title">Diabetes Type 2</span>
+                                        <span class="icd-code">ICD-10: E11</span>
+                                    </div>
+                                </label>
+
+                                <label class="custom-checkbox checked">
+                                    <input type="checkbox" checked>
+                                    <span class="checkmark"></span>
+                                    <div class="cb-label">
+                                        <span class="cb-title">Hypertension</span>
+                                        <span class="icd-code">ICD-10: I10</span>
+                                    </div>
+                                </label>
+
+                                <label class="custom-checkbox">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <div class="cb-label">
+                                        <span class="cb-title">Asthma (Chronic)</span>
+                                        <span class="icd-code">ICD-10: J45</span>
+                                    </div>
+                                </label>
+
+                                <label class="custom-checkbox">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <div class="cb-label">
+                                        <span class="cb-title">Chronic Kidney Dis.</span>
+                                        <span class="icd-code">ICD-10: N18</span>
+                                    </div>
+                                </label>
+
+                                <label class="custom-checkbox">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <div class="cb-label">
+                                        <span class="cb-title">Epilepsy / Seizures</span>
+                                        <span class="icd-code">ICD-10: G40</span>
+                                    </div>
+                                </label>
+
+                                <label class="custom-checkbox">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <div class="cb-label">
+                                        <span class="cb-title">Coronary CAD</span>
+                                        <span class="icd-code">ICD-10: I25</span>
+                                    </div>
+                                </label>
+
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Form Actions Footer -->
+                    <footer class="form-actions-footer">
+                        <div>
+                        <button type="button" class="btn btn-light">Cancel</button>
+                        <button type="button" class="btn btn-outline-dark">
+                            <i class="fa-regular fa-floppy-disk"></i> Save as Draft
+                        </button></div>
+                        <div class="actions-right">
+
+
+                            <div class="signature-status">
+                                <span class="sig-title">Digital Signature Ready</span>
+                                <span class="sig-sub">AUTH: DR-VANCE-8942</span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa-regular fa-address-card"></i> Complete Registration & Issue Health ID
+                            </button>
+                        </div>
+                    </footer>
+
+                </form>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
