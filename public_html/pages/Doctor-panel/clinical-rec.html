@@ -4,65 +4,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NHMRD - Admin & Clinical Dashboard</title>
-  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/dashboard.css">
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doc-header.css">
+
+
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
   <div class="app-container">
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar admin">
+    <aside class="sidebar doctor">
       <div class="logo">
         <i class="fa-solid fa-shield-halved"></i>
         <span>NHMRD</span>
       </div>
 
       <nav class="nav-menu">
-        <a href="/public_html/pages/admin-panel/admin-dashboard.html" class="nav-item active">
-          <i class="fa-solid fa-table-cells-large"></i>
+        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item active">
+          <i class="fa-solid fa-table-cells-large"></i> 
           <span>Dashboard</span>
         </a>
-        <a href="/public_html/pages/admin-panel/admin-patient-records.html" class="nav-item">
-          <i class="fa-solid fa-user-group"></i>
-          <span>Patient Records</span>
+        <a href="/public_html/pages/Doctor-panel/clinical-rec.html" class="nav-item">
+          <i class="fa-solid fa-notes-medical"></i> 
+          <span>Clinical Records</span>
         </a>
-        <a href="/public_html/pages/admin-panel/admin-doctor-records.html" class="nav-item">
-          <i class="fa-solid fa-user-doctor"></i>
-          <span>Doctor Records</span>
+        <a href="/public_html/pages/Doctor-panel/patient-book-req.html" class="nav-item">
+          <i class="fa-solid fa-user-clock"></i> 
+          <span>Patient Requests</span>
         </a>
-        <a href="/public_html/pages/admin-panel/admin-hospital-records.html" class="nav-item">
-          <i class="fa-solid fa-hospital"></i>
-          <span>Hospital Records</span>
-        </a>
-        <a href="/public_html/pages/admin-panel/admin-request-management.html" class="nav-item">
-          <i class="fa-solid fa-clipboard-check"></i>
-          <span>Request Management</span>
-        </a>
-        <a href="/public_html/pages/admin-panel/admin-analytics.html" class="nav-item">
-          <i class="fa-solid fa-chart-line"></i>
-          <span>Analytics</span>
-        </a>
-        <a href="/public_html/pages/admin-panel/admin-notice-broadcast.html" class="nav-item">
-          <i class="fa-solid fa-bullhorn"></i>
-          <span>Notice Broadcast</span>
+        <a href="/public_html/pages/Doctor-panel/doctor-panel.html" class="nav-item">
+          <i class="fa-solid fa-user-doctor"></i> 
+          <span>Doctor Profile</span>
         </a>
       </nav>
 
       <div class="sidebar-footer">
-        <a href="/public_html/pages/login.html">
-          <button class="logout-btn">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            <span>Logout</span>
-          </button>
-        </a>
+        <button class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
       </div>
     </aside>
 
     <!-- Main Content Area -->
     <div class="main-wrapper">
       <!-- Top Navigation Header -->
-      <header class="top-header">
+      <header class="doc-header">
         <div class="search-bar">
           <i class="fa-solid fa-magnifying-glass"></i>
           <input type="text" placeholder="Search records, MRNs, clinicians...">
@@ -81,7 +70,7 @@
 
           <div class="user-profile">
             <div class="user-info">
-              <span class="user-name">Dr. Sarah F.</span>
+              <span class="user-name">Dr. Sarah</span>
               <span class="user-role">Super Admin</span>
             </div>
             <div class="avatar"><i class="fa-solid fa-user"></i></div>

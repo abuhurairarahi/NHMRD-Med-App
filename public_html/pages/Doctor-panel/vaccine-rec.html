@@ -12,37 +12,37 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/vaccine-rec.css">
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doc-header.css">
 </head>
 <body>
 
   <div class="app-container">
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar">
-      <div class="sidebar-top">
-        <div class="logo">
-          <i class="fa-solid fa-shield-halved"></i>
-          <span>NHMRD</span>
-        </div>
-
-        <nav class="nav-menu">
-          <a href="#" class="nav-item">
-            <i class="fa-solid fa-table-cells-large"></i> 
-            <span>Dashboard</span>
-          </a>
-          <a href="#" class="nav-item active">
-            <i class="fa-solid fa-notes-medical"></i> 
-            <span>Clinical Records</span>
-          </a>
-          <a href="#" class="nav-item">
-            <i class="fa-solid fa-user-clock"></i> 
-            <span>Patient Requests</span>
-          </a>
-          <a href="#" class="nav-item">
-            <i class="fa-solid fa-user-doctor"></i> 
-            <span>Doctor Profile</span>
-          </a>
-        </nav>
+   <!-- Sidebar Navigation -->
+    <aside class="sidebar doctor">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
       </div>
+
+      <nav class="nav-menu">
+        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item active">
+          <i class="fa-solid fa-table-cells-large"></i> 
+          <span>Dashboard</span>
+        </a>
+        <a href="/public_html/pages/Doctor-panel/clinical-rec.html" class="nav-item">
+          <i class="fa-solid fa-notes-medical"></i> 
+          <span>Clinical Records</span>
+        </a>
+        <a href="/public_html/pages/Doctor-panel/patient-book-req.html" class="nav-item">
+          <i class="fa-solid fa-user-clock"></i> 
+          <span>Patient Requests</span>
+        </a>
+        <a href="/public_html/pages/Doctor-panel/doctor-panel.html" class="nav-item">
+          <i class="fa-solid fa-user-doctor"></i> 
+          <span>Doctor Profile</span>
+        </a>
+      </nav>
 
       <div class="sidebar-footer">
         <button class="logout-btn">
@@ -56,7 +56,7 @@
     <div class="main-wrapper">
       
       <!-- Top Header Bar -->
-      <header class="top-header">
+      <header class="doc-header">
         <div class="search-bar">
           <i class="fa-solid fa-magnifying-glass"></i>
           <input type="text" placeholder="Search patient MRN, name, vitals...">
