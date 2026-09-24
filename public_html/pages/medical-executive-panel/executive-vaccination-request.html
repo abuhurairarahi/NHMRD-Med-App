@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Immunization Program & Vaccine Allocation Portal - NHMRD</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+    <link rel="stylesheet" href="/public_html/assets/css/executive-panel/executive-vaccination-request.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar executive">
+            <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>NHMRD</span>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="/public_html/pages/medical-executive-panel/executive-dashboard.html" class="nav-item">
+                    <i class="fa-solid fa-border-all"></i>
+                    Dashboard
+                </a>
+                <a href="/public_html/pages/medical-executive-panel/executive-add-new-patient.html" class="nav-item">
+                    <i class="fa-solid fa-user-plus"></i>
+                    Register New Patient
+                </a>
+                <a href="/public_html/pages/medical-executive-panel/executive-register-new-doctor.html"
+                    class="nav-item">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    Register New Doctor
+                </a>
+                <a href="/public_html/pages/medical-executive-panel/executive-register-new-hospital.html"
+                    class="nav-item">
+                    <i class="fa-solid fa-hospital-user"></i>
+                    Register New Hospital
+                </a>
+                <a href="/public_html/pages/medical-executive-panel/executive-issue-death-certificate.html"
+                    class="nav-item">
+                    <i class="fa-solid fa-file-waveform"></i> Issue Death Certificate
+                </a>
+                <a href="/public_html/pages/medical-executive-panel/executive-vaccination-request.html"
+                    class="nav-item active">
+                    <i class="fa-solid fa-syringe"></i> Vaccination Request
+                </a>
+                <a href="/public_html/pages/medical-executive-panel/executive-profile.html" class="nav-item">
+                    <i class="fa-solid fa-circle-user"></i> Profile
+                </a>
+            </nav>
+
+           <div class="sidebar-footer">
+                <a href="/public_html/pages/login.html">
+                    <button class="logout-btn">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                    </button>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Wrapper -->
+        <div class="main-wrapper">
+
+            <!-- Top Header Navigation -->
+            <header class="top-header">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search records, MRNs, clinicians...">
+        </div>
+
+        <div class="user-profile">
+          <div class="system-status-pills">
+            <div class="status-pill">
+              <i class="fa-regular fa-clock"></i>
+              <span>UTC+00:00 • SYSTEM ACTIVE</span>
+            </div>
+            <div class="status-pill connected">
+              <span class="pulse-dot"></span>
+              <span>Live Registry • Connected</span>
+            </div>
+          </div>
+          <div class="user-info">
+            <span class="user-name">Dr. Sarah F.</span>
+            <span class="user-role">Super Admin</span>
+          </div>
+          <div class="avatar"><i class="fa-solid fa-user"></i></div>
+        </div>
+      </header>
+
+            <!-- Main Content Area -->
+            <main class="content">
+
+                <!-- Page Title Row -->
+                <div class="page-title-row">
+                    <div>
+                        <div class="pill-group">
+                            <span class="pill pill-navy">NHMRD-LOG-SEC.08</span>
+                            <span class="pill-text">FEDERAL VACCINE LOGISTICS & COLD CHAIN GRID</span>
+                        </div>
+                        <h1>National Immunization Program & Vaccine Allocation Portal</h1>
+                        <p class="subtitle">Submit facility batch requisition, emergency stock allocations, or
+                            individual pediatric/booster requests across accredited medical hubs.</p>
+                    </div>
+                    <div class="top-action-buttons">
+                        <div class="badge-blue-compliance">
+                            <i class="fa-solid fa-shield-check"></i>
+                            <div>
+                                <strong>GvP Compliance</strong>
+                                <span>Active</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline"><i class="fa-solid fa-rotate-left"></i> Order History</button>
+                    </div>
+                </div>
+
+                <!-- Section 1: Facility Destination & Demand Classification -->
+                <div class="card">
+                    <div class="card-header space-between">
+                        <div class="header-title-group">
+                            <span class="step-num">1</span>
+                            <h2>Facility Destination & Demand Classification</h2>
+                        </div>
+                        <span class="mandatory-protocol">Mandatory Protocol</span>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="form-row col-3">
+                            <div class="form-group">
+                                <label>Requesting Facility</label>
+                                <input type="text" value="St. Jude Central Metropolitan Hospital (ID: HC-9912)"
+                                    readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Clinical Department</label>
+                                <select>
+                                    <option selected>Central Hospital Pharmacy - Depot 01</option>
+                                    <option>Pediatrics Ward</option>
+                                    <option>Emergency Care Unit</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Urgency Classification</label>
+                                <div class="input-with-icon">
+                                    <input type="text" value="Routine Weekly Allocation (48-72h)" readonly>
+                                    <i class="fa-solid fa-exclamation icon-alert"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Vaccine Allocation Table -->
+                        <div class="table-container margin-top">
+                            <table class="vaccine-table">
+                                <thead>
+                                    <tr>
+                                        <th>VACCINE FORMULA & CODE</th>
+                                        <th>MANUFACTURER / LOT</th>
+                                        <th>DOSE QTY</th>
+                                        <th>PACK UNIT</th>
+                                        <th class="text-center">ACTION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="vaccine-info">
+                                                <div class="vaccine-icon icon-blue"><i
+                                                        class="fa-solid fa-shield-virus"></i></div>
+                                                <div>
+                                                    <div class="vaccine-name">COVID-19 mRNA XBB.1.5</div>
+                                                    <div class="vaccine-code">VAX-COV-9012</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>BioPharma Ltd / LP-8819</td>
+                                        <td><input type="text" value="1200" class="table-qty-input"></td>
+                                        <td>10-Dose Vial (120 pk)</td>
+                                        <td class="text-center"><button class="btn-icon-trash"><i
+                                                    class="fa-regular fa-trash-can"></i></button></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <div class="vaccine-info">
+                                                <div class="vaccine-icon icon-purple"><i
+                                                        class="fa-solid fa-syringe"></i></div>
+                                                <div>
+                                                    <div class="vaccine-name">MMR II (Measles, Mumps, Rubella)</div>
+                                                    <div class="vaccine-code">VAX-PED-4410</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Merck Global / MT-9032</td>
+                                        <td><input type="text" value="500" class="table-qty-input"></td>
+                                        <td>Single-Dose Vial (500 pk)</td>
+                                        <td class="text-center"><button class="btn-icon-trash"><i
+                                                    class="fa-regular fa-trash-can"></i></button></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <div class="vaccine-info">
+                                                <div class="vaccine-icon icon-orange"><i class="fa-solid fa-virus"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="vaccine-name">Influenza Quadrivalent 2024–25</div>
+                                                    <div class="vaccine-code">VAX-FLU-7741</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Sanofi Pasteur / FL-1102</td>
+                                        <td><input type="text" value="2500" class="table-qty-input"></td>
+                                        <td>Prefilled Syringes (250 pk)</td>
+                                        <td class="text-center"><button class="btn-icon-trash"><i
+                                                    class="fa-regular fa-trash-can"></i></button></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <div class="vaccine-info">
+                                                <div class="vaccine-icon icon-green"><i class="fa-solid fa-vial"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="vaccine-name">Hepatitis B Recombinant (Adult)</div>
+                                                    <div class="vaccine-code">VAX-HEP-3004</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>GSK Biologicals / HB-6643</td>
+                                        <td><input type="text" value="300" class="table-qty-input"></td>
+                                        <td>Single-Dose Vial (30 pk)</td>
+                                        <td class="text-center"><button class="btn-icon-trash"><i
+                                                    class="fa-regular fa-trash-can"></i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="table-summary-bar">
+                            <span class="info-text"><i class="fa-solid fa-circle-info"></i> Total Units In Request:
+                                <strong>4,500 Doses (4 Line Items)</strong></span>
+                            <span class="weight-text">Estimated Gross Weight: <strong>28.6 kg</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Receiving Custody & Clinical Justification -->
+                <div class="card margin-top-card">
+                    <div class="card-header space-between">
+                        <div class="header-title-group">
+                            <span class="step-num">2</span>
+                            <h2>Receiving Custody & Clinical Justification</h2>
+                        </div>
+                        <span class="mandatory-protocol">GvP Requirement</span>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="form-row col-2">
+                            <div class="form-group">
+                                <label>Requested Delivery Target Date</label>
+                                <input type="text" value="11/04/2024">
+                            </div>
+                            <div class="form-group">
+                                <label>Receiving Pharmacist in Charge (RPIC)</label>
+                                <input type="text" value="Dr. Elena Rostova, PharmD (Lic #PH-49201)" readonly>
+                            </div>
+                        </div>
+
+                        <!-- Target Population Selectors -->
+                        <div class="form-group margin-top">
+                            <label>Primary Target Population Groups</label>
+                            <div class="pill-checkbox-group">
+                                <label class="pill-checkbox active-blue">
+                                    <input type="checkbox" checked> Pediatric Cohort (0-12 yrs)
+                                </label>
+                                <label class="pill-checkbox active-blue">
+                                    <input type="checkbox" checked> Geriatric & Immunocompromised (65+)
+                                </label>
+                                <label class="pill-checkbox active-blue">
+                                    <input type="checkbox" checked> Frontline Healthcare Workers
+                                </label>
+                                <label class="pill-checkbox">
+                                    <input type="checkbox"> General Adult Population
+                                </label>
+                                <label class="pill-checkbox">
+                                    <input type="checkbox"> High-Risk Occupational Workers
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group margin-top">
+                            <label>Clinical Epidemiological Justification</label>
+                            <textarea rows="3"
+                                readonly>Scheduled bi-weekly intake for Autumn Influenza immunization drive combined with pediatric kindergarten enrollment mandate. Booster doses earmarked for Phase-1 hospital personnel.</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Action Bar -->
+                <div class="bottom-action-bar">
+                    <button class="btn btn-action-light"><i class="fa-solid fa-floppy-disk"></i> Save Requisition
+                        Draft</button>
+                    <!-- <button class="btn btn-action-blue-light"><i class="fa-solid fa-magnifying-glass"></i> Check
+                        Regional Depot Stock</button> -->
+                    <button class="btn btn-action-submit"><i class="fa-solid fa-paper-plane"></i> Submit Requisition for
+                        Federal Approval</button>
+                </div>
+
+            </main>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
   <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
   <link rel="stylesheet" href="/public_html/assets/css/executive-panel/executive-dashboard.css">
 </head>
+
 <body>
   <div class="app-container">
     <!-- Sidebar -->
@@ -21,7 +23,7 @@
         <span>NHMRD</span>
       </div>
       <nav class="nav-menu">
-       <a href="/public_html/pages/medical-executive-panel/executive-dashboard.html" class="nav-item active">
+        <a href="/public_html/pages/medical-executive-panel/executive-dashboard.html" class="nav-item active">
           <i class="fa-solid fa-table-cells-large"></i> Dashboard
         </a>
         <a href="/public_html/pages/medical-executive-panel/executive-add-new-patient.html" class="nav-item">
@@ -30,18 +32,19 @@
         <a href="/public_html/pages/medical-executive-panel/executive-register-new-doctor.html" class="nav-item">
           <i class="fa-solid fa-user-doctor"></i> Register New Doctor
         </a>
-        <a href="#" class="nav-item">
-          <i class="fa-solid fa-hospital-user"></i> Register New Hospital
+        <a href="/public_html/pages/medical-executive-panel/executive-register-new-hospital.html" class="nav-item">
+          <i class="fa-solid fa-hospital-user"></i>
+          Register New Hospital
         </a>
-        <a href="#" class="nav-item">
-          <i class="fa-solid fa-file-invoice"></i> Issue Death Certificate
-        </a>
-        <a href="#" class="nav-item">
-          <i class="fa-solid fa-syringe"></i> Vaccination Request
-        </a>
-        <a href="#" class="nav-item">
-          <i class="fa-solid fa-circle-user"></i> Profile
-        </a>
+        <a href="/public_html/pages/medical-executive-panel/executive-issue-death-certificate.html" class="nav-item">
+                    <i class="fa-solid fa-file-waveform"></i> Issue Death Certificate
+                </a>
+        <a href="/public_html/pages/medical-executive-panel/executive-vaccination-request.html" class="nav-item">
+                    <i class="fa-solid fa-syringe"></i> Vaccination Request
+                </a>
+        <a href="/public_html/pages/medical-executive-panel/executive-profile.html" class="nav-item">
+                    <i class="fa-solid fa-circle-user"></i> Profile
+                </a>
       </nav>
       <div class="sidebar-footer">
         <a href="/public_html/pages/login.html">
@@ -60,18 +63,18 @@
           <i class="fa-solid fa-magnifying-glass"></i>
           <input type="text" placeholder="Search records, MRNs, clinicians...">
         </div>
-        
+
         <div class="user-profile">
-            <div class="system-status-pills">
-          <div class="status-pill">
-            <i class="fa-regular fa-clock"></i>
-            <span>UTC+00:00 • SYSTEM ACTIVE</span>
+          <div class="system-status-pills">
+            <div class="status-pill">
+              <i class="fa-regular fa-clock"></i>
+              <span>UTC+00:00 • SYSTEM ACTIVE</span>
+            </div>
+            <div class="status-pill connected">
+              <span class="pulse-dot"></span>
+              <span>Live Registry • Connected</span>
+            </div>
           </div>
-          <div class="status-pill connected">
-            <span class="pulse-dot"></span>
-            <span>Live Registry • Connected</span>
-          </div>
-        </div>
           <div class="user-info">
             <span class="user-name">Dr. Sarah F.</span>
             <span class="user-role">Super Admin</span>
@@ -95,7 +98,7 @@
               <span class="trend positive"><i class="fa-solid fa-arrow-trend-up"></i> +3.4%</span>
               <span class="trend-label">vs prev quarter</span>
               <svg class="sparkline" viewBox="0 0 60 20">
-                <path d="M0,15 Q15,18 30,10 T60,5" fill="none" stroke="#007084" stroke-width="2"/>
+                <path d="M0,15 Q15,18 30,10 T60,5" fill="none" stroke="#007084" stroke-width="2" />
               </svg>
             </div>
           </div>
@@ -111,7 +114,7 @@
               <span class="trend positive"><i class="fa-solid fa-arrow-trend-up"></i> +1.2%</span>
               <span class="trend-label">accredited active</span>
               <svg class="sparkline" viewBox="0 0 60 20">
-                <path d="M0,16 Q15,12 30,14 T60,6" fill="none" stroke="#007084" stroke-width="2"/>
+                <path d="M0,16 Q15,12 30,14 T60,6" fill="none" stroke="#007084" stroke-width="2" />
               </svg>
             </div>
           </div>
@@ -127,7 +130,7 @@
               <span class="trend positive"><i class="fa-solid fa-plus"></i> 12</span>
               <span class="trend-label">this cycle</span>
               <svg class="sparkline" viewBox="0 0 60 20">
-                <path d="M0,18 Q20,10 40,15 T60,4" fill="none" stroke="#007084" stroke-width="2"/>
+                <path d="M0,18 Q20,10 40,15 T60,4" fill="none" stroke="#007084" stroke-width="2" />
               </svg>
             </div>
           </div>
@@ -143,7 +146,7 @@
               <span class="trend positive"><i class="fa-solid fa-arrow-trend-up"></i> +4.1%</span>
               <span class="trend-label">vs target (95%)</span>
               <svg class="sparkline" viewBox="0 0 60 20">
-                <path d="M0,17 Q15,15 30,8 T60,3" fill="none" stroke="#007084" stroke-width="2"/>
+                <path d="M0,17 Q15,15 30,8 T60,3" fill="none" stroke="#007084" stroke-width="2" />
               </svg>
             </div>
           </div>
@@ -158,7 +161,8 @@
                 <h2 class="section-title">Recent Centralized Broadcasts</h2>
                 <span class="pill-badge red-pill">• 3 Active Directives</span>
               </div>
-              <p class="section-subtitle">Live federal health alerts, operational communiqués, and emergency directives dispatched to all regional medical nodes.</p>
+              <p class="section-subtitle">Live federal health alerts, operational communiqués, and emergency directives
+                dispatched to all regional medical nodes.</p>
             </div>
             <div class="header-action-group">
               <button class="btn btn-primary dispatch-btn">
@@ -184,7 +188,8 @@
             <article class="feed-item emergency">
               <div class="feed-meta-row">
                 <div class="feed-tag-group">
-                  <span class="feed-tag tag-emergency"><i class="fa-solid fa-triangle-exclamation"></i> NATIONAL EMERGENCY DIRECTIVE</span>
+                  <span class="feed-tag tag-emergency"><i class="fa-solid fa-triangle-exclamation"></i> NATIONAL
+                    EMERGENCY DIRECTIVE</span>
                   <span class="feed-id">BC-FED-2025-089</span>
                   <span class="feed-time">• Issued 14m ago (11:02 UTC)</span>
                 </div>
@@ -195,7 +200,8 @@
 
               <h3 class="feed-title">Immediate Tier-1 Cold Chain Protocol Upgrade for Pediatric Vaccines</h3>
               <p class="feed-description">
-                Mandatory temperature threshold telemetry verification (-80°C ± 1.5°C) across all regional depots following weather advisory in Sector 4. Immediate audit confirmation required within 4 hours.
+                Mandatory temperature threshold telemetry verification (-80°C ± 1.5°C) across all regional depots
+                following weather advisory in Sector 4. Immediate audit confirmation required within 4 hours.
               </p>
 
               <div class="feed-actions-row">
@@ -204,8 +210,10 @@
                 </span>
                 <span class="status-chip success-text">14/14 Nodes Acknowledged</span>
                 <div class="btn-group">
-                  <button class="btn btn-outline btn-sm"><i class="fa-regular fa-file-lines"></i> View Directive Dossier</button>
-                  <button class="btn btn-primary btn-sm"><i class="fa-solid fa-circle-check"></i> Acknowledge Receipt</button>
+                  <button class="btn btn-outline btn-sm"><i class="fa-regular fa-file-lines"></i> View Directive
+                    Dossier</button>
+                  <button class="btn btn-primary btn-sm"><i class="fa-solid fa-circle-check"></i> Acknowledge
+                    Receipt</button>
                 </div>
               </div>
             </article>
@@ -214,7 +222,8 @@
             <article class="feed-item advisory">
               <div class="feed-meta-row">
                 <div class="feed-tag-group">
-                  <span class="feed-tag tag-advisory"><i class="fa-solid fa-warning"></i> EPIDEMIOLOGICAL SENTINEL ADVISORY</span>
+                  <span class="feed-tag tag-advisory"><i class="fa-solid fa-warning"></i> EPIDEMIOLOGICAL SENTINEL
+                    ADVISORY</span>
                   <span class="feed-id">BC-EPI-2025-044</span>
                   <span class="feed-time">• Issued 2h ago (09:15 UTC)</span>
                 </div>
@@ -225,15 +234,18 @@
 
               <h3 class="feed-title">Sentinel Surveillance Notice: Adenovirus Cluster Variant Screening</h3>
               <p class="feed-description">
-                Clinicians are instructed to implement secondary genomic sequencing intake protocols for pediatric inpatient admissions presenting acute respiratory distress symptoms.
+                Clinicians are instructed to implement secondary genomic sequencing intake protocols for pediatric
+                inpatient admissions presenting acute respiratory distress symptoms.
               </p>
 
               <div class="feed-actions-row">
                 <span class="scope-chip">
-                  <i class="fa-solid fa-hospital-user"></i> Scope: Pediatric Care Units, Diagnostic Labs, Emergency Departments
+                  <i class="fa-solid fa-hospital-user"></i> Scope: Pediatric Care Units, Diagnostic Labs, Emergency
+                  Departments
                 </span>
                 <div class="btn-group align-right">
-                  <button class="btn btn-ghost btn-sm"><i class="fa-solid fa-book-open"></i> Clinical Guidance Note</button>
+                  <button class="btn btn-ghost btn-sm"><i class="fa-solid fa-book-open"></i> Clinical Guidance
+                    Note</button>
                   <button class="btn btn-ghost btn-sm"><i class="fa-solid fa-hashtag"></i> ICD-11 Coding Guide</button>
                 </div>
               </div>
@@ -243,7 +255,8 @@
             <article class="feed-item info">
               <div class="feed-meta-row">
                 <div class="feed-tag-group">
-                  <span class="feed-tag tag-info"><i class="fa-solid fa-shield-halved"></i> FEDERATED REGISTRY NOTICE</span>
+                  <span class="feed-tag tag-info"><i class="fa-solid fa-shield-halved"></i> FEDERATED REGISTRY
+                    NOTICE</span>
                   <span class="feed-id">BC-SYS-2025-012</span>
                   <span class="feed-time">• Today, 06:30 UTC</span>
                 </div>
@@ -254,7 +267,8 @@
 
               <h3 class="feed-title">Scheduled Cryptographic Keypair Rotation for Civil Registry HSM Nodes</h3>
               <p class="feed-description">
-                All accredited hospital registrar terminals must sync cryptographic tokens prior to 23:59 UTC. Dual-key sign-off validation will remain unaffected throughout maintenance.
+                All accredited hospital registrar terminals must sync cryptographic tokens prior to 23:59 UTC. Dual-key
+                sign-off validation will remain unaffected throughout maintenance.
               </p>
 
               <div class="feed-actions-row">
@@ -262,7 +276,8 @@
                   <i class="fa-solid fa-user-gear"></i> Scope: Hospital Registrars, Accredited CMOs, Medical Examiners
                 </span>
                 <div class="btn-group align-right">
-                  <button class="btn btn-ghost btn-sm"><i class="fa-solid fa-shield-cat"></i> Technical Advisory</button>
+                  <button class="btn btn-ghost btn-sm"><i class="fa-solid fa-shield-cat"></i> Technical
+                    Advisory</button>
                 </div>
               </div>
             </article>
@@ -277,4 +292,5 @@
     </div>
   </div>
 </body>
+
 </html>
