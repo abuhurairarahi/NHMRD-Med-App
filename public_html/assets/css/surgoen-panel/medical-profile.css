@@ -199,6 +199,8 @@ body {
   grid-template-columns: 1fr 1fr 1.2fr;
   gap: 16px;
   margin-bottom: 20px;
+  margin-left:10;
+   margin-right:10;
 }
 
 .vital-card, .donor-card {
