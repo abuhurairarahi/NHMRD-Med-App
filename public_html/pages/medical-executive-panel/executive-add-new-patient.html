@@ -25,10 +25,12 @@
                 <a href="/public_html/pages/medical-executive-panel/executive-dashboard.html" class="nav-item">
                     <i class="fa-solid fa-table-cells-large"></i> Dashboard
                 </a>
-                <a href="/public_html/pages/medical-executive-panel/executive-add-new-patient.html" class="nav-item active">
+                <a href="/public_html/pages/medical-executive-panel/executive-add-new-patient.html"
+                    class="nav-item active">
                     <i class="fa-solid fa-user-plus"></i> Register New Patient
                 </a>
-                <a href="/public_html/pages/medical-executive-panel/executive-register-new-doctor.html" class="nav-item">
+                <a href="/public_html/pages/medical-executive-panel/executive-register-new-doctor.html"
+                    class="nav-item">
                     <i class="fa-solid fa-user-doctor"></i> Register New Doctor
                 </a>
                 <a href="#" class="nav-item">
@@ -57,7 +59,12 @@
         <div class="main-wrapper">
             <!-- Top Navigation Header -->
             <header class="top-header">
-                <div class="sub-header-left">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search records, MRNs, clinicians...">
+                </div>
+
+                <div class="user-profile">
                     <div class="system-status-pills">
                         <div class="status-pill">
                             <i class="fa-regular fa-clock"></i>
@@ -68,19 +75,11 @@
                             <span>Live Registry • Connected</span>
                         </div>
                     </div>
-                </div>
-
-                <div class="header-right-group">
-                    <div class="notification-bell">
-                        <i class="fa-regular fa-bell"></i>
+                    <div class="user-info">
+                        <span class="user-name">Dr. Sarah F.</span>
+                        <span class="user-role">Super Admin</span>
                     </div>
-                    <div class="user-profile">
-                        <div class="user-info">
-                            <span class="user-name">Dr. Arthur Vance</span>
-                            <span class="user-role">Super Administrator • ID: 8942</span>
-                        </div>
-                        <div class="avatar"><i class="fa-solid fa-user-gear"></i></div>
-                    </div>
+                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
                 </div>
             </header>
 
@@ -100,7 +99,7 @@
                     </div>
                 </div>
             </div>
-           
+
             <!-- Form Wrapper -->
             <main class="content-body">
                 <form onsubmit="return false;">
@@ -327,10 +326,11 @@
                     <!-- Form Actions Footer -->
                     <footer class="form-actions-footer">
                         <div>
-                        <button type="button" class="btn btn-light">Cancel</button>
-                        <button type="button" class="btn btn-outline-dark">
-                            <i class="fa-regular fa-floppy-disk"></i> Save as Draft
-                        </button></div>
+                            <button type="button" class="btn btn-light">Cancel</button>
+                            <button type="button" class="btn btn-outline-dark">
+                                <i class="fa-regular fa-floppy-disk"></i> Save as Draft
+                            </button>
+                        </div>
                         <div class="actions-right">
 
 
