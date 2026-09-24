@@ -46,6 +46,18 @@
   --exe-text-main: #0f172a;
   --exe-text-muted: #64748b;
   --exe-border-color: #e2e8f0;
+
+  --srug-primary-crimson: #a81c34;
+  --srug-primary-hover: #8a1529;
+  --srug-bg-sidebar: #8b1528;
+  --srug-bg-main: #f8f9fa;
+  --srug-bg-card: #ffffff;
+  --srug-text-dark: #1e293b;
+  --srug-text-muted: #64748b;
+  --srug-border-color: #e2e8f0;
+  --srug-success-color: #16a34a;
+  --srug-danger-color: #dc2626;
+  --srug-warning-color: #d97706;
 }
 
 * {
@@ -112,6 +124,26 @@ body {
 
 .doctor {
   background-color: var(--doc-sidebar);
+}
+
+.surgeon {
+  background-color: var(--srug-bg-sidebar);
+}
+
+.sidebar.surgeon > .nav-menu > .nav-item:hover {
+  background-color: rgba(61, 5, 5, 0.15);
+  color: #ffffff;
+  border-left: 4px solid rgb(255, 116, 116);
+}
+
+.sidebar.surgeon > .nav-menu > .nav-item {
+  color: white;
+}
+
+.sidebar.surgeon > .nav-menu > .nav-item.active {
+  background-color: rgba(61, 5, 5, 0.15);
+  color: #ffffff;
+  border-left: 4px solid rgb(255, 116, 116);
 }
 
 .executive > .nav-menu > .nav-item:hover, .nav-item.active {

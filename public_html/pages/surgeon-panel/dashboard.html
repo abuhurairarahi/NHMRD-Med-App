@@ -4,39 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NHMRD - Doctor Dashboard</title>
-  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/dashboard.css">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Dashboard Stylesheet -->
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/dashboard.css">
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/features/executive-header.css">
 </head>
 <body>
   <div class="dashboard-container">
     
     <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="brand">
-        <svg class="brand-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"></circle>
-          <path d="M12 8v8M8 12h8"></path>
-        </svg>
-        <span>NHMRD</span>
-      </div>
+    <aside class="sidebar surgeon">
+      <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>NHMRD</span>
+            </div>
 
       <nav class="nav-menu">
-        <a href="#" class="nav-item active">
-          <span class="icon">📊</span> Dashboard
+        <a href="/public_html/pages/surgeon-panel/dashboard.html" class="nav-item active">
+          <i class="fa-solid fa-chart-pie icon"></i> Dashboard
         </a>
-        <a href="#" class="nav-item">
-          <span class="icon">📋</span> Clinical Records
+        <a href="/public_html/pages/surgeon-panel/clinical-rec.html" class="nav-item">
+          <i class="fa-solid fa-clipboard-list icon"></i> Clinical Records
         </a>
-        <a href="#" class="nav-item">
-          <span class="icon">👥</span> Patient Requests
+        <a href="/public_html/pages/surgeon-panel/paitent-req.html" class="nav-item">
+          <i class="fa-solid fa-user-group icon"></i> Patient Requests
         </a>
-        <a href="#" class="nav-item">
-          <span class="icon">👤</span> Doctor Profile
+        <a href="/public_html/pages/surgeon-panel/doc-profile.html" class="nav-item">
+          <i class="fa-solid fa-user-doctor icon"></i> Doctor Profile
         </a>
       </nav>
 
       <div class="sidebar-footer">
-        <button class="logout-btn">Logout</button>
+        <button class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
       </div>
     </aside>
 
@@ -46,12 +52,12 @@
       <!-- Top Bar -->
       <header class="top-bar">
         <div class="search-box">
-          <span class="search-icon">🔍</span>
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
           <input type="text" placeholder="Search patient MRN, name, vitals...">
         </div>
         <div class="top-bar-right">
           <div class="shift-info">
-            <span class="clock-icon">🕒</span> Shift: Morning Clinical Rounds (07:00 - 15:30)
+            <i class="fa-regular fa-clock clock-icon"></i> Shift: Morning Clinical Rounds (07:00 - 15:30)
           </div>
           <div class="status-badge">
             <span class="dot"></span> EMR Synced
@@ -60,7 +66,7 @@
             <div class="user-avatar">FA</div>
             <div class="user-info">
               <div class="user-name">Dr. Farhana Ahmed, MD</div>
-              <div class="user-role">Internal Medicine & Therapeutics</div>
+              <div class="user-role">Internal Medicine &amp; Therapeutics</div>
             </div>
           </div>
         </div>
@@ -75,15 +81,15 @@
           <!-- Banner Header -->
           <div class="command-banner">
             <div class="command-info">
-              <span class="banner-icon">🩺</span>
+              <i class="fa-solid fa-stethoscope banner-icon"></i>
               <div>
                 <h2>Internal Medicine Clinical Command <span class="badge badge-active">ACTIVE ROUNDING</span></h2>
                 <p class="banner-sub">Station 04 • Service Ward 3B • EMR Session ID: #IM-8842-DX</p>
               </div>
             </div>
             <div class="banner-actions">
-              <button class="btn btn-outline">📞 Call Triage</button>
-              <button class="btn btn-crimson">➕ New Encounter</button>
+              <button class="btn btn-outline"><i class="fa-solid fa-phone"></i> Call Triage</button>
+              <button class="btn btn-crimson"><i class="fa-solid fa-plus"></i> New Encounter</button>
             </div>
           </div>
 
@@ -92,9 +98,9 @@
             <div class="metric-card">
               <div class="metric-header">
                 <span>TODAY'S CONSULTATIONS</span>
-                <span class="icon">📅</span>
+                <i class="fa-regular fa-calendar-check icon"></i>
               </div>
-              <div class="metric-value">18 <span class="unit">total</span> <span class="trend positive">↗ +12%</span></div>
+              <div class="metric-value">18 <span class="unit">total</span> <span class="trend positive"><i class="fa-solid fa-arrow-trend-up"></i> +12%</span></div>
               <div class="metric-pills">
                 <span class="pill pill-green">• 11 Done</span>
                 <span class="pill pill-yellow">• 7 Pending</span>
@@ -105,29 +111,29 @@
             <div class="metric-card">
               <div class="metric-header">
                 <span>RX REVIEWS PENDING</span>
-                <span class="icon">📋</span>
+                <i class="fa-solid fa-file-prescription icon"></i>
               </div>
-              <div class="metric-value">14 <span class="unit">queued</span> <span class="badge badge-urgent">! 4 Urgent</span></div>
+              <div class="metric-value">14 <span class="unit">queued</span> <span class="badge badge-urgent"><i class="fa-solid fa-triangle-exclamation"></i> 4 Urgent</span></div>
               <div class="metric-subtext">
-                Polypharmacy check: 5 flag <span class="link">Batch Sign →</span>
+                Polypharmacy check: 5 flag <span class="link">Batch Sign <i class="fa-solid fa-arrow-right"></i></span>
               </div>
             </div>
 
             <div class="metric-card">
               <div class="metric-header">
                 <span>DIAGNOSTIC CRITICAL ALERTS</span>
-                <span class="icon">⚠️</span>
+                <i class="fa-solid fa-triangle-exclamation icon"></i>
               </div>
               <div class="metric-value text-danger">3 <span class="unit">abnormal</span> <span class="badge badge-danger">Stat Attention</span></div>
               <div class="metric-subtext text-danger">
-                ⚠️ Troponin, K+ imbalance, HbA1c 11
+                <i class="fa-solid fa-circle-exclamation"></i> Troponin, K+ imbalance, HbA1c 11
               </div>
             </div>
 
             <div class="metric-card">
               <div class="metric-header">
                 <span>OUTPATIENT CARE INDEX</span>
-                <span class="icon">👍</span>
+                <i class="fa-regular fa-thumbs-up icon"></i>
               </div>
               <div class="metric-value">94.2% <span class="sub-small">satisfaction <strong>98th Pctl</strong></span></div>
               <div class="metric-subtext">
@@ -140,10 +146,10 @@
           <div class="section-container">
             <div class="section-header">
               <div>
-                <h3>Patient Schedule & Encounter Queue</h3>
-                <p class="subtext">Daily clinical throughput & continuous charting roster</p>
+                <h3>Patient Schedule &amp; Encounter Queue</h3>
+                <p class="subtext">Daily clinical throughput &amp; continuous charting roster</p>
               </div>
-              <button class="btn btn-light-btn">Today (Oct 24) 🗓️</button>
+              <button class="btn btn-light-btn">Today (Oct 24) <i class="fa-regular fa-calendar"></i></button>
             </div>
 
             <div class="queue-list">
@@ -159,12 +165,12 @@
                     <strong>Chief Complaint:</strong> Type 2 Diabetes follow-up, symptomatic hyperglycemia, mild peripheral neuropathy
                   </div>
                   <div class="vitals">
-                    <span>BP: 138/86</span> <span>HR: 74 bpm</span> <span class="text-danger">HbA1c: 9.8% ↑</span>
+                    <span>BP: 138/86</span> <span>HR: 74 bpm</span> <span class="text-danger">HbA1c: 9.8% <i class="fa-solid fa-arrow-up"></i></span>
                   </div>
                 </div>
                 <div class="queue-actions">
-                  <button class="btn btn-sm btn-outline">📂 Records</button>
-                  <button class="btn btn-sm btn-crimson">📉 Active Chart</button>
+                  <button class="btn btn-sm btn-outline"><i class="fa-regular fa-folder-open"></i> Records</button>
+                  <button class="btn btn-sm btn-crimson"><i class="fa-solid fa-chart-line"></i> Active Chart</button>
                 </div>
               </div>
 
@@ -180,12 +186,12 @@
                     <strong>Chief Complaint:</strong> Refractory Hypertension review, morning occipital headaches, pedal edema
                   </div>
                   <div class="vitals">
-                    <span class="text-danger">BP: 162/98 ↑</span> <span>HR: 88 bpm</span> <span>BMI: 29.4</span>
+                    <span class="text-danger">BP: 162/98 <i class="fa-solid fa-arrow-up"></i></span> <span>HR: 88 bpm</span> <span>BMI: 29.4</span>
                   </div>
                 </div>
                 <div class="queue-actions">
-                  <button class="btn btn-sm btn-outline">📂 Records</button>
-                  <button class="btn btn-sm btn-outline">📲 Call In</button>
+                  <button class="btn btn-sm btn-outline"><i class="fa-regular fa-folder-open"></i> Records</button>
+                  <button class="btn btn-sm btn-outline"><i class="fa-solid fa-bullhorn"></i> Call In</button>
                 </div>
               </div>
 
@@ -201,12 +207,12 @@
                     <strong>Chief Complaint:</strong> Chronic Fatigue evaluation, unexplained weight loss (4kg / 2 mo), post-viral malaise
                   </div>
                   <div class="vitals">
-                    <span>TSH: Pending</span> <span class="text-danger">Ferritin: 14 ng/mL ↓</span>
+                    <span>TSH: Pending</span> <span class="text-danger">Ferritin: 14 ng/mL <i class="fa-solid fa-arrow-down"></i></span>
                   </div>
                 </div>
                 <div class="queue-actions">
-                  <button class="btn btn-sm btn-outline">📂 Records</button>
-                  <button class="btn btn-sm btn-outline">💊 Meds List</button>
+                  <button class="btn btn-sm btn-outline"><i class="fa-regular fa-folder-open"></i> Records</button>
+                  <button class="btn btn-sm btn-outline"><i class="fa-solid fa-pills"></i> Meds List</button>
                 </div>
               </div>
 
@@ -222,12 +228,12 @@
                     <strong>Chief Complaint:</strong> Polypharmacy audit (9 active Rx), renal dosing adjustment, mild cognitive changes
                   </div>
                   <div class="vitals">
-                    <span class="text-danger">eGFR: 42 mL/min ↓</span> <span>Cr: 1.4 mg/dL</span>
+                    <span class="text-danger">eGFR: 42 mL/min <i class="fa-solid fa-arrow-down"></i></span> <span>Cr: 1.4 mg/dL</span>
                   </div>
                 </div>
                 <div class="queue-actions">
-                  <button class="btn btn-sm btn-outline">💊 Meds List</button>
-                  <button class="btn btn-sm btn-icon">⋮</button>
+                  <button class="btn btn-sm btn-outline"><i class="fa-solid fa-pills"></i> Meds List</button>
+                  <button class="btn btn-sm btn-icon"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                 </div>
               </div>
             </div>
@@ -237,16 +243,16 @@
           <div class="section-container">
             <div class="section-header">
               <div>
-                <h3>Recent Diagnostic & Lab Telemetry</h3>
+                <h3>Recent Diagnostic &amp; Lab Telemetry</h3>
                 <p class="subtext">Live feeds from NHMRD Central Pathology and Bedside Vitals</p>
               </div>
-              <span class="telemetry-status">• Telemetry Online</span>
+              <span class="telemetry-status"><i class="fa-solid fa-circle pulse-green"></i> Telemetry Online</span>
             </div>
 
             <table class="telemetry-table">
               <thead>
                 <tr>
-                  <th>PATIENT & MRN</th>
+                  <th>PATIENT &amp; MRN</th>
                   <th>TEST PANEL</th>
                   <th>OBSERVED VALUE</th>
                   <th>REF RANGE</th>
@@ -258,7 +264,7 @@
                 <tr>
                   <td><strong>Jahangir Alam</strong><br><small>MRN-7892-C</small></td>
                   <td>Cardiac Troponin I<br><small>STAT Telemetry</small></td>
-                  <td><span class="text-danger font-bold">0.18 ng/mL ↑</span></td>
+                  <td><span class="text-danger font-bold">0.18 ng/mL <i class="fa-solid fa-arrow-up"></i></span></td>
                   <td>&lt; 0.04 ng/mL</td>
                   <td><span class="badge badge-critical">Critical High</span></td>
                   <td><button class="btn btn-xs btn-danger">Page Cardiology</button></td>
@@ -273,7 +279,7 @@
                 </tr>
                 <tr>
                   <td><strong>Abdul Karim</strong><br><small>MRN-3310-F</small></td>
-                  <td>HbA1c & Fasting Glucose<br><small>Point-of-Care Cartridge</small></td>
+                  <td>HbA1c &amp; Fasting Glucose<br><small>Point-of-Care Cartridge</small></td>
                   <td><span class="text-danger font-bold">9.8% • 214 mg/dL</span></td>
                   <td>&lt; 5.7% • &lt; 100 mg/dL</td>
                   <td><span class="badge badge-warning">Poor Glycemic Control</span></td>
@@ -299,14 +305,14 @@
           <!-- Prescriber Section -->
           <div class="panel-card">
             <div class="panel-card-header">
-              <strong>Quick Prescriber & Titration</strong>
+              <strong>Quick Prescriber &amp; Titration</strong>
               <small class="text-muted">Formulary V4.2</small>
             </div>
             
             <div class="prescriber-form">
               <label class="form-label">FAST MEDICATION LOOKUP</label>
               <div class="search-input-group">
-                <span>🔍</span>
+                <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" value="Metformin Hydrochloride">
               </div>
 
@@ -328,7 +334,7 @@
 
               <div class="prescriber-actions">
                 <button class="btn btn-outline">Clear</button>
-                <button class="btn btn-crimson flex-1">▶ Queue for Patient</button>
+                <button class="btn btn-crimson flex-1"><i class="fa-solid fa-play"></i> Queue for Patient</button>
               </div>
 
               <div class="quick-picks">
@@ -355,7 +361,7 @@
             </div>
 
             <div class="scribe-actions">
-              <button class="btn btn-link">🎙️ Voice recognition active</button>
+              <button class="btn btn-link"><i class="fa-solid fa-microphone"></i> Voice recognition active</button>
               <button class="btn btn-outline">Append to Chart</button>
             </div>
           </div>

@@ -31,7 +31,128 @@ body {
   min-height: 100vh;
 }
 
+/* Main Content Area */
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
 
+/* Top Bar Header */
+.top-bar {
+  background-color: #ffffff;
+  height: 60px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: #f1f5f9;
+  padding: 8px 14px;
+  border-radius: 20px;
+  width: 320px;
+  gap: 8px;
+}
+
+.search-icon {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.search-box input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 12px;
+}
+
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.shift-info {
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-badge {
+  background-color: #f0fdf4;
+  color: var(--success-color);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--success-color);
+  border-radius: 50%;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar {
+  width: 34px;
+  height: 34px;
+  background-color: var(--primary-crimson);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.user-role {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Content Area Workspace */
+.content-area {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+}
+
+.primary-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
 /* Command Banner */
 .command-banner {
@@ -53,6 +174,7 @@ body {
 
 .banner-icon {
   font-size: 24px;
+  color: var(--primary-crimson);
 }
 
 .command-info h2 {
@@ -135,6 +257,22 @@ body {
   color: var(--primary-crimson);
   font-weight: 600;
   cursor: pointer;
+}
+
+.trend.positive {
+  font-size: 11px;
+  color: var(--success-color);
+}
+
+.sub-small {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: normal;
+}
+
+.pulse-green {
+  color: var(--success-color);
+  font-size: 8px;
 }
 
 /* Section Containers */
@@ -251,9 +389,13 @@ body {
   font-weight: 600;
   cursor: pointer;
   border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .btn-crimson { background: var(--primary-crimson); color: white; }
+.btn-crimson:hover { background: var(--primary-hover); }
 .btn-outline { background: white; border-color: var(--border-color); color: var(--text-dark); }
 .btn-light-btn { background: #f1f5f9; border: none; color: var(--text-dark); }
 .btn-danger { background: #dc2626; color: white; }
@@ -288,6 +430,7 @@ body {
 .telemetry-table td {
   padding: 10px 8px;
   border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
 }
 
 /* Right Panel Cards */
@@ -321,13 +464,14 @@ body {
   padding: 6px 10px;
   border-radius: 6px;
   margin-bottom: 10px;
+  gap: 8px;
+  color: var(--text-muted);
 }
 
 .search-input-group input {
   border: none;
   background: transparent;
   outline: none;
-  margin-left: 6px;
   width: 100%;
 }
 
@@ -374,6 +518,11 @@ body {
   border-radius: 4px;
   font-size: 10px;
   color: var(--text-dark);
+  cursor: pointer;
+}
+
+.chip:hover {
+  background-color: #e2e8f0;
 }
 
 /* Scribe Pad */
@@ -401,6 +550,9 @@ body {
   color: var(--primary-crimson);
   font-size: 11px;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 /* Utility Colors */

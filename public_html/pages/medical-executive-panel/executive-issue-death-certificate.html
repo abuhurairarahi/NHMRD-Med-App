@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Official Vital Records: Issue Death Certificate - NHMRD Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/executive-panel/executiveissue-death-certificate.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar executive">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="/public_html/pages/medical-executive-panel/executive-dashboard.html" class="nav-item">
+                    <i class="fa-solid fa-border-all"></i>
+                    Dashboard
+                </a>
+                <a href="/public_html/pages/medical-executive-panel/executive-add-new-patient.html" class="nav-item">
+                    <i class="fa-solid fa-user-plus"></i>
+                    Register New Patient
+                </a>
+                <a href="/public_html/pages/medical-executive-panel/executive-register-new-doctor.html"
+                    class="nav-item">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    Register New Doctor
+                </a>
+                <a href="/public_html/pages/medical-executive-panel/executive-register-new-hospital.html"
+                    class="nav-item">
+                    <i class="fa-solid fa-hospital-user"></i>
+                    Register New Hospital
+                </a>
+                <a href="/public_html/pages/medical-executive-panel/executive-issue-death-certificate.html" class="nav-item active">
+                    <i class="fa-solid fa-file-waveform"></i> Issue Death Certificate
+                </a>
+        <a href="/public_html/pages/medical-executive-panel/executive-vaccination-request.html" class="nav-item">
+                    <i class="fa-solid fa-syringe"></i> Vaccination Request
+                </a>
+        <a href="/public_html/pages/medical-executive-panel/executive-profile.html" class="nav-item">
+                    <i class="fa-solid fa-circle-user"></i> Profile
+                </a>
+      </nav>
+
+      <div class="sidebar-footer">
+                <a href="/public_html/pages/login.html">
+                    <button class="logout-btn">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                    </button>
+                </a>
+            </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      
+      <!-- Top Header Navigation -->
+      <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search records, MRNs, clinicians...">
+                </div>
+
+                <div class="user-profile">
+                    <div class="system-status-pills">
+                        <div class="status-pill">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>UTC+00:00 • SYSTEM ACTIVE</span>
+                        </div>
+                        <div class="status-pill connected">
+                            <span class="pulse-dot"></span>
+                            <span>Live Registry • Connected</span>
+                        </div>
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">Dr. Sarah F.</span>
+                        <span class="user-role">Super Admin</span>
+                    </div>
+                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                </div>
+            </header>
+
+      <!-- Main Content Area -->
+      <main class="content">
+        
+        <!-- Page Title Bar -->
+        <div class="page-title-row">
+          <div>
+            <div class="pill-group">
+              <span class="pill pill-navy">SECTION 44-A · LEGAL VITAL STATISTICS</span>
+              <span class="pill-text"><i class="fa-solid fa-key"></i> Dual-Key Sign-off Enforced</span>
+            </div>
+            <h1>Official Vital Records: Issue Death Certificate</h1>
+            <p class="subtitle">Official legal document issued under the National Vital Statistics Act. All entries are immutably registered to the National Health &amp; Mortality Database (NHMRD) and synced to the Federal Civil Registration Agency.</p>
+          </div>
+          <div class="top-action-buttons">
+            <button class="btn btn-outline"><i class="fa-solid fa-clock-rotate-left"></i> View Audit Log</button>
+            <button class="btn btn-outline"><i class="fa-solid fa-book-medical"></i> ICD-11 Guide</button>
+          </div>
+        </div>
+
+        <!-- Red Compliance Notice Bar -->
+        <div class="alert-banner-red">
+          <div class="alert-content">
+            <i class="fa-solid fa-user-shield alert-icon"></i>
+            <div>
+              <strong>Mandatory Statutory Compliance Notice</strong>
+              <p>Requires dual digital signature by Attending Physician and Authorized Coroner / Medical Examiner prior to national cryptographical ledger entry.</p>
+            </div>
+          </div>
+          <div class="security-level">
+            <span>SECURITY LEVEL 4</span>
+          </div>
+        </div>
+
+        <!-- Step 01: Deceased Individual Identity -->
+        <div class="card">
+          <div class="card-header space-between">
+            <div class="header-title-group">
+              <span class="step-num">01</span>
+              <div>
+                <h2>Deceased Individual Identity</h2>
+                <p>Verify patient national biometric record or enter verified civil registry tokens.</p>
+              </div>
+            </div>
+            <span class="badge-gray">Subject Biometrics</span>
+          </div>
+
+          <div class="card-body">
+            <div class="form-group blue-box-group">
+              <label>Patient National Health ID (NHMRD)</label>
+              <div class="input-with-btn">
+                <input type="text" value="NHMRD-9028-441-A" readonly>
+                <button class="btn-primary-blue"><i class="fa-solid fa-bolt"></i> Auto-Fill Registry Data</button>
+              </div>
+            </div>
+
+            <div class="form-row col-2 margin-top">
+              <div class="form-group">
+                <label>Full Legal Name (as per Passport / ID)</label>
+                <input type="text" value="Eleanor Catherine Vance-Montague" readonly>
+              </div>
+              <div class="form-group">
+                <label>Social Security / National ID Number</label>
+                <input type="text" value="SSN-892-00-4712" readonly>
+              </div>
+            </div>
+
+            <div class="form-row col-3 margin-top">
+              <div class="form-group">
+                <label>Legal Biological Sex</label>
+                <input type="text" value="Female" readonly>
+              </div>
+              <div class="form-group">
+                <label>Date of Birth</label>
+                <input type="text" value="08/14/1952" readonly>
+              </div>
+              <div class="form-group">
+                <label>Age at Death</label>
+                <div class="input-suffix">
+                  <input type="text" value="71" readonly>
+                  <span class="suffix">Years</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 02: Vital Circumstances & Pronouncement -->
+        <div class="card margin-top-card">
+          <div class="card-header space-between">
+            <div class="header-title-group">
+              <span class="step-num">02</span>
+              <div>
+                <h2>Vital Circumstances &amp; Pronouncement</h2>
+                <p>Precise temporal and geospatial records of mortality incident.</p>
+              </div>
+            </div>
+            <span class="badge-gray">Pronouncement</span>
+          </div>
+
+          <div class="card-body">
+            <div class="form-row col-2">
+              <div class="form-group">
+                <label>Date of Pronouncement</label>
+                <input type="text" value="10/28/2024">
+              </div>
+              <div class="form-group">
+                <label>Exact Time of Death (24-Hour Clinical Format)</label>
+                <div class="input-icon-right">
+                  <input type="text" value="03:42 AM">
+                  <i class="fa-regular fa-clock"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row col-2 margin-top">
+              <div class="form-group">
+                <label>Place / Classification of Death</label>
+                <select>
+                  <option selected>Licensed Hospital Inpatient Facility</option>
+                  <option>Residential Address</option>
+                  <option>Transit / Ambulance</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Facility Name / Street Address</label>
+                <input type="text" value="St. Jude Metropolitan Academic Hospital · CCU Ward 4">
+              </div>
+            </div>
+
+            <div class="form-row col-2 margin-top">
+              <div class="form-group">
+                <label>Municipality / City</label>
+                <input type="text" value="Capital Metro District">
+              </div>
+              <div class="form-group">
+                <label>State / Province Registry Jurisdiction</label>
+                <input type="text" value="Central Division (Zone 01)">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 03: Clinical Cause of Death (WHO ICD-11 Standard) -->
+        <div class="card margin-top-card">
+          <div class="card-header space-between">
+            <div class="header-title-group">
+              <span class="step-num">03</span>
+              <div>
+                <h2>Clinical Cause of Death (WHO ICD-11 Standard)</h2>
+                <p>Standardized epidemiological sequencing for vital registration reporting.</p>
+              </div>
+            </div>
+            <span class="badge-blue-soft"><i class="fa-solid fa-circle-info"></i> ICD-11 REV. 2024</span>
+          </div>
+
+          <div class="card-body">
+            <!-- PART I -->
+            <div class="sub-section-title">
+              <span>PART I: CHAIN OF EVENTS LEADING DIRECTLY TO DEATH</span>
+              <span class="sub-note">Sequenced Immediate to Antecedent</span>
+            </div>
+
+            <div class="icd-row">
+              <div class="form-group flex-3">
+                <label>Line (a) Immediate Cause (Direct condition)</label>
+                <input type="text" value="Acute respiratory distress syndrome secondary to sepsis">
+              </div>
+              <div class="form-group flex-1">
+                <label>ICD-11 Code</label>
+                <input type="text" value="MD81.0" class="code-input">
+              </div>
+              <div class="form-group flex-1">
+                <label>Approx. Onset</label>
+                <input type="text" value="3 Days">
+              </div>
+            </div>
+
+            <div class="icd-row">
+              <div class="form-group flex-3">
+                <label>Line (b) Due to (or as a consequence of)</label>
+                <input type="text" value="Severe bilateral lobar pneumonia">
+              </div>
+              <div class="form-group flex-1">
+                <label>ICD-11 Code</label>
+                <input type="text" value="CA40.0" class="code-input">
+              </div>
+              <div class="form-group flex-1">
+                <label>Approx. Onset</label>
+                <input type="text" value="10 Days">
+              </div>
+            </div>
+
+            <div class="icd-row">
+              <div class="form-group flex-3">
+                <label>Line (c) Underlying Etiology (Root origin)</label>
+                <input type="text" value="Chronic Obstructive Pulmonary Disease with acute exacerbation">
+              </div>
+              <div class="form-group flex-1">
+                <label>ICD-11 Code</label>
+                <input type="text" value="CA22.0" class="code-input">
+              </div>
+              <div class="form-group flex-1">
+                <label>Approx. Onset</label>
+                <input type="text" value="6 Years">
+              </div>
+            </div>
+
+            <!-- PART II -->
+            <div class="sub-section-title margin-top">
+              <span>PART II: CONTRIBUTING CONDITIONS</span>
+            </div>
+
+            <div class="icd-row">
+              <div class="form-group flex-4">
+                <label>Significant co-morbidities contributing to death but not in causal chain</label>
+                <input type="text" value="Type II Diabetes Mellitus, Chronic Congestive Heart Failure Stage III">
+              </div>
+              <div class="form-group flex-1">
+                <label>Co-morbidity Codes</label>
+                <input type="text" value="5A11 / BD11" class="code-input">
+              </div>
+            </div>
+
+            <!-- Manner of Death Radio Selector -->
+            <div class="form-group margin-top">
+              <label>Manner of Death (Statutory Ruling)</label>
+              <div class="radio-tab-group">
+                <label class="radio-tab active">
+                  <input type="radio" name="manner" checked> Natural
+                </label>
+                <label class="radio-tab">
+                  <input type="radio" name="manner"> Accident
+                </label>
+                <label class="radio-tab">
+                  <input type="radio" name="manner"> Suicide
+                </label>
+                <label class="radio-tab">
+                  <input type="radio" name="manner"> Homicide
+                </label>
+                <label class="radio-tab">
+                  <input type="radio" name="manner"> Pending
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 04: Certifying Authority & Final Sign-Off -->
+        <div class="card margin-top-card">
+          <div class="card-header space-between">
+            <div class="header-title-group">
+              <span class="step-num">04</span>
+              <div>
+                <h2>Certifying Authority &amp; Final Sign-Off</h2>
+                <p>Cryptographic credential matching and body disposition permission.</p>
+              </div>
+            </div>
+            <span class="badge-gray">Legal Authentication</span>
+          </div>
+
+          <div class="card-body">
+            <div class="form-row col-2">
+              <div class="form-group">
+                <label>Attending Physician Medical Registration (MCRN)</label>
+                <div class="input-verified">
+                  <input type="text" value="MCRN-77402-VANCE">
+                  <i class="fa-solid fa-circle-check check-icon"></i>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Coroner / Medical Examiner License ID</label>
+                <div class="input-verified">
+                  <input type="text" value="COR-DIST-9081">
+                  <i class="fa-solid fa-circle-check check-icon"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row col-2 margin-top">
+              <div class="form-group inline-toggle-box">
+                <div>
+                  <label class="bold-label">Autopsy Performed?</label>
+                  <p class="hint-text">Are findings incorporated in causes above?</p>
+                </div>
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label>Disposal &amp; Transit Authorization</label>
+                <input type="text" value="Burial Permit Granted" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Action Bar -->
+        <div class="bottom-action-bar">
+          <button class="btn btn-action-light"><i class="fa-solid fa-floppy-disk"></i> Save Confidential Draft</button>
+          <!-- <button class="btn btn-action-blue-light"><i class="fa-solid fa-stethoscope"></i> Validate ICD-11 Codes</button> -->
+          <button class="btn btn-action-submit"><i class="fa-solid fa-shield-halved"></i> Issue Death Certificate &amp; Notify Civil Registry</button>
+        </div>
+
+      </main>
+    </div>
+
+  </div>
+
+</body>
+</html>
