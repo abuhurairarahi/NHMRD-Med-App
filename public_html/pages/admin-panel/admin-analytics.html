@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHMRD - Disease Surveillance & Vector Analytics Console</title>
+    <link rel="stylesheet" href="/public_html/assets/css/admin-panel/admin-analytics.css">
+    <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar admin">
+            <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>NHMRD</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="/public_html/pages/admin-panel/admin-dashboard.html" class="nav-item"><i
+                        class="fa-solid fa-table-cells-large"></i> Dashboard</a>
+                <a href="/public_html/pages/admin-panel/admin-patient-records.html" class="nav-item"><i
+                        class="fa-solid fa-user-group"></i> Patient Records</a>
+                <a href="/public_html/pages/admin-panel/admin-doctor-records.html" class="nav-item"><i
+                        class="fa-solid fa-user-doctor"></i> Doctor Records</a>
+                <a href="/public_html/pages/admin-panel/admin-hospital-records.html" class="nav-item"><i
+                        class="fa-solid fa-hospital"></i> Hospital Records</a>
+                <a href="/public_html/pages/admin-panel/admin-request-management.html" class="nav-item"><i
+                        class="fa-solid fa-clipboard-check"></i> Request Management</a>
+                <a href="/public_html/pages/admin-panel/admin-analytics.html" class="nav-item active"><i
+                        class="fa-solid fa-chart-line"></i> Analytics</a>
+                <a href="/public_html/pages/admin-panel/admin-notice-broadcast.html" class="nav-item"><i
+                        class="fa-solid fa-bullhorn"></i> Notice Broadcast</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#"><button class="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        Logout</button></a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <!-- Top Bar -->
+            <header class="top-header">
+                <div class="header-left">
+                    <i class="fa-solid fa-dharmachakra brand-icon"></i>
+                    <span class="portal-title">NHMRD Central Portal</span>
+                </div>
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search records, MRNs, clinicians...">
+                </div>
+                <div class="user-profile">
+                    <i class="fa-regular fa-bell bell-icon"></i>
+                    <div class="user-info">
+                        <span class="user-name">Dr. Sarah F.</span>
+                        <span class="user-role">Super Admin</span>
+                    </div>
+                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                </div>
+            </header>
+
+            <!-- Dashboard Body -->
+            <main class="dashboard-body">
+                <!-- Telemetry Title Banner -->
+                <div class="telemetry-banner">
+                    <div class="telemetry-info">
+                        <span class="pill defcon-pill">• DEFCON 2 LIVE TELEMETRY</span>
+                        <span class="update-text">Updated 3 mins ago • Epidemiological Bureau</span>
+                    </div>
+                    <h1 class="page-title">Disease Surveillance & Vector Analytics Console</h1>
+                    <div class="banner-controls">
+                        <div class="time-filters">
+                            <button class="filter-btn">Today</button>
+                            <button class="filter-btn active">This Week</button>
+                            <button class="filter-btn">Past 30 Days</button>
+                            <button class="filter-btn">Year-to-Date</button>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-export"><i class="fa-solid fa-download"></i> Export
+                                Telemetry</button>
+                            <button class="btn btn-dispatch"><i class="fa-solid fa-bullhorn"></i> Dispatch Emergency
+                                Directive</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Metric Summary Cards -->
+                <section class="summary-cards">
+                    <!-- Card 1 -->
+                    <div class="card stat-card">
+                        <div class="card-top">
+                            <div class="icon-box teal"><i class="fa-solid fa-virus"></i></div>
+                            <span class="pill dark-teal-pill"><i class="fa-solid fa-chart-line"></i> +14%</span>
+                        </div>
+                        <span class="stat-label">Active Outbreaks</span>
+                        <span class="stat-value">06 <span class="sub-label">Cluster Zones</span></span>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="card stat-card">
+                        <div class="card-top">
+                            <div class="icon-box teal"><i class="fa-solid fa-temperature-three-quarters"></i></div>
+                            <span class="pill dark-teal-pill">! +2.4% vs lw</span>
+                        </div>
+                        <span class="stat-label">National Positivity Rate</span>
+                        <span class="stat-value">18.4% <span class="sub-label">High Alert Threshold</span></span>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="card stat-card">
+                        <div class="card-top">
+                            <div class="icon-box teal"><i class="fa-solid fa-kit-medical"></i></div>
+                            <span class="pill dark-teal-pill"><i class="fa-regular fa-circle-check"></i> 100%
+                                Deployed</span>
+                        </div>
+                        <span class="stat-label">Rapid Response Teams</span>
+                        <span class="stat-value">34 <span class="sub-label">Districts Covered</span></span>
+                    </div>
+                </section>
+
+                <!-- Main Workspace Grid -->
+                <section class="main-grid">
+                    <!-- Transmission Curve Section -->
+                    <div class="card curve-panel">
+                        <div class="panel-header">
+                            <div>
+                                <h2 class="panel-title">Epidemiological Transmission Curve</h2>
+                                <p class="panel-sub">7-day rolling incidence index with Sunday weekend peak spike
+                                    monitoring</p>
+                            </div>
+                            <div class="chart-legend">
+                                <span class="legend-item"><span class="legend-dot blue"></span> Confirmed
+                                    Transmissions</span>
+                                <span class="legend-item"><span class="legend-dot dashed"></span> Vector Index</span>
+                            </div>
+                        </div>
+
+                        <!-- SVG Line Graph -->
+                        <div class="chart-container">
+                            <svg viewBox="0 0 500 150" class="chart-svg">
+                                <defs>
+                                    <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="#005a70" stop-opacity="0.3" />
+                                        <stop offset="100%" stop-color="#005a70" stop-opacity="0.0" />
+                                    </linearGradient>
+                                </defs>
+
+                                <!-- Gradient Fill -->
+                                <polygon points="20,110 90,95 160,85 230,105 300,65 370,55 440,25 440,140 20,140"
+                                    fill="url(#chartGradient)" />
+
+                                <!-- Dashed Vector Index Line -->
+                                <polyline points="20,120 90,110 160,100 230,115 300,85 370,75 440,45" fill="none"
+                                    stroke="#007084" stroke-width="2" stroke-dasharray="4,4" />
+
+                                <!-- Solid Transmissions Line -->
+                                <polyline points="20,110 90,95 160,85 230,105 300,65 370,55 440,25" fill="none"
+                                    stroke="#003845" stroke-width="2.5" />
+
+                                <!-- Peak Point Indicator -->
+                                <circle cx="440" cy="25" r="4" fill="#dc2626" />
+                            </svg>
+
+                            <!-- X-Axis Labels -->
+                            <div class="axis-labels">
+                                <span>Mon<br><small>(12.1k)</small></span>
+                                <span>Tue<br><small>(14.2k)</small></span>
+                                <span>Wed<br><small>(15.8k)</small></span>
+                                <span>Thu<br><small>(14.1k)</small></span>
+                                <span>Fri<br><small>(22.6k)</small></span>
+                                <span>Sat<br><small>(28.4k)</small></span>
+                                <span class="peak-label">Sun (34.1k)<br><small>Peak</small></span>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Parameters Row -->
+                        <div class="parameters-row">
+                            <div class="param-item">
+                                <span class="param-label">R0 REPRODUCTIVE NO.</span>
+                                <span class="param-val red-text">2.41 <i
+                                        class="fa-solid fa-triangle-exclamation"></i></span>
+                                <span class="param-sub red-text">Accelerated</span>
+                            </div>
+                            <div class="param-item">
+                                <span class="param-label">MEAN INCUBATION</span>
+                                <span class="param-val">5.4 Days</span>
+                                <span class="param-sub">• Stable</span>
+                            </div>
+                            <div class="param-item">
+                                <span class="param-label">GENOMIC SAMPLE MATCH</span>
+                                <span class="param-val">99.2% DENV-2</span>
+                                <span class="param-sub">Cosmopolitan</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Disease Threat Index Panel -->
+                    <div class="card threat-panel">
+                        <div class="panel-header">
+                            <h2 class="panel-title">Increasing Disease Threats</h2>
+                            <span class="pill dark-pill">SEVERITY INDEX</span>
+                        </div>
+                        <p class="panel-sub">National surveillance severity rating tracked across registered health
+                            hubs.</p>
+
+                        <div class="threat-list">
+                            <!-- Threat Item 1 -->
+                            <div class="threat-item">
+                                <div class="threat-header">
+                                    <span class="threat-name">• Dengue Virus (DENV-2)</span>
+                                    <span class="threat-perc">85.0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%;"></div>
+                                </div>
+                                <div class="threat-footer">
+                                    <span>34,120 Registered Cases (64 Districts)</span>
+                                    <span class="red-text"><i class="fa-solid fa-triangle-exclamation"></i> Rapid Vector
+                                        Escalation</span>
+                                </div>
+                            </div>
+
+                            <!-- Threat Item 2 -->
+                            <div class="threat-item">
+                                <div class="threat-header">
+                                    <span class="threat-name">• Measles</span>
+                                    <span class="threat-perc">76.3%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 76.3%;"></div>
+                                </div>
+                                <div class="threat-footer">
+                                    <span>8,940 Pediatric Admissions</span>
+                                    <span>Ring Vaccination Active</span>
+                                </div>
+                            </div>
+
+                            <!-- Threat Item 3 -->
+                            <div class="threat-item">
+                                <div class="threat-header">
+                                    <span class="threat-name">• Seasonal Influenza / H1N1</span>
+                                    <span class="threat-perc">62.0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 62%;"></div>
+                                </div>
+                                <div class="threat-footer">
+                                    <span>Community Spread (Moderate)</span>
+                                    <span>Sufficient Antiviral Stock</span>
+                                </div>
+                            </div>
+
+                            <!-- Threat Item 4 -->
+                            <div class="threat-item">
+                                <div class="threat-header">
+                                    <span class="threat-name">• HIV</span>
+                                    <span class="threat-perc">48.0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 48%;"></div>
+                                </div>
+                                <div class="threat-footer">
+                                    <span>Baseline Surveillance Pattern</span>
+                                    <span>Managed Outpatient Care</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-full-dark"><i class="fa-solid fa-dna"></i> Open Full Pathology Genomic
+                            Sequencer</button>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

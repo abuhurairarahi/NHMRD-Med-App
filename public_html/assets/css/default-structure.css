@@ -1,3 +1,28 @@
+:root {
+  --bg-main: #ffffff;
+  --bg-sidebar: #005a70;
+  --bg-card: #ffffff;
+  --header-color: #f3fdff;
+  --sidebar-admin: #034c53;
+  --text-primary: #1e293b;
+  --text-muted: #49515e;
+  --primary-color: #007084;
+  --primary-light: #e6f4f8;
+  --accent-cyan: #e0f7fa;
+  --danger-color: #ef4444;
+  --danger-bg: #fee2e2;
+  --warning-color: #f59e0b;
+  --warning-bg: #fef3c7;
+  --success-color: #10b981;
+  --success-bg: #d1fae5;
+  --info-color: #3b82f6;
+  --info-bg: #dbeafe;
+  --border-color: #e2e8f0;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -18,7 +43,7 @@ body {
 }
 
 /* Updated Sidebar: Fixed Position */
-.sidebar .admin{
+.sidebar{
   width: 230px;
   background-color: var(--bg-sidebar);
   color: #ffffff;
@@ -31,6 +56,21 @@ body {
   height: 100vh;
   overflow-y: auto; 
 }
+
+.admin {
+  width: 230px;
+  background-color: var(--sidebar-admin);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0px 0px 0px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
 
 .logo {
   font-size: 20px;

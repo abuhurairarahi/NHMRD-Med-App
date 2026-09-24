@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD Admin - Notice Broadcast</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="/public_html/assets/css/admin-panel/admin-sub-page/new-broadcast.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar admin">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+      <nav class="nav-menu">
+        <a href="/public_html/pages/admin-panel/admin-dashboard.html" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i> Dashboard
+        </a>
+        <a href="/public_html/pages/admin-panel/admin-patient-records.html" class="nav-item">
+          <i class="fa-solid fa-user-group"></i> Patient Records
+        </a>
+        <a href="/public_html/pages/admin-panel/admin-doctor-records.html" class="nav-item">
+          <i class="fa-solid fa-user-doctor"></i> Doctor Records
+        </a>
+        <a href="/public_html/pages/admin-panel/admin-hospital-records.html" class="nav-item">
+          <i class="fa-solid fa-hospital"></i> Hospital Records
+        </a>
+        <a href="/public_html/pages/admin-panel/admin-request-management.html" class="nav-item">
+          <i class="fa-solid fa-clipboard-check"></i> Request Management
+        </a>
+        <a href="/public_html/pages/admin-panel/admin-analytics.html" class="nav-item">
+          <i class="fa-solid fa-chart-line"></i> Analytics
+        </a>
+        <a href="/public_html/pages/admin-panel/admin-notice-broadcast.html" class="nav-item active">
+          <i class="fa-solid fa-bullhorn"></i> Notice Broadcast
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="/public_html/pages/login.html">
+          <button class="logout-btn">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+          </button>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      <!-- Top Navigation Header -->
+      <header class="top-header">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search records, MRNs, clinicians...">
+        </div>
+        <div class="user-profile">
+          <div class="user-info">
+            <span class="user-name">Dr. Sarah F.</span>
+            <span class="user-role">Super Admin</span>
+          </div>
+          <div class="avatar"><i class="fa-solid fa-user"></i></div>
+        </div>
+      </header>
+
+      <!-- Broadcast Page Body -->
+      <main class="content-body">
+        <div class="breadcrumb">
+          <span>NATIONAL HEALTH MONITORING & RECORDS DIVISION</span>
+          <span class="sep">/</span>
+          <span>NOTICE BROADCAST CENTER</span>
+          <span class="sep">/</span>
+          <span class="draft-tag">DRAFT #CR-2026/090</span>
+        </div>
+
+        <div class="page-title-row">
+          <div>
+            <h1 class="page-title">Create & Dispatch Notice</h1>
+            <p class="page-subtitle">
+              Compose and propagate official clinical directives, epidemic countermeasure protocols, or high-tier statutory gazettes across the national institutional healthcare grid.
+            </p>
+          </div>
+          <div class="header-actions">
+            <button class="btn btn-outline">
+              <i class="fa-regular fa-bookmark"></i>
+              <span>Save Draft</span>
+            </button>
+            <div class="badge badge-success">
+              <i class="fa-solid fa-shield-halved"></i>
+              <div class="badge-text">
+                <strong>HSM</strong>
+                <span>Authenticated</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 1 -->
+        <section class="card">
+          <div class="card-header">
+            <div class="section-number">1</div>
+            <h2 class="section-title">Protocol Classification & Authority</h2>
+            <span class="section-id"># DGHS/CIRCULAR/2026/090-B</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Urgency & Broadcast Tier</label>
+            <div class="tier-grid">
+              <label class="tier-card">
+                <input type="radio" name="tier" value="routine">
+                <div class="tier-content">
+                  <div class="tier-header">
+                    <i class="fa-regular fa-circle-info"></i>
+                    <strong>Routine Notice</strong>
+                  </div>
+                  <p>Standard procedural memos, non-urgent circular updates, and scheduled audits.</p>
+                </div>
+              </label>
+
+              <label class="tier-card active">
+                <input type="radio" name="tier" value="directive" checked>
+                <div class="tier-content">
+                  <div class="tier-header">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <strong>Directive Advisory</strong>
+                    <span class="radio-dot"></span>
+                  </div>
+                  <p>Statutory clinical mandates, pharmaceutical recalls, or active syndromic alerts.</p>
+                </div>
+              </label>
+
+              <label class="tier-card critical">
+                <input type="radio" name="tier" value="critical">
+                <div class="tier-content">
+                  <div class="tier-header">
+                    <i class="fa-solid fa-asterisk"></i>
+                    <strong>Critical Bulletin</strong>
+                  </div>
+                  <p>Impending epidemic triage triggers, CBRN emergencies, or mass casualty lockouts.</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group flex-2">
+              <div class="label-row">
+                <label class="form-label">Notice Title / Formal Subject Line</label>
+                <span class="required-badge">REQUIRED</span>
+              </div>
+              <input type="text" class="form-input" value="Urgent Protocol: Dengue NS1 Rapid Testing Standardization & Daily E-Line Listing">
+            </div>
+            <div class="form-group flex-1">
+              <label class="form-label">Medical Division</label>
+              <div class="select-wrapper">
+                <select class="form-select">
+                  <option>Epidemiology & CDC Directorate</option>
+                </select>
+                <i class="fa-solid fa-chevron-down select-icon"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="label-row">
+              <label class="form-label">Directive Body & Clinical Instructions</label>
+              <span class="format-info">MARKDOWN & GAZETTE FORMATS SUPPORTED</span>
+            </div>
+            <div class="editor-container">
+              <div class="editor-toolbar">
+                <button class="tool-btn"><i class="fa-solid fa-bold"></i></button>
+                <button class="tool-btn"><i class="fa-solid fa-italic"></i></button>
+                <button class="tool-btn"><i class="fa-solid fa-underline"></i></button>
+                <span class="divider"></span>
+                <button class="tool-btn"><i class="fa-solid fa-list-ul"></i></button>
+                <button class="tool-btn"><i class="fa-solid fa-list-ol"></i></button>
+                <span class="divider"></span>
+                <button class="tool-btn"><i class="fa-solid fa-table"></i></button>
+                <button class="tool-btn"><i class="fa-regular fa-image"></i></button>
+                <button class="tool-btn"><i class="fa-solid fa-code"></i></button>
+                <span class="editor-status"><i class="fa-solid fa-circle"></i> Rich Text Active</span>
+              </div>
+              <div class="editor-content" contenteditable="true">
+                <p>Pursuant to Article IV of the National Communicable Diseases Prevention Act, all chief medical officers and clinical laboratory directors must strictly adhere to revised Dengue Serological Assay protocols effective immediately.</p>
+                <ol>
+                  <li>Daily aggregate E-Line registers must be transmitted to the DGHS Portal by 18:00 hrs IST.</li>
+                  <li>Platelet concentrate reserves below 45 units must prompt automated red-flagging on the NHMRD Blood Bank Grid.</li>
+                  <li>No suspected hemorrhagic shock patient may be turned away or transferred without prior telemetry triage handshake with the nearest Tertiary Referral Hub.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Target Audience & Institutional Scope</label>
+            <div class="target-grid">
+              <label class="target-chip active">
+                <input type="checkbox" checked>
+                <div class="chip-content">
+                  <strong>All Licensed Hospitals</strong>
+                  <span>13,447 Facilities</span>
+                </div>
+              </label>
+
+              <label class="target-chip active">
+                <input type="checkbox" checked>
+                <div class="chip-content">
+                  <strong>Physicians & Clinics</strong>
+                  <span>30,033 Registered</span>
+                </div>
+              </label>
+
+              <label class="target-chip">
+                <input type="checkbox">
+                <div class="chip-content">
+                  <strong>Tertiary Care Only</strong>
+                  <span>842 Specialized</span>
+                </div>
+              </label>
+
+              <label class="target-chip">
+                <input type="checkbox">
+                <div class="chip-content">
+                  <strong>Custom Facility Cohort</strong>
+                  <span>Geo-targeted list</span>
+                </div>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="card">
+          <div class="card-header">
+            <div class="section-number">2</div>
+            <h2 class="section-title">Multi-Channel Transmission Vectors</h2>
+            <span class="section-id">4 CONDUITS AVAILABLE</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Execution Timing</label>
+            <div class="toggle-group">
+              <button class="toggle-btn active">Immediate Dispatch</button>
+              <button class="toggle-btn">Schedule for Later</button>
+            </div>
+            <p class="field-hint">Immediate execution routes notice queue through national priority load balancers.</p>
+          </div>
+
+          <div class="form-group">
+            <div class="label-row">
+              <label class="form-label">Official Gazette & Supplementary Attachments</label>
+              <span class="format-info">Max size 25MB • PDF / PKCS#7 / DOCX</span>
+            </div>
+            <div class="dropzone">
+              <i class="fa-solid fa-cloud-arrow-up dropzone-icon"></i>
+              <p>Drop national gazette file here, or <a href="#" class="link">browse device</a></p>
+              <span class="dropzone-sub">All PDF attachments will be digitally stamped with DGHS HSM private key certificate prior to batch egress.</span>
+            </div>
+            <div class="file-list">
+              <div class="file-item">
+                <i class="fa-regular fa-file-pdf file-icon"></i>
+                <div class="file-details">
+                  <span class="file-name">Protocol_Summary_Dengue_v2_Gazette_Signed.pdf</span>
+                  <span class="file-meta">1.8 MB • SHA-256 Validated • Uploaded by Dr. Sarah F.</span>
+                </div>
+                <div class="file-actions">
+                  <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                  <button class="icon-btn"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer Bar -->
+        <div class="action-footer">
+          <div class="status-info">
+            <i class="fa-solid fa-shield-halved status-icon"></i>
+            <div>
+              <strong>Official High-Priority Dispatch Channel</strong>
+              <p>Cryptographically sealed under Authority of Director General DGHS</p>
+            </div>
+          </div>
+          <div class="footer-buttons">
+            <button class="btn btn-outline">
+              <i class="fa-regular fa-bookmark"></i>
+              <span>Save Draft</span>
+            </button>
+            <button class="btn btn-primary">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Dispatch Notice Now</span>
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

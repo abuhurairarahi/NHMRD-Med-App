@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHMRD Patient Records</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/public_html/assets/css/admin-panel/admin-patient-records.css">
+    <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar admin">
+            <div class="logo">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <span>NHMRD</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="/public_html/pages/admin-panel/admin-dashboard.html" class="nav-item"><i
+                        class="fa-solid fa-table-cells-large"></i> Dashboard</a>
+                <a href="/public_html/pages/admin-panel/admin-patient-records.html" class="nav-item active"><i
+                        class="fa-solid fa-user-group"></i> Patient Records</a>
+                <a href="/public_html/pages/admin-panel/admin-doctor-records.html" class="nav-item"><i
+                        class="fa-solid fa-user-doctor"></i> Doctor Records</a>
+                <a href="/public_html/pages/admin-panel/admin-hospital-records.html" class="nav-item"><i
+                        class="fa-solid fa-hospital"></i> Hospital Records</a>
+                <a href="/public_html/pages/admin-panel/admin-request-management.html" class="nav-item"><i
+                        class="fa-solid fa-clipboard-check"></i> Request Management</a>
+                <a href="/public_html/pages/admin-panel/admin-analytics.html" class="nav-item"><i
+                        class="fa-solid fa-chart-line"></i> Analytics</a>
+                <a href="/public_html/pages/admin-panel/admin-notice-broadcast.html" class="nav-item"><i
+                        class="fa-solid fa-bullhorn"></i> Notice Broadcast</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#"><button class="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button></a>
+            </div>
+        </aside>
+
+        <!-- Main Content Wrapper -->
+        <div class="main-wrapper">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search records, MRNs, clinicians...">
+                </div>
+                <div class="user-profile">
+                    <div class="user-info">
+                        <span class="user-name">Dr. Sarah F.</span>
+                        <span class="user-role">Super Admin</span>
+                    </div>
+                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                </div>
+            </header>
+
+            <!-- Main Dashboard Body -->
+            <main class="dashboard-body">
+                <section class="metrics-grid">
+                    <!-- Metric Card 1 -->
+                    <div class="card metric-card">
+                        <div class="metric-top">
+                            <div class="metric-icon-box"><i class="fa-solid fa-user-group"></i></div>
+                            <span class="metric-badge green"><i class="fa-solid fa-shield"></i> National Registry</span>
+                        </div>
+                        <span class="metric-label">Total Registered Civilian Patients</span>
+                        <span class="metric-value">177,818,044</span>
+                        <div class="metric-sub">
+                            <span>177.8M Citizens</span>
+                            <span class="highlight">100% NID Synced</span>
+                        </div>
+                    </div>
+
+                    <!-- Metric Card 2 -->
+                    <div class="card metric-card">
+                        <div class="metric-top">
+                            <div class="metric-icon-box"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                            <span class="metric-badge teal"><i class="fa-solid fa-circle-dot"></i> Online: 320,410 Now</span>
+                        </div>
+                        <span class="metric-label">Active Patient Portal Users</span>
+                        <span class="metric-value">1,428,920</span>
+                        <div class="metric-sub">
+                            <span>Mobile App & Web Logins</span>
+                            <span class="highlight">Live In-App</span>
+                        </div>
+                    </div>
+
+                    <!-- Metric Card 3 -->
+                    <div class="card metric-card">
+                        <div class="metric-top">
+                            <div class="metric-icon-box"><i class="fa-solid fa-fingerprint"></i></div>
+                            <span class="metric-badge green">NID / CRVS Validated</span>
+                        </div>
+                        <span class="metric-label">Civilian Identity Verification</span>
+                        <span class="metric-value">99.8%</span>
+                        <div class="metric-sub">
+                            <span>Biometric Validated</span>
+                            <span class="highlight">EC Linked</span>
+                        </div>
+                    </div>
+
+                    <!-- Metric Card 4 -->
+                    <div class="card metric-card">
+                        <div class="metric-top">
+                            <div class="metric-icon-box"><i class="fa-solid fa-qrcode"></i></div>
+                            <span class="metric-badge light-green">Smart Health ID Issued</span>
+                        </div>
+                        <span class="metric-label">Digital Health Card Adoption</span>
+                        <span class="metric-value">96.4% <span style="font-size: 11px; font-weight: normal; color: #475569;">171.4M Active</span></span>
+                        <div class="metric-sub" style="margin-top: 4px;">
+                            <div style="width: 100%; height: 4px; background: #cbd5e1; border-radius: 2px; overflow: hidden;">
+                                <div style="width: 96.4%; height: 100%; background: #0f766e;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="patient-filter-card">
+                    <div class="filter-header-row">
+                        <div class="patient-title-group">
+                            <h2><i class="fa-solid fa-id-card"></i> Registered Civilian Patients</h2>
+                            <span class="badge-count">177,818,044 Verified Citizen Accounts</span>
+                        </div>
+                        <div class="filter-options-right">
+                            <span>Sort by: <strong class="filter-select-link">Last Active <i class="fa-solid fa-caret-down"></i></strong></span>
+                            <span class="filter-select-link">Patient Category</span>
+                            <span class="filter-select-link">Name (A-Z)</span>
+                        </div>
+                    </div>
+
+                    <div class="filter-inputs-row">
+                        <div class="search-patient-input">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" placeholder="Search registered civilian patients by Name, Citizen UID, NID, Smart Heal...">
+                        </div>
+                        <button class="filter-pill-dropdown">Blood Group: All Groups <i class="fa-solid fa-sliders"></i></button>
+                        <button class="filter-pill-dropdown">Division: All Divisions <i class="fa-solid fa-sliders"></i></button>
+                        <button class="filter-pill-dropdown">Status: All Accounts <i class="fa-solid fa-bars-staggered"></i></button>
+                    </div>
+                </section>
+
+                <section class="table-container">
+                    <table class="patient-table">
+                        <thead>
+                            <tr>
+                                <th>CIVILIAN PATIENT & IDENTITY</th>
+                                <th>BLOOD GROUP</th>
+                                <th>BIRTH HOSPITAL</th>
+                                <th>VERIFICATION & NID/BIRTH CERTIFICATE STATUS</th>
+                                <th>LAST LOGIN</th>
+                                <th>STATUS</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Row 1 -->
+                            <tr>
+                                <td>
+                                    <div class="patient-identity-cell">
+                                        <div class="patient-avatar-circle">TI</div>
+                                        <div class="patient-info-text">
+                                            <span class="patient-name-title">Tariqul Islam</span>
+                                            <span class="patient-sub-meta">NID: 8819-209-121</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="blood-pill">O+</span></td>
+                                <td>
+                                    <div class="hospital-cell">
+                                        <span class="hospital-name">DMCH (Dhaka Medical College Hospital)</span>
+                                        <span class="hospital-div">Dhaka Division</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="verification-cell">
+                                        <span class="status-tag-pill">NID Biometric Verified</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="login-cell">
+                                        <span class="login-time"><span class="dot"></span> Active Now</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge-active">Active</span></td>
+                                <td>
+                                    <div class="action-icon-group">
+                                        <button class="btn-action-icon"><i class="fa-solid fa-address-card"></i></button>
+                                        <button class="btn-action-icon"><i class="fa-solid fa-file-medical"></i></button>
+                                        <button class="btn-action-icon"><i class="fa-solid fa-user-pen"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Row 2 -->
+                            <tr>
+                                <td>
+                                    <div class="patient-identity-cell">
+                                        <div class="patient-avatar-circle" style="background-color: #047857;">NA</div>
+                                        <div class="patient-info-text">
+                                            <span class="patient-name-title">Nasreen Akhter</span>
+                                            <span class="patient-sub-meta">NID: 6420-911-304</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="blood-pill">B+</span></td>
+                                <td>
+                                    <div class="hospital-cell">
+                                        <span class="hospital-name">Chittagong Medical College Hospital</span>
+                                        <span class="hospital-div">Chittagong Division</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="verification-cell">
+                                        <span class="status-tag-pill">NID & Biometrics Synced</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="login-cell">
+                                        <span class="login-time">14 mins ago</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge-active">Active</span></td>
+                                <td>
+                                    <div class="action-icon-group">
+                                        <button class="btn-action-icon"><i class="fa-solid fa-address-card"></i></button>
+                                        <button class="btn-action-icon"><i class="fa-solid fa-file-medical"></i></button>
+                                        <button class="btn-action-icon"><i class="fa-solid fa-user-pen"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Row 3 -->
+                            <tr>
+                                <td>
+                                    <div class="patient-identity-cell">
+                                        <div class="patient-avatar-circle" style="background-color: #005a70;">BR</div>
+                                        <div class="patient-info-text">
+                                            <span class="patient-name-title">Baby of Rahima Begum</span>
+                                            <span class="patient-sub-meta">CRVS: #CRVS-BGD-2026-90812</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="blood-pill">O+</span></td>
+                                <td>
+                                    <div class="hospital-cell">
+                                        <span class="hospital-name">Kurmitola General Hospital</span>
+                                        <span class="hospital-div">Dhaka Division</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="verification-cell">
+                                        <span class="status-tag-pill">CRVS Live Certified</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="login-cell">
+                                        <span class="login-time">3 hrs ago</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge-active">Active</span></td>
+                                <td>
+                                    <div class="action-icon-group">
+                                        <button class="btn-action-icon"><i class="fa-solid fa-address-card"></i></button>
+                                        <button class="btn-action-icon"><i class="fa-solid fa-file-medical"></i></button>
+                                        <button class="btn-action-icon"><i class="fa-solid fa-user-pen"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Row 4 -->
+                            <tr>
+                                <td>
+                                    <div class="patient-identity-cell">
+                                        <div class="patient-avatar-circle" style="background-color: #1e3a8a;">MK</div>
+                                        <div class="patient-info-text">
+                                            <span class="patient-name-title">Mahmudul Karim</span>
+                                            <span class="patient-sub-meta">NID: 2901-443-899</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="blood-pill">AB-</span></td>
+                                <td>
+                                    <div class="hospital-cell">
+                                        <span class="hospital-name">Sir Salimullah Medical College (Mitford Hospital)</span>
+                                        <span class="hospital-div">Dhaka Division</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="verification-cell">
+                                        <span class="status-tag-pill">Biometrics Verified</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="login-cell">
+                                        <span class="login-time">Today 09:12 AM</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge-active">Active</span></td>
+                                <td>
+                                    <div class="action-icon-group">
+                                        <button class="btn-action-icon"><i class="fa-solid fa-address-card"></i></button>
+                                        <button class="btn-action-icon"><i class="fa-solid fa-file-medical"></i></button>
+                                        <button class="btn-action-icon"><i class="fa-solid fa-user-pen"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Row 5 -->
+                            <tr>
+                                <td>
+                                    <div class="patient-identity-cell">
+                                        <div class="patient-avatar-circle" style="background-color: #0f766e;">FY</div>
+                                        <div class="patient-info-text">
+                                            <span class="patient-name-title">Farzana Yasmin</span>
+                                            <span class="patient-sub-meta">NID: 5541-880-992</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="blood-pill">A-</span></td>
+                                <td>
+                                    <div class="hospital-cell">
+                                        <span class="hospital-name">Sylhet MAG Osmani Medical College Hospital</span>
+                                        <span class="hospital-div">Sylhet Division</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="verification-cell">
+                                        <span class="status-tag-pill">NID Biometric Verified</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="login-cell">
+                                        <span class="login-time"><span class="dot"></span> Active Now</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge-active">Active</span></td>
+                                <td>
+                                    <div class="action-icon-group">
+                                        <button class="btn-action-icon"><i class="fa-solid fa-address-card"></i></button>
+                                        <button class="btn-action-icon"><i class="fa-solid fa-file-medical"></i></button>
+                                        <button class="btn-action-icon"><i class="fa-solid fa-user-pen"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Row 6 -->
+                            <tr>
+                                <td>
+                                    <div class="patient-identity-cell">
+                                        <div class="patient-avatar-circle" style="background-color: #034c53;">ZH</div>
+                                        <div class="patient-info-text">
+                                            <span class="patient-name-title">Zubair Hossain</span>
+                                            <span class="patient-sub-meta">NID: 1092-882-771</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="blood-pill">A+</span></td>
+                                <td>
+                                    <div class="hospital-cell">
+                                        <span class="hospital-name">Rajshahi Medical College Hospital</span>
+                                        <span class="hospital-div">Rajshahi Division</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="verification-cell">
+                                        <span class="status-tag-pill">NID Biometrics Verified</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="login-cell">
+                                        <span class="login-time"><span class="dot"></span> Active Now</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge-active">Active</span></td>
+                                <td>
+                                    <div class="action-icon-group">
+                                        <button class="btn-action-icon"><i class="fa-solid fa-address-card"></i></button>
+                                        <button class="btn-action-icon"><i class="fa-solid fa-file-medical"></i></button>
+                                        <button class="btn-action-icon"><i class="fa-solid fa-user-pen"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Row 7 -->
+                            <tr>
+                                <td>
+                                    <div class="patient-identity-cell">
+                                        <div class="patient-avatar-circle" style="background-color: #065f46;">AR</div>
+                                        <div class="patient-info-text">
+                                            <span class="patient-name-title">Anisur Rahman</span>
+                                            <span class="patient-sub-meta">NID: 7712-440-109</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="blood-pill">B+</span></td>
+                                <td>
+                                    <div class="hospital-cell">
+                                        <span class="hospital-name">Sher-e-Bangla Medical College Hospital</span>
+                                        <span class="hospital-div">Barisal Division</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="verification-cell">
+                                        <span class="status-tag-pill">NID Biometrics Verified</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="login-cell">
+                                        <span class="login-time">2 days ago</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge-active">Active</span></td>
+                                <td>
+                                    <div class="action-icon-group">
+                                        <button class="btn-action-icon"><i class="fa-solid fa-address-card"></i></button>
+                                        <button class="btn-action-icon"><i class="fa-solid fa-file-medical"></i></button>
+                                        <button class="btn-action-icon"><i class="fa-solid fa-user-pen"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="pagination-footer">
+                        <span>Showing 1 to 7 of 177,818,044 Registered Civilian Patient Accounts</span>
+                        <div class="pagination-controls">
+                            <button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn">3</button>
+                            <span class="page-ellipsis">...</span>
+                            <button class="page-btn">25,402,577</button>
+                            <button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
