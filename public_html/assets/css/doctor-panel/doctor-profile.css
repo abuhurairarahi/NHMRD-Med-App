@@ -35,6 +35,14 @@ body {
   overflow: hidden;
 }
 
+/* ================= MAIN WRAPPER ================= */
+.main-wrapper {
+  flex-grow: 1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
 
 /* ================= CONTENT BODY ================= */
 .content-body {
@@ -456,4 +464,6 @@ body {
   border-bottom: none !important;
 }
 
-.text-emerald { color: var(--primary-emerald); }
+.text-emerald { 
+  color: var(--primary-emerald); 
+}
