@@ -1,0 +1,89 @@
+:root {
+  --bg-main: #dce7f5;
+  --bg-sidebar: #4b88d4;
+  --bg-card: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #8e9bb0;
+  --primary-blue: #1d5ec2;
+  --primary-light: #e8f0fe;
+  --border-color: #e2e8f0;
+  --logout-red: #ff5252;
+  --status-due: #0052cc;
+  --status-expired: #e53935;
+  --status-visited: #1b3a4b;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
+.patient-header {
+  background-color: #ffffff;
+  padding: 12px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-muted);
+  width: 300px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  font-size: 13px;
+  width: 100%;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.user-badge-avatar {
+  width: 32px;
+  height: 32px;
+  background-color: var(--primary-blue);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.user-info-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.1;
+}
+
+.patient-id {
+  font-size: 10px;
+  color: var(--text-muted);
+}

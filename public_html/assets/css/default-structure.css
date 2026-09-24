@@ -277,3 +277,7 @@ body {
   justify-content: center;
   color: var(--text-muted);
 }
+
+.patient-nav a > span {
+  color: #ffffff;
+}
