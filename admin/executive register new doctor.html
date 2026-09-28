@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fresh MBBS Graduate Licensing & Internship Induction - NHMRD</title>
+  <style>
+    /* ==========================================
+       1. COMBINED & ROLE CSS STYLES
+       ========================================== */
+    :root {
+      --bg-main: #ffffff;
+      --bg-sidebar: #005a70;
+      --bg-card: #ffffff;
+      --header-color: #f3fdff;
+      --sidebar-admin: #034c53;
+      --sidebar-executive: #1a2836;
+      --text-primary: #1e293b;
+      --text-muted: #49515e;
+      --primary-color: #007084;
+      --primary-light: #e6f4f8;
+      --accent-cyan: #e0f7fa;
+      --danger-color: #ef4444;
+      --danger-bg: #fee2e2;
+      --warning-color: #f59e0b;
+      --warning-bg: #fef3c7;
+      --success-color: #10b981;
+      --success-bg: #d1fae5;
+      --info-color: #3b82f6;
+      --info-bg: #dbeafe;
+      --border-color: #e2e8f0;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+
+      --doc-bg-main: #f4f6f8;
+      --doc-sidebar: #064e3b;
+      --doc-bg-card: #ffffff;
+      --doc-text-primary: #111827;
+      --doc-text-secondary: #4b5563;
+      --doc-text-muted: #9ca3af;
+      --doc-primary-emerald: #059669;
+      --doc-dark-emerald: #064e3b;
+      --doc-light-emerald: #d1fae5;
+      --doc-border-color: #e5e7eb;
+      --doc-radius-sm: 6px;
+      --doc-radius-md: 10px;
+
+      --exe-primary-bg: #1e293b;
+      --exe-sidebar-bg: #1b2537;
+      --exe-main-bg: #f1f5f9;
+      --exe-card-bg: #ffffff;
+      --exe-accent-blue: #0284c7;
+      --exe-accent-blue-hover: #0369a1;
+      --exe-accent-red: #ef4444;
+      --exe-text-main: #0f172a;
+      --exe-text-muted: #64748b;
+      --exe-border-color: #e2e8f0;
+
+      --srug-primary-crimson: #a81c34;
+      --srug-primary-hover: #8a1529;
+      --srug-bg-sidebar: #8b1528;
+      --srug-bg-main: #f8f9fa;
+      --srug-bg-card: #ffffff;
+      --srug-text-dark: #1e293b;
+      --srug-text-muted: #64748b;
+      --srug-border-color: #e2e8f0;
+      --srug-success-color: #16a34a;
+      --srug-danger-color: #dc2626;
+      --srug-warning-color: #d97706;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--exe-main-bg);
+      color: var(--text-primary);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .app-container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar Navigation Mechanics */
+    .sidebar {
+      width: 230px;
+      background-color: var(--bg-sidebar);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 0 0 0;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto; 
+    }
+
+    .sidebar.executive {
+      background-color: var(--sidebar-executive);
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 800;
+      padding: 0 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+      flex-grow: 1;
+    }
+
+    .nav-item {
+      color: #b2d8d8;
+      text-decoration: none;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      transition: all 0.2s ease;
+    }
+
+    .executive > .nav-menu > .nav-item:hover, 
+    .executive > .nav-menu > .nav-item.active {
+      background-color: #283C68;
+      color: #ffffff;
+      border-left: 4px solid #6886c9;
+    }
+
+    .sidebar-footer {
+      padding: 0px;
+    }
+
+    .sidebar-footer > a {
+      text-decoration: none;
+    }
+
+    .logout-btn {
+      width: 100%;
+      padding: 12px;
+      padding-left: 20px;
+      background-color: #ff4d4f;
+      color: white;
+      border: none;
+      border-radius: 0;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+    }
+
+    .logout-btn:hover {
+      background-color: #d9363e;
+    }
+
+    /* Main Workspace Wrapper */
+    .main-wrapper {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow-y: auto; 
+    }
+
+    /* Top Header */
+    .top-header {
+      background-color: var(--header-color);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .exe-search-bar {
+      display: flex;
+      align-items: center;
+      background-color: var(--bg-main);
+      padding: 6px 14px;
+      border-radius: 20px;
+      width: 320px;
+      gap: 8px;
+      color: var(--text-muted);
+      border: 1px solid #cecece;
+    }
+
+    .exe-search-bar input {
+      border: none;
+      background: transparent;
+      outline: none;
+      width: 100%;
+      font-size: 12px;
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .user-info {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .user-name {
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .user-role {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .system-status-pills {
+      display: flex;
+      gap: 8px;
+    }
+
+    .status-pill {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 10px;
+      color: var(--exe-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    .status-pill.connected {
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+      color: #166534;
+    }
+
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #22c55e;
+      border-radius: 50%;
+    }
+
+    /* Page Body Layout */
+    .content-body {
+      padding: 24px;
+    }
+
+    .breadcrumb-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--exe-text-muted);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .breadcrumb-nav .sep {
+      font-size: 9px;
+      opacity: 0.5;
+    }
+
+    .active-crumb {
+      color: var(--exe-accent-blue);
+      font-weight: 700;
+    }
+
+    .title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .title-row h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      color: var(--exe-text-muted);
+      margin-top: 4px;
+    }
+
+    .badge-tag {
+      background: #e0f2fe;
+      color: #0369a1;
+      font-weight: 700;
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    /* Portal Grid System */
+    .portal-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+
+    /* Cards */
+    .card, .side-card {
+      background: var(--exe-card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .card-header-row, .side-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .step-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .step-num {
+      background: #0284c7;
+      color: white;
+      font-weight: 700;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 12px;
+    }
+
+    .step-title h2 {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .section-desc {
+      font-size: 11px;
+      color: var(--exe-text-muted);
+      margin-top: 4px;
+    }
+
+    /* Badges & Pills */
+    .pill-badge {
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    .pill-badge.gray { background: #f1f5f9; color: #475569; }
+    .pill-badge.green-light { background: #dcfce7; color: #15803d; }
+    .pill-badge.blue-light { background: #e0f2fe; color: #0369a1; }
+    .pill-badge.yellow { background: #fef3c7; color: #b45309; }
+
+    /* Forms */
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .form-group label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    input[type="text"], select {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 12px;
+      background: #f8fafc;
+      color: #0f172a;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .flex-2 { flex: 2; }
+
+    .input-action-group {
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn-verify {
+      background: #059669;
+      color: white;
+      border: none;
+      padding: 0 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+
+    /* License Banner */
+    .license-banner {
+      background: #f0f9ff;
+      border: 1px dashed #0284c7;
+      border-radius: 6px;
+      padding: 16px;
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+      align-items: flex-start;
+    }
+
+    .banner-content { flex-grow: 1; }
+    .banner-label { font-size: 10px; color: var(--exe-text-muted); font-weight: 600; }
+    .license-no { font-size: 16px; font-weight: 700; color: #0369a1; margin: 2px 0; }
+    .banner-content p { font-size: 11px; color: var(--exe-text-muted); }
+
+    .banner-status {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .badge-orange {
+      background: #ffedd5;
+      color: #c2410c;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .expiry-text { font-size: 10px; color: var(--exe-text-muted); }
+
+    .security-barcode-footer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+      font-size: 10px;
+      color: var(--exe-text-muted);
+      border-top: 1px solid var(--border-color);
+      padding-top: 12px;
+    }
+
+    .barcode-dummy {
+      width: 60px;
+      height: 20px;
+      background: repeating-linear-gradient(90deg, #000, #000 2px, #fff 2px, #fff 4px);
+    }
+
+    .bmdc-stamp {
+      margin-left: auto;
+      border: 1px solid #cbd5e1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* Roster Table */
+    .roster-container {
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 16px;
+    }
+
+    .roster-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .roster-header h3 { font-size: 11px; font-weight: 700; color: #334155; }
+
+    .roster-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+    }
+
+    .roster-table th {
+      text-align: left;
+      color: var(--exe-text-muted);
+      font-weight: 600;
+      padding: 8px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .roster-table td {
+      padding: 8px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+
+    .dot.blue { background: #3b82f6; }
+    .dot.green { background: #10b981; }
+    .dot.purple { background: #8b5cf6; }
+    .dot.orange { background: #f97316; }
+    .dot.red { background: #ef4444; }
+
+    /* Custom Add Box */
+    .add-rotation-box {
+      background: #f8fafc;
+      border: 1px dashed var(--border-color);
+      padding: 12px;
+      border-radius: 6px;
+    }
+
+    .actions-right {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    /* Document Checklist */
+    .document-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .document-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .doc-info {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .doc-info strong { display: block; font-size: 11px; }
+    .doc-info span { font-size: 10px; color: var(--exe-text-muted); }
+
+    /* Sidebar Logistics & Actions */
+    .logistics-box {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    .logistics-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .logistics-label { font-size: 10px; color: var(--exe-text-muted); display: block; }
+    .allowance-amount { font-size: 14px; font-weight: 700; color: #0f172a; }
+
+    .checkbox-group {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      font-size: 11px;
+      color: var(--exe-text-muted);
+    }
+
+    .btn-authorize {
+      width: 100%;
+      background: #0284c7;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-secondary {
+      flex: 1;
+      background: white;
+      border: 1px solid var(--border-color);
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .btn-primary-sm {
+      background: #0284c7;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-size: 10px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .btn-text {
+      background: none;
+      border: none;
+      color: var(--exe-text-muted);
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .footer-meta {
+      font-size: 9px;
+      color: var(--exe-text-muted);
+      text-align: center;
+    }
+
+    .margin-top-xs { margin-top: 8px; }
+    .margin-top-sm { margin-top: 12px; }
+    .margin-top-md { margin-top: 16px; }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Navigation Sidebar -->
+    <aside class="sidebar executive">
+      <div class="logo">
+        <span>NHMRD</span>
+      </div>
+      <nav class="nav-menu">
+        <a href="#" class="nav-item">Dashboard</a>
+        <a href="#" class="nav-item active">Register New Doctor</a>
+        <a href="#" class="nav-item">Register New Patient</a>
+        <a href="#" class="nav-item">Register New Hospital</a>
+        <a href="#" class="nav-item">Issue Death Certificate</a>
+        <a href="#" class="nav-item">Vaccination Request</a>
+        <a href="#" class="nav-item">Profile</a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="#"><button class="logout-btn">Logout</button></a>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Area -->
+    <main class="main-wrapper">
+      
+      <!-- Top Header Bar -->
+      <header class="top-header">
+        <div class="exe-search-bar">
+          <input type="text" placeholder="Search medical registry, ID or license...">
+        </div>
+        <div class="system-status-pills">
+          <div class="status-pill">UTC+00:00 • SYSTEM ACTIVE</div>
+          <div class="status-pill connected">
+            <span class="pulse-dot"></span> Live Registry • Connected
+          </div>
+        </div>
+        <div class="user-profile">
+          <div class="user-info">
+            <span class="user-name">Dr. Sarah F.</span>
+            <span class="user-role">Super Admin</span>
+          </div>
+          <div class="avatar">SF</div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div class="content-body">
+        
+        <div class="breadcrumb-nav">
+          <span>National Registry</span>
+          <span class="sep">></span>
+          <span>Doctor Records</span>
+          <span class="sep">></span>
+          <span class="active-crumb">Provisional License & Internship Induction</span>
+        </div>
+
+        <div class="title-row">
+          <div>
+            <h1>Fresh MBBS Graduate Licensing & Internship Induction</h1>
+            <p class="subtitle">DGHS Official Medical Roster Allocation and BMDC Provisional Registration Portal</p>
+          </div>
+          <span class="badge-tag">EXECUTIVE PORTAL</span>
+        </div>
+
+        <!-- Primary Interactive Form Wrapper -->
+        <form id="licensing-induction-form">
+          <div class="portal-grid">
+            
+            <!-- Main Content Left Column -->
+            <div class="main-column">
+              
+              <!-- Section 01: Academic Credentials -->
+              <div class="card">
+                <div class="card-header-row">
+                  <div class="step-title">
+                    <span class="step-num">01</span>
+                    <h2>Graduate Medical Identity & Academic Credentials</h2>
+                  </div>
+                  <span class="pill-badge green-light">Verified Candidate</span>
+                </div>
+                <p class="section-desc">Verify basic degree credentials and academic institution verification source.</p>
+
+                <div class="form-row margin-top-md">
+                  <div class="form-group flex-2">
+                    <label>FULL CANDIDATE NAME</label>
+                    <input type="text" value="Dr. Tanvir Ahmed Chowdhury" readonly>
+                  </div>
+                  <div class="form-group flex-2">
+                    <label>SMART NATIONAL ID (NID)</label>
+                    <div class="input-action-group">
+                      <input type="text" id="smart-nid-input" value="19982692814000318">
+                      <button type="button" id="btn-verify-nid" class="btn-verify">Verify NID</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group flex-2">
+                    <label>MEDICAL COLLEGE / INSTITUTION</label>
+                    <input type="text" value="Dhaka Medical College (DMC)" readonly>
+                  </div>
+                  <div class="form-group">
+                    <label>EXAM SESSION & UNIV.</label>
+                    <input type="text" value="Nov 2024 - DU" readonly>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>FINAL PROF ROLL NO.</label>
+                    <input type="text" value="DU-MED-10449" readonly>
+                  </div>
+                  <div class="form-group">
+                    <label>BMDC STUDENT REG ID</label>
+                    <input type="text" value="STU-BMDC-2019-88341" readonly>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Section 02: Licensing -->
+              <div class="card">
+                <div class="card-header-row">
+                  <div class="step-title">
+                    <span class="step-num">02</span>
+                    <h2>BMDC Provisional Practitioner Licensing</h2>
+                  </div>
+                  <span class="pill-badge blue-light">Auto-Generated</span>
+                </div>
+
+                <div class="license-banner">
+                  <div class="banner-content">
+                    <span class="banner-label">ALLOCATED PROVISIONAL REGISTRATION NUMBER</span>
+                    <div class="license-no">PR-BMDC-2025-08492</div>
+                    <p>Valid for 12 months from induction date. Restricted to supervised institutional internship.</p>
+                  </div>
+                  <div class="banner-status">
+                    <span class="badge-orange">Pending Sign-off</span>
+                    <span class="expiry-text">Validity: 1 Year</span>
+                  </div>
+                </div>
+
+                <div class="security-barcode-footer">
+                  <div class="barcode-dummy"></div>
+                  <span>SECURITY HASH: 8f92a01d674c9e</span>
+                  <span class="bmdc-stamp">BMDC AUTHORIZED</span>
+                </div>
+              </div>
+
+              <!-- Section 03: Rotational Roster -->
+              <div class="card">
+                <div class="card-header-row">
+                  <div class="step-title">
+                    <span class="step-num">03</span>
+                    <h2>Clinical Internship Hospital Assignment</h2>
+                  </div>
+                  <span class="pill-badge blue-light">DGHS Slot Allocated</span>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group flex-2">
+                    <label>ALLOCATED HOSP / INDUCTION SITE</label>
+                    <select id="hospital-select">
+                      <option value="DMCH">Dhaka Medical College & Hospital (DMCH), Shahbagh</option>
+                      <option value="SSMC">Sir Salimullah Medical College Hospital (SSMC)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>INDUCTION DATE</label>
+                    <input type="text" value="01/15/2025">
+                  </div>
+                </div>
+
+                <div class="roster-container margin-top-md">
+                  <div class="roster-header">
+                    <h3>MANDATORY ROTATIONAL ROSTER</h3>
+                    <span id="total-weeks-badge" class="pill-badge green-light">52 Weeks Configured</span>
+                  </div>
+                  <table class="roster-table">
+                    <thead>
+                      <tr>
+                        <th>Department / Specialty</th>
+                        <th>Duration</th>
+                        <th>Status</th>
+                        <th style="text-align: right;">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="roster-table-body">
+                      <tr>
+                        <td><span class="dot blue"></span>Internal Medicine & Allied</td>
+                        <td>12 Weeks</td>
+                        <td><span class="pill-badge gray">Core</span></td>
+                        <td style="text-align: right;">-</td>
+                      </tr>
+                      <tr>
+                        <td><span class="dot green"></span>General Surgery & OrthOPAEDICS</td>
+                        <td>12 Weeks</td>
+                        <td><span class="pill-badge gray">Core</span></td>
+                        <td style="text-align: right;">-</td>
+                      </tr>
+                      <tr>
+                        <td><span class="dot purple"></span>Obstetrics & Gynaecology</td>
+                        <td>12 Weeks</td>
+                        <td><span class="pill-badge gray">Core</span></td>
+                        <td style="text-align: right;">-</td>
+                      </tr>
+                      <tr>
+                        <td><span class="dot orange"></span>Paediatrics & Neonatology</td>
+                        <td>8 Weeks</td>
+                        <td><span class="pill-badge gray">Core</span></td>
+                        <td style="text-align: right;">-</td>
+                      </tr>
+                      <tr>
+                        <td><span class="dot red"></span>Emergency & Critical Care</td>
+                        <td>8 Weeks</td>
+                        <td><span class="pill-badge gray">Core</span></td>
+                        <td style="text-align: right;">-</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Custom Configurator Add Box -->
+                <div class="add-rotation-box">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label>Elective Department</label>
+                      <select id="elective-dept-select">
+                        <option value="">-- Select Elective Dept --</option>
+                        <option value="Cardiology & CCU">Cardiology & CCU</option>
+                        <option value="Nephrology">Nephrology</option>
+                        <option value="Neurology & NICU">Neurology & NICU</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Duration</label>
+                      <select id="elective-duration-select">
+                        <option value="2">2 Weeks</option>
+                        <option value="4" selected>4 Weeks</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="actions-right margin-top-xs">
+                    <button type="button" id="btn-add-rotation" class="btn-primary-sm">+ Add Elective Rotation</button>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Side Column Panels -->
+            <div class="side-column">
+              
+              <!-- Verification Checklist Card -->
+              <div class="side-card">
+                <div class="side-card-header">
+                  <h3>VERIFICATION DOSSIER</h3>
+                  <span id="verified-docs-count" class="pill-badge yellow">0/4 Verified</span>
+                </div>
+                <ul class="document-list">
+                  <li>
+                    <div class="doc-info">
+                      <input type="checkbox" class="doc-check-input">
+                      <div>
+                        <strong>MBBS Transcript & Marksheet</strong>
+                        <span>PDF Document Verified</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="doc-info">
+                      <input type="checkbox" class="doc-check-input">
+                      <div>
+                        <strong>Dean Office Clearance</strong>
+                        <span>PDF Document Verified</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="doc-info">
+                      <input type="checkbox" class="doc-check-input">
+                      <div>
+                        <strong>Police Verification Record</strong>
+                        <span>PDF Document Verified</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="doc-info">
+                      <input type="checkbox" class="doc-check-input">
+                      <div>
+                        <strong>Medical Fitness Certificate</strong>
+                        <span>PDF Document Verified</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Hospital Logistics Card -->
+              <div class="side-card">
+                <div class="side-card-header">
+                  <h3>LOGISTICS & STIPEND SETUP</h3>
+                </div>
+                <div class="logistics-box">
+                  <div class="logistics-row">
+                    <div>
+                      <span class="logistics-label">MONTHLY ALLOWANCE</span>
+                      <div class="allowance-amount">BDT 25,000 / mo</div>
+                    </div>
+                    <span class="pill-badge blue-light">DGHS Scale</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Authorization Action Panel Card -->
+              <div class="side-card">
+                <div class="side-card-header">
+                  <h3>AUTHORIZATION</h3>
+                </div>
+                <div class="checkbox-group margin-top-xs">
+                  <input type="checkbox" id="ethical-compliance-check">
+                  <label for="ethical-compliance-check">I confirm candidate credentials comply with DGHS ethical standards and guidelines.</label>
+                </div>
+
+                <button type="submit" id="btn-authorize-primary" class="btn-authorize margin-top-md">
+                  Authorize License & Issue Order
+                </button>
+
+                <div class="action-buttons margin-top-xs">
+                  <button type="button" class="btn-secondary">Save Draft</button>
+                  <button type="button" class="btn-secondary">Print Induction</button>
+                </div>
+
+                <div class="footer-meta margin-top-sm">
+                  Authorized by: Dr. Sarah F. (Super Admin)<br>
+                  NHMRD Core Registry • Terminal ID #4092
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </form>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ==========================================
+     2. DIRECT EMBEDDED JAVASCRIPT LOGIC
+     ========================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize module functions
+      initNidVerification();
+      initCustomRotationConfigurator();
+      initDocumentVerification();
+      initFormSubmission();
+    });
+
+    /**
+     * 1. Smart NID Verification Component Logic
+     */
+    function initNidVerification() {
+      const verifyBtn = document.getElementById('btn-verify-nid');
+      const nidInput = document.getElementById('smart-nid-input');
+      
+      if (!verifyBtn || !nidInput) return;
+
+      verifyBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const nidValue = nidInput.value.trim();
+
+        if (nidValue.length < 10) {
+          alert('Please enter a valid Smart NID number.');
+          return;
+        }
+
+        // Apply loading indicator state
+        verifyBtn.disabled = true;
+        verifyBtn.innerHTML = `Verifying...`;
+
+        // Simulate asynchronous verification API delay
+        setTimeout(() => {
+          verifyBtn.style.backgroundColor = '#10b981';
+          verifyBtn.innerHTML = `✓ Verified`;
+          nidInput.style.borderColor = '#10b981';
+          nidInput.readOnly = true;
+        }, 1000);
+      });
+    }
+
+    /**
+     * 2. Elective Rotation Add/Remove Configurator Logic
+     */
+    function initCustomRotationConfigurator() {
+      const addBtn = document.getElementById('btn-add-rotation');
+      const departmentSelect = document.getElementById('elective-dept-select');
+      const durationSelect = document.getElementById('elective-duration-select');
+      const rosterBody = document.getElementById('roster-table-body');
+
+      if (!addBtn || !departmentSelect || !durationSelect || !rosterBody) return;
+
+      addBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const selectedDept = departmentSelect.value;
+        const selectedWeeks = parseInt(durationSelect.value, 10);
+
+        if (!selectedDept || isNaN(selectedWeeks)) {
+          alert('Please select an elective department.');
+          return;
+        }
+
+        // Construct dynamic roster row
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+          <td><span class="dot purple"></span>${selectedDept} (Elective)</td>
+          <td>${selectedWeeks} Weeks</td>
+          <td><span class="pill-badge blue-light">Elective</span></td>
+          <td style="text-align: right;">
+            <button type="button" class="btn-text btn-remove-row" style="color: #ef4444; font-size: 10px; font-weight: 600;">Remove</button>
+          </td>
+        `;
+
+        // Attach dynamic deletion listener
+        newRow.querySelector('.btn-remove-row').addEventListener('click', function () {
+          newRow.remove();
+          recalculateTotalWeeks();
+        });
+
+        rosterBody.appendChild(newRow);
+        recalculateTotalWeeks();
+        departmentSelect.value = '';
+      });
+
+      function recalculateTotalWeeks() {
+        const totalWeeksBadge = document.getElementById('total-weeks-badge');
+        let total = 0;
+        const rows = rosterBody.querySelectorAll('tr');
+        
+        rows.forEach(row => {
+          const text = row.cells[1] ? row.cells[1].textContent : '';
+          const match = text.match(/\d+/);
+          if (match) {
+            total += parseInt(match[0], 10);
+          }
+        });
+
+        if (totalWeeksBadge) {
+          totalWeeksBadge.textContent = `${total} Weeks Configured`;
+        }
+      }
+    }
+
+    /**
+     * 3. Dossier Checkbox Sync & Counter Logic
+     */
+    function initDocumentVerification() {
+      const docCheckboxes = document.querySelectorAll('.doc-check-input');
+      const verifiedCounter = document.getElementById('verified-docs-count');
+
+      if (!docCheckboxes.length || !verifiedCounter) return;
+
+      docCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+          const checkedCount = document.querySelectorAll('.doc-check-input:checked').length;
+          verifiedCounter.textContent = `${checkedCount}/${docCheckboxes.length} Verified`;
+
+          if (checkedCount === docCheckboxes.length) {
+            verifiedCounter.className = 'pill-badge green-light';
+          } else {
+            verifiedCounter.className = 'pill-badge yellow';
+          }
+        });
+      });
+    }
+
+    /**
+     * 4. License Authorization Submission Logic
+     */
+    function initFormSubmission() {
+      const authForm = document.getElementById('licensing-induction-form');
+      const ethicalCheckbox = document.getElementById('ethical-compliance-check');
+      const submitBtn = document.getElementById('btn-authorize-primary');
+
+      if (!authForm || !submitBtn) return;
+
+      authForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        if (ethicalCheckbox && !ethicalCheckbox.checked) {
+          alert('You must check the compliance verification box before authorizing.');
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Processing Order...';
+
+        setTimeout(() => {
+          alert('Provisional License PR-BMDC-2025-08492 and Internship Order successfully issued!');
+          submitBtn.innerHTML = '✓ Authorized & Issued';
+          submitBtn.style.backgroundColor = '#059669';
+        }, 1200);
+      });
+    }
+  </script>
+</body>
+</html>
