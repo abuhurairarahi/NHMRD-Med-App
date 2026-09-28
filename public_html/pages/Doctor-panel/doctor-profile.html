@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NHMRD - Doctor Profile</title>
   <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/doctor-profile.css">
   <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doc-header.css">
-  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-header.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
 
   <div class="app-container">
@@ -21,27 +22,27 @@
       </div>
 
       <nav class="nav-menu">
-        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item active">
-          <i class="fa-solid fa-table-cells-large"></i> 
+        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i>
           <span>Dashboard</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/clinical-rec.html" class="nav-item">
-          <i class="fa-solid fa-notes-medical"></i> 
+        <a href="/public_html/pages/Doctor-panel/doctor-clinical-service-records.html" class="nav-item">
+          <i class="fa-solid fa-notes-medical"></i>
           <span>Clinical Records</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/patient-book-req.html" class="nav-item">
-          <i class="fa-solid fa-user-clock"></i> 
-          <span>Patient Requests</span>
+        <a href="/public_html/pages/Doctor-panel/patient-appointments.html" class="nav-item">
+          <i class="fa-solid fa-user-clock"></i>
+          <span>Patient Appointments</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/doctor-panel.html" class="nav-item">
-          <i class="fa-solid fa-user-doctor"></i> 
+        <a href="/public_html/pages/doctor-panel/doctor-profile.html" class="nav-item active">
+          <i class="fa-solid fa-user-doctor"></i>
           <span>Doctor Profile</span>
         </a>
       </nav>
 
       <div class="sidebar-footer">
         <button class="logout-btn">
-          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
           <span>Logout</span>
         </button>
       </div>
@@ -51,7 +52,7 @@
     <!-- Main Content Wrapper -->
     <div class="main-wrapper">
       <!-- Top Header Bar -->
-       <header class="doc-header">
+      <header class="doc-header">
         <div class="search-bar">
           <i class="fa-solid fa-magnifying-glass"></i>
           <input type="text" placeholder="Search patient MRN, name, vitals...">
@@ -63,11 +64,11 @@
             <span>Shift: Morning Clinical Rounds (07:00 - 15:30)</span>
           </div>
           <div class="header-status-pill">
-            <i class="fa-solid fa-rotate-sharp"></i>
+            <i class="fa-solid fa-rotate"></i>
             <span>EMR Synced</span>
           </div>
           <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
-          
+
           <div class="doctor-profile-badge">
             <div class="doctor-info-text">
               <span class="doctor-name">Dr. Nusrat Jahan, MD</span>
@@ -90,7 +91,7 @@
               <img src="https://i.pravatar.cc/150?img=47" alt="Dr. Nusrat Jahan" class="profile-img">
               <span class="online-indicator"><i class="fa-solid fa-shield"></i></span>
             </div>
-            
+
             <div class="profile-details">
               <div class="badge-row">
                 <span class="tag-badge green-light">ATTENDING PHYSICIAN</span>
@@ -99,7 +100,7 @@
               </div>
               <h1 class="doctor-title">Dr. Nusrat Jahan, FCPS, MRCP</h1>
               <p class="doctor-subtitle">Board Certified Internal Medicine & Clinical Pharmacology</p>
-              
+
               <div class="doctor-meta">
                 <span><i class="fa-solid fa-id-card"></i> BMDC Reg: A-88204</span>
                 <span class="meta-divider">&bull;</span>
@@ -120,7 +121,8 @@
         <div class="profile-tabs">
           <button class="tab-item active"><i class="fa-solid fa-user-doctor"></i> Professional Overview</button>
           <button class="tab-item"><i class="fa-regular fa-calendar-alt"></i> Clinic Hours & Availability</button>
-          <button class="tab-item"><i class="fa-solid fa-file-prescription"></i> Prescription & Formulary Authority</button>
+          <button class="tab-item"><i class="fa-solid fa-file-prescription"></i> Prescription & Formulary
+            Authority</button>
           <button class="tab-item"><i class="fa-solid fa-sliders"></i> Telehealth & Intake Preferences</button>
         </div>
 
@@ -137,7 +139,10 @@
             </div>
 
             <p class="statement-paragraph">
-              Dr. Nusrat Jahan has spent over 14 years serving inpatient tertiary care centers and outpatient ambulatory clinics. Her clinical practice centers on comprehensive metabolic risk stratification, secondary hypertension refractory interventions, and careful longitudinal stewardship of pharmacotherapy in multimorbid adult populations.
+              Dr. Nusrat Jahan has spent over 14 years serving inpatient tertiary care centers and outpatient ambulatory
+              clinics. Her clinical practice centers on comprehensive metabolic risk stratification, secondary
+              hypertension refractory interventions, and careful longitudinal stewardship of pharmacotherapy in
+              multimorbid adult populations.
             </p>
 
             <div class="subspecialties-grid">
@@ -156,7 +161,8 @@
                   <div class="sub-icon blue-icon"><i class="fa-solid fa-stethoscope"></i></div>
                   <h4>Hypertension Management</h4>
                 </div>
-                <p>Ambulatory 24h blood pressure monitoring (ABPM), refractory aldosterone screening, renal arterial ultrasound review.</p>
+                <p>Ambulatory 24h blood pressure monitoring (ABPM), refractory aldosterone screening, renal arterial
+                  ultrasound review.</p>
               </div>
 
               <!-- Card 3 -->
@@ -165,7 +171,8 @@
                   <div class="sub-icon sky-icon"><i class="fa-solid fa-wave-square"></i></div>
                   <h4>Adult Diabetes & Glycemic Care</h4>
                 </div>
-                <p>Continuous Glucose Monitoring (CGM) analytics, GLP-1/SGLT2 dual-regimen coordination, nephropathy early triage.</p>
+                <p>Continuous Glucose Monitoring (CGM) analytics, GLP-1/SGLT2 dual-regimen coordination, nephropathy
+                  early triage.</p>
               </div>
 
               <!-- Card 4 -->
@@ -174,7 +181,8 @@
                   <div class="sub-icon emerald-icon"><i class="fa-solid fa-pills"></i></div>
                   <h4>Polypharmacy Optimization</h4>
                 </div>
-                <p>Beers Criteria auditing, cytochrome P450 drug-drug interaction mitigation, and rational deprescribing protocols.</p>
+                <p>Beers Criteria auditing, cytochrome P450 drug-drug interaction mitigation, and rational deprescribing
+                  protocols.</p>
               </div>
             </div>
           </div>
@@ -350,4 +358,5 @@
   </div>
 
 </body>
+
 </html>

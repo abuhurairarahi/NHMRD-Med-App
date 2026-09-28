@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Electronic Clinical Records</title>
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/doctor-clinical-service-records.css">
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-header.css">
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar doctor">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="/public_html/pages/Doctor-panel/doctor-clinical-service-records.html" class="nav-item active">
+          <i class="fa-solid fa-notes-medical"></i>
+          <span>Clinical Records</span>
+        </a>
+        <a href="/public_html/pages/Doctor-panel/patient-appointments.html" class="nav-item">
+          <i class="fa-solid fa-user-clock"></i>
+          <span>Patient Appointments</span>
+        </a>
+        <a href="/public_html/pages/doctor-panel/doctor-profile.html" class="nav-item">
+          <i class="fa-solid fa-user-doctor"></i>
+          <span>Doctor Profile</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+
+      <!-- Top Header Bar -->
+      <header class="doc-header">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search patient MRN, name, vitals...">
+        </div>
+
+        <div class="header-right">
+          <div class="header-status-pill">
+            <i class="fa-regular fa-clock"></i>
+            <span>Shift: Morning Clinical Rounds (07:00 - 15:30)</span>
+          </div>
+          <div class="header-status-pill">
+            <i class="fa-solid fa-rotate"></i>
+            <span>EMR Synced</span>
+          </div>
+          <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+
+          <div class="doctor-profile-badge">
+            <div class="doctor-info-text">
+              <span class="doctor-name">Dr. Nusrat Jahan, MD</span>
+              <span class="doctor-dept">Internal Medicine & Therapeutics</span>
+            </div>
+            <div class="doctor-avatar">
+              <img src="https://i.pravatar.cc/100?img=47" alt="Dr. Nusrat Jahan">
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content Body -->
+      <main class="content-body">
+        <div class="clinical-records-grid">
+
+          <!-- Left Primary Column -->
+          <div class="primary-column">
+
+            <!-- Page Header Section -->
+            <div class="page-title-section">
+              <div class="title-text">
+                <span class="section-subtitle">DIVISION OF INTERNAL MEDICINE & OUTPATIENT PHARMACOTHERAPY</span>
+                <h1>Electronic Clinical Records</h1>
+                <p>Longitudinal chronic care surveillance, pharmacological titration, and diagnostic metabolic tracking.
+                </p>
+              </div>
+              <div class="title-actions">
+                <button class="btn-secondary"><i class="fa-solid fa-rotate"></i> Batch Rx Renewal</button>
+                <button class="btn-primary"><i class="fa-solid fa-file-export"></i> Export Clinical Summary
+                  (HL7/PDF)</button>
+              </div>
+            </div>
+
+            <!-- Vitals / Key Metrics Cards Grid -->
+            <div class="vitals-grid">
+              <div class="vital-card">
+                <div class="vital-header">
+                  <span class="vital-title">MONITORED COHORT</span>
+                  <i class="fa-solid fa-users vital-icon green-text"></i>
+                </div>
+                <div class="vital-body">
+                  <span class="vital-value">1,428</span>
+                  <span class="status-pill-green"><i class="fa-solid fa-arrow-up"></i> 4.2%</span>
+                </div>
+                <div class="vital-footer">
+                  <span class="vital-note">Active internal medicine cases</span>
+                </div>
+              </div>
+
+              <div class="vital-card">
+                <div class="vital-header">
+                  <span class="vital-title">HBA1C &lt;7.0% CONTROL</span>
+                  <i class="fa-solid fa-droplet vital-icon blue-text"></i>
+                </div>
+                <div class="vital-body">
+                  <span class="vital-value">78.4%</span>
+                  <span class="status-pill-green"><i class="fa-solid fa-arrow-up"></i> 1.9%</span>
+                </div>
+                <div class="vital-footer">
+                  <span class="vital-note">Endocrine cohort target met</span>
+                </div>
+              </div>
+
+              <div class="vital-card">
+                <div class="vital-header">
+                  <span class="vital-title">BP PROTOCOL TARGET</span>
+                  <i class="fa-solid fa-heart-pulse vital-icon green-text"></i>
+                </div>
+                <div class="vital-body">
+                  <span class="vital-value">84.1%</span>
+                  <span class="vital-subtext">&lt;130/80 mmHg</span>
+                </div>
+                <div class="vital-footer">
+                  <span class="vital-note">Hypertension care management</span>
+                </div>
+              </div>
+
+              <div class="vital-card">
+                <div class="vital-header">
+                  <span class="vital-title">POLYPHARMACY REVIEWS</span>
+                  <i class="fa-solid fa-pills vital-icon blue-text"></i>
+                </div>
+                <div class="vital-body">
+                  <span class="vital-value">96.8%</span>
+                  <span class="vital-subtext">Zero Interactions</span>
+                </div>
+                <div class="vital-footer">
+                  <span class="vital-note">Adherence & Safety Cleared</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Table Container Section -->
+            <div class="records-table-container">
+              <!-- Controls Header Bar -->
+              <div class="table-controls">
+                <div class="search-mini">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input type="text" placeholder="Search by patient MRN, full name, or ICD-10 code...">
+                </div>
+                <div class="filter-dropdown">
+                  <i class="fa-regular fa-calendar"></i>
+                  <span>Past 180 Days</span>
+                  <i class="fa-solid fa-sliders"></i>
+                </div>
+              </div>
+
+              <!-- Module Filter Tabs -->
+              <div class="module-tabs filter-tabs">
+                <button class="tab-btn active">All Internal Medicine</button>
+                <button class="tab-btn">Cardiovascular (I10-I15)</button>
+                <button class="tab-btn">Endocrine & Diabetes (E00-E35)</button>
+                <button class="tab-btn">Respiratory (J00-J99)</button>
+              </div>
+
+              <div class="table-meta">
+                <div class="title-with-badge">
+                  <h3>Active Registry Patient Roster</h3>
+                  <span class="counter-badge">6 CASES DISPLAYED</span>
+                </div>
+                <span class="sort-text">Sorted by Clinical Acuity <i
+                    class="fa-solid fa-arrow-down-short-wide"></i></span>
+              </div>
+
+              <!-- Patient Table -->
+              <table class="roster-table">
+                <thead>
+                  <tr>
+                    <th>PATIENT IDENTIFIER</th>
+                    <th>DEMOGRAPHICS</th>
+                    <th>PRIMARY DIAGNOSIS (ICD-10)</th>
+                    <th>PHARMACOTHERAPY REGIMEN</th>
+                    <th>LATEST VITALS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="selected-row">
+                    <td>
+                      <div class="patient-cell flex-align">
+                        <span class="avatar-circle green-bg">EM</span>
+                        <div>
+                          <strong>Elena Morales</strong>
+                          <span class="mrn-code">MRN-784019</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>58 yrs<br><span class="text-muted">Female</span></td>
+                    <td>
+                      <strong>Type 2 Diabetes Mellitus</strong><br>
+                      <span class="icd-tag">ICD-10: E11.9</span>
+                    </td>
+                    <td>Metformin 1000mg BID<br>+ Empagliflozin 10mg QD</td>
+                    <td class="vitals-cell">
+                      <strong>128/82</strong> <small>mmHg</small><br>
+                      <span class="text-muted">HR: 72 &bull; BMI: 27.4 &bull; SpO2: 98%</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="patient-cell flex-align">
+                        <span class="avatar-circle blue-bg">AC</span>
+                        <div>
+                          <strong>Arthur Chen</strong>
+                          <span class="mrn-code">MRN-647104</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>64 yrs<br><span class="text-muted">Male</span></td>
+                    <td>
+                      <strong>Essential Hypertension</strong><br>
+                      <span class="icd-tag">ICD-10: I10</span>
+                    </td>
+                    <td>Lisinopril 20mg QD<br>+ Amlodipine 5mg QD</td>
+                    <td class="vitals-cell">
+                      <strong>136/88</strong> <small>mmHg</small><br>
+                      <span class="text-muted">HR: 66 &bull; BMI: 29.1 &bull; SpO2: 97%</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="patient-cell flex-align">
+                        <span class="avatar-circle teal-bg">LW</span>
+                        <div>
+                          <strong>Lucia Ward</strong>
+                          <span class="mrn-code">MRN-902381</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>42 yrs<br><span class="text-muted">Female</span></td>
+                    <td>
+                      <strong>Hypothyroidism</strong><br>
+                      <span class="icd-tag">ICD-10: E03.9</span>
+                    </td>
+                    <td>Levothyroxine 75mcg QD<br><small class="text-muted">Fast morning oral dosing</small></td>
+                    <td class="vitals-cell">
+                      <strong>118/76</strong> <small>mmHg</small><br>
+                      <span class="text-muted">HR: 64 &bull; BMI: 23.8 &bull; SpO2: 99%</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="patient-cell flex-align">
+                        <span class="avatar-circle blue-bg">RK</span>
+                        <div>
+                          <strong>Rajesh Kapoor</strong>
+                          <span class="mrn-code">MRN-554289</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>51 yrs<br><span class="text-muted">Male</span></td>
+                    <td>
+                      <strong>Rheumatoid Arthritis</strong><br>
+                      <span class="icd-tag">ICD-10: M06.9</span>
+                    </td>
+                    <td>Methotrexate 15mg Weekly<br>+ Folic Acid 5mg Weekly</td>
+                    <td class="vitals-cell">
+                      <strong>124/80</strong> <small>mmHg</small><br>
+                      <span class="text-muted">HR: 74 &bull; BMI: 25.0 &bull; SpO2: 98%</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="patient-cell flex-align">
+                        <span class="avatar-circle green-bg">DB</span>
+                        <div>
+                          <strong>Diana Bennett</strong>
+                          <span class="mrn-code">MRN-331092</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>36 yrs<br><span class="text-muted">Female</span></td>
+                    <td>
+                      <strong>Moderate Persistent Asthma</strong><br>
+                      <span class="icd-tag">ICD-10: J45.40</span>
+                    </td>
+                    <td>Fluticasone/Salmeterol 250/50<br><small class="text-muted">Inhaled DPI 1 puff BID</small></td>
+                    <td class="vitals-cell">
+                      <strong>114/72</strong> <small>mmHg</small><br>
+                      <span class="text-muted">HR: 78 &bull; BMI: 22.3 &bull; SpO2: 99%</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="patient-cell flex-align">
+                        <span class="avatar-circle blue-bg">GM</span>
+                        <div>
+                          <strong>George Miller</strong>
+                          <span class="mrn-code">MRN-819230</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>69 yrs<br><span class="text-muted">Male</span></td>
+                    <td>
+                      <strong>Hyperlipidemia, Mixed</strong><br>
+                      <span class="icd-tag">ICD-10: E78.2</span>
+                    </td>
+                    <td>Atorvastatin 40mg QHS<br>+ Ezetimibe 10mg QD</td>
+                    <td class="vitals-cell">
+                      <strong>132/84</strong> <small>mmHg</small><br>
+                      <span class="text-muted">HR: 70 &bull; BMI: 28.6 &bull; SpO2: 97%</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- Table Pagination -->
+              <div class="pagination-footer">
+                <span>Showing 1 to 6 of 1,428 internal medicine patient records</span>
+                <div class="pagination-buttons">
+                  <button disabled><i class="fa-solid fa-chevron-left"></i></button>
+                  <button class="active">1</button>
+                  <button>2</button>
+                  <button>3</button>
+                  <span>...</span>
+                  <button><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Sidebar: Selected Patient Medical Summary -->
+          <aside class="patient-detail-panel">
+
+            <!-- Selected Patient Header -->
+            <div class="patient-card detail-header-card">
+              <div class="patient-avatar-wrap">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=120"
+                  alt="Elena Morales">
+              </div>
+              <div class="patient-details">
+                <div class="patient-title-row flex-between">
+                  <h3>Elena Morales</h3>
+                  <span class="managed-tag">Managed</span>
+                </div>
+                <span class="mrn-code">MRN-784019 &bull; DOB: 11/14/1965 (58y)</span>
+                <span class="attending-tag">Attending: <strong>Dr. Sarah Jenkins, MD</strong></span>
+              </div>
+            </div>
+
+            <!-- Active Pharmacotherapy -->
+            <div class="panel-section">
+              <div class="section-title-wrap flex-between">
+                <h4>Active Pharmacotherapy</h4>
+                <span class="status-pill-green"><i class="fa-regular fa-circle-check"></i> Drug-Drug: All Clear</span>
+              </div>
+
+              <div class="med-cards-list">
+                <div class="med-item mini-item">
+                  <div class="med-info">
+                    <strong class="med-title">Metformin Hydrochloride</strong>
+                    <div class="med-details">1000 mg &bull; Oral Tablet &bull; BID with meals</div>
+                  </div>
+                  <div class="med-status align-right">
+                    <span class="badge-pill green-bg">Adherent</span>
+                    <span class="vital-time">Refill: Nov 28</span>
+                  </div>
+                </div>
+
+                <div class="med-item mini-item">
+                  <div class="med-info">
+                    <strong class="med-title">Empagliflozin (Jardiance)</strong>
+                    <div class="med-details">10 mg &bull; Oral Tablet &bull; QD in morning</div>
+                  </div>
+                  <div class="med-status align-right">
+                    <span class="badge-pill green-bg">Adherent</span>
+                    <span class="vital-time">Refill: Dec 03</span>
+                  </div>
+                </div>
+
+                <div class="med-item mini-item">
+                  <div class="med-info">
+                    <strong class="med-title">Lisinopril</strong>
+                    <div class="med-details">10 mg &bull; Oral Tablet &bull; QD morning</div>
+                  </div>
+                  <div class="med-status align-right">
+                    <span class="badge-pill green-bg">Adherent</span>
+                    <span class="vital-time">Refill: Nov 15</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Diagnostic Lab History -->
+            <div class="panel-section">
+              <div class="section-title-wrap flex-between">
+                <h4>Diagnostic Lab History</h4>
+                <span class="specimen-time">Specimen: Oct 20, 2024</span>
+              </div>
+
+              <div class="lab-grid">
+                <div class="lab-mini-card">
+                  <span class="vital-title">HBA1C</span>
+                  <span class="lab-value">6.8%</span>
+                  <span class="vital-note green-text"><i class="fa-solid fa-arrow-down"></i> &lt;7.0%
+                    (Controlled)</span>
+                </div>
+                <div class="lab-mini-card">
+                  <span class="vital-title">EGFR</span>
+                  <span class="lab-value">86</span>
+                  <span class="vital-note">mL/min/1.73m² (Normal)</span>
+                </div>
+                <div class="lab-mini-card">
+                  <span class="vital-title">LDL-C</span>
+                  <span class="lab-value">88</span>
+                  <span class="vital-note">mg/dL (&lt;100 Target)</span>
+                </div>
+              </div>
+
+              <div class="lab-footer-row flex-between">
+                <span><strong>TSH (Reflex):</strong> 2.14 mIU/L</span>
+                <span><strong>CMP & Lipid:</strong> Evaluated</span>
+              </div>
+            </div>
+
+            <!-- Clinical SOAP Note -->
+            <div class="panel-section">
+              <div class="section-title-wrap flex-between">
+                <h4>Clinical SOAP Note</h4>
+                <span class="tag-interactive">Routine Outpatient</span>
+              </div>
+
+              <div class="soap-content-box">
+                <div class="soap-block">
+                  <strong>SUBJECTIVE:</strong>
+                  <p>Patient reports strict adherence to low-glycemic dietary regimen. No symptoms of hypoglycemia,
+                    dizziness, or peripheral edema noted. Home blood glucose log reviewed (fasting average: 115-122
+                    mg/dL).</p>
+                </div>
+
+                <div class="soap-block">
+                  <strong>OBJECTIVE:</strong>
+                  <p>BP: 128/82 mmHg right arm sitting. Heart sounds regular S1/S2 without murmurs. Lungs clear to
+                    auscultation bilaterally. Bilateral monofilament foot exam intact with normal pedal pulses.</p>
+                </div>
+
+                <div class="soap-block">
+                  <strong>ASSESSMENT:</strong>
+                  <p>Type 2 Diabetes Mellitus with adequate glycemic control under dual oral therapy (Metformin +
+                    SGLT2i). Essential hypertension well-managed on ACE inhibitor monotherapy.</p>
+                </div>
+
+                <div class="soap-block">
+                  <strong>PLAN:</strong>
+                  <p>Maintain current pharmacological dosages. Continue daily aerobic exercise 30 min/day. Schedule
+                    routine repeat Comprehensive Metabolic Panel and microalbumin/creatinine ratio in 4 months.</p>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn-primary full-width-btn">
+              <i class="fa-solid fa-plus"></i> Append Follow-up Note
+            </button>
+          </aside>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+</body>
+
+</html>

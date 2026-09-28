@@ -33,128 +33,114 @@ body {
   flex: 1;
 }
 
-.top-controls-row {
+/* ================= SUBHEADER BAR ================= */
+.subheader-bar {
+  background-color: #ffffff;
+  padding: 10px 28px;
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
 }
 
-.breadcrumb-links {
+.subheader-left {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
-  color: #64748b;
 }
 
-.breadcrumb-links .bold-text {
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.bc-sep {
-  color: #cbd5e1;
-}
-
-.controls-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.session-pill {
-  background-color: #f1f5f9;
-  color: #475569;
+.ehr-tag {
   font-size: 11px;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  font-weight: 700;
+  color: var(--text-muted);
 }
 
-.dot-active {
-  color: #10b981;
+.status-pill-green {
+  background-color: #d1fae5;
+  color: #047857;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.sub-title {
   font-size: 14px;
+  font-weight: 800;
+  color: var(--text-primary);
 }
 
-.session-pill .sep {
-  color: #cbd5e1;
+.subheader-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-.btn-export-log {
-  background-color: #ffffff;
-  border: 1px solid #cbd5e1;
-  color: #334155;
+.session-timer {
+  font-size: 11px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.session-timer span {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.tag-hipaa {
+  color: #0284c7;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.btn-write-rx {
+  background-color: #059669;
+  color: white;
+  border: none;
   padding: 8px 14px;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
   font-size: 12px;
-  font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: background-color 0.2s;
 }
 
-.btn-export-log:hover {
-  background-color: #f8fafc;
+.btn-write-rx:hover {
+  background-color: #047857;
 }
 
-.btn-write-prescription {
-  background-color: #0d624a;
+/* ================= MODULE TABS ================= */
+.module-tabs {
+  background-color: #ffffff;
+  padding: 0 28px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  gap: 8px;
+}
+
+.tab-btn {
+  background: transparent;
   border: none;
-  color: #ffffff;
-  padding: 8px 16px;
-  border-radius: 6px;
+  padding: 12px 16px;
   font-size: 12px;
   font-weight: 600;
+  color: var(--text-secondary);
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: background-color 0.2s;
-}
-
-.btn-write-prescription:hover {
-  background-color: #094735;
-}
-
-/* ==========================================================================
-   RECORDS NAVIGATION TABS
-   ========================================================================== */
-.records-tabs-nav {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  border-bottom: 1px solid #e2e8f0;
-  margin-bottom: 20px;
-}
-
-.tab-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  color: #64748b;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 13px;
   border-bottom: 2px solid transparent;
-  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.tab-link:hover {
-  color: #0f172a;
-}
-
-.tab-link.active {
-  color: #ffffff;
-  background-color: #0d624a;
-  border-radius: 6px 6px 0 0;
-  border-bottom-color: #0d624a;
+.tab-btn.active {
+  color: #059669;
+  border-bottom-color: #059669;
+  font-weight: 700;
+  background-color: #f0fdf4;
 }
 
 /* ==========================================================================
