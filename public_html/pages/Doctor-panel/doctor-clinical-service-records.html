@@ -41,7 +41,7 @@
       </nav>
 
       <div class="sidebar-footer">
-        <button class="logout-btn">
+        <button class="logout-btn" onclick="handleLogout()">
           <i class="fa-solid fa-arrow-right-from-bracket"></i>
           <span>Logout</span>
         </button>
@@ -55,7 +55,7 @@
       <header class="doc-header">
         <div class="search-bar">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Search patient MRN, name, vitals...">
+          <input type="text" placeholder="Search patient MRN, name, vitals..." onkeyup="filterTable(this.value)">
         </div>
 
         <div class="header-right">
@@ -67,7 +67,7 @@
             <i class="fa-solid fa-rotate"></i>
             <span>EMR Synced</span>
           </div>
-          <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+          <button class="icon-btn" onclick="openNotifications()"><i class="fa-regular fa-bell"></i></button>
 
           <div class="doctor-profile-badge">
             <div class="doctor-info-text">
@@ -97,8 +97,8 @@
                 </p>
               </div>
               <div class="title-actions">
-                <button class="btn-secondary"><i class="fa-solid fa-rotate"></i> Batch Rx Renewal</button>
-                <button class="btn-primary"><i class="fa-solid fa-file-export"></i> Export Clinical Summary
+                <button class="btn-secondary" onclick="batchRxRenewal()"><i class="fa-solid fa-rotate"></i> Batch Rx Renewal</button>
+                <button class="btn-primary" onclick="exportClinicalSummary()"><i class="fa-solid fa-file-export"></i> Export Clinical Summary
                   (HL7/PDF)</button>
               </div>
             </div>
@@ -168,7 +168,7 @@
               <div class="table-controls">
                 <div class="search-mini">
                   <i class="fa-solid fa-magnifying-glass"></i>
-                  <input type="text" placeholder="Search by patient MRN, full name, or ICD-10 code...">
+                  <input type="text" placeholder="Search by patient MRN, full name, or ICD-10 code..." onkeyup="filterTable(this.value)">
                 </div>
                 <div class="filter-dropdown">
                   <i class="fa-regular fa-calendar"></i>
@@ -179,10 +179,10 @@
 
               <!-- Module Filter Tabs -->
               <div class="module-tabs filter-tabs">
-                <button class="tab-btn active">All Internal Medicine</button>
-                <button class="tab-btn">Cardiovascular (I10-I15)</button>
-                <button class="tab-btn">Endocrine & Diabetes (E00-E35)</button>
-                <button class="tab-btn">Respiratory (J00-J99)</button>
+                <button class="tab-btn active" onclick="selectFilterTab(this, '')">All Internal Medicine</button>
+                <button class="tab-btn" onclick="selectFilterTab(this, 'cardiovascular')">Cardiovascular (I10-I15)</button>
+                <button class="tab-btn" onclick="selectFilterTab(this, 'endocrine')">Endocrine & Diabetes (E00-E35)</button>
+                <button class="tab-btn" onclick="selectFilterTab(this, 'respiratory')">Respiratory (J00-J99)</button>
               </div>
 
               <div class="table-meta">
@@ -206,7 +206,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="selected-row">
+                  <tr class="selected-row" onclick="loadPatientDetails(this)">
                     <td>
                       <div class="patient-cell flex-align">
                         <span class="avatar-circle green-bg">EM</span>
@@ -227,7 +227,7 @@
                       <span class="text-muted">HR: 72 &bull; BMI: 27.4 &bull; SpO2: 98%</span>
                     </td>
                   </tr>
-                  <tr>
+                  <tr onclick="loadPatientDetails(this)">
                     <td>
                       <div class="patient-cell flex-align">
                         <span class="avatar-circle blue-bg">AC</span>
@@ -248,7 +248,7 @@
                       <span class="text-muted">HR: 66 &bull; BMI: 29.1 &bull; SpO2: 97%</span>
                     </td>
                   </tr>
-                  <tr>
+                  <tr onclick="loadPatientDetails(this)">
                     <td>
                       <div class="patient-cell flex-align">
                         <span class="avatar-circle teal-bg">LW</span>
@@ -269,7 +269,7 @@
                       <span class="text-muted">HR: 64 &bull; BMI: 23.8 &bull; SpO2: 99%</span>
                     </td>
                   </tr>
-                  <tr>
+                  <tr onclick="loadPatientDetails(this)">
                     <td>
                       <div class="patient-cell flex-align">
                         <span class="avatar-circle blue-bg">RK</span>
@@ -290,7 +290,7 @@
                       <span class="text-muted">HR: 74 &bull; BMI: 25.0 &bull; SpO2: 98%</span>
                     </td>
                   </tr>
-                  <tr>
+                  <tr onclick="loadPatientDetails(this)">
                     <td>
                       <div class="patient-cell flex-align">
                         <span class="avatar-circle green-bg">DB</span>
@@ -311,7 +311,7 @@
                       <span class="text-muted">HR: 78 &bull; BMI: 22.3 &bull; SpO2: 99%</span>
                     </td>
                   </tr>
-                  <tr>
+                  <tr onclick="loadPatientDetails(this)">
                     <td>
                       <div class="patient-cell flex-align">
                         <span class="avatar-circle blue-bg">GM</span>
@@ -340,11 +340,11 @@
                 <span>Showing 1 to 6 of 1,428 internal medicine patient records</span>
                 <div class="pagination-buttons">
                   <button disabled><i class="fa-solid fa-chevron-left"></i></button>
-                  <button class="active">1</button>
-                  <button>2</button>
-                  <button>3</button>
+                  <button class="active" onclick="switchPage(this)">1</button>
+                  <button onclick="switchPage(this)">2</button>
+                  <button onclick="switchPage(this)">3</button>
                   <span>...</span>
-                  <button><i class="fa-solid fa-chevron-right"></i></button>
+                  <button onclick="nextPage()"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
               </div>
             </div>
@@ -480,7 +480,7 @@
               </div>
             </div>
 
-            <button class="btn-primary full-width-btn">
+            <button class="btn-primary full-width-btn" onclick="appendFollowUpNote()">
               <i class="fa-solid fa-plus"></i> Append Follow-up Note
             </button>
           </aside>
@@ -489,6 +489,8 @@
       </main>
     </div>
   </div>
+
+  <script src="/public_html/assets/js/doctor/clinical-service-records.js"></script>
 
 </body>
 
