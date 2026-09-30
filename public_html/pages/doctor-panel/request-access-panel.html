@@ -87,6 +87,9 @@
       <!-- Main Content Area -->
       <main class="content-body">
 
+        <!-- Status Message Banner -->
+        <div id="statusMessage" class="alert" style="display: none; margin-bottom: 15px;"></div>
+
         <!-- Breadcrumb & Page Header -->
         <div class="page-header-container">
           <div class="breadcrumb">
@@ -134,7 +137,7 @@
                 </label>
                 <div class="input-with-icon">
                   <i class="fa-regular fa-user"></i>
-                  <input type="text" value="Farhana Rahman" readonly>
+                  <input type="text" id="patientNameInput" value="Farhana Rahman" readonly>
                 </div>
               </div>
 
@@ -151,15 +154,15 @@
               <label>CLINICAL CONTINUITY REFERENCE</label>
               <div class="mrn-wrapper">
                 <span class="mrn-label">Medical Record Number (MRN)</span>
-                <div class="mrn-badge" onclick="copyMRN()" style="cursor: pointer;">
-                  <span>MRN - 449102</span>
+                <div class="mrn-badge" id="mrnBadge" onclick="copyMRN()" style="cursor: pointer;">
+                  <span id="mrnValue">MRN - 449102</span>
                   <i class="fa-regular fa-copy"></i>
                 </div>
               </div>
             </div>
 
             <!-- OTP Input Section -->
-            <div class="otp-section">
+            <div class="otp-section" id="otpSection">
               <div class="otp-header">
                 <i class="fa-solid fa-border-all"></i>
                 <strong>Patient One-Time Password (OTP)</strong>
@@ -177,8 +180,11 @@
               </div>
 
               <div class="otp-footer">
-                <span class="timer-text"><i class="fa-regular fa-clock"></i> Code expires in <strong>00:28</strong></span>
-                <button type="button" class="btn-link" onclick="resendOTP()">
+                <span class="timer-text">
+                  <i class="fa-regular fa-clock"></i> 
+                  Code expires in <strong id="countdownDisplay">00:30</strong>
+                </span>
+                <button type="button" class="btn-link" id="resendOtpBtn" onclick="resendOTP()">
                   <i class="fa-solid fa-rotate-right"></i> Resend SMS Code
                 </button>
               </div>
@@ -186,7 +192,7 @@
 
             <!-- Action Buttons -->
             <div class="action-buttons">
-              <button type="button" class="btn-primary" onclick="verifyAndUnlock()">
+              <button type="button" class="btn-primary" id="verifyOtpBtn" onclick="verifyAndUnlock()">
                 <i class="fa-solid fa-lock-open"></i> Access Profile / Verify & Unlock
               </button>
               <button type="button" class="btn-secondary" onclick="cancelAccess()">

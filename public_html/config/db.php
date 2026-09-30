@@ -1,25 +1,22 @@
 <?php
-// db.php
-$host = '127.0.0.1';
-$db   = 'nhmrd';
-$user = 'root';
-$pass = '';
-$charset = 'utf8mb4';
+// public_html/config/db.php
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'nhmrd');
 
-try {
-     $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (\PDOException $e) {
-     throw new \PDOException($e->getMessage(), (int)$e->getCode());
-}
-
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+function getDBConnection() {
+    static $conn = null;
+    if ($conn === null) {
+        $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        if ($conn->connect_error) {
+            http_response_code(500);
+            echo json_encode(['success' => false, 'message' => 'Database connection failed: ' . $conn->connect_error]);
+            exit;
+        }
+        $conn->set_charset('utf8mb4');
+    }
+    return $conn;
 }
 ?>
