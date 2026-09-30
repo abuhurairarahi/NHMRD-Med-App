@@ -1,79 +1,75 @@
-// 1. Filter appointments and medical activity lists based on search input
-function filterDashboardContent(event) {
-  const query = event.target.value.toLowerCase().trim();
-  const cards = document.querySelectorAll('.appointment-item, .activity-item');
-  
-  cards.forEach(card => {
-    const text = card.textContent.toLowerCase();
-    card.style.display = text.includes(query) ? 'flex' : 'none';
-  });
-}
-
-// 2. Display notifications alert
-function handleNotificationClick() {
-  alert('You have no new notifications.');
-}
-
-// 3. Trigger browser print dialog for the patient card
-function printPatientCard() {
-  window.print();
-}
-
-// 4. Redirect user to update profile information
-function navigateToUpdateProfile() {
-  window.location.href = '/public_html/pages/Patient-panel/paitent-info.html';
-}
-
-// 5. Trigger external lab synchronization
-function syncExternalLabs(event) {
-  event.preventDefault();
-  alert('Syncing records with DGHS External Labs... Refreshing panel.');
-}
-
-// 6. Confirm and process user logout
-function handleUserLogout() {
-  if (confirm('Are you sure you want to log out?')) {
-    window.location.href = '/login.html';
-  }
-}
-
-// Initialize and bind events when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  
-  // Search input binding
-  const searchInput = document.querySelector('.search-bar input');
+
+  // 1. Dynamic Search Filtering for Appointments & Activities
+  const searchInput = document.getElementById('dashboardSearch');
   if (searchInput) {
-    searchInput.addEventListener('input', filterDashboardContent);
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase().trim();
+      const items = document.querySelectorAll('.appointment-item, .activity-item');
+
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(term) ? 'flex' : 'none';
+      });
+    });
   }
 
-  // Notification button binding
-  const notificationBtn = document.querySelector('.header-right .icon-btn');
+  // 2. Notification Button Trigger
+  const notificationBtn = document.getElementById('notificationBtn');
   if (notificationBtn) {
-    notificationBtn.addEventListener('click', handleNotificationClick);
+    notificationBtn.addEventListener('click', () => {
+      alert('You have no new notifications.');
+    });
   }
 
-  // Print card button binding
-  const printCardBtn = document.querySelector('.btn-primary');
+  // 3. Print Card Action
+  const printCardBtn = document.getElementById('printCardBtn');
   if (printCardBtn) {
-    printCardBtn.addEventListener('click', printPatientCard);
+    printCardBtn.addEventListener('click', () => {
+      window.print();
+    });
   }
 
-  // Update data button binding
-  const updateDataBtn = document.querySelector('.btn-secondary');
+  // 4. Update Profile Action
+  const updateDataBtn = document.getElementById('updateDataBtn');
   if (updateDataBtn) {
-    updateDataBtn.addEventListener('click', navigateToUpdateProfile);
+    updateDataBtn.addEventListener('click', () => {
+      window.location.href = '/public_html/pages/Patient-panel/paitent-info.php';
+    });
   }
 
-  // External labs sync link binding
-  const syncLabsBtn = document.querySelector('.panel-footer-sync a');
+  // 5. External Lab Sync Trigger
+  const syncLabsBtn = document.getElementById('syncLabsBtn');
   if (syncLabsBtn) {
-    syncLabsBtn.addEventListener('click', syncExternalLabs);
+    syncLabsBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Syncing records with DGHS External Labs... Updated.');
+    });
   }
 
-  // Logout button binding
-  const logoutBtn = document.querySelector('.logout-btn');
+  // 6. Action Buttons in Medical Activity Cards
+  document.querySelectorAll('.action-download').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-id');
+      alert(`Downloading record #${id}...`);
+    });
+  });
+
+  document.querySelectorAll('.action-view').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-id');
+      alert(`Viewing details for record #${id}...`);
+    });
+  });
+
+  // 7. Logout Action Confirmation
+  const logoutBtn = document.getElementById('logoutBtn');
   if (logoutBtn) {
-    logoutBtn.addEventListener('click', handleUserLogout);
+    logoutBtn.addEventListener('click', () => {
+      if (confirm('Are you sure you want to log out?')) {
+        window.location.href = '/logout.php';
+      }
+    });
   }
 
 });
