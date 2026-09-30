@@ -12,7 +12,7 @@
   --border-color: #e2e8f0;
   --accent-red: #ef4444;
   --accent-blue: #0284c7;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 * {
@@ -86,7 +86,8 @@ body {
   gap: 8px;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
   padding: 8px 14px;
   border-radius: 6px;
   font-weight: 600;
@@ -319,9 +320,18 @@ body {
   font-size: 11px;
 }
 
-.green-bg { background-color: var(--primary-green); }
-.blue-bg { background-color: var(--accent-blue); }
-.teal-bg { background-color: #0d9488; }
+.green-bg {
+  background-color: var(--primary-green);
+  color: white;
+}
+
+.blue-bg {
+  background-color: var(--accent-blue);
+}
+
+.teal-bg {
+  background-color: #0d9488;
+}
 
 .mrn-code {
   font-size: 10px;
@@ -446,7 +456,9 @@ body {
   color: var(--text-muted);
 }
 
-.align-right { text-align: right; }
+.align-right {
+  text-align: right;
+}
 
 .badge-pill {
   font-size: 9px;
@@ -517,5 +529,10 @@ body {
   padding: 10px;
 }
 
-.green-text { color: #16a34a; }
-.blue-text { color: #0284c7; }
+.green-text {
+  color: #16a34a;
+}
+
+.blue-text {
+  color: #0284c7;
+}
