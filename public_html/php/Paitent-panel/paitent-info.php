@@ -1,20 +1,25 @@
 <?php
-// Load Data Controller
-$data = require_once __DIR__ . '/../../controllers/patient/PatientInfoController.php';
+// Load Patient Bootstrap
+require_once __DIR__ . '/patient_bootstrap.php';
 
-$patient          = $data['patient'];
-$userInitials     = $data['userInitials'];
-$contacts         = $data['contacts'] ?? [];
-$donors           = $data['donors'] ?? [];
-$vitalsHistory    = $data['vitalsHistory'] ?? [];
-$vitalAverages    = $data['vitalAverages'] ?? [];
-$labTestsCount    = $data['labTestsCount'] ?? 0;
-$activeRxCount    = $data['activeRxCount'] ?? 0;
+$contacts         = $patientContacts ?? [];
+$donors           = $patientDonors ?? [];
+$labTestsCount    = $totalLabTests ?? 0;
+$age              = $patientAge;
 
-// Calculate age from DOB
-$birthDate = new DateTime($patient['dob']);
-$todayDate = new DateTime();
-$age       = $todayDate->diff($birthDate)->y;
+$vitalAverages = [
+    'avg_height' => $patient['height_cm'] ?? 165.0,
+    'avg_weight' => $patient['weight_kg'] ?? 62.0,
+];
+
+$vitalsHistory = [
+    [
+        'recorded_at' => $patient['vitals_last_synced_at'] ?? date('Y-m-d H:i:s'),
+        'height_cm'   => $patient['height_cm'] ?? 165.0,
+        'weight_kg'   => $patient['weight_kg'] ?? 62.0,
+        'bmi'         => $patient['bmi'] ?? 22.8
+    ]
+];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,41 +45,41 @@ $age       = $todayDate->diff($birthDate)->y;
           <i class="fa-solid fa-table-cells-large"></i> 
           <span>Dashboard</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/prescription-record.php" class="nav-item">
+        <a href="prescription-records.php" class="nav-item">
           <i class="fa-solid fa-file-prescription"></i> 
           <span>Prescription Records</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/surgary-record.php" class="nav-item">
+        <a href="surgary-record.php" class="nav-item">
           <i class="fa-solid fa-scalpel"></i> 
           <span>Surgery Records</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/lab-test.php" class="nav-item">
+        <a href="lab-test.php" class="nav-item">
           <i class="fa-solid fa-vial"></i> 
           <span>Test Records</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/vaccine-panel.php" class="nav-item">
+        <a href="vaccine-panel.php" class="nav-item">
           <i class="fa-solid fa-syringe"></i> 
           <span>Vaccine Records</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/req-appointment.php" class="nav-item">
+        <a href="req-appointment.php" class="nav-item">
           <i class="fa-solid fa-calendar-plus"></i> 
           <span>Request Appointment</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/medical-test-req.php" class="nav-item">
+        <a href="medical-test-request.php" class="nav-item">
           <i class="fa-solid fa-notes-medical"></i> 
           <span>Request Medical Test</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/req-vaccine.php" class="nav-item">
+        <a href="req-vaccine.php" class="nav-item">
           <i class="fa-solid fa-shield-virus"></i> 
           <span>Request Vaccine</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/paitent-info.php" class="nav-item active">
+        <a href="paitent-info.php" class="nav-item active">
           <i class="fa-solid fa-id-card"></i> 
           <span>Patient Info</span>
         </a>
       </nav>
       <div class="sidebar-footer">
-        <button class="logout-btn" id="logoutBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
+        <button class="logout-btn" id="logoutBtn" onclick="location.href='/public_html/api/logout.php'"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
       </div>
     </aside>
 
@@ -292,8 +297,8 @@ $age       = $todayDate->diff($birthDate)->y;
             </div>
           </div>
           <div class="dossier-actions">
-            <button class="btn-dossier" id="viewTestRecordsBtn">All Test Records (<?= $labTestsCount ?>)</button>
-            <button class="btn-dossier active-btn" id="viewPrescriptionRecordsBtn">Active Prescriptions (<?= $activeRxCount ?>)</button>
+            <button class="btn-dossier" id="viewTestRecordsBtn" onclick="location.href='lab-test.php'">All Test Records (<?= $labTestsCount ?>)</button>
+            <button class="btn-dossier active-btn" id="viewPrescriptionRecordsBtn" onclick="location.href='prescription-records.php'">Active Prescriptions (<?= $activeRxCount ?>)</button>
           </div>
         </div>
       </main>

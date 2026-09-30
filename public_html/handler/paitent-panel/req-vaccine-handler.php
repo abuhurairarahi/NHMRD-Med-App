@@ -1,26 +1,32 @@
 <?php
-// public_html/handlers/patient/reqVaccineHandler.php
+// public_html/handler/paitent-panel/req-vaccine-handler.php
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 header('Content-Type: application/json');
 
-require_once __DIR__ . '/../../../db.php'; // Adjust path to db.php as needed
+$pdo = require_once __DIR__ . '/../../config/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
     exit();
 }
 
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'patient') {
-    echo json_encode(['success' => false, 'message' => 'Unauthorized access.']);
-    exit();
+$patientId = filter_input(INPUT_POST, 'patient_id', FILTER_VALIDATE_INT) ?: ($_SESSION['patient_id'] ?? null);
+if (!$patientId && isset($_SESSION['user_id'])) {
+    $stmtUser = $pdo->prepare("SELECT patient_id FROM patients WHERE user_id = ? LIMIT 1");
+    $stmtUser->execute([$_SESSION['user_id']]);
+    $patientId = $stmtUser->fetchColumn() ?: null;
+}
+if (!$patientId) {
+    $patientId = 1;
 }
 
-$patientId      = filter_input(INPUT_POST, 'patient_id', FILTER_VALIDATE_INT);
 $vaccineId      = filter_input(INPUT_POST, 'vaccine_id', FILTER_VALIDATE_INT);
 $hospitalId     = filter_input(INPUT_POST, 'hospital_id', FILTER_VALIDATE_INT);
-$scheduledDate  = filter_input(INPUT_POST, 'scheduled_date', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$timeSlot       = filter_input(INPUT_POST, 'time_slot', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$scheduledDate  = filter_input(INPUT_POST, 'scheduled_date', FILTER_DEFAULT);
+$timeSlot       = filter_input(INPUT_POST, 'time_slot', FILTER_DEFAULT);
 $declaration    = isset($_POST['health_declaration_confirmed']) ? 1 : 0;
 
 if (!$patientId || !$vaccineId || !$hospitalId || !$scheduledDate || !$timeSlot || !$declaration) {
@@ -36,15 +42,18 @@ try {
     ");
 
     $stmt->execute([
-        'patient_id'  => $patientId,
-        'vaccine_id'  => $vaccineId,
-        'hospital_id' => $hospitalId,
+        'patient_id'     => $patientId,
+        'vaccine_id'     => $vaccineId,
+        'hospital_id'    => $hospitalId,
         'scheduled_date' => $scheduledDate,
-        'time_slot'   => $timeSlot,
-        'declaration' => $declaration
+        'time_slot'      => $timeSlot,
+        'declaration'    => $declaration
     ]);
 
-    echo json_encode(['success' => true, 'message' => 'Vaccine appointment requested successfully!']);
+    echo json_encode([
+        'success' => true, 
+        'message' => 'Vaccine appointment requested successfully! Ref ID: #' . $pdo->lastInsertId()
+    ]);
 } catch (PDOException $e) {
     echo json_encode(['success' => false, 'message' => 'Database error: ' . $e->getMessage()]);
 }

@@ -1,4 +1,4 @@
-// public_html/assets/js/patient/req-vaccine.js
+// public_html/assets/js/paitent/req-vaccine.js
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('reqVaccineForm');
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(form);
 
             try {
-                const response = await fetch('/public_html/handlers/patient/reqVaccineHandler.php', {
+                const response = await fetch('/public_html/handler/paitent-panel/req-vaccine-handler.php', {
                     method: 'POST',
                     body: formData
                 });
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (logoutBtn) {
         logoutBtn.addEventListener('click', () => {
             if (confirm('Are you sure you want to log out?')) {
-                window.location.href = '/public_html/pages/logout.php';
+                window.location.href = '/public_html/api/logout.php';
             }
         });
     }

@@ -1,16 +1,51 @@
 <?php
-// Load Data Controller
-$data = require_once __DIR__ . '/../../controllers/patient/reqVaccineController.php';
+// Load Patient Bootstrap
+require_once __DIR__ . '/patient_bootstrap.php';
 
-$patient             = $data['patient'];
-$userInitials        = $data['userInitials'];
-$totalPrescriptions  = $data['totalPrescriptions'];
-$totalLabTests       = $data['totalLabTests'];
-$totalVaccines       = $data['totalVaccines'];
-$totalSurgeries      = $data['totalSurgeries'];
-$hospitals           = $data['hospitals'];
-$vaccines            = $data['vaccines'];
-$vaccineAppointments = $data['vaccineAppointments'];
+// Fetch vaccine catalog
+$vaccines = $pdo->query("SELECT * FROM vaccine_catalog ORDER BY vaccine_name ASC")->fetchAll();
+
+// Fetch hospitals
+$hospitals = $pdo->query("SELECT hospital_id, legal_name FROM hospitals ORDER BY legal_name ASC")->fetchAll();
+
+// Handle direct POST fallback
+$successMsg = '';
+$errorMsg = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['direct_submit'])) {
+    $vaccineId     = (int)($_POST['vaccine_id'] ?? 0);
+    $hospitalId    = (int)($_POST['hospital_id'] ?? 0);
+    $scheduledDate = $_POST['scheduled_date'] ?? date('Y-m-d', strtotime('+2 days'));
+    $timeSlot      = $_POST['time_slot'] ?? '09:00 AM - 11:00 AM';
+    $declaration   = isset($_POST['health_declaration_confirmed']) ? 1 : 0;
+
+    if ($vaccineId > 0 && $hospitalId > 0 && $declaration) {
+        try {
+            $stmtInsert = $pdo->prepare("
+                INSERT INTO vaccine_appointments 
+                (patient_id, vaccine_id, hospital_id, scheduled_date, time_slot, health_declaration_confirmed, status) 
+                VALUES (?, ?, ?, ?, ?, ?, 'scheduled')
+            ");
+            $stmtInsert->execute([$patientId, $vaccineId, $hospitalId, $scheduledDate, $timeSlot, $declaration]);
+            $successMsg = "Vaccination appointment requested successfully! Ref ID: #" . $pdo->lastInsertId();
+        } catch (Exception $e) {
+            $errorMsg = "Database error: " . $e->getMessage();
+        }
+    } else {
+        $errorMsg = "Please fill all required fields and confirm health declaration.";
+    }
+}
+
+// Fetch Vaccine Appointments for current patient
+$stmtVAppts = $pdo->prepare("
+    SELECT va.*, vc.vaccine_name, h.legal_name AS hospital_name
+    FROM vaccine_appointments va
+    JOIN vaccine_catalog vc ON va.vaccine_id = vc.vaccine_id
+    JOIN hospitals h ON va.hospital_id = h.hospital_id
+    WHERE va.patient_id = ?
+    ORDER BY va.scheduled_date DESC
+");
+$stmtVAppts->execute([$patientId]);
+$vaccineAppointments = $stmtVAppts->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,42 +73,42 @@ $vaccineAppointments = $data['vaccineAppointments'];
           <i class="fa-solid fa-table-cells-large"></i> 
           <span>Dashboard</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/prescription-record.php" class="nav-item">
+        <a href="prescription-records.php" class="nav-item">
           <i class="fa-solid fa-file-prescription"></i> 
           <span>Prescription Records</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/surgary-record.php" class="nav-item">
+        <a href="surgary-record.php" class="nav-item">
           <i class="fa-solid fa-scalpel"></i> 
           <span>Surgery Records</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/lab-test.php" class="nav-item">
+        <a href="lab-test.php" class="nav-item">
           <i class="fa-solid fa-vial"></i> 
           <span>Test Records</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/vaccine-panel.php" class="nav-item">
+        <a href="vaccine-panel.php" class="nav-item">
           <i class="fa-solid fa-syringe"></i> 
           <span>Vaccine Records</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/req-appointment.php" class="nav-item">
+        <a href="req-appointment.php" class="nav-item">
           <i class="fa-solid fa-calendar-plus"></i> 
           <span>Request Appointment</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/medical-test-req.php" class="nav-item">
+        <a href="medical-test-request.php" class="nav-item">
           <i class="fa-solid fa-notes-medical"></i> 
           <span>Request Medical Test</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/req-vaccine.php" class="nav-item active">
+        <a href="req-vaccine.php" class="nav-item active">
           <i class="fa-solid fa-shield-virus"></i> 
           <span>Request Vaccine</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/paitent-info.php" class="nav-item">
+        <a href="paitent-info.php" class="nav-item">
           <i class="fa-solid fa-id-card"></i> 
           <span>Patient Info</span>
         </a>
       </nav>
 
       <div class="sidebar-footer">
-        <button class="logout-btn" id="logoutBtn">
+        <button class="logout-btn" id="logoutBtn" onclick="location.href='/public_html/api/logout.php'">
           <i class="fa-solid fa-arrow-right-from-bracket"></i>
           <span>Logout</span>
         </button>
@@ -90,13 +125,13 @@ $vaccineAppointments = $data['vaccineAppointments'];
         </div>
 
         <div class="header-right">
-          <button class="icon-btn" id="notificationBtn"><i class="fa-regular fa-bell"></i></button>
+          <button class="icon-btn" id="notificationBtn" onclick="alert('No new notifications');"><i class="fa-regular fa-bell"></i></button>
           
           <div class="user-badge-avatar"><?= htmlspecialchars($userInitials) ?></div>
           
           <div class="user-info-text">
             <span class="user-name"><?= htmlspecialchars($patient['full_name']) ?></span>
-            <span class="patient-id">Patient ID #<?= htmlspecialchars($patient['user_uid']) ?></span>
+            <span class="patient-id">Patient ID #<?= htmlspecialchars($patient['user_uid'] ?? $patient['patient_id']) ?></span>
           </div>
         </div>
       </header>
@@ -146,6 +181,18 @@ $vaccineAppointments = $data['vaccineAppointments'];
           </div>
         </div>
 
+        <?php if (!empty($successMsg)): ?>
+          <div style="background: #dcfce7; border: 1px solid #86efac; color: #166534; padding: 14px 18px; border-radius: 8px; margin-bottom: 20px; font-weight: 600;">
+            <i class="fa-solid fa-circle-check"></i> <?= htmlspecialchars($successMsg) ?>
+          </div>
+        <?php endif; ?>
+
+        <?php if (!empty($errorMsg)): ?>
+          <div style="background: #fee2e2; border: 1px solid #fca5a5; color: #991b1b; padding: 14px 18px; border-radius: 8px; margin-bottom: 20px; font-weight: 600;">
+            <i class="fa-solid fa-triangle-exclamation"></i> <?= htmlspecialchars($errorMsg) ?>
+          </div>
+        <?php endif; ?>
+
         <!-- 2 Panels: Request Form + History Table -->
         <div class="panels-grid">
 
@@ -157,7 +204,8 @@ $vaccineAppointments = $data['vaccineAppointments'];
               </div>
             </div>
 
-            <form id="reqVaccineForm" style="padding: 20px;">
+            <form id="reqVaccineForm" method="POST" action="" style="padding: 20px;">
+              <input type="hidden" name="direct_submit" value="1">
               <input type="hidden" name="patient_id" value="<?= $patient['patient_id'] ?>">
 
               <div style="margin-bottom: 15px;">
@@ -165,7 +213,7 @@ $vaccineAppointments = $data['vaccineAppointments'];
                 <select name="vaccine_id" id="vaccine_id" required style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
                   <option value="">-- Choose Vaccine --</option>
                   <?php foreach ($vaccines as $vac): ?>
-                    <option value="<?= $vac['vaccine_id'] ?>"><?= htmlspecialchars($vac['vaccine_name']) ?> (<?= $vac['dose_ml'] ?> ml)</option>
+                    <option value="<?= $vac['vaccine_id'] ?>"><?= htmlspecialchars($vac['vaccine_name']) ?> (<?= $vac['dose_ml'] ?> ml &bull; <?= $vac['route'] ?>)</option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -182,7 +230,7 @@ $vaccineAppointments = $data['vaccineAppointments'];
 
               <div style="margin-bottom: 15px;">
                 <label style="display: block; margin-bottom: 5px; font-weight: bold;">Preferred Date</label>
-                <input type="date" name="scheduled_date" id="scheduled_date" min="<?= date('Y-m-d') ?>" required style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
+                <input type="date" name="scheduled_date" id="scheduled_date" min="<?= date('Y-m-d') ?>" value="<?= date('Y-m-d', strtotime('+2 days')) ?>" required style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
               </div>
 
               <div style="margin-bottom: 15px;">
@@ -196,7 +244,7 @@ $vaccineAppointments = $data['vaccineAppointments'];
 
               <div style="margin-bottom: 20px;">
                 <label style="display: flex; align-items: center; gap: 10px; font-size: 14px;">
-                  <input type="checkbox" name="health_declaration_confirmed" value="1" required>
+                  <input type="checkbox" name="health_declaration_confirmed" value="1" required checked>
                   I confirm that I am currently fit and free of major acute sickness.
                 </label>
               </div>
@@ -211,13 +259,13 @@ $vaccineAppointments = $data['vaccineAppointments'];
           <div class="card panel-card">
             <div class="panel-header">
               <div class="panel-title">
-                <i class="fa-solid fa-clock-rotate-left"></i> Scheduled Requests
+                <i class="fa-solid fa-clock-rotate-left"></i> Scheduled Requests (<?= count($vaccineAppointments) ?>)
               </div>
             </div>
 
             <div class="appointment-list" style="padding: 15px;">
               <?php if (empty($vaccineAppointments)): ?>
-                <p style="color: #64748b;">No scheduled vaccine requests found.</p>
+                <p style="color: #64748b; padding: 20px; text-align: center;">No scheduled vaccine requests found.</p>
               <?php else: ?>
                 <?php foreach ($vaccineAppointments as $vAppt): ?>
                   <div class="appointment-item" style="padding: 12px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center;">
@@ -229,7 +277,7 @@ $vaccineAppointments = $data['vaccineAppointments'];
                       <div style="font-size: 13px; color: #475569;">At: <strong><?= htmlspecialchars($vAppt['hospital_name']) ?></strong></div>
                     </div>
                     <div>
-                      <span class="badge-status-pill badge-due"><?= ucfirst($vAppt['status']) ?></span>
+                      <span class="badge-status-pill badge-due" style="background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 12px; font-size: 0.78rem; font-weight: 700;"><?= ucfirst($vAppt['status']) ?></span>
                     </div>
                   </div>
                 <?php endforeach; ?>
@@ -243,6 +291,6 @@ $vaccineAppointments = $data['vaccineAppointments'];
     </div>
   </div>
 
-  <script src="/public_html/assets/js/patient/req-vaccine.js"></script>
+  <script src="/public_html/assets/js/paitent/req-vaccine.js"></script>
 </body>
 </html>

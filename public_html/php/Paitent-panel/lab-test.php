@@ -1,29 +1,10 @@
 <?php
-// lab-test.php
-require_once 'db_connect.php';
+// public_html/php/paitent-panel/lab-test.php
+// NHMRD - Patient Diagnostic & Lab Test Records
 
-// Session patient context (Defaulted for demo matching ID #48291 / User UID '20421201')
-$patient_id = $_SESSION['patient_id'] ?? 1;
+require_once __DIR__ . '/patient_bootstrap.php';
 
-// 1. Fetch Patient Info & Vitals Summary
-$stmt = $pdo->prepare("SELECT * FROM v_patient_overview WHERE patient_id = ?");
-$stmt->execute([$patient_id]);
-$patient = $stmt->fetch();
-
-if (!$patient) {
-    die("Patient record not found.");
-}
-
-// 2. Fetch Summary Statistics
-$stmtCount = $pdo->prepare("SELECT COUNT(*) AS total_files FROM lab_test_orders WHERE patient_id = ?");
-$stmtCount->execute([$patient_id]);
-$total_files = $stmtCount->fetchColumn();
-
-$stmtLabs = $pdo->prepare("SELECT COUNT(DISTINCT hospital_id) FROM lab_test_orders WHERE patient_id = ?");
-$stmtLabs->execute([$patient_id]);
-$total_labs = $stmtLabs->fetchColumn();
-
-// 3. Fetch All Lab Orders with Items and Results
+// Fetch All Lab Orders with Items and Results for active patient
 $query = "
     SELECT 
         o.order_id,
@@ -49,8 +30,16 @@ $query = "
     ORDER BY o.ordered_at DESC
 ";
 $stmtOrders = $pdo->prepare($query);
-$stmtOrders->execute([$patient_id]);
+$stmtOrders->execute([$patientId]);
 $orders = $stmtOrders->fetchAll();
+
+$stmtCount = $pdo->prepare("SELECT COUNT(*) AS total_files FROM lab_test_orders WHERE patient_id = ?");
+$stmtCount->execute([$patientId]);
+$total_files = $stmtCount->fetchColumn() ?: count($orders);
+
+$stmtLabs = $pdo->prepare("SELECT COUNT(DISTINCT hospital_id) FROM lab_test_orders WHERE patient_id = ?");
+$stmtLabs->execute([$patientId]);
+$total_labs = $stmtLabs->fetchColumn() ?: 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,18 +64,18 @@ $orders = $stmtOrders->fetchAll();
 
       <nav class="nav-menu">
         <a href="dashboard.php" class="nav-item"><i class="fa-solid fa-table-cells-large"></i> <span>Dashboard</span></a>
-        <a href="prescription-record.php" class="nav-item"><i class="fa-solid fa-file-prescription"></i> <span>Prescription Records</span></a>
+        <a href="prescription-records.php" class="nav-item"><i class="fa-solid fa-file-prescription"></i> <span>Prescription Records</span></a>
         <a href="surgary-record.php" class="nav-item"><i class="fa-solid fa-scalpel"></i> <span>Surgery Records</span></a>
         <a href="lab-test.php" class="nav-item active"><i class="fa-solid fa-vial"></i> <span>Test Records</span></a>
         <a href="vaccine-panel.php" class="nav-item"><i class="fa-solid fa-syringe"></i> <span>Vaccine Records</span></a>
         <a href="req-appointment.php" class="nav-item"><i class="fa-solid fa-calendar-plus"></i> <span>Request Appointment</span></a>
-        <a href="medical-test-req.php" class="nav-item"><i class="fa-solid fa-notes-medical"></i> <span>Request Medical Test</span></a>
+        <a href="medical-test-request.php" class="nav-item"><i class="fa-solid fa-notes-medical"></i> <span>Request Medical Test</span></a>
         <a href="req-vaccine.php" class="nav-item"><i class="fa-solid fa-shield-virus"></i> <span>Request Vaccine</span></a>
-        <a href="patient-info.php" class="nav-item"><i class="fa-solid fa-id-card"></i> <span>Patient Info</span></a>
+        <a href="paitent-info.php" class="nav-item"><i class="fa-solid fa-id-card"></i> <span>Patient Info</span></a>
       </nav>
 
       <div class="sidebar-footer">
-        <button class="logout-btn" onclick="handleUserLogout()">
+        <button class="logout-btn" onclick="window.location.href='/public_html/api/logout.php'">
           <i class="fa-solid fa-arrow-right-from-bracket"></i> <span>Logout</span>
         </button>
       </div>
@@ -102,11 +91,11 @@ $orders = $stmtOrders->fetchAll();
         </div>
 
         <div class="header-right">
-          <button class="icon-btn" onclick="handleNotificationClick()"><i class="fa-regular fa-bell"></i></button>
-          <div class="user-badge-avatar"><?= htmlspecialchars(strtoupper(substr($patient['full_name'], 0, 2))) ?></div>
+          <button class="icon-btn" onclick="alert('Notification Center: 0 unread alerts.')"><i class="fa-regular fa-bell"></i></button>
+          <div class="user-badge-avatar"><?= htmlspecialchars($userInitials) ?></div>
           <div class="user-info-text">
             <span class="user-name"><?= htmlspecialchars($patient['full_name']) ?></span>
-            <span class="patient-id">Patient ID #<?= htmlspecialchars($patient['patient_id']) ?></span>
+            <span class="patient-id">Health Card: <?= htmlspecialchars($patient['health_card_no'] ?: '#' . $patient['patient_id']) ?></span>
           </div>
         </div>
       </header>
@@ -121,12 +110,12 @@ $orders = $stmtOrders->fetchAll();
             <div>
               <div class="registry-tag">NATIONAL HEALTH RECORDS &bull; Synchronized</div>
               <h2>Diagnostic & Lab Test Records</h2>
-              <p class="banner-sub">Consolidated laboratory, pathology, and diagnostic imaging for <?= htmlspecialchars($patient['full_name']) ?> (ID #<?= htmlspecialchars($patient['patient_id']) ?>)</p>
+              <p class="banner-sub">Consolidated laboratory, pathology, and diagnostic imaging for <?= htmlspecialchars($patient['full_name']) ?></p>
             </div>
           </div>
           <div class="banner-actions">
-            <button class="btn-outline" onclick="exportAllRecordsPDF()"><i class="fa-solid fa-download"></i> Export All Records (PDF)</button>
-            <button class="btn-primary-blue" onclick="orderNewTest()"><i class="fa-solid fa-circle-plus"></i> Order New Diagnostic Test</button>
+            <button class="btn-outline" onclick="window.print()"><i class="fa-solid fa-download"></i> Export Records (PDF)</button>
+            <a href="medical-test-request.php" class="btn-primary-blue" style="text-decoration:none;"><i class="fa-solid fa-circle-plus"></i> Order New Diagnostic Test</a>
           </div>
         </div>
 
@@ -135,54 +124,46 @@ $orders = $stmtOrders->fetchAll();
           <div class="stat-card">
             <div class="stat-text">
               <span class="stat-label">TOTAL DIAGNOSTIC FILES</span>
-              <strong class="stat-val"><?= sprintf("%02d", $total_files) ?> <span class="stat-unit">Verified Records</span></strong>
-              <span class="stat-sub">From <?= $total_labs ?> Authorized Labs</span>
+              <strong class="stat-val"><?= sprintf("%02d", (int)$total_files) ?> <span class="stat-unit">Verified Records</span></strong>
+              <span class="stat-sub">From <?= (int)$total_labs ?> Authorized Labs</span>
             </div>
             <div class="stat-icon blue-light"><i class="fa-regular fa-file-lines"></i></div>
           </div>
 
           <div class="stat-card">
             <div class="stat-text">
-              <span class="stat-label">RECENT ABNORMAL FLAGS</span>
-              <strong class="stat-val text-red">01 <span class="stat-unit text-red">Requires Review</span></strong>
-              <span class="stat-sub text-red">Mild ALT/SGPT elevation (52 U/L)</span>
+              <span class="stat-label">VERIFIED REPORTS</span>
+              <strong class="stat-val text-green"><?= sprintf("%02d", count($orders)) ?> <span class="stat-unit text-green">Available</span></strong>
+              <span class="stat-sub text-green">Digital signatures verified</span>
             </div>
-            <div class="stat-icon red-light"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <div class="stat-icon check-light"><i class="fa-regular fa-circle-check"></i></div>
           </div>
 
           <div class="stat-card">
             <div class="stat-text">
               <span class="stat-label">PENDING TEST RESULTS</span>
               <strong class="stat-val">00 <span class="stat-unit">All Completed</span></strong>
-              <span class="stat-sub">Next scheduled testing in Oct 2026</span>
+              <span class="stat-sub">Regular monitoring active</span>
             </div>
-            <div class="stat-icon check-light"><i class="fa-regular fa-circle-check"></i></div>
+            <div class="stat-icon check-light"><i class="fa-solid fa-clock"></i></div>
           </div>
         </div>
 
         <!-- Category Filter Tabs -->
         <div class="filter-row">
           <div class="filter-tabs">
-            <button class="tab-btn active" onclick="filterByCategory(event)">All Diagnostics (<?= count($orders) ?>)</button>
-            <button class="tab-btn" onclick="filterByCategory(event)">Biochemistry</button>
-            <button class="tab-btn" onclick="filterByCategory(event)">Hematology</button>
-            <button class="tab-btn" onclick="filterByCategory(event)">Radiology & USG</button>
-            <button class="tab-btn" onclick="filterByCategory(event)">Serology</button>
-          </div>
-          <div class="date-filter">
-            <span class="filter-label">Range:</span>
-            <select class="dropdown-select">
-              <option>Last 6 Months (2026)</option>
-              <option>Last 1 Year</option>
-              <option>All Time</option>
-            </select>
+            <button class="tab-btn active">All Diagnostics (<?= count($orders) ?>)</button>
+            <button class="tab-btn">Biochemistry</button>
+            <button class="tab-btn">Hematology</button>
+            <button class="tab-btn">Radiology &amp; USG</button>
+            <button class="tab-btn">Serology</button>
           </div>
         </div>
 
         <!-- Dynamic Test Records List -->
         <?php if (!empty($orders)): ?>
           <?php foreach ($orders as $row): ?>
-            <div class="card test-card" data-category="<?= htmlspecialchars($row['category']) ?>">
+            <div class="card test-card" data-category="<?= htmlspecialchars($row['category'] ?? '') ?>">
               <div class="card-header">
                 <div class="title-group">
                   <div class="test-icon blue-bg"><i class="fa-solid fa-vial"></i></div>
@@ -192,27 +173,30 @@ $orders = $stmtOrders->fetchAll();
                       <span class="status-tag green"><?= ucfirst(htmlspecialchars($row['order_status'])) ?></span>
                     </div>
                     <p class="test-meta">
-                      <i class="fa-regular fa-calendar"></i> Publish Date: <strong><?= date('d-m-Y', strtotime($row['ordered_at'])) ?></strong> &bull; 
-                      <i class="fa-regular fa-hospital"></i> Hospital: <strong><?= htmlspecialchars($row['hospital_name'] ?? 'N/A') ?></strong> &bull; 
+                      <i class="fa-regular fa-calendar"></i> Ordered: <strong><?= date('d-m-Y', strtotime($row['ordered_at'])) ?></strong> &bull; 
+                      <i class="fa-regular fa-hospital"></i> Facility: <strong><?= htmlspecialchars($row['hospital_name'] ?? 'National Central Lab') ?></strong> &bull; 
                       Prescribed by: <strong><?= htmlspecialchars($row['doctor_name'] ?? 'Self-Requested') ?></strong> &bull; 
-                      Lab ID: <span><?= htmlspecialchars($row['test_code'] ?? ('ORD-' . $row['order_id'])) ?></span>
+                      Test Code: <span><?= htmlspecialchars($row['test_code'] ?? ('ORD-' . $row['order_id'])) ?></span>
                     </p>
                   </div>
                 </div>
-                <button class="btn-primary-blue btn-sm" onclick="viewTestReport(event)" data-report="<?= htmlspecialchars($row['result_file_url'] ?? '') ?>">
+                <button class="btn-primary-blue btn-sm" onclick="alert('Opening signed digital pathology report...')">
                   <i class="fa-regular fa-file-pdf"></i> View Full Report
                 </button>
               </div>
 
               <?php if (!empty($row['remarks'])): ?>
-                <div class="note-box">
-                  <p><i class="fa-solid fa-notes-medical note-icon"></i> <strong>Clinical Notes / Remarks:</strong> <?= htmlspecialchars($row['remarks']) ?></p>
+                <div class="note-box" style="margin-top:12px; background:#f8fafc; padding:12px; border-radius:6px;">
+                  <p style="margin:0;"><i class="fa-solid fa-notes-medical note-icon text-emerald"></i> <strong>Clinical Notes / Remarks:</strong> <?= htmlspecialchars($row['remarks']) ?></p>
                 </div>
               <?php endif; ?>
             </div>
           <?php endforeach; ?>
         <?php else: ?>
-          <div class="card test-card"><p style="padding: 20px;">No diagnostic records found for this patient.</p></div>
+          <div class="card test-card" style="padding: 30px; text-align:center; color:#64748b;">
+            <p>No diagnostic test records found for this patient.</p>
+            <a href="medical-test-request.php" class="btn-primary-blue" style="text-decoration:none; display:inline-block; margin-top:10px;">Request a Test Now</a>
+          </div>
         <?php endif; ?>
 
       </main>

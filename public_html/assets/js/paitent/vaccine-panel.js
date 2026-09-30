@@ -17,15 +17,15 @@ function handleDigitalPassport() {
 }
 
 function handleRequestVaccine() {
-  window.location.href = '/public_html/pages/Patient-panel/req-vaccine.html';
+  window.location.href = 'req-vaccine.php';
 }
 
 function handleScheduleBooster(vaccineName) {
-  alert(`Redirecting to schedule booster for: ${vaccineName}`);
+  window.location.href = 'req-vaccine.php';
 }
 
 function handleLogout() {
   if (confirm('Are you sure you want to log out of NHMRD?')) {
-    window.location.href = '/public_html/pages/login.html';
+    window.location.href = '/public_html/api/logout.php';
   }
 }

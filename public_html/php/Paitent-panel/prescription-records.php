@@ -1,14 +1,54 @@
 <?php
-// Load Data Controller
-$data = require_once __DIR__ . '/../../controllers/patient/PrescriptionRecordController.php';
+// Load Patient Bootstrap
+require_once __DIR__ . '/patient_bootstrap.php';
 
-$patient            = $data['patient'];
-$userInitials       = $data['userInitials'];
-$totalPrescriptions = $data['totalPrescriptions'];
-$totalLabTests      = $data['totalLabTests'];
-$totalVaccines      = $data['totalVaccines'];
-$totalSurgeries     = $data['totalSurgeries'];
-$prescriptions      = $data['prescriptions'];
+// Fetch prescriptions for current patient
+$stmtRx = $pdo->prepare("
+    SELECT rx.*, 
+           d.full_name AS doctor_name, 
+           d.bmdc_registration_no,
+           s.name AS specialty_name,
+           h.legal_name AS hospital_name
+    FROM prescriptions rx
+    LEFT JOIN doctors d ON rx.doctor_id = d.doctor_id
+    LEFT JOIN specialties s ON d.primary_specialty_id = s.specialty_id
+    LEFT JOIN hospitals h ON d.hospital_id = h.hospital_id
+    WHERE rx.patient_id = ?
+    ORDER BY rx.created_at DESC
+");
+$stmtRx->execute([$patientId]);
+$prescriptions = $stmtRx->fetchAll();
+
+if (!empty($prescriptions)) {
+    $rxIds = array_column($prescriptions, 'prescription_id');
+    $placeholders = implode(',', array_fill(0, count($rxIds), '?'));
+    
+    // Medications
+    $stmtMeds = $pdo->prepare("SELECT * FROM prescription_medications WHERE prescription_id IN ($placeholders)");
+    $stmtMeds->execute($rxIds);
+    $allMeds = $stmtMeds->fetchAll();
+    
+    $medsByRx = [];
+    foreach ($allMeds as $med) {
+        $medsByRx[$med['prescription_id']][] = $med;
+    }
+    
+    // Lab Tests
+    $stmtLabs = $pdo->prepare("SELECT * FROM prescription_lab_tests WHERE prescription_id IN ($placeholders)");
+    $stmtLabs->execute($rxIds);
+    $allLabs = $stmtLabs->fetchAll();
+    
+    $labsByRx = [];
+    foreach ($allLabs as $lab) {
+        $labsByRx[$lab['prescription_id']][] = $lab;
+    }
+    
+    foreach ($prescriptions as &$rx) {
+        $rx['medications'] = $medsByRx[$rx['prescription_id']] ?? [];
+        $rx['lab_tests'] = $labsByRx[$rx['prescription_id']] ?? [];
+    }
+    unset($rx);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,42 +95,42 @@ $prescriptions      = $data['prescriptions'];
           <i class="fa-solid fa-table-cells-large"></i> 
           <span>Dashboard</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/prescription-record.php" class="nav-item active">
+        <a href="prescription-records.php" class="nav-item active">
           <i class="fa-solid fa-file-prescription"></i> 
           <span>Prescription Records</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/surgary-record.php" class="nav-item">
+        <a href="surgary-record.php" class="nav-item">
           <i class="fa-solid fa-scalpel"></i> 
           <span>Surgery Records</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/lab-test.php" class="nav-item">
+        <a href="lab-test.php" class="nav-item">
           <i class="fa-solid fa-vial"></i> 
           <span>Test Records</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/vaccine-panel.php" class="nav-item">
+        <a href="vaccine-panel.php" class="nav-item">
           <i class="fa-solid fa-syringe"></i> 
           <span>Vaccine Records</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/req-appointment.php" class="nav-item">
+        <a href="req-appointment.php" class="nav-item">
           <i class="fa-solid fa-calendar-plus"></i> 
           <span>Request Appointment</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/medical-test-req.php" class="nav-item">
+        <a href="medical-test-request.php" class="nav-item">
           <i class="fa-solid fa-notes-medical"></i> 
           <span>Request Medical Test</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/req-vaccine.php" class="nav-item">
+        <a href="req-vaccine.php" class="nav-item">
           <i class="fa-solid fa-shield-virus"></i> 
           <span>Request Vaccine</span>
         </a>
-        <a href="/public_html/pages/Patient-panel/paitent-info.php" class="nav-item">
+        <a href="paitent-info.php" class="nav-item">
           <i class="fa-solid fa-id-card"></i> 
           <span>Patient Info</span>
         </a>
       </nav>
 
       <div class="sidebar-footer">
-        <button class="logout-btn" id="logoutBtn">
+        <button class="logout-btn" id="logoutBtn" onclick="location.href='/public_html/api/logout.php'">
           <i class="fa-solid fa-arrow-right-from-bracket"></i>
           <span>Logout</span>
         </button>

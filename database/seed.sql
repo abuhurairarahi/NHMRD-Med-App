@@ -46,11 +46,11 @@ ON DUPLICATE KEY UPDATE legal_name=VALUES(legal_name);
 
 -- 7. Demo Users
 INSERT INTO users (user_id, uid, nid, password_hash, role, status, must_reset_password) VALUES
-(1, '20421201', '19852691234560001', '$2y$10$PgCpPse0LZEXkOFcmRix4.ocZ9p6YGtXFKGn2u/FyqerC3DYcssXq', 'admin', 'active', 0),
-(2, '20421202', '19872691234560002', '$2y$10$76bxShNUG0hieQvEfxz4wu5GB28pMKRrbWvozIDCbmGZw9hV2IS3y', 'executive', 'active', 0),
-(3, '20421203', '19892691234560003', '$2y$10$JOxX609eglSu9yMedd9WIudbb6zRAdH5.vQ.6FB3.FwPn/nj08F/6', 'doctor', 'active', 0),
-(4, '20421204', '19842691234560004', '$2y$10$C3.f7OTwF0xK7WNB5xp0LeGbmVJlNZ7Mcut8SWZ68QjEW5pzmt7kK', 'surgeon', 'active', 0),
-(5, '2042122004', '19922691234560005', '$2y$10$6edbg8qEpJHtKV7ii2CJ.eUyVlRKsXn1WfxGfeSwKIzhbLKIPgcV.', 'patient', 'active', 0)
+(1, '20421201', '19852691234560001', '$2y$10$0MLfNDLGj812eUHFBzi0XuWcLSRKz4YbAxZQhQ7rtQRA7mjQstcHa', 'admin', 'active', 0),
+(2, '20421202', '19872691234560002', '$2y$10$TEZ14hTMwM.3K7ZrCO8GtuJDZGn9.QkQnd4GmtkrEekOGz/8p2/ES', 'executive', 'active', 0),
+(3, '20421203', '19892691234560003', '$2y$10$xtoPCDNXwLGt1JFY9cEC3.gKwC8hJgNGO8JSe6rW2lF1J0MKck4DC', 'doctor', 'active', 0),
+(4, '20421204', '19842691234560004', '$2y$10$XLXvgJj7JSyskVx3pRqYq.OaU1aiPTcMGE1JXkTt/6ua4LgqMQ/Z6', 'surgeon', 'active', 0),
+(5, '2042122004', '19922691234560005', '$2y$10$nvJXHmperfaWi4Cqpl6xl.oUJZQkdPf8gRKBgKtZOL745ur.f2ij6', 'patient', 'active', 0)
 ON DUPLICATE KEY UPDATE password_hash=VALUES(password_hash), role=VALUES(role), status=VALUES(status);
 
 -- 8. Admin
