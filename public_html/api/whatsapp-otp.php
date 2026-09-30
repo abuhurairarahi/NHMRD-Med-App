@@ -1,9 +1,4 @@
 <?php
-/**
- * Universal WhatsApp OTP Generator & Dispatcher
- * National Health & Medical Record Directory (NHMRD)
- */
-
 header('Content-Type: application/json; charset=utf-8');
 
 // Configuration
