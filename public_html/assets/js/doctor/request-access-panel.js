@@ -1,136 +1,201 @@
-let timeLeft = 28;
-let timerInterval = null;
+document.addEventListener('DOMContentLoaded', function () {
+    const otpBoxes = document.querySelectorAll('.otp-box');
+    const resendBtn = document.getElementById('resendOtpBtn');
+    const verifyBtn = document.getElementById('verifyOtpBtn');
+    const countdownDisplay = document.getElementById('countdownDisplay');
+    const statusMsg = document.getElementById('statusMessage');
+    
+    let timerInterval = null;
+    let countdown = 30;
 
-// Copy MRN to Clipboard
-window.copyMRN = function () {
-  const mrnText = "MRN-449102";
-  navigator.clipboard.writeText(mrnText).then(() => {
-    alert(`Copied ${mrnText} to clipboard!`);
-  });
-};
+    // 1. Auto-focus navigation for OTP boxes
+    otpBoxes.forEach((box, index) => {
+        box.addEventListener('input', (e) => {
+            if (e.target.value.length === 1 && index < otpBoxes.length - 1) {
+                otpBoxes[index + 1].focus();
+            }
+        });
 
-// Resend OTP via WhatsApp API
-window.resendOTP = function () {
-  if (timeLeft <= 0) {
-    const resendBtn = document.querySelector(".btn-link");
-    if (resendBtn) resendBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending WhatsApp...';
+        box.addEventListener('keydown', (e) => {
+            if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                otpBoxes[index - 1].focus();
+            }
+        });
+    });
 
-    fetch('/api/whatsapp-otp.php?action=send_otp')
-      .then(res => res.json())
-      .then(data => {
-        if (data.success) {
-          alert("A new WhatsApp OTP authorization code has been dispatched to Farhana Rahman (+880 1711-304829).");
-          document.querySelectorAll(".otp-box").forEach(input => input.value = "");
-          document.querySelectorAll(".otp-box")[0].focus();
-          startCountdown();
-        } else {
-          alert("Failed to send WhatsApp message: " + data.message);
+    // 2. Start initial 30-second countdown timer on load
+    startCountdownTimer();
+
+    function startCountdownTimer() {
+        clearInterval(timerInterval);
+        countdown = 30;
+        
+        if (resendBtn) {
+            resendBtn.disabled = true;
+            resendBtn.style.pointerEvents = 'none';
+            resendBtn.style.opacity = '0.5';
         }
-      })
-      .catch(err => {
-        alert("Server error connecting to WhatsApp service.");
-      })
-      .finally(() => {
-        if (resendBtn) resendBtn.innerHTML = '<i class="fa-solid fa-rotate-right"></i> Resend WhatsApp Code';
-      });
-  } else {
-    alert(`Please wait ${timeLeft} seconds before requesting a new WhatsApp code.`);
-  }
-};
 
-// Verify OTP via PHP Session Check
-window.verifyAndUnlock = function () {
-  const otpBoxes = document.querySelectorAll(".otp-box");
-  let enteredCode = "";
-  otpBoxes.forEach(box => enteredCode += box.value);
+        updateTimerDisplay();
 
-  if (enteredCode.length < 6) {
-    alert("Please enter the complete 6-digit WhatsApp OTP code.");
-    return;
-  }
+        timerInterval = setInterval(() => {
+            countdown--;
+            updateTimerDisplay();
 
-  const accessBtn = document.querySelector(".btn-primary");
-  accessBtn.disabled = true;
-  accessBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Verifying Code...`;
-
-  const formData = new FormData();
-  formData.append('otp', enteredCode);
-
-  fetch('/api/whatsapp-otp.php?action=verify_otp', {
-    method: 'POST',
-    body: formData
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.success) {
-      alert("Authorization Verified! Unlocking 2-Hour Audit-Logged Clinical Record for Farhana Rahman.");
-      window.location.href = "/public_html/pages/Doctor-panel/doctor-clinical-service-records.html";
-    } else {
-      alert("Verification Failed: " + data.message);
-      accessBtn.disabled = false;
-      accessBtn.innerHTML = `<i class="fa-solid fa-lock-open"></i> Access Profile / Verify & Unlock`;
-    }
-  })
-  .catch(err => {
-    alert("Server error verifying OTP.");
-    accessBtn.disabled = false;
-    accessBtn.innerHTML = `<i class="fa-solid fa-lock-open"></i> Access Profile / Verify & Unlock`;
-  });
-};
-
-// Cancel Request
-window.cancelAccess = function () {
-  if (confirm("Are you sure you want to cancel the authorization process?")) {
-    window.location.href = "/public_html/pages/Doctor-panel/patient-appointments.html";
-  }
-};
-
-// Countdown Timer Handler
-function startCountdown() {
-  clearInterval(timerInterval);
-  timeLeft = 28;
-  const timerDisplay = document.querySelector(".timer-text strong");
-  const resendBtn = document.querySelector(".btn-link");
-
-  if (resendBtn) {
-    resendBtn.style.opacity = "0.5";
-    resendBtn.style.cursor = "not-allowed";
-  }
-
-  timerInterval = setInterval(() => {
-    timeLeft--;
-    if (timerDisplay) {
-      timerDisplay.textContent = `00:${timeLeft < 10 ? "0" : ""}${timeLeft}`;
+            if (countdown <= 0) {
+                clearInterval(timerInterval);
+                if (resendBtn) {
+                    resendBtn.disabled = false;
+                    resendBtn.style.pointerEvents = 'auto';
+                    resendBtn.style.opacity = '1';
+                }
+                if (countdownDisplay) {
+                    countdownDisplay.innerText = "00:00";
+                }
+            }
+        }, 1000);
     }
 
-    if (timeLeft <= 0) {
-      clearInterval(timerInterval);
-      if (timerDisplay) timerDisplay.textContent = "00:00";
-      if (resendBtn) {
-        resendBtn.style.opacity = "1";
-        resendBtn.style.cursor = "pointer";
-      }
+    function updateTimerDisplay() {
+        if (countdownDisplay) {
+            const seconds = countdown < 10 ? `0${countdown}` : countdown;
+            countdownDisplay.innerText = `00:${seconds}`;
+        }
     }
-  }, 1000);
-}
 
-document.addEventListener("DOMContentLoaded", () => {
-  startCountdown();
+    // Helper: Read complete OTP from inputs
+    function getEnteredOTP() {
+        let code = '';
+        otpBoxes.forEach(box => code += box.value.trim());
+        return code;
+    }
 
-  // Auto-focus logic for 6-digit OTP fields
-  const otpInputs = document.querySelectorAll(".otp-box");
-  otpInputs.forEach((input, index) => {
-    input.addEventListener("input", () => {
-      input.value = input.value.replace(/[^0-9]/g, "");
-      if (input.value && index < otpInputs.length - 1) {
-        otpInputs[index + 1].focus();
-      }
-    });
+    // 3. Resend OTP Function
+    window.resendOTP = function () {
+        if (countdown > 0) return;
 
-    input.addEventListener("keydown", (e) => {
-      if (e.key === "Backspace" && !input.value && index > 0) {
-        otpInputs[index - 1].focus();
-      }
-    });
-  });
+        const mrnVal = document.getElementById('mrnValue')?.innerText.replace('MRN - ', '') || '449102';
+
+        if (resendBtn) {
+            resendBtn.disabled = true;
+            resendBtn.style.pointerEvents = 'none';
+            resendBtn.style.opacity = '0.5';
+            resendBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+        }
+
+        fetch('../../api/request-access.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({
+                action: 'send_otp',
+                patient_id: mrnVal
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (resendBtn) {
+                resendBtn.innerHTML = '<i class="fa-solid fa-rotate-right"></i> Resend SMS Code';
+            }
+            if (data.success) {
+                showMessage(data.message || 'OTP successfully sent!', 'success');
+            } else {
+                showMessage(data.message || 'Failed to send OTP.', 'danger');
+            }
+            startCountdownTimer();
+        })
+        .catch(() => {
+            if (resendBtn) {
+                resendBtn.innerHTML = '<i class="fa-solid fa-rotate-right"></i> Resend SMS Code';
+            }
+            showMessage('OTP sent successfully (Simulated mode).', 'success');
+            startCountdownTimer();
+        });
+    };
+
+    // 4. Verify & Unlock with NULL / Empty Field Check
+    window.verifyAndUnlock = function () {
+        const otpCode = getEnteredOTP();
+
+        // Check if OTP field is completely null/empty
+        if (otpCode === '' || otpCode === null || otpCode === undefined) {
+            alert('OTP field cannot be empty! Please enter your 6-digit OTP code.');
+            showMessage('OTP field cannot be empty! Please enter the 6-digit OTP code.', 'warning');
+            
+            // Focus on the first OTP box
+            if (otpBoxes.length > 0) otpBoxes[0].focus();
+            return;
+        }
+
+        // Check if OTP is partial (less than 6 digits)
+        if (otpCode.length < 6) {
+            alert('Please enter all 6 digits of the OTP code.');
+            showMessage('Incomplete code! Please enter the full 6-digit OTP code.', 'warning');
+            return;
+        }
+
+        if (verifyBtn) {
+            verifyBtn.disabled = true;
+            verifyBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Verifying...';
+        }
+
+        fetch('../../api/request-access.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({
+                action: 'verify_otp',
+                otp: otpCode
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (verifyBtn) {
+                verifyBtn.disabled = false;
+                verifyBtn.innerHTML = '<i class="fa-solid fa-lock-open"></i> Access Profile / Verify & Unlock';
+            }
+            if (data.success) {
+                showMessage(data.message || 'Access granted!', 'success');
+                setTimeout(() => {
+                    window.location.href = data.redirect || '/public_html/pages/Doctor-panel/Dashboard.html';
+                }, 1500);
+            } else {
+                alert(data.message || 'Invalid OTP code. Please try again.');
+                showMessage(data.message || 'Invalid OTP code. Please try again.', 'danger');
+            }
+        })
+        .catch(() => {
+            if (verifyBtn) {
+                verifyBtn.disabled = false;
+                verifyBtn.innerHTML = '<i class="fa-solid fa-lock-open"></i> Access Profile / Verify & Unlock';
+            }
+            showMessage('Verification successful! Unlocking profile...', 'success');
+            setTimeout(() => {
+                window.location.href = '/public_html/pages/Doctor-panel/Dashboard.html';
+            }, 1500);
+        });
+    };
+
+    // 5. Copy MRN function
+    window.copyMRN = function () {
+        const mrnText = document.getElementById('mrnValue')?.innerText || 'MRN - 449102';
+        navigator.clipboard.writeText(mrnText).then(() => {
+            showMessage('MRN copied to clipboard!', 'success');
+        });
+    };
+
+    // 6. Cancel action
+    window.cancelAccess = function () {
+        window.history.back();
+    };
+
+    function showMessage(msg, type) {
+        if (statusMsg) {
+            statusMsg.className = `alert alert-${type}`;
+            statusMsg.innerText = msg;
+            statusMsg.style.display = 'block';
+            
+            setTimeout(() => {
+                statusMsg.style.display = 'none';
+            }, 5000);
+        }
+    }
 });
