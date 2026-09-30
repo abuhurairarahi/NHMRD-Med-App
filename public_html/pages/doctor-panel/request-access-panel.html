@@ -17,7 +17,7 @@
 
   <div class="app-container">
 
-   <!-- Sidebar Navigation -->
+    <!-- Sidebar Navigation -->
     <aside class="sidebar doctor">
       <div class="logo">
         <i class="fa-solid fa-shield-halved"></i>
@@ -151,7 +151,7 @@
               <label>CLINICAL CONTINUITY REFERENCE</label>
               <div class="mrn-wrapper">
                 <span class="mrn-label">Medical Record Number (MRN)</span>
-                <div class="mrn-badge">
+                <div class="mrn-badge" onclick="copyMRN()" style="cursor: pointer;">
                   <span>MRN - 449102</span>
                   <i class="fa-regular fa-copy"></i>
                 </div>
@@ -178,16 +178,18 @@
 
               <div class="otp-footer">
                 <span class="timer-text"><i class="fa-regular fa-clock"></i> Code expires in <strong>00:28</strong></span>
-                <button class="btn-link"><i class="fa-solid fa-rotate-right"></i> Resend SMS Code</button>
+                <button type="button" class="btn-link" onclick="resendOTP()">
+                  <i class="fa-solid fa-rotate-right"></i> Resend SMS Code
+                </button>
               </div>
             </div>
 
             <!-- Action Buttons -->
             <div class="action-buttons">
-              <button class="btn-primary">
+              <button type="button" class="btn-primary" onclick="verifyAndUnlock()">
                 <i class="fa-solid fa-lock-open"></i> Access Profile / Verify & Unlock
               </button>
-              <button class="btn-secondary">
+              <button type="button" class="btn-secondary" onclick="cancelAccess()">
                 <i class="fa-solid fa-arrow-left"></i> Cancel
               </button>
             </div>
@@ -264,5 +266,6 @@
     </div>
   </div>
 
+  <script src="/public_html/assets/js/doctor/request-access-panel.js"></script>
 </body>
 </html>
