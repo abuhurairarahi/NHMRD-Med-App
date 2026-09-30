@@ -565,6 +565,12 @@ body {
   gap: 6px;
 }
 
+.btn-action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .btn-green { background-color: #059669; color: white; border: none; }
 .btn-green:hover { background-color: #047857; }
 

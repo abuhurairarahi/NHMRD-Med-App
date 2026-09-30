@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NHMRD - Patient Booking Requests</title>
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/patient-book-req.css">
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/patient-appointments.css">
   <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doc-header.css">
-  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-header.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -21,20 +20,20 @@
       </div>
 
       <nav class="nav-menu">
-        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item active">
-          <i class="fa-solid fa-table-cells-large"></i> 
+        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i>
           <span>Dashboard</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/clinical-rec.html" class="nav-item">
-          <i class="fa-solid fa-notes-medical"></i> 
+        <a href="/public_html/pages/Doctor-panel/doctor-clinical-service-records.html" class="nav-item">
+          <i class="fa-solid fa-notes-medical"></i>
           <span>Clinical Records</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/patient-book-req.html" class="nav-item">
-          <i class="fa-solid fa-user-clock"></i> 
-          <span>Patient Requests</span>
+        <a href="/public_html/pages/Doctor-panel/patient-appointments.html" class="nav-item active">
+          <i class="fa-solid fa-user-clock"></i>
+          <span>Patient Appointments</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/doctor-panel.html" class="nav-item">
-          <i class="fa-solid fa-user-doctor"></i> 
+        <a href="/public_html/pages/doctor-panel/doctor-profile.html" class="nav-item">
+          <i class="fa-solid fa-user-doctor"></i>
           <span>Doctor Profile</span>
         </a>
       </nav>
@@ -51,7 +50,7 @@
     <!-- Main Content Area -->
     <div class="main-wrapper">
       <!-- Top Header Bar -->
-      <header class="top-header">
+      <header class="doc-header">
         <div class="search-bar">
           <i class="fa-solid fa-magnifying-glass"></i>
           <input type="text" placeholder="Search patient MRN, name, vitals...">
@@ -63,7 +62,7 @@
             <span>Shift: Morning Clinical Rounds (07:00 - 15:30)</span>
           </div>
           <div class="header-status-pill">
-            <i class="fa-solid fa-rotate-sharp"></i>
+            <i class="fa-solid fa-rotate"></i>
             <span>EMR Synced</span>
           </div>
           <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
@@ -82,7 +81,6 @@
 
       <!-- Main Content Body -->
       <main class="content-body">
-
         <!-- Page Header & Key Metrics -->
         <div class="page-top-header">
           <div class="page-title-group">
@@ -200,7 +198,7 @@
                 </div>
 
                 <div class="action-buttons-group">
-                  <button class="btn-action btn-green"><i class="fa-solid fa-check"></i> Book Visit</button>
+                  <button class="btn-action btn-green"><i class="fa-solid fa-check"></i> Approved Visit</button>
                   <button class="btn-action btn-outline"><i class="fa-regular fa-clock"></i> Propose Alternative time</button>
                   <button class="btn-action btn-red"><i class="fa-solid fa-lock"></i> Request Profile Access</button>
                 </div>
@@ -245,9 +243,9 @@
                 </div>
 
                 <div class="action-buttons-group">
-                  <button class="btn-action btn-green"><i class="fa-solid fa-check"></i> Confirm Booking</button>
-                  <button class="btn-action btn-outline"><i class="fa-regular fa-clock"></i> Propose Alternative Slot</button>
-                  <button class="btn-action btn-red"><i class="fa-solid fa-circle-xmark"></i> Decline Request</button>
+                  <button class="btn-action btn-green" disabled><i class="fa-solid fa-check"></i> Approved Visit</button>
+                  <button class="btn-action btn-outline"><i class="fa-regular fa-clock"></i> Propose Alternative time</button>
+                  <button class="btn-action btn-red" disabled><i class="fa-solid fa-lock"></i> Request Profile Access</button>
                 </div>
               </div>
             </div>
@@ -314,8 +312,8 @@
                 </div>
 
                 <div class="action-buttons-group">
-                  <button class="btn-action btn-green"><i class="fa-solid fa-check"></i> Approved Visit</button>
-                  <button class="btn-action btn-outline"><i class="fa-regular fa-clock"></i> Propose Alternative time</button>
+                  <button class="btn-action btn-green"><i class="fa-solid fa-check"></i> Approved</button>
+                  <button class="btn-action btn-outline" disabled><i class="fa-regular fa-clock"></i> Propose Alternative time</button>
                   <button class="btn-action btn-red"><i class="fa-solid fa-lock"></i> Request Profile Access</button>
                 </div>
               </div>
@@ -365,9 +363,9 @@
                 </div>
 
                 <div class="action-buttons-group">
-                  <button class="btn-action btn-green"><i class="fa-solid fa-check"></i> Confirm Booking</button>
-                  <button class="btn-action btn-outline"><i class="fa-regular fa-clock"></i> Propose Alternative Time</button>
-                  <button class="btn-action btn-red"><i class="fa-solid fa-circle-info"></i> Request More Info</button>
+                  <button class="btn-action btn-green"><i class="fa-solid fa-check"></i> Approve Visit</button>
+                  <button class="btn-action btn-outline"><i class="fa-regular fa-clock"></i> Propose Alternative time</button>
+                  <button class="btn-action btn-red" disabled><i class="fa-solid fa-lock"></i> Request Profile Access</button>
                 </div>
               </div>
             </div>

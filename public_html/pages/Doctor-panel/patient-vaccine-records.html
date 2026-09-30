@@ -8,12 +8,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- FontAwesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/vaccine-rec.css">
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/patient-vaccine-records.css">
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-subheader.css">
   <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doc-header.css">
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-header.css">
 </head>
 <body>
 
@@ -26,20 +25,20 @@
       </div>
 
       <nav class="nav-menu">
-        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item active">
-          <i class="fa-solid fa-table-cells-large"></i> 
+        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i>
           <span>Dashboard</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/clinical-rec.html" class="nav-item">
-          <i class="fa-solid fa-notes-medical"></i> 
+        <a href="/public_html/pages/Doctor-panel/doctor-clinical-service-records.html" class="nav-item">
+          <i class="fa-solid fa-notes-medical"></i>
           <span>Clinical Records</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/patient-book-req.html" class="nav-item">
-          <i class="fa-solid fa-user-clock"></i> 
-          <span>Patient Requests</span>
+        <a href="/public_html/pages/Doctor-panel/patient-appointments.html" class="nav-item active">
+          <i class="fa-solid fa-user-clock"></i>
+          <span>Patient Appointments</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/doctor-panel.html" class="nav-item">
-          <i class="fa-solid fa-user-doctor"></i> 
+        <a href="/public_html/pages/doctor-panel/doctor-profile.html" class="nav-item">
+          <i class="fa-solid fa-user-doctor"></i>
           <span>Doctor Profile</span>
         </a>
       </nav>
@@ -68,7 +67,7 @@
             <span>Shift: Morning Clinical Rounds (07:00 - 15:30)</span>
           </div>
           <div class="header-status-pill">
-            <i class="fa-solid fa-rotate-sharp"></i>
+            <i class="fa-solid fa-rotate"></i>
             <span>EMR Synced</span>
           </div>
           <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
@@ -85,44 +84,32 @@
         </div>
       </header>
 
+      <!-- Sub Header Navigation Bar -->
+      <div class="subheader-bar">
+        <div class="subheader-left">
+          <span class="ehr-tag"><i class="fa-solid fa-folder-open"></i> Patient Electronic Health Record</span>
+          <span class="status-pill-green">Active Clinical Encounter</span>
+        </div>
+        <div class="subheader-right">
+          <div class="session-timer">
+            <i class="fa-solid fa-user-clock"></i> Session: <span>01:58:40</span>
+            <span class="tag-interactive">INTERACTIVE</span>
+          </div>
+          <button class="btn-write-rx"><i class="fa-solid fa-pen-to-square"></i> Write Prescription</button>
+        </div>
+      </div>
+
+      <!-- Module Navigation Tabs -->
+      <nav class="module-tabs">
+        <a href="/public_html/pages/doctor-panel/patient-medical-profile.html" class="tab-btn"><i class="fa-solid fa-user"></i> Patient Profile</a>
+        <a href="/public_html/pages/doctor-panel/patient-prescription-records.html" class="tab-btn"><i class="fa-solid fa-capsules"></i> Prescription Records</a>
+        <a href="/public_html/pages/doctor-panel/patient-surgary-records.html" class="tab-btn"><i class="fa-solid fa-scalpel"></i> Surgery Records</a>
+        <a href="/public_html/pages/doctor-panel/patient-test-records.html" class="tab-btn"><i class="fa-solid fa-vial"></i> Test Records</a>
+        <a href="/public_html/pages/doctor-panel/patient-vaccine-records.html" class="tab-btn active"><i class="fa-solid fa-syringe"></i> Vaccine Records</a>
+      </nav>
+
       <!-- Main Content Area -->
       <main class="content-body">
-
-        <!-- Top Controls / Breadcrumbs Row -->
-        <div class="top-controls-row">
-          <div class="breadcrumb-links">
-            <span class="bc-item"><i class="fa-regular fa-folder-open"></i> PATIENT EHR</span>
-            <span class="bc-sep">/</span>
-            <span class="bc-item bold-text">Active Clinical Encounter</span>
-          </div>
-
-          <div class="controls-right">
-            <div class="session-pill">
-              <span class="dot-active">&bull;</span>
-              <span>Session: 01:44:30</span>
-              <span class="sep">&bull;</span>
-              <span>HIPAA ACTIVE</span>
-            </div>
-
-            <button class="btn-clinical-log">
-              <i class="fa-solid fa-rotate-left"></i> Clinical Log
-            </button>
-
-            <button class="btn-write-prescription">
-              <i class="fa-solid fa-file-signature"></i> Write Prescription
-            </button>
-          </div>
-        </div>
-
-        <!-- Section Navigation Tabs -->
-        <nav class="records-tabs-nav">
-          <a href="#" class="tab-link"><i class="fa-regular fa-user"></i> Patient Profile</a>
-          <a href="#" class="tab-link"><i class="fa-solid fa-prescription"></i> Prescription Records</a>
-          <a href="#" class="tab-link"><i class="fa-solid fa-user-nurse"></i> Surgery Records</a>
-          <a href="#" class="tab-link"><i class="fa-solid fa-vial-circle-check"></i> Test Records</a>
-          <a href="#" class="tab-link active"><i class="fa-solid fa-syringe"></i> Vaccine Records</a>
-        </nav>
-
         <!-- Compact Patient Info Banner -->
         <div class="patient-compact-banner">
           <div class="patient-avatar-sm">

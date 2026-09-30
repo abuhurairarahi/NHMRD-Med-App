@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NHMRD - Patient Full Medical Profile</title>
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/patient-med-profile.css">
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/patient-medical-profile.css">
   <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doc-header.css">
-  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-header.css">
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-subheader.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -21,20 +21,20 @@
       </div>
 
       <nav class="nav-menu">
-        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item active">
-          <i class="fa-solid fa-table-cells-large"></i> 
+        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i>
           <span>Dashboard</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/clinical-rec.html" class="nav-item">
-          <i class="fa-solid fa-notes-medical"></i> 
+        <a href="/public_html/pages/Doctor-panel/doctor-clinical-service-records.html" class="nav-item">
+          <i class="fa-solid fa-notes-medical"></i>
           <span>Clinical Records</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/patient-book-req.html" class="nav-item">
-          <i class="fa-solid fa-user-clock"></i> 
-          <span>Patient Requests</span>
+        <a href="/public_html/pages/Doctor-panel/patient-appointments.html" class="nav-item active">
+          <i class="fa-solid fa-user-clock"></i>
+          <span>Patient Appointments</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/doctor-panel.html" class="nav-item">
-          <i class="fa-solid fa-user-doctor"></i> 
+        <a href="/public_html/pages/doctor-panel/doctor-profile.html" class="nav-item">
+          <i class="fa-solid fa-user-doctor"></i>
           <span>Doctor Profile</span>
         </a>
       </nav>
@@ -96,13 +96,13 @@
       </div>
 
       <!-- Module Navigation Tabs -->
-      <div class="module-tabs">
-        <button class="tab-btn active"><i class="fa-solid fa-user"></i> Patient Profile</button>
-        <button class="tab-btn"><i class="fa-solid fa-capsules"></i> Prescription Records</button>
-        <button class="tab-btn"><i class="fa-solid fa-scalpel"></i> Surgery Records</button>
-        <button class="tab-btn"><i class="fa-solid fa-vial"></i> Test Records</button>
-        <button class="tab-btn"><i class="fa-solid fa-syringe"></i> Vaccine Records</button>
-      </div>
+      <nav class="module-tabs">
+        <a href="/public_html/pages/doctor-panel/patient-medical-profile.html" class="tab-btn active"><i class="fa-solid fa-user"></i> Patient Profile</a>
+        <a href="/public_html/pages/doctor-panel/patient-prescription-records.html" class="tab-btn"><i class="fa-solid fa-capsules"></i> Prescription Records</a>
+        <a href="/public_html/pages/doctor-panel/patient-surgary-records.html" class="tab-btn"><i class="fa-solid fa-scalpel"></i> Surgery Records</a>
+        <a href="/public_html/pages/doctor-panel/patient-test-records.html" class="tab-btn"><i class="fa-solid fa-vial"></i> Test Records</a>
+        <a href="/public_html/pages/doctor-panel/patient-vaccine-records.html" class="tab-btn"><i class="fa-solid fa-syringe"></i> Vaccine Records</a>
+      </nav>
 
       <!-- Main Content Body -->
       <main class="content-body">

@@ -31,12 +31,20 @@ body {
   min-height: 100vh;
 }
 
+/* Content Area Workspace */
+.content-area {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+}
 
 /* Sub Header & Session Bar */
 .sub-header-bar {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
   margin-bottom: 12px;
 
 }
