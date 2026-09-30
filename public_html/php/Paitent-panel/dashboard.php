@@ -1,6 +1,6 @@
 <?php
 // Load Data Controller
-$data = require_once __DIR__ . '/../../controllers/patient/DashboardController.php';
+$data = require_once __DIR__ . '/../../controllers/paitent-panel/dashboard-controller.php';
 
 $patient            = $data['patient'];
 $userInitials       = $data['userInitials'];

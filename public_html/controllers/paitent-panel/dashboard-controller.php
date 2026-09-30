@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . '/../../config/db.php';
+$pdo = require_once __DIR__ . '/../../config/db.php';
 
 // Authenticated session check (Defaulting to user_id = 5 for fallback)
 $logged_user_id = $_SESSION['user_id'] ?? 5;

@@ -1,79 +1,128 @@
-// 1. Filter Prescriptions by Tab Status (All, Active, Past, Chronic)
-function filterByTab(buttonElement, status) {
-  // Update active pill state
-  const tabs = document.querySelectorAll('.tab-pill');
-  tabs.forEach(tab => tab.classList.remove('active'));
-  buttonElement.classList.add('active');
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('prescriptionSearch');
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const rxCards = document.querySelectorAll('.rx-card');
+    const modal = document.getElementById('rxModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const modalRxTitle = document.getElementById('modalRxTitle');
+    const modalRxBody = document.getElementById('modalRxBody');
+    const printCardBtn = document.getElementById('printCardBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
 
-  const selectedStatus = status.toUpperCase().trim();
-  const rxCards = document.querySelectorAll('.rx-card');
+    // 1. Tab Navigation Filter (All, Active, Chronic, Completed)
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', function () {
+            tabButtons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
 
-  rxCards.forEach(card => {
-    const badge = card.querySelector('.status-badge');
-    const badgeText = badge ? badge.textContent.trim().toUpperCase() : '';
+            const filter = this.getAttribute('data-filter');
 
-    if (selectedStatus === 'ALL') {
-      card.style.display = 'flex';
-    } else if (selectedStatus === 'ACTIVE' && badgeText === 'ACTIVE') {
-      card.style.display = 'flex';
-    } else if (selectedStatus === 'PAST' && badgeText === 'COMPLETED') {
-      card.style.display = 'flex';
-    } else if (selectedStatus === 'CHRONIC') {
-      // Check if prescription card contains 'Long Term / Ongoing'
-      const isOngoing = card.textContent.includes('Long Term / Ongoing');
-      card.style.display = isOngoing ? 'flex' : 'none';
-    } else {
-      card.style.display = 'none';
+            rxCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (filter === 'all' || category === filter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // 2. Real-Time Search Filter
+    if (searchInput) {
+        searchInput.addEventListener('keyup', function () {
+            const query = this.value.toLowerCase().trim();
+
+            rxCards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
     }
-  });
-}
 
-// 2. Filter Prescriptions by Keyword Search
-function filterByKeyword(event) {
-  const query = event.target.value.toLowerCase().trim();
-  const rxCards = document.querySelectorAll('.rx-card');
+    // 3. View Full Prescription Modal Handler
+    document.addEventListener('click', function (e) {
+        if (e.target.closest('.view-rx-detail-btn')) {
+            const btn = e.target.closest('.view-rx-detail-btn');
+            const rxId = btn.getAttribute('data-rx-id');
 
-  rxCards.forEach(card => {
-    const cardText = card.textContent.toLowerCase();
-    card.style.display = cardText.includes(query) ? 'flex' : 'none';
-  });
-}
+            const rxData = (window.PRESCRIPTIONS_DATA || []).find(item => item.prescription_id == rxId);
 
-// 3. Global Header Search Filter
-function handleGlobalSearch(event) {
-  filterByKeyword(event);
-}
+            if (rxData) {
+                modalRxTitle.textContent = rxData.title || 'Prescription Details';
+                
+                let html = `
+                    <p><strong>Doctor:</strong> Dr. ${rxData.doctor_name} (${rxData.specialty_name || 'General'})</p>
+                    <p><strong>BMDC Reg No:</strong> ${rxData.bmdc_registration_no || 'N/A'}</p>
+                    <p><strong>Facility:</strong> ${rxData.hospital_name || 'N/A'}</p>
+                    <hr style="border:0; border-top: 1px solid #e2e8f0; margin: 10px 0;">
+                    ${rxData.symptoms ? `<p><strong>Symptoms:</strong> ${rxData.symptoms}</p>` : ''}
+                    ${rxData.doctors_statement ? `<p><strong>Doctor's Notes:</strong> ${rxData.doctors_statement}</p>` : ''}
+                `;
 
-// 4. Print Roster
-function printRoster() {
-  window.print();
-}
+                if (rxData.medications && rxData.medications.length > 0) {
+                    html += `
+                        <h4 style="margin: 12px 0 6px 0; color: #1e293b;">Prescribed Medications:</h4>
+                        <ul style="padding-left: 20px; margin: 0;">
+                    `;
+                    rxData.medications.forEach(med => {
+                        html += `<li><strong>${med.medication_name}</strong> - ${med.dose_strength || ''} (${med.route_frequency || ''}) ${med.sig_instructions ? `<br><small><em>Instructions: ${med.sig_instructions}</em></small>` : ''}</li>`;
+                    });
+                    html += `</ul>`;
+                }
 
-// 5. Download Full History PDF
-function downloadFullHistory() {
-  const patientNameHeading = document.querySelector('.patient-details h2');
-  const patientName = patientNameHeading ? patientNameHeading.textContent.trim() : 'Patient';
-  alert(`Generating full medical dossier PDF for ${patientName}... Download starting.`);
-}
+                if (rxData.lab_tests && rxData.lab_tests.length > 0) {
+                    html += `
+                        <h4 style="margin: 12px 0 6px 0; color: #1e293b;">Advised Lab Tests:</h4>
+                        <ul style="padding-left: 20px; margin: 0;">
+                    `;
+                    rxData.lab_tests.forEach(test => {
+                        html += `<li>${test.test_name} (${test.test_code || 'Standard'})</li>`;
+                    });
+                    html += `</ul>`;
+                }
 
-// 6. View Digital Prescription
-function viewDigitalRx(rxId) {
-  alert(`Opening digital record modal for Prescription ID: ${rxId}`);
-}
+                modalRxBody.innerHTML = html;
+                modal.style.display = 'flex';
+            }
+        }
 
-// 7. Order Medicine Refill
-function orderRefill(rxId) {
-  alert(`Refill request for Prescription ${rxId} submitted successfully to the partner pharmacy.`);
-}
+        // Single Card Printing Handler
+        if (e.target.closest('.print-rx-btn')) {
+            window.print();
+        }
+    });
 
-// 8. Download Individual Prescription PDF
-function downloadPrescriptionPDF(rxId) {
-  alert(`Downloading PDF for Prescription ID: ${rxId}...`);
-}
+    // Modal Close Events
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', function () {
+            modal.style.display = 'none';
+        });
+    }
 
-// 9. Logout Confirmation
-function handleLogout() {
-  if (confirm('Are you sure you want to log out of NHMRD?')) {
-    window.location.href = '/public_html/pages/login.html';
-  }
-}
+    window.addEventListener('click', function (e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    // 4. Header Print Action
+    if (printCardBtn) {
+        printCardBtn.addEventListener('click', function () {
+            window.print();
+        });
+    }
+
+    // 5. Logout Action
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function () {
+            if (confirm('Are you sure you want to log out of NHMRD?')) {
+                window.location.href = '/public_html/pages/login.html';
+            }
+        });
+    }
+});
