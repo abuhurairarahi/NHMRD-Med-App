@@ -159,19 +159,6 @@ body {
   gap: 6px;
 }
 
-.btn-outline-dark {
-  background: white;
-  border: 1px solid var(--border-color);
-  padding: 8px 14px;
-  border-radius: var(--radius-sm);
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
 /* Tabs Bar */
 .profile-tabs {
   display: flex;
