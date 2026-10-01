@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh MBBS Graduate Licensing & Internship Induction</title>
+    <link rel="stylesheet" href="/public_html/assets/css/executive-panel/executive-register-new-doctor.css">
+    <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar executive">
+            <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>NHMRD</span>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="/public_html/pages/medical-executive-panel/executive-dashboard.html" class="nav-item">
+                    <i class="fa-solid fa-border-all"></i>
+                    Dashboard
+                </a>
+                <a href="/public_html/pages/medical-executive-panel/executive-add-new-patient.html" class="nav-item">
+                    <i class="fa-solid fa-user-plus"></i>
+                    Register New Patient
+                </a>
+                <a href="/public_html/pages/medical-executive-panel/executive-register-new-doctor.html"
+                    class="nav-item active">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    Register New Doctor
+                </a>
+                <a href="/public_html/pages/medical-executive-panel/executive-register-new-hospital.html"
+                    class="nav-item">
+                    <i class="fa-solid fa-hospital-user"></i>
+                    Register New Hospital
+                </a>
+                <a href="/public_html/pages/medical-executive-panel/executive-issue-death-certificate.html" class="nav-item">
+                    <i class="fa-solid fa-file-waveform"></i> Issue Death Certificate
+                </a>
+                <a href="/public_html/pages/medical-executive-panel/executive-vaccination-request.html" class="nav-item">
+                    <i class="fa-solid fa-syringe"></i> Vaccination Request
+                </a>
+                <a href="/public_html/pages/medical-executive-panel/executive-profile.html" class="nav-item">
+                    <i class="fa-solid fa-circle-user"></i> Profile
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="/public_html/pages/login.html">
+                    <button class="logout-btn">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                    </button>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-wrapper">
+            <!-- Top Header Bar -->
+            <header class="top-header">
+                <div class="exe-search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search records, MRNs, clinicians...">
+                </div>
+
+                <div class="user-profile">
+                    <div class="system-status-pills">
+                        <div class="status-pill">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>UTC+00:00 • SYSTEM ACTIVE</span>
+                        </div>
+                        <div class="status-pill connected">
+                            <span class="pulse-dot"></span>
+                            <span>Live Registry • Connected</span>
+                        </div>
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">Dr. Sarah F.</span>
+                        <span class="user-role">Super Admin</span>
+                    </div>
+                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                </div>
+            </header>
+
+            <!-- Content Container -->
+            <div class="content-body">
+                <!-- Breadcrumb & Header Title -->
+                <div class="page-header">
+                    <div class="breadcrumbs">
+                        <span>National Registry</span> &gt; <span>Doctor Records</span> &gt; <span
+                            class="active">Provisional License & Internship Induction</span>
+                    </div>
+                    <div class="title-row">
+                        <div>
+                            <h1>Fresh MBBS Graduate Licensing & Internship Induction</h1>
+                            <p class="subtitle">Provisional Practitioner License Registration, BMDC Verification &
+                                Mandatory 1-Year Clinical Internship Hospital Placement under DGHS National Medical
+                                Directorate.</p>
+                        </div>
+                        <span class="badge-tag">PROVISIONAL LICENSE PATHWAY</span>
+                    </div>
+                </div>
+
+                <!-- Two Column Layout -->
+                <div class="portal-grid">
+                    <!-- Left Column (Main Form Sections) -->
+                    <div class="left-column">
+
+                        <!-- Section 01 -->
+                        <section class="card">
+                            <div class="card-header-row">
+                                <div class="step-title">
+                                    <span class="step-num">01</span>
+                                    <h2>Graduate Medical Identity & Academic Credentials</h2>
+                                </div>
+                                <span class="pill-badge gray">5 Core Rotations + 1 Custom Configured (58 Total
+                                    Weeks)</span>
+                            </div>
+                            <p class="section-desc">Authenticated against Bangladesh Election Commission & Faculty Dean
+                            </p>
+
+                            <div class="form-group margin-top-md">
+                                <label>Full Legal Name (as per MBBS Certificate) *</label>
+                                <div class="input-with-icon">
+                                    <i class="fa-solid fa-user"
+                                        style="position: absolute; left: 10px; color: #64748b;"></i>
+                                    <input type="text" value="Dr. Tanvir Ahmed Chowdhury">
+                                </div>
+                            </div>
+
+                            <div class="form-row margin-top-sm">
+                                <div class="form-group flex-2">
+                                    <label>National ID (Smart NID) *</label>
+                                    <div class="input-action-group">
+                                        <input type="text" value="19982692814000318">
+                                        <button class="btn-verify">
+                                            <i class="fa-solid fa-check"></i>
+                                            Verify NID
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Date of Birth *</label>
+                                    <input type="text" value="14/09/1998">
+                                </div>
+                                <div class="form-group">
+                                    <label>Gender *</label>
+                                    <select>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group margin-top-sm">
+                                <label>Graduating Medical Institution *</label>
+                                <select>
+                                    <option>Dhaka Medical College (DMC), Dhaka</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row margin-top-sm">
+                                <div class="form-group">
+                                    <label>Final Professional MBBS Exam *</label>
+                                    <input type="text" value="November 2024 Session (Regular)">
+                                </div>
+                                <div class="form-group">
+                                    <label>Affiliated University *</label>
+                                    <input type="text" value="University of Dhaka (DU Faculty of Medicine)">
+                                </div>
+                            </div>
+
+                            <div class="form-row margin-top-sm">
+                                <div class="form-group">
+                                    <label>Final MBBS Roll Number</label>
+                                    <input type="text" value="DU-MED-10449">
+                                </div>
+                                <div class="form-group">
+                                    <label>Undergraduate Student BMDC ID</label>
+                                    <input type="text" value="STU-BMDC-2019-88341">
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Section 02 -->
+                        <section class="card">
+                            <div class="card-header-row">
+                                <div class="step-title">
+                                    <span class="step-num">02</span>
+                                    <div>
+                                        <h2>BMDC Provisional Practitioner Licensing</h2>
+                                        <p class="subtext">Statutory Provisional Registered Medical Practitioner (Intern
+                                            Medical Officer)</p>
+                                    </div>
+                                </div>
+                                <span class="pill-badge green-light">Automated Registry Sequence</span>
+                            </div>
+
+                            <div class="license-banner">
+                                <div class="banner-icon">
+                                    <i class="fa-regular fa-id-card fa-xl"></i>
+                                </div>
+                                <div class="banner-content">
+                                    <span class="banner-label">ALLOCATED PROVISIONAL LICENSE NO.</span>
+                                    <div class="license-no">[PR-BMDC-2025-08492]</div>
+                                    <p>License number will be automatically activated upon registrar sign-off</p>
+                                </div>
+                                <div class="banner-status">
+                                    <span class="badge-orange">Status: Pending Issuance</span>
+                                    <span class="expiry-text">Expiry Date: Auto-calculated (12 Months)</span>
+                                </div>
+                            </div>
+
+                            <div class="form-row margin-top-md">
+                                <div class="form-group">
+                                    <label>License Issue Date</label>
+                                    <input type="text" value="01/01/2025">
+                                </div>
+                                <div class="form-group">
+                                    <label>Practicing Scope Authority</label>
+                                    <input type="text" value="Institutional Internship Rotational" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Authorizing Registrar / DGHS</label>
+                                    <input type="text" value="Prof. Dr. M. A. Rashid (Registrar)" readonly>
+                                </div>
+                            </div>
+
+                            <div class="security-barcode-footer">
+                                <div class="barcode-dummy"></div>
+                                <span>National Security Barcode and Cryptographic Smart NFC tag initialized for digital
+                                    hospital ID card.</span>
+                                <span class="bmdc-stamp">ISSUED</span>
+                            </div>
+                        </section>
+
+                        <!-- Section 03 -->
+                        <section class="card">
+                            <div class="card-header-row">
+                                <div class="step-title">
+                                    <span class="step-num">03</span>
+                                    <div>
+                                        <h2>Clinical Internship Hospital Assignment</h2>
+                                        <p class="subtext">Mandatory 52-Week Rotational Posting under Accredited Medical
+                                            Hospital</p>
+                                    </div>
+                                </div>
+                                <span class="pill-badge blue-light">DGHS Placement Portal</span>
+                            </div>
+
+                            <div class="form-group margin-top-md">
+                                <div class="label-with-badge">
+                                    <label>Allocated Tertiary Internship Teaching Hospital *</label>
+                                    <span class="text-green-sm">24 Open Clinical Slots</span>
+                                </div>
+                                <select>
+                                    <option>Dhaka Medical College & Hospital (DMCH), Bakshibazar, Dhaka</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row margin-top-sm">
+                                <div class="form-group">
+                                    <label>Hospital Division & Thana</label>
+                                    <input type="text" value="Dhaka Division / Shahbagh" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Internship Induction Date</label>
+                                    <input type="text" value="01/15/2025">
+                                </div>
+                                <div class="form-group">
+                                    <label>Assigned Induction Batch</label>
+                                    <input type="text" value="Batch 2025-A (January Induction)" readonly>
+                                </div>
+                            </div>
+
+                            <!-- Roster Section -->
+                            <div class="roster-container margin-top-md">
+                                <div class="roster-header">
+                                    <h3>MANDATORY 52-WEEK ROTATIONAL DEPARTMENT ROSTER</h3>
+                                    <span class="text-muted-sm">5 Core Rotations + 1 Custom Configured (58 Total
+                                        Weeks)</span>
+                                </div>
+
+                                <table class="roster-table">
+                                    <thead>
+                                        <tr>
+                                            <th>DEPARTMENT / UNIT</th>
+                                            <th>DURATION</th>
+                                            <th>ASSIGNED TIMELINE</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><span class="dot blue"></span> <strong>Internal Medicine &
+                                                    Allied</strong></td>
+                                            <td>12 Weeks (Full Term)</td>
+                                            <td>Auto-scheduled upon induction date selection</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="dot green"></span> <strong>General Surgery &
+                                                    Orthopaedics</strong></td>
+                                            <td>12 Weeks (Full Term)</td>
+                                            <td>Auto-scheduled upon induction date selection</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="dot purple"></span> <strong>Obstetrics &
+                                                    Gynaecology</strong></td>
+                                            <td>12 Weeks (Full Term)</td>
+                                            <td>Auto-scheduled upon induction date selection</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="dot orange"></span> <strong>Paediatrics &
+                                                    Neonatology</strong></td>
+                                            <td>08 Weeks</td>
+                                            <td>Auto-scheduled upon induction date selection</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="dot red"></span> <strong>Emergency & Critical Care</strong>
+                                            </td>
+                                            <td>08 Weeks</td>
+                                            <td>Auto-scheduled upon induction date selection</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="add-rotation-box margin-top-sm">
+                                    <div class="add-header">
+                                        <span class="add-title">+ Add Rotational Posting</span>
+                                        <span class="tag-outline">Custom Module</span>
+                                    </div>
+                                    <div class="form-row margin-top-xs">
+                                        <div class="form-group flex-2">
+                                            <label>Assign Department *</label>
+                                            <select>
+                                                <option>Cardiology & CCU</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Duration *</label>
+                                            <select>
+                                                <option>04 Weeks (Elective)</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group flex-2">
+                                            <label>Assign Timeline *</label>
+                                            <select>
+                                                <option>Post Core Term - Phase 6</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="actions-right margin-top-xs">
+                                        <button class="btn-text">Cancel</button>
+                                        <button class="btn-primary-sm">+ Add Rotation to Roster</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+
+                    <!-- Right Column (Sidebar Panels) -->
+                    <div class="right-column">
+
+                        <!-- Panel 1: Verification Dossier -->
+                        <div class="side-card">
+                            <div class="side-card-header">
+                                <h3>Verification Dossier</h3>
+                                <span class="pill-badge yellow">0/4 Verified (Pending)</span>
+                            </div>
+                            <p class="side-card-sub">Cross-referenced with DGHS Digital repository</p>
+
+                            <ul class="document-list margin-top-md">
+                                <li>
+                                    <div class="doc-info">
+                                        <i class="fa-regular fa-file-pdf" style="color: #2563eb; font-size: 16px;"></i>
+                                        <div>
+                                            <strong>MBBS Marksheet & Certificate</strong>
+                                            <span>Awaiting Institutional document upload</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn-outline-sm">Upload</button>
+                                </li>
+                                <li>
+                                    <div class="doc-info">
+                                        <i class="fa-regular fa-file-pdf" style="color: #2563eb; font-size: 16px;"></i>
+                                        <div>
+                                            <strong>Dean Clearance Certificate</strong>
+                                            <span>Awaiting dean reference clearance</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn-outline-sm">Upload</button>
+                                </li>
+                                <li>
+                                    <div class="doc-info">
+                                        <i class="fa-regular fa-file-pdf" style="color: #2563eb; font-size: 16px;"></i>
+                                        <div>
+                                            <strong>Police Clearance & Conduct</strong>
+                                            <span>Awaiting Special Branch digital sync</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn-outline-sm">Upload</button>
+                                </li>
+                                <li>
+                                    <div class="doc-info">
+                                        <i class="fa-regular fa-file-pdf" style="color: #2563eb; font-size: 16px;"></i>
+                                        <div>
+                                            <strong>Hepatitis B & Medical Fitness</strong>
+                                            <span>Awaiting medical fitness screening</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn-outline-sm">Upload</button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Panel 2: Hospital Logistics Setup -->
+                        <div class="side-card">
+                            <div class="side-card-header">
+                                <h3>Hospital Logistics Setup</h3>
+                                <span class="text-muted-xs">Accommodation & Stipend</span>
+                            </div>
+
+                            <div class="logistics-box margin-top-md">
+                                <div class="logistics-row">
+                                    <div>
+                                        <span class="logistics-label">Intern Hostel Accommodation</span>
+                                        <strong>Institutional Doctors' Quarters (Hostel Assigned)</strong>
+                                    </div>
+                                    <span class="badge-light-blue">Optional / Requested</span>
+                                </div>
+                            </div>
+
+                            <div class="logistics-box margin-top-sm">
+                                <div class="logistics-row">
+                                    <div>
+                                        <span class="logistics-label">INTERNSHIP ALLOWANCE SCALE</span>
+                                        <div class="allowance-amount">BDT 25,000 / month</div>
+                                        <span class="text-muted-xs">Scale Code: DGHS-INT-09 (Direct Bank
+                                            Transfer)</span>
+                                    </div>
+                                    <span class="badge-solid-blue">Standard Scale</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 3: Super Admin Authorization -->
+                        <div class="side-card">
+                            <div class="side-card-header">
+                                <h3>Super Admin Authorization</h3>
+                            </div>
+
+                            <div class="checkbox-group margin-top-md">
+                                <input type="checkbox" id="certify" checked>
+                                <label for="certify">I hereby certify compliance with the BMDC Code of Medical Ethics
+                                    and statutory mandatory 52-week rotational internship protocol under DGHS
+                                    regulations.</label>
+                            </div>
+
+                            <button class="btn-authorize margin-top-md">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                Authorize License & Issue Order
+                            </button>
+
+                            <div class="action-buttons margin-top-sm">
+                                <button class="btn-secondary">
+                                    <i class="fa-regular fa-floppy-disk"></i>
+                                    Save Draft
+                                </button>
+                                <button class="btn-secondary">
+                                    <i class="fa-solid fa-print"></i>
+                                    Print Induction
+                                </button>
+                            </div>
+
+                            <div class="footer-meta margin-top-md">
+                                <span>Authorized by Super Admin: Dr. Sarah F. (NHMRD/ADM-001)</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

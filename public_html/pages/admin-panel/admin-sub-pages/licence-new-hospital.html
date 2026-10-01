@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Institutional Healthcare Facility Registration & DGHS License</title>
+  <link rel="stylesheet" href="/public_html/assets/css/admin-panel/admin-sub-page/licence-new-hospital.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar admin">
+            <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>NHMRD</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="/public_html/pages/admin-panel/admin-dashboard.html" class="nav-item"><i
+                        class="fa-solid fa-table-cells-large"></i> Dashboard</a>
+                <a href="/public_html/pages/admin-panel/admin-patient-records.html" class="nav-item"><i
+                        class="fa-solid fa-user-group"></i> Patient Records</a>
+                <a href="/public_html/pages/admin-panel/admin-doctor-records.html" class="nav-item"><i
+                        class="fa-solid fa-user-doctor"></i> Doctor Records</a>
+                <a href="/public_html/pages/admin-panel/admin-hospital-records.html" class="nav-item active"><i
+                        class="fa-solid fa-hospital"></i> Hospital Records</a>
+                <a href="/public_html/pages/admin-panel/admin-request-management.html" class="nav-item"><i
+                        class="fa-solid fa-clipboard-check"></i> Request Management</a>
+                <a href="/public_html/pages/admin-panel/admin-analytics.html" class="nav-item"><i
+                        class="fa-solid fa-chart-line"></i> Analytics</a>
+                <a href="/public_html/pages/admin-panel/admin-notice-broadcast.html" class="nav-item"><i
+                        class="fa-solid fa-bullhorn"></i> Notice Broadcast</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#"><button class="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        Logout</button></a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header-text">
+                <div class="meta">Hospital Records > New Hospital Licence Registration</div>
+                <div class="title">Institutional Healthcare Facility Registration & DGHS License Intake</div>
+                <div class="sub">Mandatory statutory registration for public, private, and tertiary clinical healthcare institutions under the Directorate General of Health
+Services (DGHS) Clinical Establishment Rules & Medical Directorate Accreditation standards.</div>
+            </div>
+
+      <!-- Section 01: Facility Identity & Institutional Profile -->
+      <section class="form-section">
+        <div class="section-header">
+          <div class="section-number">01</div>
+          <div class="section-title-wrap">
+            <h2>Facility Identity & Institutional Profile</h2>
+            <p>Statutory enterprise registration, nomenclature, operational designation, and bed footprint.</p>
+          </div>
+          <div class="section-status">
+            <span class="status-pill blue"><i class="fa-solid fa-file-lines"></i> DGHS-FAC-2025-78241</span>
+            <span class="status-pill outline">0/5 Dossier Ready</span>
+          </div>
+        </div>
+
+        <div class="section-body grid-2col">
+          <!-- Left Column -->
+          <div class="form-column">
+            <div class="form-group">
+              <label for="facility-name">Facility Legal Registered Name* <span class="help-text">(Must match trade license)</span></label>
+              <input type="text" id="facility-name" placeholder="Enter institutional/trade name(e.g. Shaheed Suhrawardy Specialized Medical Complex)" />
+            </div>
+
+            <div class="grid-2col-nested">
+              <div class="form-group">
+                <label for="facility-type">Institutional Facility Type*</label>
+                <select id="facility-type">
+                  <option value="">-- Select Institutional Facility Type --</option>
+                  <option value="tertiary">Tertiary Hospital</option>
+                  <option value="general">General Hospital</option>
+                  <option value="clinic">Specialized Clinic</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Ownership Category*</label>
+                <div class="radio-inline-group">
+                  <label class="radio-label"><input type="radio" name="ownership" value="public" /> Public/Govt</label>
+                  <label class="radio-label"><input type="radio" name="ownership" value="private" /> Private</label>
+                  <label class="radio-label"><input type="radio" name="ownership" value="nonprofit" /> Non-Profit</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid-4col-nested">
+              <div class="form-group">
+                <label for="total-beds">Total Beds</label>
+                <input type="text" id="total-beds" placeholder="e.g. 250" />
+              </div>
+              <div class="form-group">
+                <label for="icu-beds">ICU Beds</label>
+                <input type="text" id="icu-beds" placeholder="e.g. 24" />
+              </div>
+              <div class="form-group">
+                <label for="nicu-beds">NICU/PICU</label>
+                <input type="text" id="nicu-beds" placeholder="e.g. 12" />
+              </div>
+              <div class="form-group">
+                <label for="year-est">Year Est.</label>
+                <input type="text" id="year-est" placeholder="YYYY" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Statutory NOCs -->
+          <div class="form-column noc-box">
+            <h3>Statutory NOCs and regulatory certifications required for DGHS compliance.</h3>
+            
+            <div class="file-upload-row">
+              <div class="file-info">
+                <span class="file-label">Trade License & City NOC</span>
+                <span class="file-status warning">Awaiting Upload</span>
+              </div>
+              <button type="button" class="btn-upload"><i class="fa-solid fa-upload"></i> Upload</button>
+            </div>
+
+            <div class="file-upload-row">
+              <div class="file-info">
+                <span class="file-label">Fire Safety Clearance</span>
+                <span class="file-status warning">Awaiting Upload</span>
+              </div>
+              <button type="button" class="btn-upload"><i class="fa-solid fa-upload"></i> Upload</button>
+            </div>
+
+            <div class="file-upload-row">
+              <div class="file-info">
+                <span class="file-label">BAERA Radiation Safety</span>
+                <span class="file-status warning">Awaiting Upload</span>
+              </div>
+              <button type="button" class="btn-upload"><i class="fa-solid fa-upload"></i> Upload</button>
+            </div>
+
+            <div class="file-upload-row">
+              <div class="file-info">
+                <span class="file-label">DoE Environmental NOC</span>
+                <span class="file-status warning">Awaiting Upload</span>
+              </div>
+              <button type="button" class="btn-upload"><i class="fa-solid fa-upload"></i> Upload</button>
+            </div>
+
+            <div class="file-upload-row">
+              <div class="file-info">
+                <span class="file-label">Narcotics Control License</span>
+                <span class="file-status warning">Awaiting Upload</span>
+              </div>
+              <button type="button" class="btn-upload"><i class="fa-solid fa-upload"></i> Upload</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 02: Geographic Location, Jurisdiction & GIS Mapping -->
+      <section class="form-section">
+        <div class="section-header">
+          <div class="section-number">02</div>
+          <div class="section-title-wrap">
+            <h2>Geographic Location, Jurisdiction & GIS Mapping</h2>
+            <p>Administrative boundaries, geo-coordinates, catchment areas, and institutional hotlines.</p>
+          </div>
+        </div>
+
+        <div class="section-body">
+          <div class="grid-3col">
+            <div class="form-group">
+              <label for="division">Administrative Division*</label>
+              <select id="division">
+                <option value="">-- Select Division --</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="district">District (Zila)*</label>
+              <select id="district">
+                <option value="">-- Select District --</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="upazila">Upazila/Thana*</label>
+              <select id="upazila">
+                <option value="">-- Select Upazila /Thana --</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group margin-top">
+            <label for="full-address">Full Physical Premise Address*</label>
+            <input type="text" id="full-address" placeholder="Enter complete premise address, plot/holding no, road/street, area..." />
+          </div>
+
+          <div class="grid-2col-map margin-top">
+            <div class="inspection-box">
+              <h4>Field Inspection DGHS Order Team B</h4>
+              <p>Coordinate with District Civil Surgeon for mandatory joint onsite verification.</p>
+              <div class="form-group margin-top">
+                <label for="inspection-date">Preferred Inspection Date*</label>
+                <input type="date" id="inspection-date" />
+              </div>
+              <span class="assignee-tag"><i class="fa-solid fa-user-check"></i> Assignee: Civil Surgeon + DGHS Director (Hosp)</span>
+            </div>
+          </div>
+
+          <div class="grid-3col margin-top">
+            <div class="form-group">
+              <label for="er-hotline">ER Hotline (24/7)*</label>
+              <input type="text" id="er-hotline" placeholder="e.g. +8801711002233" />
+            </div>
+            <div class="form-group">
+              <label for="director-phone">Director Secretariat Phone</label>
+              <input type="text" id="director-phone" placeholder="e.g. +88029183421" />
+            </div>
+            <div class="form-group">
+              <label for="official-email">Official Institutional Email*</label>
+              <input type="email" id="official-email" placeholder="e.g. contact@hospital" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 03: Clinical Departments & Specialized Wings -->
+      <section class="form-section">
+        <div class="section-header">
+          <div class="section-number">03</div>
+          <div class="section-title-wrap">
+            <h2>Clinical Departments & Specialized Wings</h2>
+            <p>Validated clinical service branches and critical hospital engineering facilities.</p>
+          </div>
+        </div>
+
+        <div class="section-body">
+          <div class="checkbox-grid">
+            <label class="checkbox-card"><input type="checkbox" /> General Surgery</label>
+            <label class="checkbox-card"><input type="checkbox" /> Internal Medicine</label>
+            <label class="checkbox-card"><input type="checkbox" /> Cardiology/CCU</label>
+            <label class="checkbox-card"><input type="checkbox" /> Obs & Gynae</label>
+            <label class="checkbox-card"><input type="checkbox" /> Paediatrics</label>
+            <label class="checkbox-card"><input type="checkbox" /> Nephrology/Dialysis</label>
+            <label class="checkbox-card"><input type="checkbox" checked /> Orthopaedics</label>
+            <label class="checkbox-card"><input type="checkbox" /> Radiology (MRI/CT)</label>
+            <label class="checkbox-card"><input type="checkbox" checked /> Pathology & Blood</label>
+            <label class="checkbox-card"><input type="checkbox" /> Medical Oncology</label>
+          </div>
+
+          <div class="sub-block-title margin-top">ENGINEERING & ENVIRONMENTAL CLEARANCE</div>
+          <div class="checkbox-grid">
+            <label class="checkbox-card"><input type="checkbox" /> Bio-Hazard Waste Clearance</label>
+            <label class="checkbox-card"><input type="checkbox" /> Liquid Oxygen Plant Bulk Cryogenic Tank</label>
+            <label class="checkbox-card"><input type="checkbox" /> Medical Gas Pipeline MGPS Vacuum & O2 Protocol</label>
+            <label class="checkbox-card"><input type="checkbox" /> Regulated Color-coded Incinerator tie-up</label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 04: Administrative Leadership & Head Credentials -->
+      <section class="form-section">
+        <div class="section-header">
+          <div class="section-number">04</div>
+          <div class="section-title-wrap">
+            <h2>Administrative Leadership & Head Credentials</h2>
+            <p>Statutory superintendent registration and management roster.</p>
+          </div>
+        </div>
+
+        <div class="section-body">
+          <div class="grid-2col">
+            <div class="form-group">
+              <label for="superintendent-name">Medical Superintendent/Director*</label>
+              <input type="text" id="superintendent-name" placeholder="Enter full legal name with degrees" />
+            </div>
+            <div class="form-group">
+              <label for="bmdc-no">Director BMDC Registration No.*</label>
+              <div class="input-with-btn">
+                <input type="text" id="bmdc-no" placeholder="e.g. BMDC-REG-A-XXXX" />
+                <button type="button" class="btn-inline">Verify BMDC</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-2col margin-top">
+            <div class="form-group">
+              <label for="cao-name">Chief Administrative Officer (CAO)</label>
+              <input type="text" id="cao-name" placeholder="Enter CAO/Registrar name" />
+            </div>
+            <div class="form-group">
+              <label for="cao-contact">CAO Direct Contact & Mobile</label>
+              <input type="text" id="cao-contact" placeholder="e.g. +880 1819000000" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer Sign-Off & Action Bar -->
+      <footer class="form-footer">
+        <div class="signoff-box">
+          <h3>Super Admin Sign-Off</h3>
+          <label class="checkbox-label">
+            <input type="checkbox" />
+            I hereby certify as Super Admin that this institutional intake conforms with Directorate General of Health Services (DGHS) Clinical Establishment Standards and Treasury Statutory Rules.
+          </label>
+          <div class="auth-details">
+            Authorized by Super Admin: <strong>Dr. Sarah F.</strong><br />
+            Credentials: <span>NHMRD-DIR-001 | DGHS Apex System</span>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button type="button" class="btn-action primary"><i class="fa-solid fa-paper-plane"></i> Submit Registration & Issue Order</button>
+          <button type="button" class="btn-action secondary"><i class="fa-solid fa-floppy-disk"></i> Save Draft</button>
+          <button type="button" class="btn-action outline"><i class="fa-solid fa-print"></i> Print Intake</button>
+        </div>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

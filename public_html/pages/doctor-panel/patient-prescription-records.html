@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Prescription Records</title>
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/patient-prescription-records.css">
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-header.css">
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-subheader.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar doctor">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i> 
+          <span>Dashboard</span>
+        </a>
+        <a href="/public_html/pages/Doctor-panel/clinical-rec.html" class="nav-item active">
+          <i class="fa-solid fa-notes-medical"></i> 
+          <span>Clinical Records</span>
+        </a>
+        <a href="/public_html/pages/Doctor-panel/patient-book-req.html" class="nav-item">
+          <i class="fa-solid fa-user-clock"></i> 
+          <span>Patient Requests</span>
+        </a>
+        <a href="/public_html/pages/doctor-panel/doctor-profile.html" class="nav-item">
+          <i class="fa-solid fa-user-doctor"></i> 
+          <span>Doctor Profile</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      <!-- Top Header Bar -->
+      <header class="doc-header">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search patient MRN, name, vitals...">
+        </div>
+
+        <div class="header-right">
+          <div class="header-status-pill">
+            <i class="fa-regular fa-clock"></i>
+            <span>Shift: Morning Clinical Rounds (07:00 - 15:30)</span>
+          </div>
+          <div class="header-status-pill">
+            <i class="fa-solid fa-rotate"></i>
+            <span>EMR Synced</span>
+          </div>
+          <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+          
+          <div class="doctor-profile-badge">
+            <div class="doctor-info-text">
+              <span class="doctor-name">Dr. Sumaiya Rahman, MD</span>
+              <span class="doctor-dept">Internal Medicine & Therapeutics</span>
+            </div>
+            <div class="doctor-avatar">
+              <img src="https://i.pravatar.cc/100?img=47" alt="Dr. Sumaiya Rahman">
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Sub Header Navigation Bar -->
+      <div class="subheader-bar">
+        <div class="subheader-left">
+          <span class="ehr-tag"><i class="fa-solid fa-folder-open"></i> Patient Electronic Health Record</span>
+          <span class="status-pill-green">Active Clinical Encounter</span>
+        </div>
+        <div class="subheader-right">
+          <div class="session-timer">
+            <i class="fa-solid fa-user-clock"></i> Session: <span>01:58:40</span>
+            <span class="tag-interactive">INTERACTIVE</span>
+          </div>
+          <button class="btn-write-rx"><i class="fa-solid fa-pen-to-square"></i> Write Prescription</button>
+        </div>
+      </div>
+
+      <!-- Module Navigation Tabs -->
+      <nav class="module-tabs">
+        <a href="/public_html/pages/doctor-panel/patient-medical-profile.html" class="tab-btn"><i class="fa-solid fa-user"></i> Patient Profile</a>
+        <a href="/public_html/pages/doctor-panel/patient-prescription-records.html" class="tab-btn active"><i class="fa-solid fa-capsules"></i> Prescription Records</a>
+        <a href="/public_html/pages/doctor-panel/patient-surgary-records.html" class="tab-btn"><i class="fa-solid fa-scalpel"></i> Surgery Records</a>
+        <a href="/public_html/pages/doctor-panel/patient-test-records.html" class="tab-btn"><i class="fa-solid fa-vial"></i> Test Records</a>
+        <a href="/public_html/pages/doctor-panel/patient-vaccine-records.html" class="tab-btn"><i class="fa-solid fa-syringe"></i> Vaccine Records</a>
+      </nav>
+
+      <!-- Main Content Body -->
+      <main class="content-body">
+
+        <!-- Patient Header Info Card -->
+        <div class="patient-card">
+          <div class="patient-info-left">
+            <div class="patient-avatar-wrap">
+              <img src="https://i.pravatar.cc/120?img=32" alt="Nusrat Jahan">
+            </div>
+
+            <div class="patient-details">
+              <div class="patient-title-row">
+                <h2>Nusrat Jahan</h2>
+                <span class="mrn-badge">MRN-449102</span>
+                <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Identity</span>
+              </div>
+
+              <div class="patient-meta-row">
+                <span>36 y/o Female</span> &bull; 
+                <span>DOB: 14-Aug-1988</span> &bull; 
+                <span>Blood: <strong>A+</strong></span>
+              </div>
+
+              <div class="patient-attending">
+                Attending: <strong>Dr. Sumaiya Rahman, MD</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Critical Drug Allergy Warning Banner -->
+          <div class="allergy-warning-box">
+            <div class="warning-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <div class="warning-text">
+              <span class="warning-title">CRITICAL DRUG ALLERGY</span>
+              <p>Sulfonamides (Severe Urticaria / Bronchospasm)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action & Search Bar -->
+        <div class="search-action-bar">
+          <div class="search-input-wrap">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search medication by brand, generic, ATC code (e.g., Ubrelvy, N02CD)...">
+          </div>
+
+          <div class="action-buttons">
+            <button class="btn-action-light"><i class="fa-solid fa-print"></i> Print Medication List</button>
+            <button class="btn-action-primary"><i class="fa-solid fa-plus"></i> New E-Prescription</button>
+          </div>
+        </div>
+
+        <!-- Prescription Records Stack -->
+        <div class="rx-records-stack">
+
+          <!-- Record 1: Contraindicated Allergy Card -->
+          <div class="rx-card red-card">
+            <div class="rx-card-top flex-between">
+              <div class="rx-main-info flex-row">
+                <div class="rx-icon red-icon-bg"><i class="fa-solid fa-ban"></i></div>
+                <div>
+                  <div class="rx-title-group">
+                    <h3 class="rx-title red-text">Trimethoprim / Sulfamethoxazole (Bactrim DS)</h3>
+                    <span class="status-tag red-tag">CONTRAINDICATED</span>
+                  </div>
+                  <div class="rx-desc red-subtext">
+                    800mg/160mg Oral Tablet &bull; <strong>Severe Type I Hypersensitivity.</strong> Patient experienced generalized acute urticaria and periorbital edema (Recorded Nov 2009). Cross-reactivity with all sulfonamide class antibiotics strictly locked in e-Rx dispatch.
+                  </div>
+                </div>
+              </div>
+
+              <div class="audit-flag-box">
+                <span class="audit-label">AUDIT FLAG</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Record 2: Active Prescription Card 1 -->
+          <div class="rx-card">
+            <div class="rx-card-top flex-between">
+              <div class="rx-main-info flex-row">
+                <div class="rx-icon green-icon-bg"><i class="fa-solid fa-capsules"></i></div>
+                <div>
+                  <div class="rx-title-group">
+                    <h3 class="rx-title">Ubrogepant (Ubrelvy) 50mg Tablet</h3>
+                    <span class="status-tag green-tag">Active Regimen</span>
+                    <span class="pill-type-tag">CGRP Antagonist</span>
+                  </div>
+                  <p class="rx-sig">
+                    <strong>Sig:</strong> Take 1 tablet (50mg) orally at onset of acute migraine with or without aura. May repeat with a second dose after 2 hours if relief is insufficient. Maximum dose: 200mg in 24 hours.
+                  </p>
+                </div>
+              </div>
+
+              <div class="rx-actions-vertical">
+                <button class="btn-link"><i class="fa-solid fa-sliders"></i> Adjust Dose</button>
+                <button class="btn-link"><i class="fa-solid fa-rotate-right"></i> Request Refill</button>
+                <button class="btn-link"><i class="fa-regular fa-square-check"></i> Interactions Check</button>
+              </div>
+            </div>
+
+            <div class="rx-card-bottom grid-4-col">
+              <div>
+                <span class="col-label">COURSE</span>
+                <strong class="col-value">Oct 2023 - Present</strong>
+              </div>
+              <div>
+                <span class="col-label">PRESCRIBER</span>
+                <strong class="col-value">Dr. Sumaiya Rahman, MD</strong>
+              </div>
+              <div>
+                <span class="col-label">DISPENSER</span>
+                <strong class="col-value">Metro Health Rx #402</strong>
+              </div>
+              <div>
+                <span class="col-label">REFILLS LEFT</span>
+                <strong class="col-value green-text">4 refills remaining</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Record 3: Active Prescription Card 2 -->
+          <div class="rx-card">
+            <div class="rx-card-top flex-between">
+              <div class="rx-main-info flex-row">
+                <div class="rx-icon light-blue-icon-bg"><i class="fa-solid fa-pills"></i></div>
+                <div>
+                  <div class="rx-title-group">
+                    <h3 class="rx-title">Propranolol HCl 40mg ER Capsule</h3>
+                    <span class="status-tag green-tag">Active Regimen</span>
+                    <span class="status-tag sky-tag">96% Adherence (PDC)</span>
+                  </div>
+                  <p class="rx-sig">
+                    <strong>Sig:</strong> Take 1 capsule (40mg Extended Release) orally once daily every morning (QAM) with food for migraine prophylaxis and resting tremors.
+                  </p>
+                </div>
+              </div>
+
+              <div class="rx-actions-vertical">
+                <button class="btn-link"><i class="fa-solid fa-sliders"></i> Adjust Dose</button>
+                <button class="btn-link"><i class="fa-solid fa-clock-rotate-left"></i> History</button>
+              </div>
+            </div>
+
+            <div class="rx-card-bottom grid-4-col">
+              <div>
+                <span class="col-label">COURSE</span>
+                <strong class="col-value">Jan 2022 - Present</strong>
+              </div>
+              <div>
+                <span class="col-label">PRESCRIBER</span>
+                <strong class="col-value">Dr. Tariqul Islam, MD</strong>
+              </div>
+              <div>
+                <span class="col-label">DISPENSER</span>
+                <strong class="col-value">Metro Health Rx #402</strong>
+              </div>
+              <div>
+                <span class="col-label">LAST DISPENSED</span>
+                <strong class="col-value">12-Jan-2025 (90-day)</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Record 4: Discontinued Medication -->
+          <div class="rx-card gray-card">
+            <div class="rx-card-top flex-between">
+              <div class="rx-main-info flex-row">
+                <div class="rx-icon gray-icon-bg"><i class="fa-solid fa-arrow-rotate-left"></i></div>
+                <div>
+                  <div class="rx-title-group">
+                    <h3 class="rx-title strike-through">Sumatriptan 50mg Oral Tablet</h3>
+                    <span class="status-tag gray-tag">Discontinued Oct 2023</span>
+                  </div>
+                  <div class="rx-desc muted-text">
+                    <strong>Discontinuation Reason:</strong> Adverse response &mdash; patient reported transient chest tightness and uncomfortable throat constriction within 30 min of intake.
+                  </div>
+                  <div class="rx-note-blue">
+                    <i class="fa-solid fa-arrow-right-long"></i> <strong>Clinical Outcome:</strong> Safely replaced with Ubrelvy (Ubrogepant) with zero adverse cardiovascular complaints.
+                  </div>
+                </div>
+              </div>
+
+              <div class="rx-actions-vertical">
+                <button class="btn-link muted-link">View Historic Notes</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+</body>
+</html>

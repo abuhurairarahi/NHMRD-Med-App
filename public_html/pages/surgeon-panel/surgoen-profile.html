@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Patient Requests & In-Basket</title>
+    <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Dashboard Stylesheet -->
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/surgoen-profile.css">
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/features/executive-header.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar surgeon">
+      <div class="brand">
+          <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="/public_html/pages/surgeon-panel/dashboard.html" class="nav-item">
+          <i class="fa-solid fa-chart-pie icon"></i> Dashboard
+        </a>
+        <a href="/public_html/pages/surgeon-panel/clinical-rec.html" class="nav-item">
+          <i class="fa-solid fa-clipboard-list icon"></i> Clinical Records
+        </a>
+        <a href="/public_html/pages/surgeon-panel/paitent-req.html" class="nav-item">
+          <i class="fa-solid fa-user-group icon"></i> Patient Requests
+        </a>
+        <a href="/public_html/pages/surgeon-panel/doc-profile.html" class="nav-item active>
+          <i class="fa-solid fa-user-doctor icon"></i> Doctor Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search patient MRN, name, vitals..." value="">
+        </div>
+        <div class="top-bar-right">
+          <div class="shift-info">
+            <span class="clock-icon">🕒</span> OR Suite 4 &amp; Trauma Call (Chief Coverage)
+          </div>
+          <div class="status-badge">
+            <span class="dot"></span> EMR Synced
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">TI</div>
+            <div class="user-info">
+              <div class="user-name">Dr. Tariqul Islam, MD, FACS</div>
+              <div class="user-role">Chief of General &amp; Trauma Surgery</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="content-area">
+        <div class="record-scroll-container">
+          
+          <!-- Sub-Header / Directory Bar -->
+          <div class="sub-header-bar">
+            <div class="sub-nav-links">
+              <a href="#">🏥 Surgical Staff Directory</a>
+              <a href="#">👥 Attending Physician &amp; Surgical Department Leadership</a>
+            </div>
+            <div class="sub-header-actions">
+              <span class="or-status-tag">🟢 OR Status: Active On-Call (Level-1) • PAGER #4102</span>
+              <button class="btn-emergency-block">+ Request OR Emergency Block</button>
+            </div>
+          </div>
+
+          <!-- Surgeon Navigation Tabs -->
+          <div class="surgeon-tabs">
+            <button class="s-tab active">👤 Surgeon Overview</button>
+            <button class="s-tab">📋 Operative Case Log</button>
+            <button class="s-tab">📅 OR Schedule &amp; Block Time</button>
+            <button class="s-tab">🛡️ Surgical Privileges &amp; Credential</button>
+          </div>
+
+          <!-- Main Profile Header Card -->
+          <div class="surgeon-profile-card">
+            <div class="profile-left">
+              <div class="surgeon-avatar-lg">TI</div>
+              <div class="surgeon-details">
+                <div class="name-row">
+                  <h2>Dr. Tariqul Islam, MD, FACS</h2>
+                  <span class="badge-chief">CHIEF OF SURGERY</span>
+                </div>
+                <div class="credentials-tags">
+                  <span class="tag-outline">Board Certified General Surgery</span>
+                  <span class="tag-outline">SPCS &amp; Trauma Tier-1</span>
+                </div>
+                <div class="npi-dea-row">
+                  <span><strong>NPI:</strong> 1447289102</span>
+                  <span><strong>State Medical Lic:</strong> #MD-79104-GA</span>
+                  <span><strong>DEA:</strong> BM9823419</span>
+                  <span><strong>St. Jude Surgical Pavilion &amp; Metro Trauma</strong></span>
+                </div>
+                <div class="division-row">
+                  <strong>Division:</strong> Trauma, Surgical Critical Care &amp; Acute Care Surgery
+                </div>
+                <div class="pager-row">
+                  <span>📟 Emergency Pager: <strong>#4102</strong></span>
+                  <span>⭐ Primary Proctor: Robotic Da Vinci Xi</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="profile-actions-col">
+              <button class="btn-action-outline">✏️ Edit Surgeon Profile</button>
+              <button class="btn-action-outline dark">📤 Export Surgical Log (ACS/ABS)</button>
+            </div>
+          </div>
+
+          <!-- Metrics Banner Grid -->
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <span class="m-label">ANNUAL OR CASES</span>
+              <div class="m-val-row">
+                <span class="m-val">842</span>
+                <span class="m-sub">Cases/Yr</span>
+              </div>
+              <span class="m-footer-green">+6.6% YoY • High Volume Base</span>
+            </div>
+
+            <div class="metric-card">
+              <span class="m-label">SURGICAL ADVERSE RATE</span>
+              <div class="m-val-row">
+                <span class="m-val red">0.42%</span>
+                <span class="m-sub">&lt;1.85% Benchmark</span>
+              </div>
+              <span class="m-footer-green">Top 1st Percentile • ACS NSQIP</span>
+            </div>
+
+            <div class="metric-card">
+              <span class="m-label">ON-TIME OR START</span>
+              <div class="m-val-row">
+                <span class="m-val">96.4%</span>
+                <span class="m-sub">Punctuality</span>
+              </div>
+              <span class="m-footer-green">Gold Standard • OR Efficiency Score</span>
+            </div>
+
+            <div class="metric-card">
+              <span class="m-label">MEDIAN OP DURATION</span>
+              <div class="m-val-row">
+                <span class="m-val">54 min</span>
+                <span class="m-sub">Lap/Robotic</span>
+              </div>
+              <span class="m-footer-green">-18 min vs Med. • Rapid Recovery</span>
+            </div>
+          </div>
+
+          <!-- Main Content Grid (Left Subspecialties / Right Privileges) -->
+          <div class="content-split-grid">
+            
+            <!-- Left Column: Expertise & Recent Cases -->
+            <div class="left-split-col">
+              
+              <!-- Subspecialties Card -->
+              <div class="section-card">
+                <div class="card-header-flex">
+                  <div>
+                    <h3>Surgical Subspecialties &amp; Operative Expertise</h3>
+                    <p class="card-subtitle">Accredited surgical scopes, proctoring privileges, and technical masteries</p>
+                  </div>
+                  <span class="badge-divisions">4 CORE DIVISIONS</span>
+                </div>
+
+                <div class="subspecialty-grid-2x2">
+                  <div class="subspec-item">
+                    <div class="subspec-icon">🩺</div>
+                    <div class="subspec-info">
+                      <strong>Minimally Invasive &amp; Robotic Surgery</strong>
+                      <p>da Vinci Xi Master Console Proctor. Single-site laparoscopic cholecystectomy, complex robotic ventral &amp; inguinal herniorrhaphy, and antireflux Nissen fundoplication.</p>
+                      <div class="subspec-footer">
+                        <span class="tag-red">da Vinci Xi Proctor</span>
+                        <span class="tag-gray">Advanced Laparoscopy</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="subspec-item">
+                    <div class="subspec-icon">⚡</div>
+                    <div class="subspec-info">
+                      <strong>Acute Care &amp; Trauma Surgery</strong>
+                      <p>ATLS State Course Director. Penetrating &amp; blunt trauma resuscitation, emergent damage control laparotomy, emergency thoracic access, and temporary abdominal closure.</p>
+                      <div class="subspec-footer">
+                        <span class="tag-red">ATLS Director</span>
+                        <span class="tag-gray">Damage Control Lap</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="subspec-item">
+                    <div class="subspec-icon">🔬</div>
+                    <div class="subspec-info">
+                      <strong>Surgical Oncology &amp; HPB</strong>
+                      <p>Hepato-Pancreato-Biliary resection, segmental colectomy, gastrointestinal stromal tumor excision, sentinel lymph node biopsy, and intraoperative ultrasound guidance.</p>
+                      <div class="subspec-footer">
+                        <span class="tag-gray">HPB Surgery</span>
+                        <span class="tag-gray">GI Oncology</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="subspec-item">
+                    <div class="subspec-icon">🧬</div>
+                    <div class="subspec-info">
+                      <strong>Endocrine &amp; Abdominal Reconstruction</strong>
+                      <p>Total thyroidectomy with recurrent laryngeal nerve monitoring, parathyroidectomy, and component separation for giant incisional and recurrent hernias.</p>
+                      <div class="subspec-footer">
+                        <span class="tag-gray">Nerve Monitoring</span>
+                        <span class="tag-gray">Abdominal Wall Recon</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Recent Operative Cases Card -->
+              <div class="section-card">
+                <div class="card-header-flex">
+                  <div>
+                    <h3>Recent Operative Cases &amp; Clinical Outcomes</h3>
+                    <p class="card-subtitle">Audited case records verified under NSQIP Continuous Quality Improvement</p>
+                  </div>
+                  <a href="#" class="view-all-link">View All 842 Cases</a>
+                </div>
+
+                <div class="cases-stack">
+                  
+                  <!-- Case 1 -->
+                  <div class="case-item-card">
+                    <div class="case-top">
+                      <span class="c-bullet">🔴</span>
+                      <strong>Laparoscopic Cholecystectomy with Cholangiogram</strong>
+                      <span class="c-code">CPT 47562</span>
+                    </div>
+                    <div class="case-meta-row">
+                      <span>St. Jude Surgical Pavilion OR 4</span> • 
+                      <span>Op Time: 38 min</span> • 
+                      <span>EBL <10 mL</span> • 
+                      <span>Post-op: Uneventful discharge Day 0</span>
+                    </div>
+                    <div class="case-sub-meta">
+                      <span>Date: Yesterday 08:30</span> • 
+                      <span>Assistant: Dr. N. Chen (R4 Resident)</span> • 
+                      <span>Pathology: Chronic Cholecystitis / Cholelithiasis</span>
+                    </div>
+                    <div class="case-status-badge green">Zero Complications • Discharged</div>
+                  </div>
+
+                  <!-- Case 2 -->
+                  <div class="case-item-card">
+                    <div class="case-top">
+                      <span class="c-bullet">🔵</span>
+                      <strong>Diagnostic Laparoscopy &amp; Extensive Adhesiolysis</strong>
+                      <span class="c-code">CPT 49320</span>
+                    </div>
+                    <div class="case-meta-row">
+                      <span>Ambulatory Center OR 2</span> • 
+                      <span>Op Time: 52 min</span> • 
+                      <span>EBL 25 mL</span> • 
+                      <span>Complete small bowel decompression achieved</span>
+                    </div>
+                    <div class="case-sub-meta">
+                      <span>Date: 2 Days Ago</span> • 
+                      <span>Anesthesiologist: Dr. P. Larasio</span> • 
+                      <span>Status: Fully Resolved</span>
+                    </div>
+                    <div class="case-status-badge blue">Optimal Recovery • Outpatient</div>
+                  </div>
+
+                  <!-- Case 3 -->
+                  <div class="case-item-card">
+                    <div class="case-top">
+                      <span class="c-bullet">🔴</span>
+                      <strong>Emergent Exploratory Laparotomy &amp; Splenorrhaphy</strong>
+                      <span class="c-code">CPT 49000</span>
+                    </div>
+                    <div class="case-meta-row">
+                      <span>Metro Trauma Bay 1 &amp; OR 1</span> • 
+                      <span>Grade III Splenic Laceration</span> • 
+                      <span>Hemodynamically stabilized, spleen successfully salvaged</span>
+                    </div>
+                    <div class="case-sub-meta">
+                      <span>Date: 4 Days Ago (Level 1 Trauma)</span> • 
+                      <span>ICU Day 3 Transfer</span> • 
+                      <span>Trauma Registry #TR-8812</span>
+                    </div>
+                    <div class="case-status-badge red">Salvage Successful • Floor Step-Down</div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right Column: Privileges, Block Time & Quality Indices -->
+            <div class="right-split-col">
+              
+              <!-- Institutional Privileges -->
+              <div class="section-card">
+                <div class="card-header-flex">
+                  <h3>Institutional Privileges</h3>
+                  <span class="badge-cat">CATEGORY 1</span>
+                </div>
+                <ul class="privileges-list">
+                  <li>Full Adult General &amp; Abdominal Surgery</li>
+                  <li>Category-1 Trauma Resuscitation &amp; Laparotomy</li>
+                  <li>Robotic Console Lead Proctor (Intuitive da Vinci)</li>
+                  <li>Surgical Critical Care (SICU) Admitting Lead</li>
+                  <li>Pediatric Emergency Surgical Consultation</li>
+                </ul>
+              </div>
+
+              <!-- OR Block Time Allocation -->
+              <div class="section-card">
+                <div class="card-header-flex">
+                  <h3>OR Block Time Allocation</h3>
+                  <span class="fy-year">FY2024-25</span>
+                </div>
+                <div class="block-time-rows">
+                  <div class="b-row">
+                    <strong>Tuesdays (Full Day)</strong>
+                    <span>07:00 - 15:30 (OR Suite 4)</span>
+                  </div>
+                  <div class="b-row">
+                    <strong>Thursdays (Full Day)</strong>
+                    <span>07:00 - 15:30 (Robotic OR 8)</span>
+                  </div>
+                  <div class="b-row">
+                    <strong>Fridays (Rotational)</strong>
+                    <span>Acute Trauma Coverage</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quality Indices & NSQIP -->
+              <div class="section-card">
+                <div class="card-header-flex">
+                  <h3>Quality Indices &amp; NSQIP</h3>
+                  <span class="audit-passed-badge">Audit Passed</span>
+                </div>
+                <div class="quality-bars">
+                  <div class="q-bar-item">
+                    <span>Safe Surgery Checklist Compliance</span>
+                    <strong>100%</strong>
+                  </div>
+                  <div class="q-bar-item">
+                    <span>Surgical Site Infection (SSI) Prevention</span>
+                    <strong>99.4%</strong>
+                  </div>
+                  <div class="q-bar-item">
+                    <span>NSQIP Clinical Guideline Adherence</span>
+                    <strong>98.2%</strong>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Emergency Surgical Covering -->
+              <div class="section-card highlight-box">
+                <div class="card-header-flex">
+                  <h3>Emergency Surgical Covering</h3>
+                  <span class="pager-icon">📞 Page Doctor</span>
+                </div>
+                <p class="covering-text">
+                  Dr. Kimberly Hayes, MD<br>
+                  (Ortho/Trauma)
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

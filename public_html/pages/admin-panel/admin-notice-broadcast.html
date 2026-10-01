@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Notice Broadcast Center</title>
+  <link rel="stylesheet" href="/public_html/assets/css/admin-panel/admin-notice-broadcast.css">
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar admin">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+      <nav class="nav-menu">
+                <a href="/public_html/pages/admin-panel/admin-dashboard.html" class="nav-item"><i
+                        class="fa-solid fa-table-cells-large"></i> Dashboard</a>
+                <a href="/public_html/pages/admin-panel/admin-patient-records.html" class="nav-item"><i
+                        class="fa-solid fa-user-group"></i> Patient Records</a>
+                <a href="/public_html/pages/admin-panel/admin-doctor-records.html" class="nav-item"><i
+                        class="fa-solid fa-user-doctor"></i> Doctor Records</a>
+                <a href="/public_html/pages/admin-panel/admin-hospital-records.html" class="nav-item"><i
+                        class="fa-solid fa-hospital"></i> Hospital Records</a>
+                <a href="/public_html/pages/admin-panel/admin-request-management.html" class="nav-item"><i
+                        class="fa-solid fa-clipboard-check"></i> Request Management</a>
+                <a href="/public_html/pages/admin-panel/admin-analytics.html" class="nav-item"><i
+                        class="fa-solid fa-chart-line"></i> Analytics</a>
+                <a href="/public_html/pages/admin-panel/admin-notice-broadcast.html" class="nav-item active"><i
+                        class="fa-solid fa-bullhorn"></i> Notice Broadcast</a>
+            </nav>
+      <div class="sidebar-footer">
+        <a href="/public_html/pages/login.html"><button class="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button></a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      <!-- Top Header Bar -->
+      <header class="top-header">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search records, MRNs, clinicians...">
+        </div>
+        <div class="user-profile">
+          <i class="fa-regular fa-bell bell-icon"></i>
+          <div class="user-info">
+            <span class="user-name">Dr. Sarah F.</span>
+            <span class="user-role">Super Admin</span>
+          </div>
+          <div class="avatar"><i class="fa-solid fa-user"></i></div>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <main class="dashboard-body">
+        <!-- Page Title & Header Actions -->
+        <div class="workflow-header">
+          <div>
+            <div class="breadcrumb">• NATIONAL HEALTH MONITORING & RECORDS DIVISION • NOTICE BROADCAST CENTER</div>
+            <h1 class="page-title">Clinical Directives & Emergency Bulletins</h1>
+          </div>
+          <div class="header-actions">
+            <button class="btn btn-outline"><i class="fa-solid fa-download"></i> Export Dispatch Logs</button>
+            <a href="/public_html/pages/admin-panel/admin-sub-pages/new-broadcast.html" style="text-decoration: none;"><button class="btn btn-primary-dark"><i class="fa-solid fa-circle-plus"></i> + Create New Notice</button></a>
+          </div>
+        </div>
+
+        <!-- Metric Summary Grid -->
+        <section class="summary-cards">
+          <!-- Card 1 -->
+          <div class="card stat-card">
+            <div class="card-top">
+              <div class="icon-box teal"><i class="fa-solid fa-wifi"></i></div>
+              <span class="pill cyan-pill"><i class="fa-solid fa-chart-line"></i> +4%</span>
+            </div>
+            <span class="stat-label">Live Reach Rate</span>
+            <span class="stat-value">99.4%</span>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="card stat-card">
+            <div class="card-top">
+              <div class="icon-box red"><i class="fa-solid fa-lightbulb"></i></div>
+              <span class="pill red-pill">• CRITICAL</span>
+            </div>
+            <span class="stat-label">High Priority Alerts</span>
+            <span class="stat-value red-text">1 Alert Active</span>
+            <span class="stat-subtext red-text">Vector protocol escalation in Dhaka & Ctg</span>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="card stat-card">
+            <div class="card-top">
+              <div class="icon-box teal"><i class="fa-solid fa-bullhorn"></i></div>
+              <span class="pill cyan-pill">Month of Sept</span>
+            </div>
+            <span class="stat-label">Total Circulars Dispatched</span>
+            <span class="stat-value">48</span>
+            <span class="stat-subtext">12 Statutory • 36 Clinical Directives</span>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="card stat-card">
+            <div class="card-top">
+              <div class="icon-box blue"><i class="fa-solid fa-tower-broadcast"></i></div>
+              <span class="pill blue-pill">Telecom Failover</span>
+            </div>
+            <span class="stat-label">SMS Fallback Rate</span>
+            <span class="stat-value">99.8%</span>
+          </div>
+        </section>
+
+        <!-- Filter Navigation Bar -->
+        <section class="filter-bar">
+          <div class="filter-tabs">
+            <button class="tab-btn active">Active Broadcasts (5)</button>
+            <button class="tab-btn">Drafts (2)</button>
+            <button class="tab-btn">Scheduled (3)</button>
+            <button class="tab-btn">Archived</button>
+          </div>
+          <div class="target-selector">
+            <label for="target-select">TARGET:</label>
+            <select id="target-select" class="select-dropdown">
+              <option>All Healthcare Facilities</option>
+            </select>
+          </div>
+        </section>
+
+        <!-- Main Content 2-Column Grid -->
+        <section class="main-grid">
+          <!-- Left Column: Broadcast Feed -->
+          <div class="broadcast-feed">
+
+            <!-- Card 1: High Priority Alert -->
+            <div class="card notice-card alert-card">
+              <div class="notice-header">
+                <div class="badge-group">
+                  <span class="pill red-alert-pill"><i class="fa-solid fa-triangle-exclamation"></i> HIGH PRIORITY ALERT</span>
+                  <span class="code-text">DGHS/CIRCULAR/2026/089</span>
+                </div>
+                <span class="flash-text"><i class="fa-solid fa-bolt"></i> Flash SMS Override Activated</span>
+              </div>
+
+              <div class="notice-body">
+                <div class="notice-thumb red-thumb">
+                  <span>LAB-SEC</span>
+                </div>
+                <div class="notice-info">
+                  <h3 class="notice-title">Urgent Protocol: Dengue Vector Surveillance & Daily Platelet Stock Transmission</h3>
+                  <p class="notice-desc">All registered secondary and tertiary medical facilities must report daily apheresis platelet inventory and ICU bed admissions by 18:00 BST via the national portal endpoint.</p>
+                  <div class="notice-meta">
+                    <span><i class="fa-regular fa-building"></i> Target: <strong>13,447 Licensed Hospitals</strong></span>
+                    <span><i class="fa-regular fa-clock"></i> Dispatched: Today, 08:30 BST</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="notice-metrics">
+                <div class="metric-row">
+                  <span><i class="fa-regular fa-circle-check"></i> Facility Receipt Confirmation</span>
+                  <span class="metric-bold">13,366 of 13,447 (99.4%)</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill teal-fill" style="width: 99.4%;"></div>
+                </div>
+                <div class="metric-sub-row">
+                  <span>Critical Failures: 81 (Auto-SMS Retry Active)</span>
+                  <span>Mean Delivery Latency: 1.4s</span>
+                </div>
+              </div>
+
+              <div class="notice-actions">
+                <div class="action-left">
+                  <button class="btn btn-outline-dark"><i class="fa-solid fa-eye"></i> View Full PDF</button>
+                  <button class="btn btn-outline-dark"><i class="fa-solid fa-chart-line"></i> Delivery Telemetry</button>
+                </div>
+                <button class="btn btn-danger"><i class="fa-solid fa-rotate-right"></i> Resend Emergency SMS Alert</button>
+              </div>
+            </div>
+
+            <!-- Card 2: Directive Advisory -->
+            <div class="card notice-card advisory-card">
+              <div class="notice-header">
+                <div class="badge-group">
+                  <span class="pill green-pill">DIRECTIVE ADVISORY</span>
+                  <span class="code-text">DGHS/CIRCULAR/2026/085</span>
+                </div>
+                <span class="status-active">• Broadcast Active • Day 4 of 14</span>
+              </div>
+
+              <div class="notice-body">
+                <div class="notice-thumb blue-thumb">
+                  <span>BIOM-ID</span>
+                </div>
+                <div class="notice-info">
+                  <h3 class="notice-title">Mandatory BMDC Biometric Re-Verification for Telemedicine Practitioners</h3>
+                  <p class="notice-desc">In accordance with Telehealth Act §14, all certified medical officers practicing digital consultations must update e-signature keys and biometric fingerprints before September 30.</p>
+                  <div class="notice-meta">
+                    <span><i class="fa-solid fa-user-doctor"></i> Target: <strong>30,033 Registered Doctors</strong></span>
+                    <span><i class="fa-regular fa-clock"></i> Dispatched: Sept 04, 2026</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="notice-metrics">
+                <div class="metric-row">
+                  <span><i class="fa-solid fa-check-double"></i> Doctor Inbox Acknowledgement (E-Signed & Read)</span>
+                  <span class="metric-bold">27,630 of 30,033 (92.0%)</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill teal-fill" style="width: 92%;"></div>
+                </div>
+                <div class="metric-sub-row">
+                  <span>Pending Signatures: 2,403 clinicians</span>
+                  <span>Escalation SMS scheduled in 48h</span>
+                </div>
+              </div>
+
+              <div class="notice-actions">
+                <div class="action-left">
+                  <button class="btn btn-outline-dark"><i class="fa-solid fa-eye"></i> View Circular</button>
+                  <button class="btn btn-outline-dark"><i class="fa-solid fa-file-invoice"></i> Delivery Report</button>
+                </div>
+                <span class="channel-info">Channel: Portal + Doctor App Push</span>
+              </div>
+            </div>
+
+            <!-- Card 3: Clinical Guideline -->
+            <div class="card notice-card guideline-card">
+              <div class="notice-header">
+                <div class="badge-group">
+                  <span class="pill teal-pill">CLINICAL GUIDELINE</span>
+                  <span class="code-text">DGHS/CIRCULAR/2026/078</span>
+                </div>
+                <span class="status-date">Published Aug 28, 2026</span>
+              </div>
+
+              <div class="guideline-body">
+                <h3 class="notice-title">Updated Antimicrobial Stewardship & Antibiotic Prescription Protocols 2026</h3>
+                <p class="notice-desc">National guideline revising restricted 3rd-generation cephalosporin and carbapenem dispense triggers across public hospital inpatient departments.</p>
+                
+                <div class="guideline-footer">
+                  <div class="read-stats">
+                    <span>Read Confirmation: <strong>88.4%</strong></span>
+                    <span>Total Downloads: <strong>41,209</strong></span>
+                  </div>
+                  <div class="action-left">
+                    <button class="btn btn-outline-dark"><i class="fa-solid fa-file-pdf"></i> PDF (2.4MB)</button>
+                    <button class="btn btn-outline-dark"><i class="fa-solid fa-box-archive"></i> Archive Notice</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Controls & Protocols Sidebar -->
+          <aside class="console-sidebar">
+            
+            <!-- Composer Console Panel -->
+            <div class="card console-card">
+              <div class="console-header">
+                <i class="fa-solid fa-tower-cell console-icon"></i>
+                <div>
+                  <h3 class="console-title">Emergency Broadcast Console</h3>
+                  <span class="console-sub">Rapid Dispatch & Push Composer</span>
+                </div>
+              </div>
+
+              <form class="console-form">
+                <div class="form-group">
+                  <label class="form-label">ALERT LEVEL</label>
+                  <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="alert_level" value="routine" checked> Routine</label>
+                    <label class="radio-option"><input type="radio" name="alert_level" value="priority"> Priority</label>
+                    <label class="radio-option red-text"><input type="radio" name="alert_level" value="critical"> Critical</label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">TARGET AUDIENCE</label>
+                  <select class="select-dropdown full-width">
+                    <option>All Licensed Hospitals (13,447)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">CIRCULAR TITLE / SUBJECT</label>
+                  <input type="text" class="input-text" placeholder="e.g., Mandatory Nipah Virus Protocol 2026">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">DISPATCH CHANNELS</label>
+                  <div class="checkbox-group">
+                    <label class="checkbox-option">
+                      <input type="checkbox" checked> Central Portal Banner
+                      <span class="channel-dot green"></span>
+                    </label>
+                    <label class="checkbox-option">
+                      <input type="checkbox" checked> Emergency SMS Flash
+                      <span class="channel-dot green"></span>
+                    </label>
+                    <label class="checkbox-option">
+                      <input type="checkbox" checked> Direct Email Dispatch
+                      <span class="channel-dot green"></span>
+                    </label>
+                    <label class="checkbox-option">
+                      <input type="checkbox"> DGHS Gateway Webhook
+                      <span class="channel-dot outline"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                      <label class="checkbox-option"> Upload PDF</label>
+                            <input type="file" class="file-upload">
+                </div>
+                <button type="button" class="btn btn-dispatch-dark">
+                  <i class="fa-solid fa-paper-plane"></i> Broadcast Directive Now
+                </button>
+              </form>
+            </div>
+
+            <!-- National Alert Protocols -->
+            <div class="card protocols-card">
+              <div class="protocols-header">
+                <h4 class="protocols-title">National Alert Protocols</h4>
+                <span class="active-dot"></span>
+              </div>
+
+              <div class="protocol-list">
+                <div class="protocol-item">
+                  <i class="fa-solid fa-circle-check item-icon"></i>
+                  <div class="protocol-info">
+                    <span class="protocol-name">SMS Gateway Primary</span>
+                    <span class="protocol-sub">Teletalk Gov Gateway: Operational</span>
+                  </div>
+                  <span class="protocol-badge">12ms</span>
+                </div>
+
+                <div class="protocol-item">
+                  <i class="fa-solid fa-circle-check item-icon"></i>
+                  <div class="protocol-info">
+                    <span class="protocol-name">Biometric Registry Sync</span>
+                    <span class="protocol-sub">BMDC DB v4.8: Live Connected</span>
+                  </div>
+                  <span class="protocol-badge">100%</span>
+                </div>
+
+                <div class="protocol-item">
+                  <i class="fa-solid fa-tower-broadcast item-icon-blue"></i>
+                  <div class="protocol-info">
+                    <span class="protocol-name">WHO Focal Notification</span>
+                    <span class="protocol-sub">IHR Mirror Feed: Synced</span>
+                  </div>
+                  <span class="protocol-badge active-text">Active</span>
+                </div>
+              </div>
+
+              <div class="crypto-note">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>All notices carry cryptographic SHA-256 signatures validated against the Ministry of Health root certificate authority.</span>
+              </div>
+            </div>
+
+          </aside>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

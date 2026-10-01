@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Profile & Identification - NHMRD</title>
+  <link rel="stylesheet" href="/public_html/assets/css/patient-panel/patient-info.css">
+   <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/patient-panel/features/patient-header.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar patient">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+      <nav class="nav-menu">
+        <a href="/public_html/pages/Patient-panel/dashboard.html" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i> 
+          <span>Dashboard</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/prescription-record.html" class="nav-item">
+          <i class="fa-solid fa-file-prescription"></i> 
+          <span>Prescription Records</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/surgary-record.html" class="nav-item">
+          <i class="fa-solid fa-scalpel"></i> 
+          <span>Surgery Records</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/lab-test.html" class="nav-item">
+          <i class="fa-solid fa-vial"></i> 
+          <span>Test Records</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/vaccine-panel.html" class="nav-item active">
+          <i class="fa-solid fa-syringe"></i> 
+          <span>Vaccine Records</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/req-appointment.html" class="nav-item">
+          <i class="fa-solid fa-calendar-plus"></i> 
+          <span>Request Appointment</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/medical-test-req.html" class="nav-item">
+          <i class="fa-solid fa-notes-medical"></i> 
+          <span>Request Medical Test</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/req-vaccine.html" class="nav-item">
+          <i class="fa-solid fa-shield-virus"></i> 
+          <span>Request Vaccine</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/paitent-info.html" class="nav-item">
+          <i class="fa-solid fa-id-card"></i> 
+          <span>Patient Info</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="logout-btn" onclick="handleLogout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <!-- Top Navigation Header -->
+      <header class="patient-header">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search Queries" oninput="handleSearch(event)">
+        </div>
+        <div class="user-profile">
+          <div class="user-info">
+            <span class="user-name">Shishir Rahaman</span>
+          </div>
+          <div class="avatar">SR</div>
+        </div>
+      </header>
+
+      <!-- Main Body Content -->
+      <main class="dashboard-body">
+        <!-- Sub Header -->
+        <div class="page-title-section">
+          <div>
+            <div class="sub-title">National Health & Medical Record Directory</div>
+            <h1>Patient Profile & Identification</h1>
+          </div>
+          <button class="btn-download-card" onclick="downloadHealthCard()">
+            <i class="fa-solid fa-download"></i> Download Digital Health Card
+          </button>
+        </div>
+
+        <!-- Patient Info Card -->
+        <div class="card patient-header-card">
+          <div class="patient-main-info">
+            <img src="https://via.placeholder.com/70" alt="Shishir Rahaman" class="patient-avatar">
+            <div class="patient-details">
+              <h2>Shishir Rahaman <span class="badge-status">Active Citizen</span></h2>
+              <div class="patient-meta-text">
+                Patient ID: #48291 &bull; National ID (NID): 0123456789 &bull; Citizen Status: Enrolled NHPS
+              </div>
+              <div class="pills-container">
+                <span class="pill pill-danger"><i class="fa-solid fa-droplet"></i> Blood Group AB+</span>
+                <span class="pill">Age: 36 Yrs (21-04-1990)</span>
+                <span class="pill">Gender: Male</span>
+                <span class="pill">Marital Status: Married</span>
+              </div>
+            </div>
+          </div>
+          <div class="registry-otp-box" onclick="authenticateOTP()" style="cursor : pointer;">
+            <i class="fa-solid fa-qrcode qr-icon"></i>
+            <div class="otp-text">
+              <span class="otp-title">REGISTRY OTP</span>
+              <span class="otp-val">NHMRD-VALIDATED</span>
+              <span class="otp-sub">Tap to authenticate</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 Grid Panel -->
+        <div class="profile-grid">
+          <!-- Left Column: Contact & Address & Organ Donors -->
+          <div class="column-left">
+            <!-- Contact Card -->
+            <div class="card contact-card">
+              <div class="panel-section-header">
+                <h3>Contact</h3>
+                <button class="btn-action-sm" onclick="addContactEntry()">+ Add entry</button>
+              </div>
+              <div class="contact-item">
+                <i class="fa-solid fa-envelope"></i>
+                <span class="label">Registered Email</span>
+                <span class="val">shishir@example.com</span>
+              </div>
+              <div class="contact-item">
+                <i class="fa-solid fa-phone"></i>
+                <span class="label">Mobile Phone</span>
+                <span class="val">+880 12345678910</span>
+              </div>
+              <div class="contact-item">
+                <i class="fa-solid fa-phone-volume"></i>
+                <span class="label">Emergency Contact</span>
+                <span class="val">Mrs. Rahaman (Spouse)<br><small class="text-muted">+880 1987654321</small></span>
+              </div>
+              <div class="address-card">
+                <div class="title"><i class="fa-solid fa-location-dot"></i> RESIDENTIAL & PERMANENT ADDRESS</div>
+                <strong>House 24, Road 11, Dhanmondi R/A, Dhaka - 1209, Bangladesh</strong>
+                <p class="text-muted address-sub">Ward 15, Dhaka South City Corporation</p>
+              </div>
+            </div>
+
+            <!-- Organ & Blood Donors Card -->
+            <div class="card">
+              <div class="panel-section-header">
+                <h3>Organ & Blood Donors <i class="fa-solid fa-heart-pulse text-danger"></i></h3>
+                <button class="btn-action-sm btn-add-donor" onclick="addDonor()">+ Add Donor</button>
+              </div>
+              <p class="text-muted donor-sub">Registered for organ and Blood donation</p>
+              <div class="donor-item">
+                <div class="donor-info">
+                  <span class="blood-badge">O+</span>
+                  <div>
+                    <strong>Huraira Hasib</strong> <span class="badge-status badge-verified">Verified</span>
+                    <div class="text-muted donor-contact">
+                      <i class="fa-solid fa-phone"></i> 01673478477 &bull; <i class="fa-solid fa-envelope"></i> hurairahasib@gmail.com
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Vitals Baseline & History -->
+          <div class="column-right">
+            <div class="card">
+              <div class="panel-section-header">
+                <div>
+                  <h3>Vitals Baseline & Bio Data</h3>
+                  <span class="text-muted last-synced">Last synced: 13-09-2026</span>
+                </div>
+                <button class="btn-action-sm" onclick="updateVitals()"><i class="fa-solid fa-pen"></i> Update Vitals</button>
+              </div>
+
+              <!-- Vitals Grid -->
+              <div class="vitals-grid">
+                <div class="vital-box">
+                  <div class="vital-header">
+                    <span>BLOOD PRESSURE</span>
+                    <i class="fa-solid fa-heart text-danger"></i>
+                  </div>
+                  <div class="vital-value">120/80 <small class="unit-text">mmHg</small></div>
+                  <div class="vital-status">&bull; Optimal / Normal</div>
+                </div>
+                <div class="vital-box">
+                  <div class="vital-header">
+                    <span>HEIGHT & WEIGHT</span>
+                    <i class="fa-solid fa-ruler-vertical text-info"></i>
+                  </div>
+                  <div class="vital-value">175 cm &bull; 74 kg</div>
+                  <div class="vital-status status-bmi">&bull; BMI 24.2 (Normal)</div>
+                </div>
+              </div>
+
+              <!-- Historical Vitals Table -->
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Date & Time</th>
+                    <th>Height</th>
+                    <th>Weight</th>
+                    <th>BMI</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>12 May 2024 &bull; 14:30</td>
+                    <td>170 cm</td>
+                    <td>67.8 kg</td>
+                    <td><strong>23.5</strong></td>
+                  </tr>
+                  <tr>
+                    <td>02 Feb 2024 &bull; 15:15</td>
+                    <td>170 cm</td>
+                    <td>68.5 kg</td>
+                    <td><strong>23.7</strong></td>
+                  </tr>
+                  <tr>
+                    <td>20 Nov 2023 &bull; 14:05</td>
+                    <td>171 cm</td>
+                    <td>70.2 kg</td>
+                    <td><strong>24.0</strong></td>
+                  </tr>
+                  <tr>
+                    <td>05 Sept 2023 &bull; 16:40</td>
+                    <td>171 cm</td>
+                    <td>69.4 kg</td>
+                    <td><strong>23.7</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- Averages Summary Box -->
+              <div class="table-summary">
+                <div>AVG HEIGHT: <strong>170.5 cm</strong></div>
+                <div>AVG WEIGHT: <strong>68.9 kg</strong></div>
+                <div>CURRENT BMI: <strong>23.5</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direct Access to Historical Medical Dossier -->
+        <div class="dossier-banner">
+          <div class="dossier-left">
+            <div class="dossier-icon">
+              <i class="fa-solid fa-folder-open"></i>
+            </div>
+            <div>
+              <strong class="dossier-title">Direct Access to Historical Medical Dossier</strong>
+              <p class="text-muted dossier-sub">View all authenticated laboratory tests, surgical histories, and continuous prescriptions.</p>
+            </div>
+          </div>
+          <div class="dossier-actions">
+            <button class="btn-dossier" onclick="viewDossierRecords('test')">All Test Records (14)</button>
+            <button class="btn-dossier active-btn" onclick="viewDossierRecords('Prescription')">Active Prescriptions (3)</button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="/public_html/assets/js/paitent/paitent-info.js"></script>
+</body>
+</html>

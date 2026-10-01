@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagnostic & Lab Test Records - NHMRD</title>
+  <link rel="stylesheet" href="/public_html/assets/css/patient-panel/lab-test.css">
+   <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/patient-panel/features/patient-header.css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar patient">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="/public_html/pages/Patient-panel/dashboard.html" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i> 
+          <span>Dashboard</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/prescription-record.html" class="nav-item">
+          <i class="fa-solid fa-file-prescription"></i> 
+          <span>Prescription Records</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/surgary-record.html" class="nav-item">
+          <i class="fa-solid fa-scalpel"></i> 
+          <span>Surgery Records</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/lab-test.html" class="nav-item">
+          <i class="fa-solid fa-vial"></i> 
+          <span>Test Records</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/vaccine-panel.html" class="nav-item active">
+          <i class="fa-solid fa-syringe"></i> 
+          <span>Vaccine Records</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/req-appointment.html" class="nav-item">
+          <i class="fa-solid fa-calendar-plus"></i> 
+          <span>Request Appointment</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/medical-test-req.html" class="nav-item">
+          <i class="fa-solid fa-notes-medical"></i> 
+          <span>Request Medical Test</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/req-vaccine.html" class="nav-item">
+          <i class="fa-solid fa-shield-virus"></i> 
+          <span>Request Vaccine</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/paitent-info.html" class="nav-item">
+          <i class="fa-solid fa-id-card"></i> 
+          <span>Patient Info</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="logout-btn" onclick="handleUserLogout()">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+      <!-- Top Header Bar -->
+      <header class="patient-header">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search Queries" oninput="filterTestRecords(event)">
+        </div>
+
+        <div class="header-right">
+          <button class="icon-btn" onclick="handleNotificationClick()"><i class="fa-regular fa-bell"></i></button>
+          <div class="user-badge-avatar">SR</div>
+          <div class="user-info-text">
+            <span class="user-name">Shishir Rahaman</span>
+            <span class="patient-id">Patient ID #48291</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content Body -->
+      <main class="content-body">
+
+        <!-- Page Banner -->
+        <div class="banner-card">
+          <div class="banner-left">
+            <div class="banner-icon">
+              <i class="fa-solid fa-flask"></i>
+            </div>
+            <div>
+              <div class="registry-tag">NATIONAL HEALTH RECORDS &bull; Synchronized</div>
+              <h2>Diagnostic & Lab Test Records</h2>
+              <p class="banner-sub">Consolidated laboratory, pathology, and diagnostic imaging for Shishir Rahaman (ID #48291)</p>
+            </div>
+          </div>
+          <div class="banner-actions">
+            <button class="btn-outline" onclick="exportAllRecordsPDF()"><i class="fa-solid fa-download"></i> Export All Records (PDF)</button>
+            <button class="btn-primary-blue" onclick="orderNewTest()"><i class="fa-solid fa-circle-plus"></i> Order New Diagnostic Test</button>
+          </div>
+        </div>
+
+        <!-- Summary Stats Grid -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-text">
+              <span class="stat-label">TOTAL DIAGNOSTIC FILES</span>
+              <strong class="stat-val">24 <span class="stat-unit">Verified Records</span></strong>
+              <span class="stat-sub">From 4 Authorized Labs</span>
+            </div>
+            <div class="stat-icon blue-light"><i class="fa-regular fa-file-lines"></i></div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-text">
+              <span class="stat-label">RECENT ABNORMAL FLAGS</span>
+              <strong class="stat-val text-red">01 <span class="stat-unit text-red">Requires Review</span></strong>
+              <span class="stat-sub text-red">Mild ALT/SGPT elevation (52 U/L)</span>
+            </div>
+            <div class="stat-icon red-light"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-text">
+              <span class="stat-label">PENDING TEST RESULTS</span>
+              <strong class="stat-val">00 <span class="stat-unit">All Completed</span></strong>
+              <span class="stat-sub">Next scheduled testing in Oct 2026</span>
+            </div>
+            <div class="stat-icon check-light"><i class="fa-regular fa-circle-check"></i></div>
+          </div>
+        </div>
+
+        <!-- Category Tabs & Date Filter -->
+        <div class="filter-row">
+          <div class="filter-tabs">
+            <button class="tab-btn active" onclick="filterByCategory(event)">All Diagnostics (24)</button>
+            <button class="tab-btn" onclick="filterByCategory(event)">Biochemistry (12)</button>
+            <button class="tab-btn" onclick="filterByCategory(event)">Hematology (6)</button>
+            <button class="tab-btn" onclick="filterByCategory(event)">Radiology & USG (3)</button>
+            <button class="tab-btn" onclick="filterByCategory(event)">Serology (3)</button>
+          </div>
+          <div class="date-filter">
+            <span class="filter-label">Range:</span>
+            <select class="dropdown-select">
+              <option>Last 6 Months (2026)</option>
+              <option>Last 1 Year</option>
+              <option>All Time</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Test Card 1: LFT -->
+        <div class="card test-card">
+          <div class="card-header">
+            <div class="title-group">
+              <div class="test-icon blue-bg"><i class="fa-solid fa-wave-square"></i></div>
+              <div>
+                <div class="test-title-line">
+                  <h3>Liver Function Test (LFT) Comprehensive Profile</h3>
+                  <span class="status-tag green">Completed</span>
+                  <span class="status-tag red">1 Borderline Marker</span>
+                </div>
+                <p class="test-meta">
+                  <i class="fa-regular fa-calendar"></i> Publish Date: <strong>11-09-2026</strong> &bull; 
+                  <i class="fa-regular fa-hospital"></i> Hospital: <strong>LABAID Specialized Hospital</strong> &bull; 
+                  Prescribed by: <strong>Dr. Farhana Ahmed</strong> &bull; Lab ID: <span>LAB-99214-LFT</span>
+                </p>
+              </div>
+            </div>
+            <button class="btn-primary-blue btn-sm" onclick="viewTestReport(event)"><i class="fa-regular fa-file-pdf"></i> View Full Report</button>
+          </div>
+
+          <!-- LFT Results Grid -->
+          <div class="results-grid four-cols">
+            <div class="res-box">
+              <div class="res-head"><span class="res-name">Total Bilirubin</span><span class="tag-normal">Normal</span></div>
+              <strong class="res-value">1.1 <span class="unit">mg/dL</span></strong>
+              <span class="res-ref">Ref: 0.2 - 1.2 mg/dL</span>
+            </div>
+
+            <div class="res-box highlight-red">
+              <div class="res-head"><span class="res-name">ALT / SGPT</span><span class="tag-high">High</span></div>
+              <strong class="res-value text-red">52 <span class="unit text-red">U/L</span></strong>
+              <span class="res-ref text-red">Ref: 7 - 45 U/L (Elevated)</span>
+            </div>
+
+            <div class="res-box">
+              <div class="res-head"><span class="res-name">AST / SGOT</span><span class="tag-borderline">Borderline High</span></div>
+              <strong class="res-value">41 <span class="unit">U/L</span></strong>
+              <span class="res-ref">Ref: 8 - 40 U/L</span>
+            </div>
+
+            <div class="res-box">
+              <div class="res-head"><span class="res-name">Alkaline Phosphatase</span><span class="tag-normal">Normal</span></div>
+              <strong class="res-value">88 <span class="unit">U/L</span></strong>
+              <span class="res-ref">Ref: 44 - 147 U/L</span>
+            </div>
+          </div>
+
+          <!-- Clinical Note Box -->
+          <div class="note-box">
+            <p><i class="fa-solid fa-notes-medical note-icon"></i> <strong>Clinical Note by Dr. Farhana Ahmed:</strong> Correlate with recent USG fatty infiltration. Repeat liver enzyme panel in 6 weeks with lipid monitoring.</p>
+            <span class="note-sub">Validated by Chief Biochemist: Dr. M. Hasan</span>
+          </div>
+        </div>
+
+        <!-- Test Card 2: Hepatitis B & C -->
+        <div class="card test-card">
+          <div class="card-header">
+            <div class="title-group">
+              <div class="test-icon blue-bg"><i class="fa-solid fa-vial"></i></div>
+              <div>
+                <div class="test-title-line">
+                  <h3>Hepatitis B & C Serology Screening</h3>
+                  <span class="status-tag green">Completed</span>
+                  <span class="status-tag blue">All Negative</span>
+                </div>
+                <p class="test-meta">
+                  <i class="fa-regular fa-calendar"></i> Publish Date: <strong>07-09-2026</strong> &bull; 
+                  <i class="fa-regular fa-hospital"></i> Hospital: <strong>LABAID Specialized Hospital</strong> &bull; 
+                  Prescribed by: <strong>Dr. Farhana Ahmed</strong> &bull; Lab ID: <span>LAB-98771-HEP</span>
+                </p>
+              </div>
+            </div>
+            <button class="btn-primary-blue btn-sm"><i class="fa-regular fa-file-pdf"></i> View Full Report</button>
+          </div>
+
+          <!-- Serology Results Grid -->
+          <div class="results-grid three-cols">
+            <div class="res-box flex-row">
+              <div>
+                <span class="res-name-block">HBsAg (Surface Antigen)</span>
+                <strong class="res-value-lg">Non-Reactive (Negative)</strong>
+                <span class="res-ref">Method: CMIA (Chemiluminescence)</span>
+              </div>
+              <i class="fa-regular fa-circle-check check-blue"></i>
+            </div>
+
+            <div class="res-box flex-row">
+              <div>
+                <span class="res-name-block">Anti-HCV (Antibody)</span>
+                <strong class="res-value-lg">Non-Reactive (Negative)</strong>
+                <span class="res-ref">Method: Architect CMIA</span>
+              </div>
+              <i class="fa-regular fa-circle-check check-blue"></i>
+            </div>
+
+            <div class="res-box flex-row">
+              <div>
+                <span class="res-name-block">Anti-HBs Quantitative (Immunity)</span>
+                <strong class="res-value-lg text-blue">> 100 mIU/mL</strong>
+                <span class="res-ref">Sufficient Vaccine Immunity</span>
+              </div>
+              <i class="fa-solid fa-shield-halved text-blue"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Test Card 3: Liver Biomarkers & USG -->
+        <div class="card test-card">
+          <div class="card-header">
+            <div class="title-group">
+              <div class="test-icon blue-bg"><i class="fa-solid fa-x-ray"></i></div>
+              <div>
+                <div class="test-title-line">
+                  <h3>Chronic Liver Disease Biomarkers & Ultrasound Whole Abdomen</h3>
+                  <span class="status-tag green">Completed</span>
+                </div>
+                <p class="test-meta">
+                  <i class="fa-regular fa-calendar"></i> Publish Date: <strong>07-09-2026</strong> &bull; 
+                  <i class="fa-regular fa-hospital"></i> Hospital: <strong>LABAID Specialized Hospital</strong> &bull; 
+                  Prescribed by: <strong>Dr. Farhana Ahmed</strong> &bull; Lab ID: <span>LAB-RAD-4418</span>
+                </p>
+              </div>
+            </div>
+            <button class="btn-primary-blue btn-sm"><i class="fa-regular fa-file-pdf"></i> View Full Report</button>
+          </div>
+
+          <!-- USG Split Body -->
+          <div class="usg-split-grid">
+            <div class="usg-findings-box">
+              <div class="usg-head">
+                <h4>Ultrasound Findings</h4>
+                <span class="tag-sub-blue">High-Res Imaging</span>
+              </div>
+              <p class="findings-text">
+                Liver is mildly enlarged in span (15.4 cm) with diffusely increased parenchymal echogenicity, suggestive of Grade 1 Mild Hepatic Steatosis (Fatty Infiltration). Intrahepatic biliary tree, portal vein, and CBD show normal caliber. Spleen, pancreas, and kidneys are within normal physiological parameters. No ascites observed.
+              </p>
+              <span class="radiologist-info">&bull; Consultant Radiologist: Dr. K. M. Saifuddin, FCPS (Radiology)</span>
+            </div>
+
+            <div class="usg-scores-box">
+              <div class="score-row-head">
+                <span class="score-title">Non-Invasive Fibrosis Score</span>
+              </div>
+
+              <div class="score-card-item">
+                <div>
+                  <strong class="score-name">FIB-4 Score</strong>
+                  <span class="score-sub">Low Risk of Advanced Fibrosis (&lt;1.45)</span>
+                </div>
+                <span class="score-value">1.08</span>
+              </div>
+
+              <div class="score-list-compact">
+                <div class="compact-item">
+                  <span class="compact-label">AFP (Alpha-Fetoprotein):</span>
+                  <span class="compact-val">2.4 ng/mL <strong>(Normal)</strong></span>
+                </div>
+                <div class="compact-item">
+                  <span class="compact-label">Prothrombin Time (INR):</span>
+                  <span class="compact-val">1.02 <strong>(Normal)</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Test Card 4: CBC -->
+        <div class="card test-card">
+          <div class="card-header">
+            <div class="title-group">
+              <div class="test-icon blue-bg"><i class="fa-solid fa-droplet"></i></div>
+              <div>
+                <div class="test-title-line">
+                  <h3>Complete Blood Count (CBC) with Automated Differential & ESR</h3>
+                  <span class="status-tag blue">Normal</span>
+                </div>
+                <p class="test-meta">
+                  <i class="fa-regular fa-calendar"></i> Publish Date: <strong>15-08-2026</strong> &bull; 
+                  <i class="fa-regular fa-hospital"></i> Hospital: <strong>LABAID Specialized Hospital</strong> &bull; 
+                  Prescribed by: <strong>Dr. Farhana Ahmed</strong> &bull; Lab ID: <span>LAB-CBC-7019</span>
+                </p>
+              </div>
+            </div>
+            <button class="btn-primary-blue btn-sm"><i class="fa-regular fa-file-pdf"></i> View Full Report</button>
+          </div>
+
+          <!-- CBC Results Grid (6 Columns) -->
+          <div class="results-grid six-cols">
+            <div class="res-box text-center">
+              <span class="res-name">Hemoglobin (Hb)</span>
+              <strong class="res-value">14.8</strong>
+              <span class="res-ref">g/dL (13.5–17.5)</span>
+            </div>
+
+            <div class="res-box text-center">
+              <span class="res-name">Platelets</span>
+              <strong class="res-value">240,000</strong>
+              <span class="res-ref">/mcL (150k–450k)</span>
+            </div>
+
+            <div class="res-box text-center">
+              <span class="res-name">Total WBC Count</span>
+              <strong class="res-value">6,800</strong>
+              <span class="res-ref">/mcL (4k–11k)</span>
+            </div>
+
+            <div class="res-box text-center">
+              <span class="res-name">ESR (Westergren)</span>
+              <strong class="res-value">12</strong>
+              <span class="res-ref">mm/1st hr (0–15)</span>
+            </div>
+
+            <div class="res-box text-center">
+              <span class="res-name">RBC Count</span>
+              <strong class="res-value">5.12</strong>
+              <span class="res-ref">mil/uL (4.5–5.9)</span>
+            </div>
+
+            <div class="res-box text-center">
+              <span class="res-name">Hematocrit (PCV)</span>
+              <strong class="res-value">44.2</strong>
+              <span class="res-ref">% (41.0–50.0)</span>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="/public_html/assets/js/paitent/text_lab.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Patient Requests & In-Basket</title>
+    <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Dashboard Stylesheet -->
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/surgical-rec.css">
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/features/executive-header.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar surgeon">
+      <div class="brand">
+          <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="/public_html/pages/surgeon-panel/dashboard.html" class="nav-item">
+          <i class="fa-solid fa-chart-pie icon"></i> Dashboard
+        </a>
+        <a href="/public_html/pages/surgeon-panel/clinical-rec.html" class="nav-item active">
+          <i class="fa-solid fa-clipboard-list icon"></i> Clinical Records
+        </a>
+        <a href="/public_html/pages/surgeon-panel/paitent-req.html" class="nav-item">
+          <i class="fa-solid fa-user-group icon"></i> Patient Requests
+        </a>
+        <a href="/public_html/pages/surgeon-panel/doc-profile.html" class="nav-item">
+          <i class="fa-solid fa-user-doctor icon"></i> Doctor Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search patient MRN, name, vitals...">
+        </div>
+        <div class="top-bar-right">
+          <div class="shift-info">
+            <span class="clock-icon">🕒</span> Shift: Morning Clinical Rounds (07:00 - 15:30)
+          </div>
+          <div class="status-badge">
+            <span class="dot"></span> EMR Synced
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">ZR</div>
+            <div class="user-info">
+              <div class="user-name">Dr. Zunaid Rahman, MD</div>
+              <div class="user-role">Neurosurgery & Critical Care</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="content-area">
+        
+        <div class="record-scroll-container">
+          
+          <!-- Breadcrumb & Patient Header Banner -->
+          <div class="breadcrumb-trail">
+            Clinical Records &gt; <span>Sumaiya Akter (MRN - 449102)</span> &gt; <strong>Operative Record &amp; Surgical Orders</strong>
+          </div>
+
+          <div class="patient-banner">
+            <div class="patient-avatar-box">SA</div>
+            <div class="patient-meta-info">
+              <div class="patient-top-row">
+                <h2>Sumaiya Akter</h2>
+                <span class="meta-tag">F • 36 y/o</span>
+                <span class="meta-tag">DOB: 14-Aug-1988</span>
+                <span class="blood-badge">Blood: A+</span>
+              </div>
+              <p class="patient-sub-details">MRN: 9444169 • Attending: Dr. Zunaid Rahman, MD • Room 3B (Encounter #ENC-8832)</p>
+            </div>
+            <div class="patient-alert-badges">
+              <div class="alert-box-red">
+                <strong>CRITICAL ALLERGY</strong>
+                <span>Sulfonamides (Severe Urticaria / Bronchospasm)</span>
+              </div>
+              <div class="alert-box-gray">
+                <strong>ENCOUNTER TIME:</strong>
+                <span>144:304</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Workspace Layout -->
+          <div class="workspace-grid">
+            
+            <!-- Left Side: Surgical Order Sections -->
+            <div class="forms-column">
+              
+              <!-- Section Title Bar -->
+              <div class="section-title-banner">
+                <div class="title-flex">
+                  <span class="red-bullet"></span>
+                  <h3>Operative Record &amp; Surgical Order Entry</h3>
+                </div>
+                <p>Document operative timetables, pre- and post-operative clinical observations, surgical complacency risk, and stage phase-specific perioperative medications.</p>
+                <div class="certified-tag">OR SURGICAL BOARD &amp; EPCS CERTIFIED</div>
+              </div>
+
+              <!-- Step 1: Operative Scheduling -->
+              <div class="form-card">
+                <div class="card-step-header">
+                  <div class="step-title">
+                    <span class="step-num">1</span>
+                    <h4>Operative Scheduling &amp; Procedure Protocol</h4>
+                  </div>
+                  <span class="badge-sub">OR Suite 4B</span>
+                </div>
+
+                <div class="form-group-block">
+                  <div class="label-row">
+                    <label>OPERATIVE RECORD TITLE / SURGICAL PROCEDURE TITLE</label>
+                    <span class="required-text">REQUIRED</span>
+                  </div>
+                  <div class="input-with-icon">
+                    <span>📌</span>
+                    <input type="text" value="Suboccipital Craniectomy & Microvascular Decompression of Cranial">
+                  </div>
+                </div>
+
+                <div class="form-row-3">
+                  <div>
+                    <label>OPERATION DATE &amp; TIME</label>
+                    <div class="input-with-icon">
+                      <span>📅</span>
+                      <input type="text" value="Nov 14, 2024 • 08:3">
+                    </div>
+                  </div>
+                  <div>
+                    <label>PRIMARY PROCEDURE</label>
+                    <div class="input-with-icon">
+                      <span>🩺</span>
+                      <input type="text" value="Suboccipital Cranie">
+                    </div>
+                  </div>
+                  <div>
+                    <label>LEAD SURGEON &amp; ANESTHESIOLOGIST</label>
+                    <input type="text" class="control" value="Dr. Zunaid Rahman, FACS">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2: Perioperative Clinical Observations -->
+              <div class="form-card">
+                <div class="card-step-header">
+                  <div class="step-title">
+                    <span class="step-num">2</span>
+                    <h4>Perioperative Clinical Observations</h4>
+                  </div>
+                  <span class="badge-sub">Pre-Op &amp; Post-Op Audit</span>
+                </div>
+
+                <div class="observation-box">
+                  <div class="obs-title">PRE-OPERATIVE OBSERVATION <span class="obs-note">Basal vitals, surgical clearance, airway status</span></div>
+                  <p class="obs-text">
+                    Pre-op baseline BP 124/78 mmHg, HR 68 bpm, SpO2 99% on room air. Mallampati Class II airway, neck mobility intact. Fasting status confirmed (&gt;8hrs NPO). Pre-anesthetic evaluation complete: no bleeding diathesis. Critical allergy re-verified: Sulfonamides (Severe Urticaria / Bronchospasm) - strict avoidance of all sulfa.
+                  </p>
+                </div>
+
+                <div class="observation-box">
+                  <div class="obs-title">POST-OPERATIVE OBSERVATION <span class="obs-note">PACU recovery, neuro-status, hemodynamic stability</span></div>
+                  <p class="obs-text">
+                    Patient extubated smoothly in OR; transferred to PACU, alert and responsive. Post-op vitals: BP 118/74 mmHg, HR 72 bpm regular, SpO2 98% via 2L NC. Surgical incision clean and dry, sterile pressure dressing intact with no active bleeding or soakage. Neurological exam grossly intact without focal motor deficits. Wound drain output
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 3: Operative Pharmacotherapy -->
+              <div class="form-card">
+                <div class="card-step-header">
+                  <div class="step-title">
+                    <span class="step-num">3</span>
+                    <h4>Operative Pharmacotherapy &amp; Prescribed Medicines</h4>
+                  </div>
+                  <span class="text-muted">Phase-specific medicines (Pre-Operative, In-Operative, Post-Operative) and complacency profiles</span>
+                  <button class="btn btn-sm btn-crimson">+ Add Medicine</button>
+                </div>
+
+                <!-- Medicine Item 1 -->
+                <div class="med-item-box">
+                  <div class="med-header">
+                    <div class="med-name">
+                      <strong>Cefazolin Sodium (Ancef)</strong>
+                      <span class="pill-pre">Pre-Operative</span>
+                    </div>
+                    <div class="med-dose">Dose: 2g IV Infusion</div>
+                  </div>
+                  <p class="med-desc">Surgical Antimicrobial Prophylaxis • Administer within 60 min prior to skin incision</p>
+                  <div class="med-footer-row">
+                    <div class="med-type-select">
+                      <label>MEDICINE TYPE</label>
+                      <select><option>Pre-Operative</option></select>
+                    </div>
+                    <div class="med-warnings">
+                      <strong>COMPLICY &amp; RISK PRECAUTIONS</strong>
+                      <p>⚠️ Non-Sulfa safe. Cephalosporin allergy screened: negative. No cross-reactivity expected.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Medicine Item 2 -->
+                <div class="med-item-box">
+                  <div class="med-header">
+                    <div class="med-name">
+                      <strong>Fentanyl Citrate / Propofol</strong>
+                      <span class="pill-in">In-Operative</span>
+                    </div>
+                    <div class="med-dose">Titrated IV Maintenance</div>
+                  </div>
+                  <p class="med-desc">Intra-operative Anesthetic Induction &amp; Analgesia • Continuous hemodynamic surveillance</p>
+                  <div class="med-footer-row">
+                    <div class="med-type-select">
+                      <label>MEDICINE TYPE</label>
+                      <select><option>In-Operative</option></select>
+                    </div>
+                    <div class="med-warnings">
+                      <strong>COMPLICY &amp; RISK PRECAUTIONS</strong>
+                      <p>⚠️ Bradycardia &amp; respiratory depression monitored. Target BIS Index 40–60. No adverse spasm.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Medicine Item 3 -->
+                <div class="med-item-box">
+                  <div class="med-header">
+                    <div class="med-name">
+                      <strong>Ondansetron (Zofran) &amp; Ketorolac</strong>
+                      <span class="pill-post">Post-Operative</span>
+                    </div>
+                    <div class="med-dose">4mg IV / 15mg IV PRN</div>
+                  </div>
+                  <p class="med-desc">Post-Anesthesia Care Unit (PACU) recovery • PONV prevention and acute pain control</p>
+                  <div class="med-footer-row">
+                    <div class="med-type-select">
+                      <label>MEDICINE TYPE</label>
+                      <select><option>Post-Operative</option></select>
+                    </div>
+                    <div class="med-warnings">
+                      <strong>COMPLICY &amp; RISK PRECAUTIONS</strong>
+                      <p>⚠️ Platelet aggregation/bleeding risk checked; eGFR normal (&gt;90 mL/min). Limit Ketorolac to 48 hrs.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Stage New Operative Medicine Form Box -->
+                <div class="new-med-form-box">
+                  <div class="form-box-header">
+                    <strong>Stage New Operative Medicine</strong>
+                    <span class="green-tag">CONVENIENT FORM READY</span>
+                  </div>
+                  <div class="form-row-3">
+                    <div>
+                      <label>MEDICINE NAME</label>
+                      <input type="text" class="control" value="e.g. Dexamethasone, Tran">
+                    </div>
+                    <div>
+                      <label>MEDICINE TYPE</label>
+                      <select class="control"><option>Post-Operative</option></select>
+                    </div>
+                    <div>
+                      <label>DOSE &amp; FREQUENCY</label>
+                      <input type="text" class="control" value="e.g. 4 mg IV Q6h PRN">
+                    </div>
+                  </div>
+                  <div class="form-group-block mt-2">
+                    <label>COMPLICY (CONTRAINDICATIONS / RISK NOTES)</label>
+                    <input type="text" class="control" value="Bleeding Risk / Monitored - verify hemostasis before administration">
+                  </div>
+                  <div class="form-actions-flex">
+                    <button class="btn btn-outline">Reset Form</button>
+                    <button class="btn btn-crimson">+ Add to Operative Orders</button>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Step 4: Complicacy & Surgical Risk Audit -->
+              <div class="form-card">
+                <div class="card-step-header">
+                  <div class="step-title">
+                    <span class="step-num">4</span>
+                    <h4>Complicacy &amp; Surgical Risk Audit</h4>
+                  </div>
+                  <span class="text-muted">Adverse Event Surveillance</span>
+                </div>
+
+                <div class="audit-grid">
+                  <div class="audit-box">
+                    <label>ESTIMATED BLOOD LOSS (EBL)</label>
+                    <div class="audit-val">65 mL</div>
+                    <span class="audit-sub">Within expected parameters (&lt;150 ml)</span>
+                  </div>
+                  <div class="audit-box">
+                    <label>INTRA-OP COMPLICACY STATUS</label>
+                    <div class="audit-val text-green">None Reported</div>
+                    <span class="audit-sub">Hemostasis achieved cleanly</span>
+                  </div>
+                  <div class="audit-box">
+                    <label>SPECIMEN / PATHOLOGY</label>
+                    <div class="audit-val">Sent to Lab</div>
+                    <span class="audit-sub">Biopsy &amp; fibrous band tissue</span>
+                  </div>
+                </div>
+
+                <div class="mitigation-box">
+                  <strong>COMPLICY NOTES &amp; RISK MITIGATION PLAN</strong>
+                  <p>No dural tear, no arterial injury or uncontrolled bleeding. Hemostasis confirmed via bipolar coagulation and microfibrillar collagen slurry. Sponge, needle, and instrument counts verified correct x2 before closure.</p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right Side: Operative Summary & Digital Signature Sidebar -->
+            <div class="sidebar-column">
+              
+              <!-- Operative Summary Card -->
+              <div class="summary-card">
+                <div class="summary-header">
+                  <strong>Operative Summary</strong>
+                  <span class="badge-active-green">Order Active</span>
+                </div>
+                
+                <div class="summary-content">
+                  <div class="sum-row">
+                    <span class="sum-label">OPERATION DATE &amp; SUITE</span>
+                    <span class="badge-scheduled">Nov 14, 2024 • OR 4B</span>
+                  </div>
+
+                  <div class="sum-row">
+                    <span class="sum-label">MEDICINES STAGED</span>
+                    <div class="sum-value-bold">3 Active</div>
+                    <span class="sum-sub">Pre / In / Post-Op</span>
+                  </div>
+
+                  <div class="sum-row">
+                    <span class="sum-label">COMPLICY STATUS</span>
+                    <div class="sum-value-danger">Monitored</div>
+                    <span class="sum-sub">Bleeding Risk Tracked.</span>
+                  </div>
+
+                  <div class="sum-row border-top">
+                    <span class="sum-label">PRE &amp; POST-OP AUDIT</span>
+                    <span class="sum-text-bold">✓ Observations Documented</span>
+                  </div>
+
+                  <div class="sum-row">
+                    <span class="sum-label">LEAD SURGEON &amp; FACULTY</span>
+                    <div class="sum-text-bold">Dr. Zunaid Rahman, FACS</div>
+                    <span class="sum-sub">Main Pavilion Surgical Wing</span>
+                  </div>
+
+                  <div class="sum-row border-top">
+                    <span class="sum-sub">Primary CPT / ICD:</span>
+                    <span class="sum-cpt">CPT 61458 • ICD-998</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Prescriber Digital Signature Card -->
+              <div class="signature-card">
+                <div class="sig-header">
+                  <strong>Prescriber Digital Signature</strong>
+                  <p>Dr. Zunaid Rahman, MD<br>MRN: 9444169 • ID: 1847291832</p>
+                </div>
+
+                <p class="sig-disclaimer">
+                  By submitting, I certify this prescription regimen complies with clinical guidelines, EPCS regulations, and strict monitored substances laws.
+                </p>
+
+                <div class="sig-action-buttons">
+                  <button class="btn btn-crimson btn-block">Sign &amp; Issue Operative Orders</button>
+                  <button class="btn btn-outline btn-block">🖨️ Print Operative &amp; Surgical Chart</button>
+                </div>
+
+                <div class="sig-footer-links">
+                  <span class="link-save">💾 Save Draft</span>
+                  <span class="link-discard">🗑️ Discard</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

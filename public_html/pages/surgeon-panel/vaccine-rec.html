@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Patient Requests & In-Basket</title>
+    <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Dashboard Stylesheet -->
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/vaccine-rec.css">
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/features/executive-header.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar surgeon">
+      <div class="brand">
+          <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+        <span>NHMRD</span>
+      </div>
+      <nav class="nav-menu">
+        <a href="/public_html/pages/surgeon-panel/dashboard.html" class="nav-item">
+          <i class="fa-solid fa-chart-pie icon"></i> Dashboard
+        </a>
+        <a href="/public_html/pages/surgeon-panel/clinical-rec.html" class="nav-item active">
+          <i class="fa-solid fa-clipboard-list icon"></i> Clinical Records
+        </a>
+        <a href="/public_html/pages/surgeon-panel/paitent-req.html" class="nav-item">
+          <i class="fa-solid fa-user-group icon"></i> Patient Requests
+        </a>
+        <a href="/public_html/pages/surgeon-panel/doc-profile.html" class="nav-item">
+          <i class="fa-solid fa-user-doctor icon"></i> Doctor Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search patient MRN, name, vitals...">
+        </div>
+        <div class="top-bar-right">
+          <div class="shift-info">
+            <span class="clock-icon">🕒</span> Shift: Morning Clinical Rounds (07:00 - 15:30)[cite: 16]
+          </div>
+          <div class="status-badge">
+            <span class="dot"></span> EMR Synced[cite: 16]
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">MA</div>
+            <div class="user-info">
+              <div class="user-name">Dr. Mahbub Alam, MD</div>
+              <div class="user-role">Internal Medicine &amp; Therapeutics[cite: 16]</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="content-area">
+        <div class="record-scroll-container">
+          
+          <!-- Encounter Top Bar -->
+          <div class="encounter-top-bar">
+            <div class="enc-left">
+              <span>PATIENT EHR / <strong>Active Clinical Encounter</strong>[cite: 16]</span>
+            </div>
+            <div class="enc-center-status">
+              <span class="dot-live"></span> Session: 01:44:30 • HIPAA ACTIVE[cite: 16]
+            </div>
+            <div class="enc-right-actions">
+              <button class="btn-log">📋 Clinical Log[cite: 16]</button>
+              <button class="btn-prescription">✍️ Write Prescription[cite: 16]</button>
+            </div>
+          </div>
+
+          <!-- Secondary Tabs Bar -->
+          <div class="records-tabs-bar">
+            <button class="r-tab">👤 Patient Profile[cite: 16]</button>
+            <button class="r-tab">💊 Prescription Records[cite: 16]</button>
+            <button class="r-tab">🔪 Surgery Records[cite: 16]</button>
+            <button class="r-tab">🧪 Test Records[cite: 16]</button>
+            <button class="r-tab active">💉 Vaccine Records <span class="active-pill">Active View</span>[cite: 16]</button>
+          </div>
+
+          <!-- Patient Summary Strip -->
+          <div class="patient-summary-strip">
+            <div class="p-avatar-img">SR</div>
+            <div class="p-details">
+              <div class="p-name-row">
+                <strong>Sumaiya Rahman</strong>
+                <span class="mrn-text">MRN-449102</span>
+                <span class="dob-text">DOB: 12/04/1988</span>
+              </div>
+              <div class="p-sub-row">
+                <span>36 y/o Female</span> • 
+                <span>Blood Group: A+ (Rh Pos)</span> • 
+                <span class="allergy-span">⚠️ Allergy: Sulfonamides</span> • 
+                <span>Attending: Dr. Mahbub Alam, MD</span>[cite: 16]
+              </div>
+            </div>
+            <div class="iis-status-box ml-auto">
+              <small>IIS STATUS</small>
+              <span class="iis-badge">✓ Active &amp; Verified</span>[cite: 16]
+            </div>
+          </div>
+
+          <!-- Section 1: Adult Immunizations -->
+          <div class="section-container">
+            <div class="section-header-row">
+              <h3>🛡️ Adult Immunizations <small>(Current &amp; Routine)</small>[cite: 16]</h3>
+              <span class="count-badge ml-auto">3 Active Records</span>[cite: 16]
+            </div>
+
+            <div class="vaccine-cards-stack">
+              
+              <!-- Card 1 -->
+              <div class="vac-card">
+                <div class="vac-icon-box red">💉</div>
+                <div class="vac-details">
+                  <div class="vac-title-row">
+                    <h4>COVID-19 Updated Booster (2024–2025 Formula)</h4>
+                    <span class="status-pill green">Valid &amp; Active</span>[cite: 16]
+                  </div>
+                  <p class="vac-desc">Pfizer-BioNTech Comirnaty (30mcg / 0.3mL IM)[cite: 16]</p>
+                  <p class="vac-meta">Administered: Sep 28, 2024 &nbsp;|&nbsp; Lot: #FL8902 &nbsp;|&nbsp; Route: Deltoid (L) &nbsp;|&nbsp; Provider: Metro Care Health[cite: 16]</p>
+                </div>
+                <div class="vac-right-meta ml-auto">
+                  <span class="ndc-text">NDC 59267-4315-2</span>
+                  <span class="info-icon">ℹ️</span>[cite: 16]
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="vac-card">
+                <div class="vac-icon-box blue">💉</div>
+                <div class="vac-details">
+                  <div class="vac-title-row">
+                    <h4>Seasonal Influenza Vaccine (Quadrivalent Fluzone)</h4>
+                    <span class="status-pill blue">Valid thru Aug 2025</span>[cite: 16]
+                  </div>
+                  <p class="vac-desc">Sanofi Pasteur High-Dose Quadrivalent (0.5mL IM)[cite: 16]</p>
+                  <p class="vac-meta">Administered: Sep 28, 2024 &nbsp;|&nbsp; Lot: #IN24-912 &nbsp;|&nbsp; Route: Deltoid (R) &nbsp;|&nbsp; Provider: Metro Care Health[cite: 16]</p>
+                </div>
+                <div class="vac-right-meta ml-auto">
+                  <span class="ndc-text">NDC 49281-424-58</span>
+                  <span class="info-icon">ℹ️</span>[cite: 16]
+                </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="vac-card">
+                <div class="vac-icon-box pink">💉</div>
+                <div class="vac-details">
+                  <div class="vac-title-row">
+                    <h4>Tdap (Tetanus, Diphtheria, Pertussis)</h4>
+                    <span class="status-pill pink-border">Boostrix Booster Valid</span>[cite: 16]
+                  </div>
+                  <p class="vac-desc">GlaxoSmithKline Biologicals (0.5mL IM)[cite: 16]</p>
+                  <p class="vac-meta">Administered: May 14, 2020 &nbsp;|&nbsp; Lot: #TD-4401 &nbsp;|&nbsp; <strong class="due-text">Booster Due: May 2030 (in 6 yrs)</strong>[cite: 16]</p>
+                </div>
+                <div class="vac-right-meta ml-auto">
+                  <span class="ndc-text">NDC 58160-842-11</span>
+                  <span class="info-icon">ℹ️</span>[cite: 16]
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Section 2: Vaccine History Table -->
+          <div class="section-container mt-20">
+            <div class="section-header-row">
+              <div>
+                <h3>Vaccine History</h3>
+                <p class="sub-text-history">Birth to present • reverse chronological order[cite: 16]</p>
+              </div>
+              <div class="history-right-top ml-auto">
+                <span class="verified-series-badge">✓ All 4 Childhood Series Verified</span>
+                <p class="sub-count-text">Showing 4 most recent records<br>12 total records from birth to present[cite: 16]</p>
+              </div>
+            </div>
+
+            <!-- Filter Toolbar -->
+            <div class="history-filter-bar">
+              <button class="f-btn">🔍 Filter vaccination data[cite: 16]</button>
+              <button class="f-pill active">All vaccines[cite: 16]</button>
+              <button class="f-pill">Booster only[cite: 16]</button>
+              <button class="f-pill">Travel[cite: 16]</button>
+            </div>
+
+            <!-- Table -->
+            <div class="table-container">
+              <table class="vaccine-table">
+                <thead>
+                  <tr>
+                    <th>VACCINE ANTIGEN[cite: 16]</th>
+                    <th>DOSE / SERIES[cite: 16]</th>
+                    <th>ADMINISTERED[cite: 16]</th>
+                    <th>SEROLOGY / TITER[cite: 16]</th>
+                    <th class="text-right">IIS VERIFICATION[cite: 16]</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>MMR (Measles, Mumps, Rubella)</strong>[cite: 16]</td>
+                    <td>Booster dose[cite: 16]</td>
+                    <td>12 Mar 2024[cite: 16]</td>
+                    <td>Positive Immune Titer[cite: 16]</td>
+                    <td class="text-right"><span class="state-ver-badge">STATE VERIFIED</span>[cite: 16]</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Varicella (Chickenpox)</strong>[cite: 16]</td>
+                    <td>Booster dose[cite: 16]</td>
+                    <td>08 Feb 2024[cite: 16]</td>
+                    <td>Immune History Documented[cite: 16]</td>
+                    <td class="text-right"><span class="state-ver-badge">STATE VERIFIED</span>[cite: 16]</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Hepatitis B Series</strong>[cite: 16]</td>
+                    <td>Booster dose[cite: 16]</td>
+                    <td>21 Jan 2024[cite: 16]</td>
+                    <td>Anti-HBs &gt;100 mIU/mL[cite: 16]</td>
+                    <td class="text-right"><span class="state-ver-badge">STATE VERIFIED</span>[cite: 16]</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Polio Inactivated (IPV)</strong>[cite: 16]</td>
+                    <td>4 of 4 doses[cite: 16]</td>
+                    <td>1989, 1990, 1991, 1994[cite: 16]</td>
+                    <td>Childhood Complete[cite: 16]</td>
+                    <td class="text-right"><span class="state-ver-badge">STATE VERIFIED</span>[cite: 16]</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="table-footer-link">
+              <a href="#">View remaining history <strong>8 earlier records</strong>[cite: 16]</a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

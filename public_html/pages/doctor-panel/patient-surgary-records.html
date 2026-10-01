@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Surgery Records</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-subheader.css">
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/patient-surgary-records.css">
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-header.css">
+</head>
+<body>
+
+  <div class="app-container">
+  <!-- Sidebar Navigation -->
+    <aside class="sidebar doctor">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="/public_html/pages/Doctor-panel/doctor-clinical-service-records.html" class="nav-item">
+          <i class="fa-solid fa-notes-medical"></i>
+          <span>Clinical Records</span>
+        </a>
+        <a href="/public_html/pages/Doctor-panel/patient-appointments.html" class="nav-item active">
+          <i class="fa-solid fa-user-clock"></i>
+          <span>Patient Appointments</span>
+        </a>
+        <a href="/public_html/pages/doctor-panel/doctor-profile.html" class="nav-item">
+          <i class="fa-solid fa-user-doctor"></i>
+          <span>Doctor Profile</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+      
+      <!-- Top Header Bar -->
+      <header class="doc-header">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search patient MRN, name, vitals...">
+        </div>
+
+        <div class="header-right">
+          <div class="header-status-pill">
+            <i class="fa-regular fa-clock"></i>
+            <span>Shift: Morning Clinical Rounds (07:00 - 15:30)</span>
+          </div>
+          <div class="header-status-pill">
+            <i class="fa-solid fa-rotate"></i>
+            <span>EMR Synced</span>
+          </div>
+          <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+          
+          <div class="doctor-profile-badge">
+            <div class="doctor-info-text">
+              <span class="doctor-name">Dr. Nusrat Jahan, MD</span>
+              <span class="doctor-dept">Internal Medicine &amp; Therapeutics</span>
+            </div>
+            <div class="doctor-avatar">
+              <img src="https://i.pravatar.cc/100?img=47" alt="Dr. Nusrat Jahan">
+            </div>
+          </div>
+        </div>
+      </header>
+
+        <!-- Sub Header Navigation Bar -->
+      <div class="subheader-bar">
+        <div class="subheader-left">
+          <span class="ehr-tag"><i class="fa-solid fa-folder-open"></i> Patient Electronic Health Record</span>
+          <span class="status-pill-green">Active Clinical Encounter</span>
+        </div>
+        <div class="subheader-right">
+          <div class="session-timer">
+            <i class="fa-solid fa-user-clock"></i> Session: <span>01:58:40</span>
+            <span class="tag-interactive">INTERACTIVE</span>
+          </div>
+          <button class="btn-write-rx"><i class="fa-solid fa-pen-to-square"></i> Write Prescription</button>
+        </div>
+      </div>
+
+      <!-- Module Navigation Tabs -->
+      <nav class="module-tabs">
+        <a href="/public_html/pages/doctor-panel/patient-medical-profile.html" class="tab-btn"><i class="fa-solid fa-user"></i> Patient Profile</a>
+        <a href="/public_html/pages/doctor-panel/patient-prescription-records.html" class="tab-btn"><i class="fa-solid fa-capsules"></i> Prescription Records</a>
+        <a href="/public_html/pages/doctor-panel/patient-surgary-records.html" class="tab-btn active"><i class="fa-solid fa-scalpel"></i> Surgery Records</a>
+        <a href="/public_html/pages/doctor-panel/patient-test-records.html" class="tab-btn"><i class="fa-solid fa-vial"></i> Test Records</a>
+        <a href="/public_html/pages/doctor-panel/patient-vaccine-records.html" class="tab-btn"><i class="fa-solid fa-syringe"></i> Vaccine Records</a>
+      </nav>
+
+      <!-- Main Content Area -->
+      <main class="content-body">
+        <!-- Patient Info Card -->
+        <div class="patient-card">
+          <div class="patient-avatar-box">
+            <span>FR</span>
+          </div>
+          
+          <div class="patient-card-info">
+            <div class="patient-header">
+              <h2 class="patient-name">Farhana Rahman</h2>
+              <span class="patient-meta">36 y/o Female &bull; DOB: Mar 14, 1988</span>
+              <span class="mrn-badge">MRN: 449102</span>
+              <span class="blood-badge">Blood: A Rh+</span>
+              <span class="allergy-badge"><i class="fa-solid fa-triangle-exclamation"></i> Allergy: Sulfonamides</span>
+              <span class="donor-badge"><i class="fa-solid fa-ribbon"></i> UNOS Organ Donor Active</span>
+            </div>
+            
+            <div class="attending-info">
+              <i class="fa-solid fa-user-doctor"></i> Attending: <strong>Dr. Nusrat Jahan, MD</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search and Filter Bar -->
+        <div class="filter-bar">
+          <div class="filter-search-input">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search procedures, CPT codes (e.g. 47562), or surgeons...">
+          </div>
+
+          <div class="filter-pills">
+            <button class="filter-pill active">All Procedures (3)</button>
+            <button class="filter-pill">Major Surgery</button>
+            <button class="filter-pill">Outpatient / Ambulatory</button>
+            <button class="filter-pill">Diagnostic</button>
+            <button class="download-icon-btn"><i class="fa-solid fa-download"></i></button>
+          </div>
+        </div>
+
+        <!-- Surgery Record Item 1 -->
+        <div class="surgery-card border-green">
+          <div class="surgery-card-header">
+            <div class="header-tags">
+              <span class="tag tag-green">Major Inpatient</span>
+              <span class="cpt-code">CPT 47562</span>
+              <span class="meta-dot">&bull;</span>
+              <span class="record-date">Aug 14, 2021 (Age 33)</span>
+            </div>
+
+            <div class="verified-badge">
+              <i class="fa-solid fa-circle-check"></i> Verified OP-Note <strong>#SURG-8812</strong>
+              <div class="facility-info">Square Hospital &bull; OR 4</div>
+            </div>
+          </div>
+
+          <h3 class="surgery-title">Laparoscopic Cholecystectomy</h3>
+          <p class="surgery-indication"><strong>Indication:</strong> Symptomatic Cholelithiasis with recurrent biliary colic</p>
+
+          <div class="details-grid">
+            <div class="detail-col">
+              <label>SURGICAL TEAM</label>
+              <div class="detail-val">Dr. Tariqul Islam, FCPS, FACS</div>
+              <div class="detail-sub">Chief of General Surgery</div>
+            </div>
+
+            <div class="detail-col">
+              <label>ANESTHESIA ADMINISTERED</label>
+              <div class="detail-val">General Endotracheal (GETA)</div>
+              <div class="detail-sub">Agent: Sevoflurane / Fentanyl</div>
+            </div>
+
+            <div class="detail-col">
+              <label>INTRA-OP BLOOD LOSS</label>
+              <div class="detail-val">&lt; 25 mL (Minimal)</div>
+              <div class="detail-sub">No transfusion required</div>
+            </div>
+          </div>
+
+          <div class="findings-box">
+            <p><strong>Findings:</strong> Chronic cholecystitis with multiple faceted pigmented calculi without perforation or gangrenous changes. Cystic duct and artery doubly clipped and divided safely. Specimen retrieved via Endobag and sent to surgical pathology.</p>
+            <p><strong>Post-Op Course:</strong> Uneventful PACU recovery. Tolerated oral clear liquids POD 0. Incisions clean, dry, and intact. Discharged POD 1 in stable condition. Pathology confirmed chronic cholecystitis, benign.</p>
+          </div>
+
+          <div class="surgery-card-footer">
+            <div class="technique-tags">
+              <span class="tech-tag">Incision: 4-Port Laparoscopy</span>
+              <span class="tech-tag">Closure: Monocryl 4-0 &amp; Dermabond</span>
+            </div>
+            <a href="#" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Full Operative Sheet</a>
+          </div>
+        </div>
+
+        <!-- Surgery Record Item 2 -->
+        <div class="surgery-card border-blue">
+          <div class="surgery-card-header">
+            <div class="header-tags">
+              <span class="tag tag-blue">Outpatient Orthopedic</span>
+              <span class="cpt-code">CPT 29881 (Left Knee)</span>
+              <span class="meta-dot">&bull;</span>
+              <span class="record-date">March 22, 2015 (Age 27)</span>
+            </div>
+
+            <div class="verified-badge">
+              <i class="fa-solid fa-circle-check"></i> Verified OP-Note <strong>#ORTH-3310</strong>
+              <div class="facility-info">Dhaka Medical College &bull; Ambulatory Ste 2</div>
+            </div>
+          </div>
+
+          <h3 class="surgery-title">Diagnostic Knee Arthroscopy &amp; Partial Medial Meniscectomy</h3>
+          <p class="surgery-indication"><strong>Indication:</strong> Complex tear of posterior horn medial meniscus post athletic injury</p>
+
+          <div class="details-grid">
+            <div class="detail-col">
+              <label>SURGEON</label>
+              <div class="detail-val">Dr. Mahmudul Hasan, MS</div>
+              <div class="detail-sub">Orthopedic Sports Medicine</div>
+            </div>
+
+            <div class="detail-col">
+              <label>ANESTHESIA</label>
+              <div class="detail-val">Spinal with Monitored Care (MAC)</div>
+              <div class="detail-sub">Bupivacaine 0.5% + Midazolam</div>
+            </div>
+
+            <div class="detail-col">
+              <label>TOURNIQUET TIME</label>
+              <div class="detail-val">32 Minutes</div>
+              <div class="detail-sub">Pressurized 250 mmHg</div>
+            </div>
+          </div>
+
+          <div class="findings-box">
+            <p><strong>Findings:</strong> Anterolateral &amp; anteromedial portals established. Unstable flap tear noted on the posterior third of medial meniscus. ACL and PCL intact. Debridement back to stable contoured rim. Articular cartilage preserved with mild Grade I chondromalacia on patellar facet.</p>
+            <p><strong>Rehabilitation:</strong> Discharged same day with hinged knee brace locked in extension for ambulation. Completed 8 weeks of progressive physical therapy. Regained 135&deg; flexion with zero residual instability.</p>
+          </div>
+
+          <div class="surgery-card-footer">
+            <div class="technique-tags">
+              <span class="tech-tag">Gait Analysis: Normal</span>
+              <span class="tech-tag">No Hardware Implantation</span>
+            </div>
+            <a href="#" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Arthroscopy Images</a>
+          </div>
+        </div>
+
+        <!-- Surgery Record Item 3 -->
+        <div class="surgery-card border-gray">
+          <div class="surgery-card-header">
+            <div class="header-tags">
+              <span class="tag tag-gray">Pediatric Ambulatory</span>
+              <span class="cpt-code">CPT 42820</span>
+              <span class="meta-dot">&bull;</span>
+              <span class="record-date">June 10, 2004 (Age 16)</span>
+            </div>
+
+            <div class="archived-badge">
+              <i class="fa-solid fa-box-archive"></i> Archived EMR <strong>#ENT-0402</strong>
+              <div class="facility-info">BSMMU Pediatric Hospital</div>
+            </div>
+          </div>
+
+          <h3 class="surgery-title">Outpatient Tonsillectomy &amp; Adenoidectomy (T&amp;A)</h3>
+          <p class="surgery-indication"><strong>Indication:</strong> Recurrent Group A beta-hemolytic streptococcal pharyngitis &amp; tonsillar hypertrophy</p>
+
+          <div class="details-grid">
+            <div class="detail-col">
+              <label>LEAD SURGEON</label>
+              <div class="detail-val">Dr. Anisur Rahman, ENT</div>
+              <div class="detail-sub">Otolaryngology Specialist</div>
+            </div>
+
+            <div class="detail-col">
+              <label>TECHNIQUE</label>
+              <div class="detail-val">Electrocautery Dissection</div>
+              <div class="detail-sub">Bovie Coagulation &amp; Suction</div>
+            </div>
+
+            <div class="detail-col">
+              <label>OUTCOME</label>
+              <div class="detail-val text-green">Cured / Resolved</div>
+              <div class="detail-sub">Zero recurrences post-procedure</div>
+            </div>
+          </div>
+
+          <div class="findings-box">
+            <p><strong>Clinical Notes:</strong> Bilateral palatine tonsils and adenoidal tissue excised without primary hemorrhage. Hemostasis secured with packing and electrocautery. Discharge same afternoon. Complete pediatric resolution documented at 6-month wellness review.</p>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+</body>
+</html>

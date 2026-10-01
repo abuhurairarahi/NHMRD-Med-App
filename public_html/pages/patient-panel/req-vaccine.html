@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Vaccine & Immunization Dose - NHMRD</title>
+  <link rel="stylesheet" href="/public_html/assets/css/patient-panel/req-vaccine.css">
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/patient-panel/features/patient-header.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <aside class="sidebar patient">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="/public_html/pages/Patient-panel/dashboard.html" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i> 
+          <span>Dashboard</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/prescription-record.html" class="nav-item">
+          <i class="fa-solid fa-file-prescription"></i> 
+          <span>Prescription Records</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/surgary-record.html" class="nav-item">
+          <i class="fa-solid fa-scalpel"></i> 
+          <span>Surgery Records</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/lab-test.html" class="nav-item">
+          <i class="fa-solid fa-vial"></i> 
+          <span>Test Records</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/vaccine-panel.html" class="nav-item active">
+          <i class="fa-solid fa-syringe"></i> 
+          <span>Vaccine Records</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/req-appointment.html" class="nav-item">
+          <i class="fa-solid fa-calendar-plus"></i> 
+          <span>Request Appointment</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/medical-test-req.html" class="nav-item">
+          <i class="fa-solid fa-notes-medical"></i> 
+          <span>Request Medical Test</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/req-vaccine.html" class="nav-item">
+          <i class="fa-solid fa-shield-virus"></i> 
+          <span>Request Vaccine</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/paitent-info.html" class="nav-item">
+          <i class="fa-solid fa-id-card"></i> 
+          <span>Patient Info</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn" onclick="handleLogout()">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="patient-header">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search Queries" oninput="handleGlobalSearch(event)">
+        </div>
+
+        <div class="header-right">
+          <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+          <div class="user-badge-avatar">SR</div>
+          <span class="user-name">Shishir Rahaman</span>
+        </div>
+      </header>
+
+      <main class="content-body">
+
+        <div class="page-banner">
+          <div class="banner-icon-box">
+            <i class="fa-solid fa-syringe"></i>
+          </div>
+          <div class="banner-text">
+            <h1>Book Vaccine & Immunization Dose</h1>
+            <p>Government-approved vaccination centers, batch-certified doses, and automated digital immunization tracking.</p>
+          </div>
+        </div>
+
+        <div class="vaccine-grid">
+
+          <div class="vaccine-left-col">
+            
+            <div class="section-header">
+              <div class="section-title">
+                <h2>Available Vaccines</h2>
+                <span class="count-badge">4 Available</span>
+              </div>
+              <span class="section-subtitle">Click to select vaccine dose</span>
+            </div>
+
+            <div class="vaccine-list">
+
+              <div class="vaccine-card selected" onclick="selectVaccine(this, 'Influenza Seasonal Quadrivalent', '#BN-883902')">
+                <div class="vaccine-card-left">
+                  <div class="vaccine-icon-box blue-bg">
+                    <i class="fa-solid fa-shield-virus"></i>
+                  </div>
+                  <div class="vaccine-details">
+                    <div class="title-row">
+                      <h3>Influenza Seasonal Vaccine</h3>
+                      <span class="status-pill blue-pill">Eligible for Booking</span>
+                    </div>
+                    <div class="tag-row">
+                      <span class="tag-badge red-tag">Due This Autumn</span>
+                    </div>
+                    <p class="description">
+                      Quadrivalent formulation protecting against H1N1, H3N2, and Victoria lineages. Annual preventive dose.
+                    </p>
+                    <div class="meta-row">
+                      <span><i class="fa-regular fa-clock"></i> Batch #BN-883902</span>
+                      <span><i class="fa-solid fa-box-archive"></i> Stock: 48 units</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="vaccine-card-right">
+                  <i class="fa-solid fa-circle-check radio-icon checked"></i>
+                </div>
+              </div>
+
+              <div class="vaccine-card" onclick="selectVaccine(this, 'Hepatitis B Booster Dose', '#BN-441029')">
+                <div class="vaccine-card-left">
+                  <div class="vaccine-icon-box light-blue-bg">
+                    <i class="fa-solid fa-wave-square"></i>
+                  </div>
+                  <div class="vaccine-details">
+                    <div class="title-row">
+                      <h3>Hepatitis B Booster Dose</h3>
+                      <span class="tag-badge blue-tag-light">Titer Valid</span>
+                      <span class="status-pill light-blue-pill">Optional Booster</span>
+                    </div>
+                    <p class="description">
+                      Recombinant DNA hepatitis vaccine for extended immunity reinforcement. Recommended for clinical/high-exposure contexts.
+                    </p>
+                    <div class="meta-row">
+                      <span><i class="fa-regular fa-clock"></i> Batch #BN-441029</span>
+                      <span><i class="fa-solid fa-box-archive"></i> Stock: 120 units</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="vaccine-card-right">
+                  <i class="fa-regular fa-circle radio-icon"></i>
+                </div>
+              </div>
+
+              <div class="vaccine-card" onclick="selectVaccine(this, 'COVID-19 Updated Bivalent Booster', '#BN-910283')">
+                <div class="vaccine-card-left">
+                  <div class="vaccine-icon-box light-blue-bg">
+                    <i class="fa-solid fa-viruses"></i>
+                  </div>
+                  <div class="vaccine-details">
+                    <div class="title-row">
+                      <h3>COVID-19 Updated Bivalent Booster</h3>
+                      <span class="status-pill blue-pill font-small">Available</span>
+                    </div>
+                    <div class="tag-row">
+                      <span class="tag-badge blue-tag-light">Standard Schedule</span>
+                    </div>
+                    <p class="description">
+                      Updated spike variant booster. Provides sustained neutralizing antibody response against circulating strains.
+                    </p>
+                    <div class="meta-row">
+                      <span><i class="fa-regular fa-clock"></i> Batch #BN-910283</span>
+                      <span><i class="fa-solid fa-box-archive"></i> Stock: 85 units</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="vaccine-card-right">
+                  <i class="fa-regular fa-circle radio-icon"></i>
+                </div>
+              </div>
+
+              <div class="vaccine-card" onclick="selectVaccine(this, 'Typhoid / Pneumococcal Conjugate', '#BN-230911')">
+                <div class="vaccine-card-left">
+                  <div class="vaccine-icon-box light-blue-bg">
+                    <i class="fa-solid fa-bacteria"></i>
+                  </div>
+                  <div class="vaccine-details">
+                    <div class="title-row">
+                      <h3>Typhoid / Pneumococcal Conjugate</h3>
+                      <span class="status-pill gray-pill">Available on Request</span>
+                    </div>
+                    <div class="tag-row">
+                      <span class="tag-badge gray-tag">On-Demand</span>
+                    </div>
+                    <p class="description">
+                      Protective conjugate polysaccharide vaccine covering prominent invasive serotypes and typhoid bacterial markers.
+                    </p>
+                    <div class="meta-row">
+                      <span><i class="fa-regular fa-clock"></i> Batch #BN-230911</span>
+                      <span><i class="fa-solid fa-box-archive"></i> Stock: 18 units</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="vaccine-card-right">
+                  <i class="fa-regular fa-circle radio-icon"></i>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="vaccine-right-col">
+            
+            <div class="card scheduling-card">
+              <div class="scheduling-header">
+                <div class="sched-title">
+                  <i class="fa-regular fa-calendar-check"></i>
+                  <h2>Appointment Scheduling</h2>
+                </div>
+                <span class="step-pill">Step 2 of 2</span>
+              </div>
+
+              <div class="selected-imm-box">
+                <div class="imm-info">
+                  <span class="imm-label">SELECTED IMMUNIZATION</span>
+                  <strong class="imm-name">Influenza Seasonal Quadrivalent</strong>
+                  <span class="imm-meta">Batch: #BN-883902 &bull; IM 0.5 mL</span>
+                </div>
+                <button class="change-btn" onclick="changeVaccineSelection()"><i class="fa-solid fa-pen-to-square"></i></button>
+              </div>
+
+              <div class="form-group margin-top-md">
+                <div class="label-with-badge">
+                  <label>Authorized Medical Center</label>
+                  <span class="verified-text"><i class="fa-solid fa-shield-check"></i> Verified Facility</span>
+                </div>
+                <div class="select-wrapper">
+                  <i class="fa-solid fa-hospital input-left-icon"></i>
+                  <select>
+                    <option selected>LABAID Specialized Hospital - Vaccination Desk</option>
+                    <option>Square Hospital Vaccination Center</option>
+                    <option>Evercare Hospital Dhaka</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down select-icon"></i>
+                </div>
+              </div>
+
+              <div class="datetime-grid margin-top-md">
+                <div class="form-group flex-1">
+                  <label>Target Date</label>
+                  <div class="input-with-icon">
+                    <i class="fa-regular fa-calendar input-left-icon"></i>
+                    <input type="text" value="25-09-2026">
+                  </div>
+                </div>
+                <div class="form-group flex-1">
+                  <label>Time Slot</label>
+                  <div class="select-wrapper">
+                    <i class="fa-regular fa-clock input-left-icon"></i>
+                    <select>
+                      <option selected>11:30 AM - 12:30 PM</option>
+                      <option>09:00 AM - 10:00 AM</option>
+                      <option>02:00 PM - 03:00 PM</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down select-icon"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="recipient-box margin-top-md">
+                <div class="recipient-header">
+                  <span class="rec-label">RECIPIENT PROFILE</span>
+                  <span class="nhmrd-id">NHMRD ID #48291</span>
+                </div>
+                <div class="recipient-body">
+                  <div class="user-avatar-blue">SR</div>
+                  <div class="recipient-details">
+                    <strong class="rec-name">Shishir Rahaman</strong>
+                    <div class="rec-meta">
+                      <span>NID: 0123456789</span>
+                      <span>DOB: 21-04-1990</span>
+                    </div>
+                    <span class="blood-tag">Blood: <strong>AB+</strong></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="declaration-box margin-top-md">
+                <input type="checkbox" id="declCheck" checked>
+                <label for="declCheck">
+                  I hereby declare that I currently have <strong>no active fever, acute respiratory symptoms</strong>, nor any known history of severe anaphylaxis/allergies to previous vaccine ingredients.
+                </label>
+              </div>
+
+              <button class="btn-confirm-appointment margin-top-md" onclick="confirmVaccineAppointment()">
+                <i class="fa-regular fa-calendar-check"></i> Confirm Vaccine Appointment
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="card guidelines-card">
+          <div class="guidelines-header">
+            <i class="fa-regular fa-circle-info"></i>
+            <h3>Vaccination Guidelines & Pre-arrival Instructions</h3>
+          </div>
+          <div class="guidelines-grid">
+            <div class="guide-item">
+              <i class="fa-regular fa-circle-check guide-icon"></i>
+              <div>
+                <strong>Hydration:</strong> Drink plenty of water before arrival and ensure you have eaten a light meal.
+              </div>
+            </div>
+            <div class="guide-item">
+              <i class="fa-solid fa-id-card guide-icon"></i>
+              <div>
+                <strong>Identification:</strong> Carry your Physical NID or show NHMRD Digital Patient QR at desk.
+              </div>
+            </div>
+            <div class="guide-item">
+              <i class="fa-regular fa-clock guide-icon"></i>
+              <div>
+                <strong>Observation:</strong> Mandatory 15-minute post-injection observation period at the facility.
+              </div>
+            </div>
+            <div class="guide-item">
+              <i class="fa-solid fa-check-double guide-icon"></i>
+              <div>
+                <strong>Digital Certificate:</strong> The vaccination certificate will sync automatically to Vaccine Records.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="/public_html/assets/js/sspaitent/vaccine.js"></script>
+</body>
+</html>

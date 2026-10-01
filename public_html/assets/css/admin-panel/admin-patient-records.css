@@ -1,0 +1,519 @@
+:root {
+    --bg-main: #f0fbfe;
+    --bg-sidebar: #005a70;
+    --bg-card: #ffffff;
+    --header-color: #f3fdff;
+    --sidebar-admin: #034c53;
+
+    --text-primary: #0f172a;
+    --text-muted: #475569;
+
+    --primary-color: #007084;
+    --primary-light: #e6f4f8;
+    --accent-cyan: #e0f7fa;
+
+    --danger-color: #ef4444;
+    --danger-bg: #fee2e2;
+
+    --warning-color: #f59e0b;
+    --warning-bg: #fef3c7;
+
+    --success-color: #10b981;
+    --success-bg: #d1fae5;
+
+    --info-color: #3b82f6;
+    --info-bg: #dbeafe;
+
+    --teal-brand: #0f766e;
+    --teal-light: #ccfbf1;
+    --teal-pill: #14b8a6;
+
+    --border-color: #e2e8f0;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+}
+
+/* =========================
+   Dashboard
+========================= */
+
+.dashboard-body {
+    padding: 20px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+/* =========================
+   Metric Cards
+========================= */
+
+.metric-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #e6f6f9;
+    border: 1px solid #d0f0f5;
+    border-radius: 12px;
+    position: relative;
+}
+
+.metric-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.metric-icon-box {
+    width: 36px;
+    height: 36px;
+    background-color: #005a70;
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.metric-badge {
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.metric-badge.green {
+    background-color: #007084;
+    color: #ffffff;
+}
+
+.metric-badge.teal {
+    background-color: #005a70;
+    color: #ffffff;
+}
+
+.metric-badge.light-green {
+    background-color: #a7f3d0;
+    color: #065f46;
+}
+
+.metric-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 2px;
+}
+
+.metric-value {
+    font-size: 24px;
+    font-weight: 800;
+    color: #003344;
+    margin-bottom: 8px;
+}
+
+.metric-sub {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.metric-sub .highlight {
+    color: #0f766e;
+    font-weight: 700;
+}
+
+/* =========================
+   Patient Filter
+========================= */
+
+.patient-filter-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 12px 18px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.filter-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.patient-title-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.patient-title-group h2 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #034c53;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.badge-count {
+    background-color: #6ee7b7;
+    color: #064e3b;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+.filter-options-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 11px;
+    color: #475569;
+    font-weight: 600;
+}
+
+.filter-select-link {
+    color: #0f172a;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 700;
+}
+
+.filter-inputs-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-patient-input {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 20px;
+    padding: 8px 14px;
+    gap: 8px;
+    color: #64748b;
+    font-size: 12px;
+}
+
+.search-patient-input input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 11px;
+    color: #0f172a;
+}
+
+.filter-pill-dropdown {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    padding: 6px 14px;
+    border-radius: 18px;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    border: none;
+    white-space: nowrap;
+}
+
+/* =========================
+   Patient Table
+========================= */
+
+.table-container {
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.patient-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 11px;
+}
+
+.patient-table th {
+    background-color: #e6f6f9;
+    color: #334155;
+    font-weight: 700;
+    padding: 12px 14px;
+    border-bottom: 1px solid #cbd5e1;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    font-size: 10px;
+}
+
+.patient-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+    color: #334155;
+}
+
+.patient-table tr:hover {
+    background-color: #f8fafc;
+}
+
+/* =========================
+   Patient Identity
+========================= */
+
+.patient-identity-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.patient-avatar-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #003344;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.patient-info-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.patient-name-title {
+    font-size: 12px;
+    font-weight: bold;
+    color: #0f172a;
+}
+
+.patient-sub-meta {
+    font-size: 10px;
+    color: #64748b;
+}
+
+/* =========================
+   Blood Group
+========================= */
+
+.blood-pill {
+    background-color: #6ee7b7;
+    color: #064e3b;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 14px;
+    font-size: 10px;
+    display: inline-block;
+    text-align: center;
+    min-width: 36px;
+}
+
+/* =========================
+   Hospital
+========================= */
+
+.hospital-cell {
+    display: flex;
+    flex-direction: column;
+}
+
+.hospital-name {
+    font-weight: 700;
+    color: #0f172a;
+    font-size: 11px;
+}
+
+.hospital-div {
+    font-size: 10px;
+    color: #64748b;
+}
+
+/* =========================
+   Verification
+========================= */
+
+.verification-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.status-tag-pill {
+    background-color: #6ee7b7;
+    color: #064e3b;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 9px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    width: fit-content;
+}
+
+.verif-detail {
+    font-size: 10px;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* =========================
+   Login Status
+========================= */
+
+.login-cell {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-time {
+    font-weight: bold;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.login-time .dot {
+    width: 6px;
+    height: 6px;
+    background-color: #10b981;
+    border-radius: 50%;
+}
+
+/* =========================
+   Active Status
+========================= */
+
+.badge-active {
+    background-color: #6ee7b7;
+    color: #047857;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 10px;
+    display: inline-block;
+}
+
+/* =========================
+   Action Buttons
+========================= */
+
+.action-icon-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-action-icon {
+    width: 26px;
+    height: 26px;
+    background-color: #e0f2fe;
+    color: #0284c7;
+    border: none;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 11px;
+    transition: all 0.15s;
+}
+
+.btn-action-icon:hover {
+    background-color: #0284c7;
+    color: #ffffff;
+}
+
+/* =========================
+   Pagination
+========================= */
+
+.pagination-footer {
+    background-color: #e6f6f9;
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #cbd5e1;
+    font-size: 11px;
+    color: #475569;
+    font-weight: 600;
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.page-btn {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    background: #ffffff;
+    color: #334155;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.page-btn.active {
+    background-color: #034c53;
+    color: #ffffff;
+}
+
+.page-btn:hover:not(.active) {
+    background-color: #cbd5e1;
+}
+
+.page-ellipsis {
+    padding: 0 4px;
+    color: #64748b;
+}
+

@@ -1,0 +1,483 @@
+:root {
+  --bg-main: #f0f4f8;
+   --bg-sidebar: #4b88d4;
+  --bg-card: #ffffff;
+  --text-primary: #1e293b;
+  --text-muted: #64748b;
+  --primary-blue: #1d5ec2;
+  --primary-light: #e6f4f8;
+  --accent-cyan: #e0f7fa;
+  --danger-color: #ef4444;
+  --danger-bg: #fee2e2;
+  --warning-color: #f59e0b;
+  --warning-bg: #fef3c7;
+  --success-color: #10b981;
+  --success-bg: #d1fae5;
+  --info-color: #3b82f6;
+  --info-bg: #dbeafe;
+  --border-color: #e2e8f0;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
+
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.4;
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+
+
+/* Dashboard Body */
+.dashboard-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.page-title-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sub-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary-color);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.page-title-section h1 {
+  font-size: 22px;
+  color: #0f172a;
+}
+
+.btn-download-card {
+  background-color:  #1d5ec2;;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Common Card Base */
+.card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+/* Patient Profile Banner */
+.patient-header-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: linear-gradient(135deg, #eaf4f8 0%, #dbeafe 100%);
+  border: 1px solid #cbd5e1;
+}
+
+.patient-main-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.patient-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.patient-details h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge-status {
+  font-size: 10px;
+  background-color: #1d5ec2;;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.patient-meta-text {
+  color: var(--text-muted);
+  font-size: 12px;
+  margin: 4px 0 8px;
+}
+
+.pills-container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 14px;
+  font-weight: 600;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+}
+
+.pill.pill-danger {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+}
+
+.registry-otp-box {
+  background: white;
+  border: 1px solid #cbd5e1;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 200px;
+}
+
+.qr-icon {
+  font-size: 28px;
+  color: #0f172a;
+}
+
+.otp-text span {
+  display: block;
+}
+
+.otp-title {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text-muted);
+}
+
+.otp-val {
+  font-size: 12px;
+  font-weight: 700;
+  color: #005a70;
+}
+
+.otp-sub {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* 2 Column Layout */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 16px;
+}
+
+.contact-card {
+  margin-bottom: 16px;
+}
+
+.panel-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.panel-section-header h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.btn-action-sm {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-primary);
+}
+
+.contact-item {
+  background-color: #f8fafc;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-item i {
+  color: var(--text-muted);
+  width: 16px;
+}
+
+.contact-item .label {
+  font-size: 11px;
+  color: var(--text-muted);
+  flex: 1;
+}
+
+.contact-item .val {
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.address-card {
+  background-color: #f8fafc;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+}
+
+.address-card .title {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.address-sub {
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+/* Donor Card Section */
+.btn-add-donor {
+  background-color:  #1d5ec2;;
+  color: white;
+  border: none;
+}
+
+.donor-sub {
+  font-size: 11px;
+  margin-bottom: 10px;
+}
+
+.donor-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f8fafc;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  margin-top: 10px;
+}
+
+.donor-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.blood-badge {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+}
+
+.badge-verified {
+  background-color: #10b981;
+  font-size: 9px;
+}
+
+.donor-contact {
+  font-size: 10px;
+  margin-top: 2px;
+}
+
+/* Vitals Section */
+.last-synced {
+  font-size: 10px;
+}
+
+.vitals-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.vital-box {
+  background-color: #f8fafc;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.vital-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.vital-value {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.unit-text {
+  font-size: 11px;
+}
+
+.vital-status {
+  font-size: 10px;
+  color: var(--success-color);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.status-bmi {
+  color: #3b82f6;
+}
+
+/* Table Styles */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  margin-bottom: 12px;
+}
+
+.data-table th, .data-table td {
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.data-table th {
+  background-color: #e2e8f0;
+  color: var(--text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.table-summary {
+  display: flex;
+  justify-content: space-between;
+  background-color: #eaf4f8;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Footer Action Banner */
+.dossier-banner {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dossier-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dossier-icon {
+  width: 36px;
+  height: 36px;
+  background-color:  #1d5ec2;;
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.dossier-title {
+  font-size: 13px;
+}
+
+.dossier-sub {
+  font-size: 11px;
+}
+
+.dossier-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-dossier {
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  background: #f8fafc;
+  cursor: pointer;
+}
+
+.btn-dossier.active-btn {
+  background-color: #1d5ec2;;
+  color: white;
+  border: none;
+}
+
+/* Utilities */
+.text-danger { color: var(--danger-color); }
+.text-muted { color: var(--text-muted); }
+.text-info { color: #3b82f6; }

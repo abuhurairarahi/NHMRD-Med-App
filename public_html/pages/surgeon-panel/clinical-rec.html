@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Clinical Records</title>
+   <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Dashboard Stylesheet -->
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/clinical-rec.css">
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/features/executive-header.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar surgeon">
+      <div class="brand">
+        
+        <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>NHMRD</span>
+            </div>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="/public_html/pages/surgeon-panel/dashboard.html" class="nav-item">
+          <i class="fa-solid fa-chart-pie icon"></i> Dashboard
+        </a>
+        <a href="/public_html/pages/surgeon-panel/clinical-rec.html" class="nav-item active">
+          <i class="fa-solid fa-clipboard-list icon"></i> Clinical Records
+        </a>
+        <a href="/public_html/pages/surgeon-panel/paitent-req.html" class="nav-item">
+          <i class="fa-solid fa-user-group icon"></i> Patient Requests
+        </a>
+        <a href="/public_html/pages/surgeon-panel/doc-profile.html" class="nav-item">
+          <i class="fa-solid fa-user-doctor icon"></i> Doctor Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search patient MRN, name, vitals...">
+        </div>
+        <div class="top-bar-right">
+          <div class="shift-info">
+            <span class="clock-icon">🕒</span> Shift: Morning Clinical Rounds (07:00 - 15:30)
+          </div>
+          <div class="status-badge">
+            <span class="dot"></span> EMR Synced
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">FA</div>
+            <div class="user-info">
+              <div class="user-name">Dr. Farhana Ahmed, MD</div>
+              <div class="user-role">Internal Medicine & Therapeutics</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="content-area">
+        
+        <!-- Left Column -->
+        <div class="primary-column">
+          <div class="page-header">
+            <div class="sub-header">DIVISION OF INTERNAL MEDICINE & OUTPATIENT PHARMACOTHERAPY</div>
+            <h1>Electronic Clinical Records</h1>
+            <p class="subtitle">Longitudinal chronic care surveillance, pharmacological titration, and diagnostic metabolic tracking.</p>
+          </div>
+
+          <!-- Action Buttons Top Right -->
+          <div class="header-actions">
+            <button class="btn btn-secondary">🔄 Batch Rx Renewal</button>
+            <button class="btn btn-primary">📥 Export Clinical Summary (HL7/PDF)</button>
+          </div>
+
+          <!-- Metrics Row -->
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="metric-title">MONITORED COHORT</span>
+                <span class="metric-icon">👥</span>
+              </div>
+              <div class="metric-value">1,428 <span class="trend positive">↑ 4.2%</span></div>
+              <div class="metric-footer">Active internal medicine cases</div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="metric-title">HbA1c &lt; 7.0% CONTROL</span>
+                <span class="metric-icon">🩸</span>
+              </div>
+              <div class="metric-value">78.4% <span class="trend positive">↑ 1.9%</span></div>
+              <div class="metric-footer">Endocrine cohort target met</div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="metric-title">BP PROTOCOL TARGET</span>
+                <span class="metric-icon">❤️</span>
+              </div>
+              <div class="metric-value">84.1% <span class="sub-text">&lt;130/80 mmHg</span></div>
+              <div class="metric-footer">Hypertension care management</div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="metric-title">POLYPHARMACY REVIEWS</span>
+                <span class="metric-icon">💊</span>
+              </div>
+              <div class="metric-value">96.8% <span class="sub-text">Zero Interactions</span></div>
+              <div class="metric-footer">Adherence & Safety Cleared</div>
+            </div>
+          </div>
+
+          <!-- Search & Filter Controls -->
+          <div class="filter-bar">
+            <div class="search-input-group">
+              <span>🔍</span>
+              <input type="text" placeholder="Search by patient MRN, full name, or ICD-10 code...">
+            </div>
+            <button class="btn btn-outline">📅 Past 180 Days</button>
+            <button class="btn btn-outline">⚙️ Filters</button>
+          </div>
+
+          <div class="category-tabs">
+            <button class="tab active">All Internal Medicine</button>
+            <button class="tab">Cardiovascular (I10-I15)</button>
+            <button class="tab">Endocrine & Diabetes (E00-E13)</button>
+            <button class="tab">Respiratory</button>
+          </div>
+
+          <!-- Patient Table -->
+          <div class="table-container">
+            <div class="table-header-info">
+              <span>Active Registry Patient Roster <small>6 Cases Displayed</small></span>
+              <span>Sorted by Clinical Acuity ↕</span>
+            </div>
+            <table class="patient-table">
+              <thead>
+                <tr>
+                  <th>PATIENT IDENTIFIER</th>
+                  <th>DEMOGRAPHICS</th>
+                  <th>PRIMARY DIAGNOSIS (ICD-10)</th>
+                  <th>PHARMACOTHERAPY REGIMEN</th>
+                  <th>LATEST VITALS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="selected-row">
+                  <td>
+                    <div class="patient-cell">
+                      <div class="avatar bg-crimson">A</div>
+                      <div>
+                        <strong>Amina Begum</strong>
+                        <div class="mrn">MRN-784019</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>58 yrs<br>Female</td>
+                  <td>Type 2 Diabetes Mellitus<br><span class="icd-tag">ICD-10: E11.9</span></td>
+                  <td>Metformin 1000mg BID<br>+ Empagliflozin 10mg QD</td>
+                  <td>
+                    <strong>128/82 mmHg</strong><br>
+                    HR 72 | BMI 27.4 | SpO2 98%
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="patient-cell">
+                      <div class="avatar bg-blue">T</div>
+                      <div>
+                        <strong>Tariqul Islam</strong>
+                        <div class="mrn">MRN-642104</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>64 yrs<br>Male</td>
+                  <td>Essential Hypertension<br><span class="icd-tag">ICD-10: I10</span></td>
+                  <td>Lisinopril 20mg QD<br>+ Amlodipine 5mg QD</td>
+                  <td>
+                    <strong>136/88 mmHg</strong><br>
+                    HR 68 | BMI 29.1 | SpO2 97%
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="patient-cell">
+                      <div class="avatar bg-purple">N</div>
+                      <div>
+                        <strong>Nusrat Jahan</strong>
+                        <div class="mrn">MRN-902381</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>42 yrs<br>Female</td>
+                  <td>Hypothyroidism<br><span class="icd-tag">ICD-10: E03.9</span></td>
+                  <td>Levothyroxine 75mcg QD<br><small>Fast morning oral dosing</small></td>
+                  <td>
+                    <strong>118/76 mmHg</strong><br>
+                    HR 64 | BMI 23.8 | SpO2 99%
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="patient-cell">
+                      <div class="avatar bg-green">R</div>
+                      <div>
+                        <strong>Rafiqul Rahman</strong>
+                        <div class="mrn">MRN-554289</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>51 yrs<br>Male</td>
+                  <td>Rheumatoid Arthritis<br><span class="icd-tag">ICD-10: M06.9</span></td>
+                  <td>Methotrexate 15mg Weekly<br>+ Folic Acid 5mg Weekly</td>
+                  <td>
+                    <strong>124/80 mmHg</strong><br>
+                    HR 74 | BMI 25.8 | SpO2 98%
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="patient-cell">
+                      <div class="avatar bg-orange">S</div>
+                      <div>
+                        <strong>Sultana Chowdhury</strong>
+                        <div class="mrn">MRN-331092</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>36 yrs<br>Female</td>
+                  <td>Moderate Persistent Asthma<br><span class="icd-tag">ICD-10: J45.40</span></td>
+                  <td>Fluticasone/Salmeterol 250/50<br><small>Inhaled DPI 1 puff BID</small></td>
+                  <td>
+                    <strong>114/72 mmHg</strong><br>
+                    HR 70 | BMI 22.3 | SpO2 96%
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="patient-cell">
+                      <div class="avatar bg-dark">K</div>
+                      <div>
+                        <strong>Kazi Mahbub Hassan</strong>
+                        <div class="mrn">MRN-819230</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>69 yrs<br>Male</td>
+                  <td>Hyperlipidemia, Mixed<br><span class="icd-tag">ICD-10: E78.2</span></td>
+                  <td>Atorvastatin 40mg QHS<br>+ Ezetimibe 10mg QD</td>
+                  <td>
+                    <strong>132/84 mmHg</strong><br>
+                    HR 76 | BMI 28.6 | SpO2 97%
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <div class="pagination">
+              <span>Showing 1 to 6 of 1,428 internal medicine patient records</span>
+              <div class="pages">
+                <button class="page-btn">&lt;</button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">&gt;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side Panel (Selected Patient Detail) -->
+        <aside class="detail-panel">
+          <div class="patient-profile-card">
+            <div class="avatar lg bg-crimson">A</div>
+            <div class="profile-details">
+              <h3>Amina Begum</h3>
+              <p>MRN-784019 • DOB: 11/14/1965 (58y)</p>
+              <p><strong>Attending:</strong> Dr. Farhana Ahmed, MD</p>
+            </div>
+            <span class="status-chip">Managed</span>
+          </div>
+
+          <div class="panel-section">
+            <div class="section-title">
+              <span>Active Pharmacotherapy</span>
+              <span class="badge success">Drug-Drug: All Clear</span>
+            </div>
+
+            <div class="medication-card">
+              <div class="med-header">
+                <strong>Metformin Hydrochloride</strong>
+                <span class="status-tag adherent">Adherent</span>
+              </div>
+              <p>1000 mg • Oral Tablet • BID with meals</p>
+              <span class="refill-date">Refill: Nov 25</span>
+            </div>
+
+            <div class="medication-card">
+              <div class="med-header">
+                <strong>Empagliflozin (Jardiance)</strong>
+                <span class="status-tag adherent">Adherent</span>
+              </div>
+              <p>10mg • Oral Tablet • QD in morning</p>
+              <span class="refill-date">Refill: Dec 02</span>
+            </div>
+
+            <div class="medication-card">
+              <div class="med-header">
+                <strong>Lisinopril</strong>
+                <span class="status-tag adherent">Adherent</span>
+              </div>
+              <p>10 mg • Oral Tablet • QD morning</p>
+              <span class="refill-date">Refill: Nov 18</span>
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <div class="section-title">
+              <span>Diagnostic Lab History</span>
+              <span class="date-sub">Specimen: Oct 20, 2026</span>
+            </div>
+
+            <div class="lab-grid">
+              <div class="lab-item">
+                <span class="lab-label">HbA1c</span>
+                <span class="lab-value">6.8%</span>
+                <span class="lab-status text-success">&lt;7.0% (Controlled)</span>
+              </div>
+              <div class="lab-item">
+                <span class="lab-label">eGFR</span>
+                <span class="lab-value">86</span>
+                <span class="lab-status">mL/min/1.73m² (Normal)</span>
+              </div>
+              <div class="lab-item">
+                <span class="lab-label">LDL-C</span>
+                <span class="lab-value">88</span>
+                <span class="lab-status">mg/dL (&lt;100 Target)</span>
+              </div>
+            </div>
+
+            <div class="lab-footer-notes">
+              <div><strong>TSH (Reflex):</strong> 2.14 mIU/L</div>
+              <div><strong>CMP & Lipid:</strong> Evaluated</div>
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <div class="section-title">
+              <span>Clinical SOAP Note</span>
+              <span class="date-sub">Encounter: Routine Outpatient</span>
+            </div>
+
+            <div class="soap-note">
+              <div class="soap-block">
+                <strong>SUBJECTIVE:</strong>
+                <p>Patient reports strict adherence to low-glycemic dietary regimen. No symptoms of hypoglycemia, dizziness, or peripheral edema noted. Home blood glucose log reviewed (fasting average: 115-122 mg/dL).</p>
+              </div>
+
+              <div class="soap-block">
+                <strong>OBJECTIVE:</strong>
+                <p>BP: 128/82 mmHg right arm sitting. Heart sounds regular S1/S2 without murmurs. Lungs clear to auscultation bilaterally. Bilateral monofilament foot exam intact with normal pedal pulses.</p>
+              </div>
+
+              <div class="soap-block">
+                <strong>ASSESSMENT:</strong>
+                <p>Type 2 Diabetes Mellitus with adequate glycemic control under dual oral therapy (Metformin + SGLT2i). Essential hypertension well-managed on ACE inhibitor monotherapy.</p>
+              </div>
+
+              <div class="soap-block">
+                <strong>PLAN:</strong>
+                <p>Maintain current pharmacological dosages. Continue daily aerobic exercise 30 min/day. Schedule routine repeat Comprehensive Metabolic Panel and microalbumin/creatinine ratio in 4 months.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-action">
+            <button class="btn btn-crimson btn-full">Append Follow-up Note 📝</button>
+          </div>
+        </aside>
+
+      </div>
+    </main>
+  </div>
+</body>
+</html>

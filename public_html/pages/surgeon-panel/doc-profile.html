@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Doctor Profile</title>
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/doc-profile.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/features/executive-header.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+  <div class="dashboard-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar surgeon">
+      <div class="brand">
+         <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>NHMRD</span>
+            </div>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="/public_html/pages/surgeon-panel/dashboard.html" class="nav-item">
+          <i class="fa-solid fa-chart-pie icon"></i> Dashboard
+        </a>
+        <a href="/public_html/pages/surgeon-panel/clinical-rec.html" class="nav-item">
+          <i class="fa-solid fa-clipboard-list icon"></i> Clinical Records
+        </a>
+        <a href="/public_html/pages/surgeon-panel/paitent-req.html" class="nav-item">
+          <i class="fa-solid fa-user-group icon"></i> Patient Requests
+        </a>
+        <a href="/public_html/pages/surgeon-panel/doc-profile.html" class="nav-item active">
+          <i class="fa-solid fa-user-doctor icon"></i> Doctor Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search patient MRN, name, vitals...">
+        </div>
+        <div class="top-bar-right">
+          <div class="shift-info">
+            <span class="clock-icon">🕒</span> Shift: Morning Clinical Rounds (07:00 - 15:30)
+          </div>
+          <div class="status-badge">
+            <span class="dot"></span> EMR Synced
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">TA</div>
+            <div class="user-info">
+              <div class="user-name">Dr. Tanzim Ahmed, MD</div>
+              <div class="user-role">General Surgery & Surgical Oncology</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="content-area">
+        
+        <div class="profile-scroll-container">
+          
+          <!-- Doctor Header Card -->
+          <div class="doctor-header-card">
+            <div class="doctor-avatar-container">
+              <div class="doc-avatar-placeholder">TA</div>
+              <span class="online-indicator"></span>
+            </div>
+            
+            <div class="doctor-main-info">
+              <div class="badges-row">
+                <span class="tag tag-green">ATTENDING SURGEON</span>
+                <span class="tag tag-blue">FACULTY FELLOW (FACS)</span>
+                <span class="tag tag-gray">EPCS TIER-3 ACTIVE</span>
+              </div>
+              
+              <h1>Dr. Tanzim Ahmed, MD, FACS</h1>
+              <p class="doc-subtitle">Board Certified General Surgery & Surgical Oncology</p>
+              
+              <div class="doc-meta-details">
+                <span>Doctor ID: SUR-1849204812</span>
+                <span>•</span>
+                <span>Doctor Type: General Surgeon</span>
+                <span>•</span>
+                <span>Hospital: NHMRD Central Hospital</span>
+              </div>
+            </div>
+
+            <div class="doctor-header-actions">
+              <button class="btn btn-crimson">Edit Profile</button>
+              <button class="btn btn-outline">Credential Packet</button>
+            </div>
+          </div>
+
+          <!-- Quick Metrics Ribbon -->
+          <div class="metrics-ribbon">
+            <div class="ribbon-item">
+              <span class="ribbon-label">ACTIVE PANEL</span>
+              <div class="ribbon-value">2,450 <span class="trend positive">↑ 4.2%</span></div>
+              <span class="ribbon-sub">Primary Care Cohort</span>
+            </div>
+            <div class="ribbon-item">
+              <span class="ribbon-label">PRESCRIPTION ACCURACY</span>
+              <div class="ribbon-value">99.1% <span class="tier">Tier 1</span></div>
+              <span class="ribbon-sub">Zero Critical Conflicts</span>
+            </div>
+            <div class="ribbon-item">
+              <span class="ribbon-label">PATIENT EXPERIENCE</span>
+              <div class="ribbon-value">4.9</div>
+              <span class="ribbon-sub">184 Verified Consults</span>
+            </div>
+            <div class="ribbon-item">
+              <span class="ribbon-label">CLINICAL COVERING BACKUP</span>
+              <div class="backup-doc">
+                <div class="mini-avatar">FM</div>
+                <div>
+                  <strong>Dr. Faisal Mahmud</strong>
+                  <div class="ribbon-sub">IM On-Call #4409</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile Navigation Tabs -->
+          <div class="profile-tabs">
+            <button class="tab-btn active">👤 Professional Overview</button>
+            <button class="tab-btn">📅 Clinic Hours & Availability</button>
+            <button class="tab-btn">💊 Prescription & Formulary Authority</button>
+            <button class="tab-btn">📞 Telehealth & Intake Preferences</button>
+          </div>
+
+          <!-- Content Grid Layout -->
+          <div class="profile-grid">
+            
+            <!-- Left Subsections: Statement & Degrees -->
+            <div class="left-stack">
+              
+              <!-- Surgeon Statement & Subspecialties -->
+              <div class="content-card">
+                <div class="card-header-flex">
+                  <h3>Surgeon Statement & Clinical Subspecialties</h3>
+                  <span class="validation-badge">Annual Review Validated 2025</span>
+                </div>
+                
+                <p class="statement-text">
+                  Dr. Ahmed leads surgical care for complex abdominal, oncologic, and emergency cases. Her practice emphasizes evidence-based perioperative planning, multidisciplinary rounds, and postoperative recovery pathways for patients with high surgical risk.
+                </p>
+
+                <div class="subspecialties-grid">
+                  <div class="spec-box">
+                    <strong>Abdominal & Oncologic Surgery</strong>
+                    <p>Colorectal, hepatobiliary, and complex resection planning.</p>
+                  </div>
+                  <div class="spec-box">
+                    <strong>Emergency General Surgery</strong>
+                    <p>Acute abdomen, bowel obstruction, and urgent trauma stabilization.</p>
+                  </div>
+                  <div class="spec-box">
+                    <strong>Surgical Oncology &amp; Tumor Board</strong>
+                    <p>Multidisciplinary staging, neoadjuvant planning, and surgical margins review.</p>
+                  </div>
+                  <div class="spec-box">
+                    <strong>Enhanced Recovery After Surgery</strong>
+                    <p>Standardized pain protocols, early mobilization, and discharge readiness pathways.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Degrees & Education -->
+              <div class="content-card">
+                <h3>Degrees & Education</h3>
+                
+                <div class="timeline-list">
+                  <div class="timeline-item">
+                    <div class="timeline-info">
+                      <strong>MBBS</strong>
+                      <p>Bachelor of Medicine, Bachelor of Surgery<br><small>Dhaka Medical College</small></p>
+                    </div>
+                    <span class="timeline-year">2010</span>
+                  </div>
+
+                  <div class="timeline-item">
+                    <div class="timeline-info">
+                      <strong>FCPS in Surgery</strong>
+                      <p>Fellowship of the College of Physicians and Surgeons<br><small>Bangladesh College of Physicians and Surgeons (BCPS)</small></p>
+                    </div>
+                    <span class="timeline-year">2014</span>
+                  </div>
+
+                  <div class="timeline-item">
+                    <div class="timeline-info">
+                      <strong>MS in General Surgery</strong>
+                      <p>Master of Surgery in General Surgery<br><small>Bangabandhu Sheikh Mujib Medical University (BSMMU)</small></p>
+                    </div>
+                    <span class="timeline-year">2018</span>
+                  </div>
+
+                  <div class="timeline-item">
+                    <div class="timeline-info">
+                      <strong>MRCS</strong>
+                      <p>Member of the Royal College of Surgeons<br><small>Royal College of Surgeons of England</small></p>
+                    </div>
+                    <span class="timeline-year">2020</span>
+                  </div>
+
+                  <div class="timeline-item">
+                    <div class="timeline-info">
+                      <strong>FRCS</strong>
+                      <p>Fellow of the Royal College of Surgeons<br><small>Royal College of Surgeons of England</small></p>
+                    </div>
+                    <span class="timeline-year">2022</span>
+                  </div>
+
+                  <div class="timeline-item">
+                    <div class="timeline-info">
+                      <strong>FACS</strong>
+                      <p>Fellow of the American College of Surgeons<br><small>American College of Surgeons</small></p>
+                    </div>
+                    <span class="timeline-year">2023</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right Column: Weekly Routine -->
+            <div class="right-stack">
+              <div class="content-card">
+                <div class="card-header-flex">
+                  <h3>Weekly Routine</h3>
+                  <span class="dept-label">Specialty Department: General Surgery</span>
+                </div>
+
+                <div class="routine-list">
+                  <div class="routine-item">
+                    <div class="routine-day">
+                      <strong>Monday</strong>
+                      <p>Morning rounds, OR block, and afternoon consult clinic.</p>
+                    </div>
+                    <span class="routine-time">08:00 AM - 06:00 PM</span>
+                  </div>
+
+                  <div class="routine-item">
+                    <div class="routine-day">
+                      <strong>Tuesday</strong>
+                      <p>Tumor board, multidisciplinary planning, and urgent case review.</p>
+                    </div>
+                    <span class="routine-time">07:30 AM - 05:30 PM</span>
+                  </div>
+
+                  <div class="routine-item">
+                    <div class="routine-day">
+                      <strong>Wednesday</strong>
+                      <p>Elective OR schedule and postoperative follow-up rounds.</p>
+                    </div>
+                    <span class="routine-time">08:30 AM - 06:30 PM</span>
+                  </div>
+
+                  <div class="routine-item">
+                    <div class="routine-day">
+                      <strong>Thursday</strong>
+                      <p>Clinic intake, preoperative clearance, and discharge planning.</p>
+                    </div>
+                    <span class="routine-time">08:00 AM - 05:00 PM</span>
+                  </div>
+
+                  <div class="routine-item">
+                    <div class="routine-day">
+                      <strong>Friday</strong>
+                      <p>Weekend handoff, inpatient rounds, and administrative review.</p>
+                    </div>
+                    <span class="routine-time">08:00 AM - 04:00 PM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

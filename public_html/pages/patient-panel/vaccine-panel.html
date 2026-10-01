@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaccine Records - NHMRD</title>
+  <link rel="stylesheet" href="/public_html/assets/css/patient-panel/vaccine-panel.css">
+   <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/patient-panel/features/patient-header.css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar patient">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="/public_html/pages/Patient-panel/dashboard.html" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i> 
+          <span>Dashboard</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/prescription-record.html" class="nav-item">
+          <i class="fa-solid fa-file-prescription"></i> 
+          <span>Prescription Records</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/surgary-record.html" class="nav-item">
+          <i class="fa-solid fa-scalpel"></i> 
+          <span>Surgery Records</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/lab-test.html" class="nav-item">
+          <i class="fa-solid fa-vial"></i> 
+          <span>Test Records</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/vaccine-panel.html" class="nav-item active">
+          <i class="fa-solid fa-syringe"></i> 
+          <span>Vaccine Records</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/req-appointment.html" class="nav-item">
+          <i class="fa-solid fa-calendar-plus"></i> 
+          <span>Request Appointment</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/medical-test-req.html" class="nav-item">
+          <i class="fa-solid fa-notes-medical"></i> 
+          <span>Request Medical Test</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/req-vaccine.html" class="nav-item">
+          <i class="fa-solid fa-shield-virus"></i> 
+          <span>Request Vaccine</span>
+        </a>
+        <a href="/public_html/pages/Patient-panel/" class="nav-item">
+          <i class="fa-solid fa-id-card"></i> 
+          <span>Patient Info</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+       <button class="logout-btn" onclick="handleLogout()">
+  <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+  <span>Logout</span>
+</button>
+      </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+      <!-- Top Header Bar -->
+      <header class="patient-header">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search Queries" oninput="handleSearch(event)">
+        </div>
+
+        <div class="header-right">
+          <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+          <div class="user-badge-avatar">SR</div>
+          <span class="user-name">Shishir Rahaman</span>
+        </div>
+      </header>
+
+      <!-- Main Content Body -->
+      <main class="content-body">
+
+        <!-- Page Header -->
+        <div class="page-title-row">
+          <div>
+            <div class="registry-tag">IMMUNIZATION REGISTRY &bull; DGHS National Record</div>
+            <h1>Vaccination & Immunization History</h1>
+            <p class="subtitle">Official verified inoculation schedule and digital credentials for Shishir Rahaman</p>
+          </div>
+         <div class="title-actions">
+  <button class="btn-outline" onclick="handleAddExternalCertificate()"><i class="fa-regular fa-file-lines"></i> Add External Certificate</button>
+  <button class="btn-primary-dark" onclick="handleDigitalPassport()"><i class="fa-solid fa-qrcode"></i> Digital Vaccine Passport</button>
+</div>
+        </div>
+
+        <!-- User Profile Card -->
+        <div class="card user-profile-card">
+          <div class="user-info-left">
+            <div class="user-avatar-sm">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="user-text">
+              <div class="user-name-row">
+                <h2>Shishir Rahaman</h2>
+                <span class="verified-tag"><i class="fa-solid fa-circle-check"></i> Verified</span>
+              </div>
+              <p class="user-meta">
+                NID: 0123456789 &bull; DOB: 21-04-1990 &bull; <span class="blood-group">Blood Group: AB+</span>
+              </p>
+            </div>
+          </div>
+         <button class="btn-primary-blue" onclick="handleRequestVaccine()"><i class="fa-solid fa-circle-plus"></i> Request New Vaccine / Booster</button>
+        </div>
+
+        <!-- Stats Grid (3 Columns) -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-info">
+              <span class="stat-label">COMPLETED VACCINES</span>
+              <strong class="stat-value">4 <span class="stat-unit">Primary series</span></strong>
+              <span class="stat-sub"><i class="fa-regular fa-circle-check"></i> 100% Core coverage</span>
+            </div>
+            <div class="stat-icon blue-light"><i class="fa-solid fa-syringe"></i></div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-info">
+              <span class="stat-label">BOOSTERS DUE</span>
+              <strong class="stat-value">1 <span class="stat-unit">Upcoming</span></strong>
+              <span class="stat-sub"><i class="fa-regular fa-clock"></i> Influenza (Oct 2026)</span>
+            </div>
+            <div class="stat-icon purple-light"><i class="fa-regular fa-bell"></i></div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-info">
+              <span class="stat-label">REGISTRY VERIFICATION</span>
+              <strong class="stat-value text-green">DGHS <span class="stat-unit text-dark">Sync</span></strong>
+              <span class="stat-sub">Active &bull; NHMRD ID #48291</span>
+            </div>
+            <div class="stat-icon cyan-light"><i class="fa-solid fa-rotate"></i></div>
+          </div>
+        </div>
+
+        <!-- Section Title: Registered Inoculation Logs -->
+        <div class="section-heading-row">
+          <h3><i class="fa-regular fa-square-check"></i> Registered Inoculation Logs</h3>
+          <span class="count-label">Displaying 4 Registered Vaccines</span>
+        </div>
+
+        <!-- Vaccine Card 1: COVID-19 -->
+        <div class="card vaccine-card">
+          <div class="vaccine-header">
+            <div class="vaccine-title-group">
+              <div class="vaccine-icon blue-bg"><i class="fa-solid fa-virus-slash"></i></div>
+              <div>
+                <div class="vaccine-name-row">
+                  <h3>COVID-19 mRNA Vaccine</h3>
+                  <span class="vaccine-badge border-blue">Pfizer-BioNTech (BNT162b2)</span>
+                </div>
+                <p class="vaccine-location">
+                  <i class="fa-regular fa-hospital"></i> Kurmitola General Hospital, Dhaka &bull; <span class="cert-id"># Certificate ID: <strong>VAC-849201</strong></span>
+                </p>
+              </div>
+            </div>
+            <span class="status-badge success"><i class="fa-regular fa-circle-check"></i> Fully Vaccinated</span>
+          </div>
+
+          <!-- Dosage Progression Grid -->
+          <div class="dosage-section">
+            <span class="section-sub-title">DOSAGE PROGRESSION</span>
+            <div class="dosage-grid">
+              <div class="dose-card">
+                <div class="dose-info">
+                  <span class="dose-label">DOSE 01</span>
+                  <strong class="dose-date">12-05-2021</strong>
+                  <span class="dose-batch">Batch #FF2840</span>
+                </div>
+                <i class="fa-regular fa-circle-check check-icon"></i>
+              </div>
+
+              <div class="dose-card">
+                <div class="dose-info">
+                  <span class="dose-label">DOSE 02</span>
+                  <strong class="dose-date">10-06-2021</strong>
+                  <span class="dose-batch">Batch #FG9124</span>
+                </div>
+                <i class="fa-regular fa-circle-check check-icon"></i>
+              </div>
+
+              <div class="dose-card">
+                <div class="dose-info">
+                  <span class="dose-label">BOOSTER 01</span>
+                  <strong class="dose-date">15-01-2022</strong>
+                  <span class="dose-batch">Batch #FP4031</span>
+                </div>
+                <i class="fa-regular fa-circle-check check-icon"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vaccine Card 2: Hepatitis B -->
+        <div class="card vaccine-card">
+          <div class="vaccine-header">
+            <div class="vaccine-title-group">
+              <div class="vaccine-icon blue-bg"><i class="fa-solid fa-vial-circle-check"></i></div>
+              <div>
+                <div class="vaccine-name-row">
+                  <h3>Hepatitis B Recombinant Vaccine</h3>
+                  <span class="vaccine-badge border-blue">Engerix-B 20mcg</span>
+                </div>
+                <p class="vaccine-location">
+                  Completed 3-Dose Protocol (Last Dose: <strong>20-04-2019</strong>)
+                </p>
+                <p class="vaccine-subtext">
+                  <i class="fa-solid fa-microscope"></i> Titer: <strong>Anti-HBs >100 mIU/mL</strong> (Robust Immunity)
+                </p>
+              </div>
+            </div>
+            <span class="status-badge dark-green"><i class="fa-solid fa-shield-halved"></i> Immune / Protected</span>
+          </div>
+
+          <div class="vaccine-footer-bar">
+            <span><i class="fa-solid fa-box-archive"></i> Follow-up serology confirmed lifelong antibody protection. Lab test validated at LABAID Diagnostic.</span>
+            <a href="#" class="link-btn">View Serology Lab <i class="fa-solid fa-chevron-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Vaccine Card 3: Influenza -->
+        <div class="card vaccine-card">
+          <div class="vaccine-header">
+            <div class="vaccine-title-group">
+              <div class="vaccine-icon blue-bg"><i class="fa-solid fa-disease"></i></div>
+              <div>
+                <div class="vaccine-name-row">
+                  <h3>Influenza (Seasonal Quadrivalent)</h3>
+                  <span class="vaccine-badge border-blue">Fluarix Tetra 2025/2026 Strain</span>
+                </div>
+                <p class="vaccine-location">
+                  <i class="fa-regular fa-calendar-check"></i> Administered: <strong>18-10-2025</strong> &bull; <i class="fa-regular fa-hospital"></i> LABAID Specialized Hospital
+                </p>
+              </div>
+            </div>
+            <span class="status-badge info-blue"><i class="fa-regular fa-clock"></i> Due for Renewal in Oct 2026</span>
+          </div>
+
+          <div class="vaccine-footer-bar action-bar">
+            <span>Annual protection against Northern Hemisphere 4-strain respiratory variants.</span>
+            <button class="btn-action-blue"><i class="fa-regular fa-calendar-plus"></i> Schedule October Booster</button>
+          </div>
+        </div>
+
+        <!-- Vaccine Card 4: Tetanus Toxoid -->
+        <div class="card vaccine-card">
+          <div class="vaccine-header">
+            <div class="vaccine-title-group">
+              <div class="vaccine-icon blue-bg"><i class="fa-solid fa-notes-medical"></i></div>
+              <div>
+                <div class="vaccine-name-row">
+                  <h3>Tetanus Toxoid (TT Vaccine)</h3>
+                  <span class="vaccine-badge border-blue">0.5 mL IM</span>
+                </div>
+                <p class="vaccine-location">
+                  <i class="fa-regular fa-calendar-check"></i> Administered: <strong>14-02-2024</strong> &bull; <i class="fa-solid fa-file-medical"></i> Pre-Operative Protocol (Laparoscopic Surgery Prep)
+                </p>
+              </div>
+            </div>
+            <span class="status-badge solid-green"><i class="fa-regular fa-circle-check"></i> Valid until 2034 (10 Yrs)</span>
+          </div>
+        </div>
+
+        <!-- Official Immunization Centers Box -->
+        <div class="card official-centers-card">
+          <div class="centers-header">
+            <h4><i class="fa-solid fa-hospital-user"></i> Official Immunization Centers</h4>
+            <p>All administered doses are synced directly via authorized civil hospitals with the Directorate General of Health Services.</p>
+          </div>
+
+          <div class="centers-list">
+            <div class="center-row">
+              <span class="center-name">Kurmitola General Hospital</span>
+              <span class="facility-id">Facility ID: <strong>KGH-092</strong></span>
+            </div>
+            <div class="center-row">
+              <span class="center-name">LABAID Specialized Hospital</span>
+              <span class="facility-id">Facility ID: <strong>LSH-104</strong></span>
+            </div>
+          </div>
+
+          <div class="centers-footer">
+            <span class="sync-status">Last Registry Synced: Today at 04:30 AM</span>
+            <span class="live-status"><span class="dot"></span> Live Service</span>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+<script src="/public_html/assets/js/paitent/vaccine-panel.js"></script>
+</body>
+</html>

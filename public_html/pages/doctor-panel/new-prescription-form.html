@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Electronic Prescription Order Entry (e-Rx)</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/new-prescription-form.css">
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-header.css">
+</head>
+<body>
+
+  <div class="app-container">
+   <!-- Sidebar Navigation -->
+    <aside class="sidebar doctor">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="/public_html/pages/Doctor-panel/doctor-clinical-service-records.html" class="nav-item">
+          <i class="fa-solid fa-notes-medical"></i>
+          <span>Clinical Records</span>
+        </a>
+        <a href="/public_html/pages/Doctor-panel/patient-appointments.html" class="nav-item active">
+          <i class="fa-solid fa-user-clock"></i>
+          <span>Patient Appointments</span>
+        </a>
+        <a href="/public_html/pages/doctor-panel/doctor-profile.html" class="nav-item">
+          <i class="fa-solid fa-user-doctor"></i>
+          <span>Doctor Profile</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+      
+      <!-- Top Header Bar -->
+      <header class="doc-header">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search patient MRN, name, vitals...">
+        </div>
+
+        <div class="header-right">
+          <div class="header-status-pill">
+            <i class="fa-regular fa-clock"></i>
+            <span>Shift: Morning Clinical Rounds (07:00 - 15:30)</span>
+          </div>
+          <div class="header-status-pill">
+            <i class="fa-solid fa-rotate-sharp"></i>
+            <span>EMR Synced</span>
+          </div>
+          <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+          
+          <div class="doctor-profile-badge">
+            <div class="doctor-info-text">
+              <span class="doctor-name">Dr. Nusrat Jahan, MD</span>
+              <span class="doctor-dept">Internal Medicine &amp; Therapeutics</span>
+            </div>
+            <div class="doctor-avatar">
+              <img src="https://i.pravatar.cc/100?img=47" alt="Dr. Nusrat Jahan">
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Patient Header Strip -->
+      <div class="patient-strip">
+        <div class="patient-strip-main">
+          <img src="https://i.pravatar.cc/100?img=32" alt="Sanjana Farhin" class="patient-strip-avatar">
+          <div class="patient-strip-details">
+            <div class="patient-strip-line1">
+              <h2 class="patient-strip-name">Sanjana Farhin</h2>
+              <span class="patient-strip-badge">Female</span>
+              <span class="patient-strip-dob">DOB: 14 Aug 1988 (36 yrs)</span>
+              <span class="patient-strip-badge-blue">Active Patient</span>
+            </div>
+            <div class="patient-strip-line2">
+              <span>MRN: <strong>#449102</strong></span>
+              <span class="sep">&bull;</span>
+              <span>Attending Dr: <strong>Dr. Nusrat Jahan, MD</strong></span>
+              <span class="sep">&bull;</span>
+              <span>Primary Care Provider: <strong>Dr. Nusrat Jahan, MD</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="patient-strip-alerts">
+          <div class="alert-tag alert-red">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span><strong>CRITICAL ALLERGY:</strong> Sulfonamides (Severe Urticaria / Anaphylaxis)</span>
+          </div>
+          <div class="alert-tag alert-blue">
+            <i class="fa-regular fa-clock"></i>
+            <span><strong>ENCOUNTER TIME:</strong> 01h 44m</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content Body -->
+      <main class="content-body">
+
+        <!-- Page Section Title -->
+        <div class="page-title-banner">
+          <div class="page-title-left">
+            <i class="fa-solid fa-prescription-bottle-medical title-icon"></i>
+            <div>
+              <h1 class="rx-page-title">Electronic Prescription Order Entry (e-Rx)</h1>
+              <p class="rx-page-sub">Clinical acuity assessment, acute status summary, active prescription order entry, diagnostic orders, and configuration parameters.</p>
+            </div>
+          </div>
+          <div class="page-title-right">
+            <span class="epcs-badge"><i class="fa-solid fa-circle-check"></i> ONLINE EPCS CERTIFIED VALIDATED</span>
+          </div>
+        </div>
+
+        <!-- Two Column Layout (Form Content + Sidebar Summary Card) -->
+        <div class="rx-grid-layout">
+
+          <!-- Left Column: Primary Order Form Sections -->
+          <div class="rx-form-column">
+
+            <!-- Section 1: Patient Symptoms & Chief Complaint -->
+            <div class="form-section-card">
+              <div class="sec-header">
+                <div class="sec-num-title">
+                  <span class="sec-num">1</span>
+                  <h3>Patient Symptoms &amp; Chief Complaint</h3>
+                </div>
+                <button class="btn-text"><i class="fa-solid fa-plus"></i> Clinical Intake</button>
+              </div>
+
+              <div class="form-group">
+                <div class="label-row">
+                  <label><i class="fa-solid fa-clipboard-list"></i> PRESCRIPTION / CLINICAL ORDER TITLE</label>
+                  <span class="badge-required">REQUIRED</span>
+                </div>
+                <div class="input-with-icon">
+                  <i class="fa-solid fa-notes-medical"></i>
+                  <input type="text" value="Acute Migraine Treatment &amp; Prophylactic Management Protocol" class="form-control bold-input">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="label-row">
+                  <label>PRESENTING SYMPTOMS, ONSET, SEVERITY &amp; TRIGGERS</label>
+                  <span class="icd-code-pill">ICD-10: G43.909</span>
+                </div>
+                <textarea class="form-control text-area-custom" rows="4">Patient reports acute throbbing unilateral pain (left temporal/orbital region) rated 8/10 on pain scale, ongoing for 12 hours. Accompanied by severe visual aura (flashing lights/scotoma), moderate photophobia, and phonophobia. Preceded by mild neck stiffness. Trigger suspected to be acute work stress and irregular sleep pattern over the past 72 hours. No relief obtained from OTC NSAIDs.</textarea>
+              </div>
+
+              <div class="symptom-tags-row">
+                <span class="symptom-tag">Acute Focal Symptom Onset <i class="fa-solid fa-xmark"></i></span>
+                <span class="symptom-tag">Moderate Photo/Phonophobia <i class="fa-solid fa-xmark"></i></span>
+                <span class="symptom-tag">Aura Present <i class="fa-solid fa-xmark"></i></span>
+                <button class="btn-add-tag"><i class="fa-solid fa-plus"></i> Add Symptom Tag</button>
+              </div>
+            </div>
+
+            <!-- Section 2: Current Condition & Clinical Acuity -->
+            <div class="form-section-card">
+              <div class="sec-header">
+                <div class="sec-num-title">
+                  <span class="sec-num">2</span>
+                  <h3>Current Condition &amp; Clinical Acuity</h3>
+                </div>
+                <span class="sec-sub-info">Acuity Triage</span>
+              </div>
+
+              <div class="acuity-selector-row">
+                <div class="acuity-option">
+                  <i class="fa-regular fa-user"></i>
+                  <span class="acuity-title">Primary</span>
+                  <span class="acuity-desc">Mild / Routine</span>
+                </div>
+                <div class="acuity-option active-acuity">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                  <span class="acuity-title">Moderate</span>
+                  <span class="acuity-desc">Urgent Evaluation</span>
+                </div>
+                <div class="acuity-option danger-acuity">
+                  <i class="fa-solid fa-asterisk"></i>
+                  <span class="acuity-title">Critical</span>
+                  <span class="acuity-desc">Intensive Care</span>
+                </div>
+                <div class="acuity-option purple-acuity">
+                  <i class="fa-solid fa-hospital-user"></i>
+                  <span class="acuity-title">Surgical Needed</span>
+                  <span class="acuity-desc">Surgical Consult</span>
+                </div>
+              </div>
+
+              <div class="consultation-banner">
+                <div class="consult-header">
+                  <div class="consult-title">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <span>SURGICAL CONSULTATION &amp; REFERRAL PROTOCOL</span>
+                  </div>
+                  <span class="flag-badge"><i class="fa-solid fa-flag"></i> Surgical Referral Flagged</span>
+                </div>
+
+                <div class="consult-details-grid">
+                  <div>
+                    <label>REFERRED SURGEON NAME &amp; CREDENTIALS</label>
+                    <div class="doc-consult-name">
+                      <i class="fa-solid fa-user-check"></i>
+                      <span><strong>Dr. Rafiqul Islam, FACS</strong> &bull; Chief of Neuro</span>
+                    </div>
+                  </div>
+                  <div>
+                    <label>SURGICAL CLINIC / FACILITY</label>
+                    <div class="doc-consult-facility">Main Pavilion Surgical Wing</div>
+                  </div>
+                </div>
+
+                <div class="consult-subtext">
+                  <span><strong>SUBMISSION REFERRAL NO:</strong> SEC-501-L1 SURGICAL CONSULT</span>
+                  <p>Secondary consult in event of persistent vascular refractory symptoms or recurrence.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 3: Prescribed Medications -->
+            <div class="form-section-card">
+              <div class="sec-header">
+                <div class="sec-num-title">
+                  <span class="sec-num">3</span>
+                  <h3>Prescribed Medications</h3>
+                </div>
+                <button class="btn-add-primary"><i class="fa-solid fa-plus"></i> Add Medication</button>
+              </div>
+
+              <!-- Prescribed Med 1 -->
+              <div class="med-order-card">
+                <div class="med-card-header">
+                  <div class="med-title-row">
+                    <span class="med-badge-type bg-sky">A</span>
+                    <h4 class="med-name">Sumatriptan Succinate (Imitrex)</h4>
+                    <span class="med-tag tag-teal">Acute Migraine</span>
+                  </div>
+                  <div class="med-actions">
+                    <button class="icon-action"><i class="fa-solid fa-pen"></i></button>
+                    <button class="icon-action danger"><i class="fa-regular fa-trash-can"></i></button>
+                  </div>
+                </div>
+                <div class="med-ndc">NDC 00173-0731-00 &bull; Oral Film Coated Tablet</div>
+
+                <div class="med-grid-4col">
+                  <div class="med-field">
+                    <span class="m-lbl">DOSE &amp; STRENGTH</span>
+                    <span class="m-val">50mg Tablet</span>
+                  </div>
+                  <div class="med-field">
+                    <span class="m-lbl">ROUTE &amp; FREQUENCY</span>
+                    <span class="m-val">Oral (PO) &bull; PRN at onset of aura</span>
+                  </div>
+                  <div class="med-field">
+                    <span class="m-lbl">DISPENSE / REFILLS</span>
+                    <span class="m-val">9 Tablets &bull; 3 Refills (90 day max)</span>
+                  </div>
+                  <div class="med-field">
+                    <span class="m-lbl">MAX DAILY LIMIT</span>
+                    <span class="m-val text-red">Max 200 mg / 24 hrs</span>
+                  </div>
+                </div>
+
+                <div class="med-instructions-box">
+                  <i class="fa-solid fa-circle-info"></i>
+                  <span><strong>SIG / INSTRUCTIONS:</strong> Take 1 tablet by mouth at onset of acute migraine headache. May repeat after 2 hours if headache recurs or only partially resolves. Do not exceed 200mg (4 tablets) in any 24-hour period.</span>
+                </div>
+              </div>
+
+              <!-- Prescribed Med 2 -->
+              <div class="med-order-card">
+                <div class="med-card-header">
+                  <div class="med-title-row">
+                    <span class="med-badge-type bg-indigo">B</span>
+                    <h4 class="med-name">Propranolol Hydrochloride ER</h4>
+                    <span class="med-tag tag-blue">Prophylactic</span>
+                  </div>
+                  <div class="med-actions">
+                    <button class="icon-action"><i class="fa-solid fa-pen"></i></button>
+                    <button class="icon-action danger"><i class="fa-regular fa-trash-can"></i></button>
+                  </div>
+                </div>
+                <div class="med-ndc">NDC 00054-4720-25 &bull; Extended-Release Capsule</div>
+
+                <div class="med-grid-4col">
+                  <div class="med-field">
+                    <span class="m-lbl">DOSE &amp; STRENGTH</span>
+                    <span class="m-val">80mg Capsule ER</span>
+                  </div>
+                  <div class="med-field">
+                    <span class="m-lbl">ROUTE &amp; FREQUENCY</span>
+                    <span class="m-val">Oral (PO) &bull; Daily at Bedtime</span>
+                  </div>
+                  <div class="med-field">
+                    <span class="m-lbl">DISPENSE / REFILLS</span>
+                    <span class="m-val">30 Capsules &bull; 2 Refills</span>
+                  </div>
+                  <div class="med-field">
+                    <span class="m-lbl">SAFETY NOTE</span>
+                    <span class="m-val text-amber">Check pulse &amp; resting BP</span>
+                  </div>
+                </div>
+
+                <div class="med-instructions-box">
+                  <i class="fa-solid fa-circle-info"></i>
+                  <span><strong>SIG / INSTRUCTIONS:</strong> Take 1 capsule by mouth once daily in evening for migraine prevention. Do not crush or chew capsule. Do not abruptly discontinue without consulting physician.</span>
+                </div>
+              </div>
+
+              <!-- Add New Medication Draft Box -->
+              <div class="draft-med-box">
+                <div class="draft-box-header">
+                  <span class="draft-title"><i class="fa-solid fa-circle-plus"></i> Add New Medication (Draft)</span>
+                  <span class="draft-status-pill">FORM ACTIVE</span>
+                </div>
+
+                <div class="draft-grid-2col">
+                  <div class="form-group">
+                    <label>MEDICATION NAME &amp; GENERIC / BRAND</label>
+                    <input type="text" placeholder="e.g. Topiramate / Topamax, Rizatriptan, Zmitriptan" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>DOSE &amp; STRENGTH</label>
+                    <input type="text" placeholder="e.g. 25 mg, 50 mg Tab" class="form-control">
+                  </div>
+                </div>
+
+                <div class="draft-grid-2col">
+                  <div class="form-group">
+                    <label>ROUTE &amp; FREQUENCY</label>
+                    <input type="text" value="Oral (PO) &bull; Daily at Bedtime" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>DISPENSE QUANTITY &amp; REFILLS</label>
+                    <input type="text" placeholder="e.g. 30 Capsules &bull; 2 Refills" class="form-control">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>DIRECTIONS / SIG PATIENT INSTRUCTIONS</label>
+                  <input type="text" value="Take 1 capsule by mouth once daily at bedtime for prophylaxis." class="form-control">
+                </div>
+
+                <div class="draft-actions">
+                  <button class="btn-cancel">Cancel</button>
+                  <button class="btn-confirm-add"><i class="fa-solid fa-plus"></i> Add to Prescription</button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Section 4: Assign Medical & Laboratory Tests -->
+            <div class="form-section-card">
+              <div class="sec-header">
+                <div class="sec-num-title">
+                  <span class="sec-num">4</span>
+                  <h3>Assign Medical &amp; Laboratory Tests</h3>
+                </div>
+                <button class="btn-add-primary"><i class="fa-solid fa-plus"></i> Add Test</button>
+              </div>
+
+              <!-- Lab Item 1 -->
+              <div class="lab-order-card">
+                <div class="lab-card-top">
+                  <div class="lab-title-row">
+                    <span class="lab-icon-box bg-teal"><i class="fa-solid fa-vial"></i></span>
+                    <div>
+                      <h4 class="lab-name">Complete Blood Count (CBC) with Differential</h4>
+                      <span class="loinc-tag">LOINC: 57021-8</span>
+                      <span class="lab-status-badge">Routine Monitoring</span>
+                    </div>
+                  </div>
+                  <div class="med-actions">
+                    <button class="icon-action danger"><i class="fa-regular fa-trash-can"></i></button>
+                  </div>
+                </div>
+                <p class="lab-desc">Specimen: Venous Blood &bull; DX Ref: H81.0 &bull; Reason: Baseline baseline blood parameters prior to pharmacotherapy and exclude acute infection or inflammatory leukocytosis markers.</p>
+                <div class="lab-card-footer">
+                  <span>Priority: <strong>Routine</strong></span>
+                </div>
+              </div>
+
+              <!-- Lab Item 2 -->
+              <div class="lab-order-card">
+                <div class="lab-card-top">
+                  <div class="lab-title-row">
+                    <span class="lab-icon-box bg-blue"><i class="fa-solid fa-microscope"></i></span>
+                    <div>
+                      <h4 class="lab-name">Comprehensive Metabolic Panel (CMP-14)</h4>
+                      <span class="loinc-tag">LOINC: 24323-8</span>
+                      <span class="lab-status-badge badge-amber">Fasting Required</span>
+                    </div>
+                  </div>
+                  <div class="med-actions">
+                    <button class="icon-action danger"><i class="fa-regular fa-trash-can"></i></button>
+                  </div>
+                </div>
+                <p class="lab-desc">Specimen: Venous Blood &bull; DX Ref: G43.9 &bull; Reason: Renal and hepatic panel prior to prolonged triptan/beta-blocker usage and rule out electrolyte disorders.</p>
+                <div class="lab-card-footer">
+                  <span>Priority: <strong>Fasting / Routine</strong></span>
+                </div>
+              </div>
+
+              <!-- Add New Test Draft Box -->
+              <div class="draft-med-box">
+                <div class="draft-box-header">
+                  <span class="draft-title"><i class="fa-solid fa-circle-plus"></i> Add New Diagnostic Test (Draft)</span>
+                  <span class="draft-status-pill">FORM ACTIVE</span>
+                </div>
+
+                <div class="draft-grid-2col">
+                  <div class="form-group">
+                    <label>TEST NAME &amp; CATEGORY / BRAND</label>
+                    <input type="text" placeholder="e.g. Brain MRI (NC), TSH, Serum Electrolytes" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>CODE &amp; STRENGTH</label>
+                    <input type="text" placeholder="e.g. LOINC: 24323-8, CPT 70551" class="form-control">
+                  </div>
+                </div>
+
+                <div class="draft-grid-2col">
+                  <div class="form-group">
+                    <label>ROUTE &amp; FREQUENCY</label>
+                    <input type="text" value="Oral (PO) &bull; Daily at Bedtime" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>DISPENSE QUANTITY &amp; REFILLS</label>
+                    <input type="text" placeholder="e.g. 1 Test Order &bull; Routine" class="form-control">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>DIRECTIONS / SIG PATIENT INSTRUCTIONS</label>
+                  <input type="text" value="Take 1 capsule by mouth once daily at bedtime for prophylaxis." class="form-control">
+                </div>
+
+                <div class="draft-actions">
+                  <button class="btn-cancel">Cancel</button>
+                  <button class="btn-confirm-add"><i class="fa-solid fa-plus"></i> Add Diagnostic Order</button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Section 5: Doctor's Statement & Advice -->
+            <div class="form-section-card">
+              <div class="sec-header">
+                <div class="sec-num-title">
+                  <span class="sec-num">5</span>
+                  <h3>Doctor's Statement &amp; Advice</h3>
+                </div>
+                <span class="sec-sub-info">Patient Printed Advice Copy</span>
+              </div>
+
+              <div class="advice-header-bar">
+                <span class="advice-label">CLINICAL ADVICE: LIFESTYLE &amp; NON-PHARMACOLOGIC PATIENT INSTRUCTIONS</span>
+                <button class="btn-template-insert"><i class="fa-solid fa-wand-magic-sparkles"></i> Insert Migraine Hygiene Template</button>
+              </div>
+
+              <div class="advice-list-box">
+                <div class="advice-item">
+                  <span class="item-num">1.</span>
+                  <p><strong>Maintain adequate hydration:</strong> Consume at least 2.5–3.0 liters of water daily.</p>
+                </div>
+                <div class="advice-item">
+                  <span class="item-num">2.</span>
+                  <p><strong>Migraine Aura Protocol:</strong> At earliest sign of aura/flashing lights, rest in a dark, quiet room with minimal sensory stimulation. Apply cold compresses to forehead or occipital region.</p>
+                </div>
+                <div class="advice-item">
+                  <span class="item-num">3.</span>
+                  <p><strong>Dietary Triggers:</strong> Avoid aged cheeses, artificial sweeteners, nitrates, and excessive caffeine.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 6: Follow-up & Next Visit Scheduling -->
+            <div class="form-section-card">
+              <div class="sec-header">
+                <div class="sec-num-title">
+                  <span class="sec-num">6</span>
+                  <h3>Follow-up &amp; Next Visit Scheduling</h3>
+                </div>
+                <span class="sec-sub-info">Encounter Continuum</span>
+              </div>
+
+              <div class="draft-grid-2col">
+                <div class="form-group">
+                  <label>NEXT SCHEDULED VISIT DATE</label>
+                  <div class="date-picker-input">
+                    <i class="fa-regular fa-calendar"></i>
+                    <input type="text" value="Nov 14, 2026 (in 8 Weeks)" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>CONSULTATION VISIT TYPE</label>
+                  <select class="form-control select-custom">
+                    <option>In-person Clinical Follow-up (Room 301)</option>
+                    <option>Telehealth Virtual Consultation</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Encounter Summary Sidebar -->
+          <div class="rx-summary-column">
+            
+            <!-- Summary Card -->
+            <div class="encounter-summary-card">
+              <div class="summary-card-header">
+                <div class="summary-title-block">
+                  <i class="fa-solid fa-clipboard-check"></i>
+                  <h4>Encounter Summary</h4>
+                </div>
+                <span class="badge-ready">Ready for Issue</span>
+              </div>
+
+              <div class="acuity-status-box">
+                <span class="acc-lbl">ACUITY STATUS</span>
+                <div class="acc-val text-amber">
+                  <i class="fa-solid fa-triangle-exclamation"></i> Moderate Condition
+                </div>
+                <div class="acc-sub-flag text-purple">
+                  <i class="fa-solid fa-user-doctor"></i> Surgery Flagged
+                </div>
+              </div>
+
+              <div class="summary-stats-grid">
+                <div class="stat-box">
+                  <span class="st-lbl">MEDICATIONS</span>
+                  <div class="st-val">2 Active</div>
+                  <span class="st-sub">Sumatriptan, Propranolol</span>
+                </div>
+                <div class="stat-box">
+                  <span class="st-lbl">LAB TESTS</span>
+                  <div class="st-val">2 Ordered</div>
+                  <span class="st-sub">CBC w/ Diff, CMP-14</span>
+                </div>
+              </div>
+
+              <div class="summary-next-visit">
+                <span class="snv-lbl">NEXT SCHEDULED VISIT</span>
+                <div class="snv-val"><i class="fa-regular fa-calendar-days"></i> Nov 14, 2026 &bull; In-person</div>
+              </div>
+
+              <div class="surgeon-contact-box">
+                <span class="sc-lbl">SURGEON CONTACT ATTACHED</span>
+                <div class="sc-name">Dr. Rafiqul Islam, FACS</div>
+                <div class="sc-dept">Neuro-Surgical Unit</div>
+              </div>
+
+              <div class="summary-footer-meta">
+                <span>Encounter ID: <strong>#ENC-449102-09</strong></span>
+                <span>Page 1 of 1</span>
+              </div>
+            </div>
+
+            <!-- Signature & Action Card -->
+            <div class="signature-action-card">
+              <div class="sig-header">
+                <i class="fa-solid fa-signature"></i>
+                <div>
+                  <h5>Prescriber Digital Signature</h5>
+                  <span>Dr. Nusrat Jahan, MD</span>
+                  <span class="sig-meta">NPI: 1942085102 &bull; DEA: BJ491023</span>
+                </div>
+              </div>
+
+              <p class="sig-disclaimer">By signing, I certify this prescription regimen complies with individual patient EPTCS requirements and clinical safety protocols.</p>
+
+              <button class="btn-save-issue">
+                <i class="fa-solid fa-circle-check"></i> Save &amp; Issue Prescription
+              </button>
+
+              <button class="btn-print-order">
+                <i class="fa-solid fa-print"></i> Print Clinical Order
+              </button>
+
+              <div class="action-footer-links">
+                <a href="#"><i class="fa-solid fa-floppy-disk"></i> Save Draft</a>
+                <a href="#"><i class="fa-solid fa-ban"></i> Discard</a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="/public_html/assets/js/doctor-panel/new-prescription-form.js"></script>
+</body>
+</html>

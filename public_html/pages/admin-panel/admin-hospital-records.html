@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHMRD - Hospital Records</title>
+    <link rel="stylesheet" href="/public_html/assets/css/admin-panel/admin-hospital-records.css">
+    <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar admin">
+            <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>NHMRD</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="/public_html/pages/admin-panel/admin-dashboard.html" class="nav-item"><i
+                        class="fa-solid fa-table-cells-large"></i> Dashboard</a>
+                <a href="/public_html/pages/admin-panel/admin-patient-records.html" class="nav-item"><i
+                        class="fa-solid fa-user-group"></i> Patient Records</a>
+                <a href="/public_html/pages/admin-panel/admin-doctor-records.html" class="nav-item"><i
+                        class="fa-solid fa-user-doctor"></i> Doctor Records</a>
+                <a href="/public_html/pages/admin-panel/admin-hospital-records.html" class="nav-item active"><i
+                        class="fa-solid fa-hospital"></i> Hospital Records</a>
+                <a href="/public_html/pages/admin-panel/admin-request-management.html" class="nav-item"><i
+                        class="fa-solid fa-clipboard-check"></i> Request Management</a>
+                <a href="/public_html/pages/admin-panel/admin-analytics.html" class="nav-item"><i
+                        class="fa-solid fa-chart-line"></i> Analytics</a>
+                <a href="/public_html/pages/admin-panel/admin-notice-broadcast.html" class="nav-item"><i
+                        class="fa-solid fa-bullhorn"></i> Notice Broadcast</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#"><button class="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        Logout</button></a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <!-- Top Bar -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search records, MRNs, clinicians...">
+                </div>
+                <div class="user-profile">
+                    <i class="fa-regular fa-bell bell-icon"></i>
+                    <div class="user-info">
+                        <span class="user-name">Dr. Sarah F.</span>
+                        <span class="user-role">Super Admin</span>
+                    </div>
+                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                </div>
+            </header>
+
+            <!-- Dashboard Workspace -->
+            <main class="dashboard-body">
+                <!-- Page Title Banner -->
+                <div class="page-title-header">
+                    <div>
+                        <div class="breadcrumb">NHMRD REGISTRY / INSTITUTIONAL DIRECTORY</div>
+                        <h1 class="page-title">Hospital Records</h1>
+                    </div>
+                    <div class="header-actions">
+                        <span class="pill dghs-pill">• Real-Time DGHS Sync: Active</span>
+                        <a href="/public_html/pages/admin-panel/admin-sub-pages/licence-new-hospital.html" style="text-decoration: none;"><button class="btn btn-dark"><i class="fa-solid fa-hospital-user"></i> Register New
+                            Facility</button></a>
+                    </div>
+                </div>
+
+                <!-- Metric Cards Grid -->
+                <section class="summary-cards">
+                    <!-- Card 1 -->
+                    <div class="card stat-card">
+                        <div class="card-top">
+                            <div class="icon-box teal"><i class="fa-solid fa-square-plus"></i></div>
+                            <span class="pill green-pill"><i class="fa-solid fa-arrow-trend-up"></i> 15% YoY</span>
+                        </div>
+                        <span class="stat-label">Total Licensed Facilities</span>
+                        <span class="stat-value">13,447</span>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="card stat-card">
+                        <div class="card-top">
+                            <div class="icon-box teal"><i class="fa-solid fa-user-shield"></i></div>
+                            <span class="pill mint-pill"><i class="fa-solid fa-check"></i> Verified</span>
+                        </div>
+                        <span class="stat-label">Govt Medical Colleges</span>
+                        <span class="stat-value">37</span>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="card stat-card">
+                        <div class="card-top">
+                            <div class="icon-box teal"><i class="fa-solid fa-hospital"></i></div>
+                            <span class="pill mint-pill"><i class="fa-regular fa-clock"></i> Tier-4</span>
+                        </div>
+                        <span class="stat-label">Specialized Tertiary</span>
+                        <span class="stat-value">64</span>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="card stat-card">
+                        <div class="card-top">
+                            <div class="icon-box teal"><i class="fa-solid fa-chart-pie"></i></div>
+                            <span class="pill red-pill">! High Load</span>
+                        </div>
+                        <span class="stat-label">National General Occ.</span>
+                        <span class="stat-value">84.2%</span>
+                    </div>
+                </section>
+
+                <!-- Division & Classification Filter Bars -->
+                <section class="filter-section">
+                    <div class="division-tabs">
+                        <button class="tab-btn active">All Divisions (8)</button>
+                        <button class="tab-btn">Dhaka (4,912)</button>
+                        <button class="tab-btn">Chittagong (2,410)</button>
+                        <button class="tab-btn">Rajshahi (1,380)</button>
+                        <button class="tab-btn">Khulna (1,190)</button>
+                        <button class="tab-btn">Sylhet (980)</button>
+                        <button class="tab-btn">Barishal (845)</button>
+                    </div>
+
+                    <div class="classification-bar">
+                        <div class="class-pills">
+                            <span class="label">CLASSIFICATION:</span>
+                            <button class="class-pill active">All Facilities</button>
+                            <button class="class-pill">Govt Tertiary (37)</button>
+                            <button class="class-pill">Private Tier-1</button>
+                            <button class="class-pill">Specialized Research (64)</button>
+                            <button class="class-pill">Upazila Complex (492)</button>
+                        </div>
+                        <div class="quick-filter-box">
+                            <i class="fa-solid fa-filter"></i>
+                            <input type="text" placeholder="Quick filter by DGHS code or distr">
+                            <i class="fa-solid fa-sliders"></i>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Main Content Grid -->
+                <section class="main-grid">
+                    <!-- Facilities Directory -->
+                    <div class="facilities-list">
+                        <!-- Facility Card 1 -->
+                        <div class="card facility-card">
+                            <div class="facility-image-box">
+                                <span class="badge badge-dark">TERTIARY #01</span>
+                                <img src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?q=80&w=400"
+                                    alt="Dhaka Medical College Hospital" class="facility-img">
+                                <span class="badge badge-green"><i class="fa-solid fa-asterisk"></i> 24/7 ER
+                                    Ready</span>
+                            </div>
+                            <div class="facility-info">
+                                <div class="meta-row">
+                                    <span class="dghs-code">DGHS-HOSP-0012</span>
+                                    <span class="location"><i class="fa-solid fa-location-dot"></i> Bakshibazar,
+                                        Dhaka</span>
+                                    <span class="pill status-govt">Govt Autonomous</span>
+                                </div>
+                                <h2 class="facility-name">Dhaka Medical College & Hospital (DMCH)</h2>
+                                <div class="details-row">
+                                    <span><strong>Director:</strong> Prof. Dr. A. Hannan</span>
+                                    <span class="check-text"><i class="fa-solid fa-check"></i> Verified Audit
+                                        2026</span>
+                                </div>
+                            </div>
+                            <div class="facility-actions">
+                                <button class="btn btn-outline-cyan">Requisition</button>
+                                <button class="btn btn-dark-cyan">Facility Cockpit <i
+                                        class="fa-solid fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Facility Card 2 -->
+                        <div class="card facility-card">
+                            <div class="facility-image-box">
+                                <span class="badge badge-blue">SPECIALIZED</span>
+                                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400"
+                                    alt="NICVD" class="facility-img">
+                                <span class="badge badge-green"><i class="fa-regular fa-heart"></i> Cath Lab 24/7</span>
+                            </div>
+                            <div class="facility-info">
+                                <div class="meta-row">
+                                    <span class="dghs-code">DGHS-HOSP-0045</span>
+                                    <span class="location"><i class="fa-solid fa-location-dot"></i> Sher-e-Bangla Nagar,
+                                        Dhaka</span>
+                                    <span class="pill status-mint">Autonomous Super-Specialty</span>
+                                </div>
+                                <h2 class="facility-name">Natl. Institute of Cardiovascular Diseases (NICVD)</h2>
+                                <div class="details-row">
+                                    <span><strong>Clinical Superintendent:</strong> Dr. M. Rahman</span>
+                                    <span>• <strong>NABH Protocol</strong></span>
+                                </div>
+                            </div>
+                            <div class="facility-actions">
+                                <button class="btn btn-outline-cyan">Requisition</button>
+                                <button class="btn btn-dark-cyan">Facility Cockpit <i
+                                        class="fa-solid fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Facility Card 3 -->
+                        <div class="card facility-card">
+                            <div class="facility-image-box">
+                                <span class="badge badge-grey">ARMED FORCES / PUBLIC</span>
+                                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=400"
+                                    alt="Kurmitola Hospital" class="facility-img">
+                                <span class="badge badge-green"><i class="fa-solid fa-shield"></i> Crisis Ready</span>
+                            </div>
+                            <div class="facility-info">
+                                <div class="meta-row">
+                                    <span class="dghs-code">DGHS-HOSP-0089</span>
+                                    <span class="location"><i class="fa-solid fa-location-dot"></i> Kurmitola, Dhaka
+                                        Cantonment</span>
+                                    <span class="pill status-mint">Govt Joint Management</span>
+                                </div>
+                                <h2 class="facility-name">Kurmitola 500-Bed General Hospital</h2>
+                                <div class="details-row">
+                                    <span><strong>Brig. General K. Alam</strong></span>
+                                    <span>• Surge Protocol Ready</span>
+                                </div>
+                            </div>
+                            <div class="facility-actions">
+                                <button class="btn btn-outline-cyan">Requisition</button>
+                                <button class="btn btn-dark-cyan">Facility Cockpit <i
+                                        class="fa-solid fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Facility Card 4 -->
+                        <div class="card facility-card">
+                            <div class="facility-image-box">
+                                <span class="badge badge-dark">DIVISIONAL HUB</span>
+                                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=400"
+                                    alt="Chittagong Hub" class="facility-img">
+                                <span class="badge badge-green"><i class="fa-solid fa-crosshairs"></i> Level 1
+                                    Trauma</span>
+                            </div>
+                            <div class="facility-info">
+                                <div class="meta-row">
+                                    <span class="dghs-code">DGHS-HOSP-0210</span>
+                                    <span class="location"><i class="fa-solid fa-location-dot"></i> Panchlaish,
+                                        Chittagong</span>
+                                    <span class="pill status-govt">Govt Autonomous</span>
+                                </div>
+                                <h2 class="facility-name">Chittagong Medical College & Hospital</h2>
+                                <div class="details-row">
+                                    <span><strong>Director:</strong> Brig. Gen. Shamim</span>
+                                    <span>• 24/7 Stroke Unit</span>
+                                </div>
+                            </div>
+                            <div class="facility-actions">
+                                <button class="btn btn-outline-cyan">Requisition</button>
+                                <button class="btn btn-dark-cyan">Facility Cockpit <i
+                                        class="fa-solid fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Sidebar Panels -->
+                    <div class="right-sidebar">
+                        <!-- Advisory Card -->
+                        <div class="card side-panel advisory-panel">
+                            <div class="advisory-title-row">
+                                <h3 class="advisory-heading">Vector & Surge Advisory</h3>
+                                <span class="pill national-level-pill">National Level 2</span>
+                            </div>
+                            <p class="advisory-body">
+                                Monsoon surge protocol active: All designated Tier-1 & Tier-2 facilities are instructed
+                                to preserve min. 15% bed capacity for Dengue Serotype-2 and acute respiratory
+                                management.
+                            </p>
+                            <div class="circular-card">
+                                <i class="fa-solid fa-bullhorn circular-icon"></i>
+                                <div>
+                                    <div class="circular-title">DGHS Circular #88/B</div>
+                                    <div class="circular-sub">Issued by Prof. Directorate General</div>
+                                </div>
+                            </div>
+                            <a href="#" class="guidelines-link">Read Complete Clinical Guidelines <i
+                                    class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Footer Pagination -->
+                <div class="pagination-footer">
+                    <span>Showing 4 of 13,447 Facilities across 64 Districts</span>
+                    <div class="pagination">
+                        <button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <span class="dots">...</span>
+                        <button class="page-btn">3,362</button>
+                        <button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Patient Requests & In-Basket</title>
+    <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Dashboard Stylesheet -->
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/prescription-rec.css">
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/features/executive-header.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar surgeon">
+      <div class="brand">
+          <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="/public_html/pages/surgeon-panel/dashboard.html" class="nav-item ">
+          <i class="fa-solid fa-chart-pie icon"></i> Dashboard
+        </a>
+        <a href="/public_html/pages/surgeon-panel/clinical-rec.html" class="nav-item active">
+          <i class="fa-solid fa-clipboard-list icon"></i> Clinical Records
+        </a>
+        <a href="/public_html/pages/surgeon-panel/paitent-req.html" class="nav-item">
+          <i class="fa-solid fa-user-group icon"></i> Patient Requests
+        </a>
+        <a href="/public_html/pages/surgeon-panel/doc-profile.html" class="nav-item">
+          <i class="fa-solid fa-user-doctor icon"></i> Doctor Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search patient MRN, name, vitals..." value="">
+        </div>
+        <div class="top-bar-right">
+          <div class="shift-info">
+            <span class="clock-icon">🕒</span> Shift: Morning Clinical Rounds (07:00 - 15:30)[cite: 14]
+          </div>
+          <div class="status-badge">
+            <span class="dot"></span> EMR Synced[cite: 14]
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">TA</div>
+            <div class="user-info">
+              <div class="user-name">Dr. Tanzim Ahmed, MD[cite: 14]</div>
+              <div class="user-role">Internal Medicine &amp; Therapeutics[cite: 14]</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="content-area">
+        <div class="record-scroll-container">
+          
+          <!-- Sub-Header / Session status -->
+          <div class="session-bar">
+            <div class="session-title">
+              <span class="folder-icon">📁</span> PATIENT ELECTRONIC HEALTH RECORD / ACTIVE CLINICAL ENCOUNTER[cite: 14]
+              <strong>Clinical Chart &amp; Active Rx Orders[cite: 14]</strong>
+            </div>
+            <div class="session-meta-group">
+              <span class="session-timer">⏱ Session: 01:48:24</span>
+              <span class="hipaa-badge">HIPAA ACTIVE</span>
+              <button class="btn-write-prescription">✏ Write Prescription[cite: 14]</button>
+            </div>
+          </div>
+
+          <!-- Record Tabs Navigation -->
+          <div class="record-tabs">
+            <button class="rec-tab">👤 Patient Profile[cite: 14]</button>
+            <button class="rec-tab active">💊 Prescription Records[cite: 14]</button>
+            <button class="rec-tab">🏥 Surgery Records[cite: 14]</button>
+            <button class="rec-tab">🧪 Test Records[cite: 14]</button>
+            <button class="rec-tab">💉 Vaccine Records[cite: 14]</button>
+          </div>
+
+          <!-- Patient Identity & Allergy Banner Card -->
+          <div class="patient-id-banner">
+            <div class="patient-id-left">
+              <div class="patient-avatar-lg">FY</div>
+              <div class="patient-details">
+                <div class="name-row">
+                  <h2>Farhana Yasmin</h2>
+                  <span class="mrn-tag">MRN-449102[cite: 14]</span>
+                  <span class="verified-pill">✓ Verified Identity[cite: 14]</span>
+                </div>
+                <div class="sub-bio-row">
+                  <span>36 y/o Female</span> • 
+                  <span>DOB: 14-Aug-1988</span> • 
+                  <span>Blood: A+</span>[cite: 14]
+                </div>
+                <div class="attending-row">
+                  Attending: Dr. Tanzim Ahmed, MD[cite: 14]
+                </div>
+              </div>
+            </div>
+
+            <div class="allergy-alert-box">
+              <div class="allergy-icon">⚠️</div>
+              <div class="allergy-text">
+                <strong>CRITICAL DRUG ALLERGY</strong>
+                <span>Sulfonamides (Severe Urticaria / Bronchospasm)[cite: 14]</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Medication Search & Action Header -->
+          <div class="med-search-toolbar">
+            <div class="med-search-input">
+              <span>🔍</span>
+              <input type="text" placeholder="Search medication by brand, generic, ATC code (e.g., Ubrelvy, N02CD)..."[cite: 14]>
+            </div>
+            <div class="med-toolbar-actions">
+              <button class="btn-tool-secondary">🖨 Print Medication List[cite: 14]</button>
+              <button class="btn-tool-primary">+ New E-Prescription[cite: 14]</button>
+            </div>
+          </div>
+
+          <!-- Prescriptions Stack -->
+          <div class="prescriptions-stack">
+            
+            <!-- Contraindicated Medication Card -->
+            <div class="rx-card contraindicated">
+              <div class="rx-card-header">
+                <div class="rx-title-group">
+                  <div class="ban-icon">⛔</div>
+                  <div class="rx-name-desc">
+                    <strong>Trimethoprim / Sulfamethoxazole (Bactrim DS)</strong>
+                    <span class="pill-contra">CONTRAINDICATED[cite: 14]</span>
+                    <p>800mg/160mg Oral Tablet • Severe Type I Hypersensitivity. Patient experienced generalized acute urticaria and periorbital edema (Recorded Nov 2009). Cross-reactivity with all sulfonamide class antibiotics strictly locked in e-Rx dispatch.[cite: 14]</p>
+                  </div>
+                </div>
+                <div class="audit-flag-tag">AUDIT FLAG[cite: 14]</div>
+              </div>
+            </div>
+
+            <!-- Active Regimen Card 1 -->
+            <div class="rx-card">
+              <div class="rx-card-top">
+                <div class="rx-title-group">
+                  <div class="pill-icon-box">💊</div>
+                  <div>
+                    <strong>Ubrogepant (Ubrelvy) 50mg Tablet</strong>
+                    <span class="pill-status green">✓ Active Regimen</span>
+                    <span class="category-tag">CGRP Antagonist[cite: 14]</span>
+                  </div>
+                </div>
+                <div class="rx-side-actions">
+                  <button class="btn-sm-action">⚙ Adjust Dose</button>
+                  <button class="btn-sm-action">🔄 Request Refill</button>
+                  <button class="btn-sm-action">🔗 Interactions Check[cite: 14]</button>
+                </div>
+              </div>
+
+              <p class="sig-instructions">
+                <strong>Sig:</strong> Take 1 tablet (50mg) orally at onset of acute migraine with or without aura. May repeat with a second dose after 2 hours if relief is insufficient. Maximum dose: 200mg in 24 hours.[cite: 14]
+              </p>
+
+              <div class="rx-meta-grid">
+                <div>
+                  <span class="meta-label">COURSE</span>
+                  <span class="meta-val">Oct 2023 – Present[cite: 14]</span>
+                </div>
+                <div>
+                  <span class="meta-label">PRESCRIBER</span>
+                  <span class="meta-val">Dr. Tanzim Ahmed, MD[cite: 14]</span>
+                </div>
+                <div>
+                  <span class="meta-label">DISPENSER</span>
+                  <span class="meta-val">Metro Health Rx #402[cite: 14]</span>
+                </div>
+                <div>
+                  <span class="meta-label">REFILLS LEFT</span>
+                  <span class="meta-val highlight">4 refills remaining[cite: 14]</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Active Regimen Card 2 -->
+            <div class="rx-card">
+              <div class="rx-card-top">
+                <div class="rx-title-group">
+                  <div class="pill-icon-box">💊</div>
+                  <div>
+                    <strong>Propranolol HCl 40mg ER Capsule</strong>
+                    <span class="pill-status green">✓ Active Regimen</span>
+                    <span class="adherence-tag">96% Adherence (PDC)[cite: 14]</span>
+                  </div>
+                </div>
+                <div class="rx-side-actions">
+                  <button class="btn-sm-action">⚙ Adjust Dose</button>
+                  <button class="btn-sm-action">⏱ History[cite: 14]</button>
+                </div>
+              </div>
+
+              <p class="sig-instructions">
+                <strong>Sig:</strong> Take 1 capsule (40mg Extended Release) orally once daily every morning (QAM) with food for migraine prophylaxis and resting tremors.[cite: 14]
+              </p>
+
+              <div class="rx-meta-grid">
+                <div>
+                  <span class="meta-label">COURSE</span>
+                  <span class="meta-val">Jan 2022 – Present[cite: 14]</span>
+                </div>
+                <div>
+                  <span class="meta-label">PRESCRIBER</span>
+                  <span class="meta-val">Dr. Farhan Ahmed, MD[cite: 14]</span>
+                </div>
+                <div>
+                  <span class="meta-label">DISPENSER</span>
+                  <span class="meta-val">Metro Health Rx #402[cite: 14]</span>
+                </div>
+                <div>
+                  <span class="meta-label">LAST DISPENSED</span>
+                  <span class="meta-val">12-Jan-2025 (90–day)[cite: 14]</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Refill Requested Card -->
+            <div class="rx-card refill-highlight">
+              <div class="rx-card-top">
+                <div class="rx-title-group">
+                  <div class="pill-icon-box red-bg">💊</div>
+                  <div>
+                    <strong>Fluticasone Propionate 50mcg Nasal Spray</strong>
+                    <span class="pill-status orange">Refill Requested (2d ago)[cite: 14]</span>
+                  </div>
+                </div>
+                <div class="rx-side-actions">
+                  <button class="btn-green-fill">✓ Quick Approve Refill[cite: 14]</button>
+                  <button class="btn-sm-action">✏ Modify Order[cite: 14]</button>
+                  <button class="btn-text-danger">Deny Request[cite: 14]</button>
+                </div>
+              </div>
+
+              <p class="sig-instructions">
+                <strong>Sig:</strong> Instill 2 sprays per nostril once daily in the morning for seasonal allergic rhinitis. 1 bottle (120 metered sprays).[cite: 14]
+              </p>
+
+              <div class="rx-meta-grid four-col">
+                <div>
+                  <span class="meta-label">PATIENT REQUEST</span>
+                  <span class="meta-val">14-Jan-2025[cite: 14]</span>
+                </div>
+                <div>
+                  <span class="meta-label">PHARMACY NOTICE</span>
+                  <span class="meta-val">Metro Health Rx[cite: 14]</span>
+                </div>
+                <div>
+                  <span class="meta-label">PRIOR AUTHORIZATION</span>
+                  <span class="meta-val">Not Required[cite: 14]</span>
+                </div>
+                <div>
+                  <span class="meta-label">CURRENT STATUS</span>
+                  <span class="meta-val danger-text">Pending Clinician Review[cite: 14]</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Discontinued Medication Card -->
+            <div class="rx-card discontinued">
+              <div class="rx-card-header">
+                <div class="rx-title-group">
+                  <div class="disc-icon">🚫</div>
+                  <div class="rx-name-desc">
+                    <strong>Sumatriptan 50mg Oral Tablet</strong>
+                    <span class="pill-disc">Discontinued Oct 2023[cite: 14]</span>
+                    <p><strong>Discontinuation Reason:</strong> Adverse response — patient reported transient chest tightness and uncomfortable throat constriction within 30 min of intake.[cite: 14]</p>
+                    <p class="outcome-text">↩ Clinical Outcome: Safely replaced with Ubrelvy (Ubrogepant) with zero adverse cardiovascular complaints.[cite: 14]</p>
+                  </div>
+                </div>
+                <button class="btn-sm-action">View Historic Notes[cite: 14]</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Prescription Records</title>
+  <link rel="stylesheet" href="prescription.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="dashboard-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <svg class="brand-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 8v8M8 12h8"></path>
+        </svg>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#" class="nav-item">
+          <span class="icon">📊</span> Dashboard
+        </a>
+        <a href="#" class="nav-item active">
+          <span class="icon">📋</span> Clinical Records
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon">👥</span> Patient Requests
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon">👤</span> Doctor Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">Logout</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search patient MRN, name, vitals..." value="">
+        </div>
+        <div class="top-bar-right">
+          <div class="shift-info">
+            <span class="clock-icon">🕒</span> Shift: Morning Clinical Rounds (07:00 - 15:30)[cite: 14]
+          </div>
+          <div class="status-badge">
+            <span class="dot"></span> EMR Synced[cite: 14]
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">TA</div>
+            <div class="user-info">
+              <div class="user-name">Dr. Tanzim Ahmed, MD[cite: 14]</div>
+              <div class="user-role">Internal Medicine &amp; Therapeutics[cite: 14]</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="content-area">
+        <div class="record-scroll-container">
+          
+          <!-- Sub-Header / Session status -->
+          <div class="session-bar">
+            <div class="session-title">
+              <span class="folder-icon">📁</span> PATIENT ELECTRONIC HEALTH RECORD / ACTIVE CLINICAL ENCOUNTER[cite: 14]
+              <strong>Clinical Chart &amp; Active Rx Orders[cite: 14]</strong>
+            </div>
+            <div class="session-meta-group">
+              <span class="session-timer">⏱ Session: 01:48:24</span>
+              <span class="hipaa-badge">HIPAA ACTIVE</span>
+              <button class="btn-write-prescription">✏ Write Prescription[cite: 14]</button>
+            </div>
+          </div>
+
+          <!-- Record Tabs Navigation -->
+          <div class="record-tabs">
+            <button class="rec-tab">👤 Patient Profile[cite: 14]</button>
+            <button class="rec-tab active">💊 Prescription Records[cite: 14]</button>
+            <button class="rec-tab">🏥 Surgery Records[cite: 14]</button>
+            <button class="rec-tab">🧪 Test Records[cite: 14]</button>
+            <button class="rec-tab">💉 Vaccine Records[cite: 14]</button>
+          </div>
+
+          <!-- Patient Identity & Allergy Banner Card -->
+          <div class="patient-id-banner">
+            <div class="patient-id-left">
+              <div class="patient-avatar-lg">FY</div>
+              <div class="patient-details">
+                <div class="name-row">
+                  <h2>Farhana Yasmin</h2>
+                  <span class="mrn-tag">MRN-449102[cite: 14]</span>
+                  <span class="verified-pill">✓ Verified Identity[cite: 14]</span>
+                </div>
+                <div class="sub-bio-row">
+                  <span>36 y/o Female</span> • 
+                  <span>DOB: 14-Aug-1988</span> • 
+                  <span>Blood: A+</span>[cite: 14]
+                </div>
+                <div class="attending-row">
+                  Attending: Dr. Tanzim Ahmed, MD[cite: 14]
+                </div>
+              </div>
+            </div>
+
+            <div class="allergy-alert-box">
+              <div class="allergy-icon">⚠️</div>
+              <div class="allergy-text">
+                <strong>CRITICAL DRUG ALLERGY</strong>
+                <span>Sulfonamides (Severe Urticaria / Bronchospasm)[cite: 14]</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Medication Search & Action Header -->
+          <div class="med-search-toolbar">
+            <div class="med-search-input">
+              <span>🔍</span>
+              <input type="text" placeholder="Search medication by brand, generic, ATC code (e.g., Ubrelvy, N02CD)..."[cite: 14]>
+            </div>
+            <div class="med-toolbar-actions">
+              <button class="btn-tool-secondary">🖨 Print Medication List[cite: 14]</button>
+              <button class="btn-tool-primary">+ New E-Prescription[cite: 14]</button>
+            </div>
+          </div>
+
+          <!-- Prescriptions Stack -->
+          <div class="prescriptions-stack">
+            
+            <!-- Contraindicated Medication Card -->
+            <div class="rx-card contraindicated">
+              <div class="rx-card-header">
+                <div class="rx-title-group">
+                  <div class="ban-icon">⛔</div>
+                  <div class="rx-name-desc">
+                    <strong>Trimethoprim / Sulfamethoxazole (Bactrim DS)</strong>
+                    <span class="pill-contra">CONTRAINDICATED[cite: 14]</span>
+                    <p>800mg/160mg Oral Tablet • Severe Type I Hypersensitivity. Patient experienced generalized acute urticaria and periorbital edema (Recorded Nov 2009). Cross-reactivity with all sulfonamide class antibiotics strictly locked in e-Rx dispatch.[cite: 14]</p>
+                  </div>
+                </div>
+                <div class="audit-flag-tag">AUDIT FLAG[cite: 14]</div>
+              </div>
+            </div>
+
+            <!-- Active Regimen Card 1 -->
+            <div class="rx-card">
+              <div class="rx-card-top">
+                <div class="rx-title-group">
+                  <div class="pill-icon-box">💊</div>
+                  <div>
+                    <strong>Ubrogepant (Ubrelvy) 50mg Tablet</strong>
+                    <span class="pill-status green">✓ Active Regimen</span>
+                    <span class="category-tag">CGRP Antagonist[cite: 14]</span>
+                  </div>
+                </div>
+                <div class="rx-side-actions">
+                  <button class="btn-sm-action">⚙ Adjust Dose</button>
+                  <button class="btn-sm-action">🔄 Request Refill</button>
+                  <button class="btn-sm-action">🔗 Interactions Check[cite: 14]</button>
+                </div>
+              </div>
+
+              <p class="sig-instructions">
+                <strong>Sig:</strong> Take 1 tablet (50mg) orally at onset of acute migraine with or without aura. May repeat with a second dose after 2 hours if relief is insufficient. Maximum dose: 200mg in 24 hours.[cite: 14]
+              </p>
+
+              <div class="rx-meta-grid">
+                <div>
+                  <span class="meta-label">COURSE</span>
+                  <span class="meta-val">Oct 2023 – Present[cite: 14]</span>
+                </div>
+                <div>
+                  <span class="meta-label">PRESCRIBER</span>
+                  <span class="meta-val">Dr. Tanzim Ahmed, MD[cite: 14]</span>
+                </div>
+                <div>
+                  <span class="meta-label">DISPENSER</span>
+                  <span class="meta-val">Metro Health Rx #402[cite: 14]</span>
+                </div>
+                <div>
+                  <span class="meta-label">REFILLS LEFT</span>
+                  <span class="meta-val highlight">4 refills remaining[cite: 14]</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Active Regimen Card 2 -->
+            <div class="rx-card">
+              <div class="rx-card-top">
+                <div class="rx-title-group">
+                  <div class="pill-icon-box">💊</div>
+                  <div>
+                    <strong>Propranolol HCl 40mg ER Capsule</strong>
+                    <span class="pill-status green">✓ Active Regimen</span>
+                    <span class="adherence-tag">96% Adherence (PDC)[cite: 14]</span>
+                  </div>
+                </div>
+                <div class="rx-side-actions">
+                  <button class="btn-sm-action">⚙ Adjust Dose</button>
+                  <button class="btn-sm-action">⏱ History[cite: 14]</button>
+                </div>
+              </div>
+
+              <p class="sig-instructions">
+                <strong>Sig:</strong> Take 1 capsule (40mg Extended Release) orally once daily every morning (QAM) with food for migraine prophylaxis and resting tremors.[cite: 14]
+              </p>
+
+              <div class="rx-meta-grid">
+                <div>
+                  <span class="meta-label">COURSE</span>
+                  <span class="meta-val">Jan 2022 – Present[cite: 14]</span>
+                </div>
+                <div>
+                  <span class="meta-label">PRESCRIBER</span>
+                  <span class="meta-val">Dr. Farhan Ahmed, MD[cite: 14]</span>
+                </div>
+                <div>
+                  <span class="meta-label">DISPENSER</span>
+                  <span class="meta-val">Metro Health Rx #402[cite: 14]</span>
+                </div>
+                <div>
+                  <span class="meta-label">LAST DISPENSED</span>
+                  <span class="meta-val">12-Jan-2025 (90–day)[cite: 14]</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Refill Requested Card -->
+            <div class="rx-card refill-highlight">
+              <div class="rx-card-top">
+                <div class="rx-title-group">
+                  <div class="pill-icon-box red-bg">💊</div>
+                  <div>
+                    <strong>Fluticasone Propionate 50mcg Nasal Spray</strong>
+                    <span class="pill-status orange">Refill Requested (2d ago)[cite: 14]</span>
+                  </div>
+                </div>
+                <div class="rx-side-actions">
+                  <button class="btn-green-fill">✓ Quick Approve Refill[cite: 14]</button>
+                  <button class="btn-sm-action">✏ Modify Order[cite: 14]</button>
+                  <button class="btn-text-danger">Deny Request[cite: 14]</button>
+                </div>
+              </div>
+
+              <p class="sig-instructions">
+                <strong>Sig:</strong> Instill 2 sprays per nostril once daily in the morning for seasonal allergic rhinitis. 1 bottle (120 metered sprays).[cite: 14]
+              </p>
+
+              <div class="rx-meta-grid four-col">
+                <div>
+                  <span class="meta-label">PATIENT REQUEST</span>
+                  <span class="meta-val">14-Jan-2025[cite: 14]</span>
+                </div>
+                <div>
+                  <span class="meta-label">PHARMACY NOTICE</span>
+                  <span class="meta-val">Metro Health Rx[cite: 14]</span>
+                </div>
+                <div>
+                  <span class="meta-label">PRIOR AUTHORIZATION</span>
+                  <span class="meta-val">Not Required[cite: 14]</span>
+                </div>
+                <div>
+                  <span class="meta-label">CURRENT STATUS</span>
+                  <span class="meta-val danger-text">Pending Clinician Review[cite: 14]</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Discontinued Medication Card -->
+            <div class="rx-card discontinued">
+              <div class="rx-card-header">
+                <div class="rx-title-group">
+                  <div class="disc-icon">🚫</div>
+                  <div class="rx-name-desc">
+                    <strong>Sumatriptan 50mg Oral Tablet</strong>
+                    <span class="pill-disc">Discontinued Oct 2023[cite: 14]</span>
+                    <p><strong>Discontinuation Reason:</strong> Adverse response — patient reported transient chest tightness and uncomfortable throat constriction within 30 min of intake.[cite: 14]</p>
+                    <p class="outcome-text">↩ Clinical Outcome: Safely replaced with Ubrelvy (Ubrogepant) with zero adverse cardiovascular complaints.[cite: 14]</p>
+                  </div>
+                </div>
+                <button class="btn-sm-action">View Historic Notes[cite: 14]</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

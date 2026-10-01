@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHMRD - Request Approval Center</title>
+    <link rel="stylesheet" href="/public_html/assets/css/admin-panel/admin-request-management.css">
+    <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar admin">
+            <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>NHMRD</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="/public_html/pages/admin-panel/admin-dashboard.html" class="nav-item"><i
+                        class="fa-solid fa-table-cells-large"></i> Dashboard</a>
+                <a href="/public_html/pages/admin-panel/admin-patient-records.html" class="nav-item"><i
+                        class="fa-solid fa-user-group"></i> Patient Records</a>
+                <a href="/public_html/pages/admin-panel/admin-doctor-records.html" class="nav-item"><i
+                        class="fa-solid fa-user-doctor"></i> Doctor Records</a>
+                <a href="/public_html/pages/admin-panel/admin-hospital-records.html" class="nav-item"><i
+                        class="fa-solid fa-hospital"></i> Hospital Records</a>
+                <a href="/public_html/pages/admin-panel/admin-request-management.html" class="nav-item active"><i
+                        class="fa-solid fa-clipboard-check"></i> Request Management</a>
+                <a href="/public_html/pages/admin-panel/admin-analytics.html" class="nav-item"><i
+                        class="fa-solid fa-chart-line"></i> Analytics</a>
+                <a href="/public_html/pages/admin-panel/admin-notice-broadcast.html" class="nav-item"><i
+                        class="fa-solid fa-bullhorn"></i> Notice Broadcast</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#"><button class="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        Logout</button></a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <!-- Top Header Bar -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search records, MRNs, clinicians...">
+                </div>
+                <div class="user-profile">
+                    <i class="fa-regular fa-bell bell-icon"></i>
+                    <div class="user-info">
+                        <span class="user-name">Dr. Sarah F.</span>
+                        <span class="user-role">Super Admin</span>
+                    </div>
+                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                </div>
+            </header>
+
+            <!-- Dashboard Body -->
+            <main class="dashboard-body">
+                <!-- Page Title & Workflow Header -->
+                <div class="workflow-header">
+                    <div>
+                        <div class="breadcrumb">NHMRD REGULATORY WORKFLOW / CENTRAL CLEARINGHOUSE</div>
+                        <div class="title-row">
+                            <h1 class="page-title">Request Approval Center</h1>
+                            <span class="pill live-pill">• LIVE STREAM</span>
+                        </div>
+                        <p class="subtitle">Review, authenticate, and sanction national clinical credential submissions,
+                            facility scale-ups, and urgent public health broadcasts.</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-outline"><i class="fa-solid fa-download"></i> Export Queue</button>
+                        <button class="btn btn-primary-dark"><i class="fa-solid fa-circle-check"></i> Batch Approve
+                            (Selected)</button>
+                    </div>
+                </div>
+
+                <!-- Metric Summary Grid -->
+                <section class="summary-cards">
+                    <!-- Card 1 -->
+                    <div class="card stat-card">
+                        <div class="card-top">
+                            <div class="icon-box teal"><i class="fa-solid fa-folder-open"></i></div>
+                            <span class="pill cyan-pill"><i class="fa-solid fa-bolt"></i> Needs Action</span>
+                        </div>
+                        <span class="stat-label">PENDING SUBMISSIONS</span>
+                        <span class="stat-value">28 <span class="sub-label">Active Files</span></span>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="card stat-card">
+                        <div class="card-top">
+                            <div class="icon-box teal"><i class="fa-solid fa-circle-check"></i></div>
+                            <span class="pill cyan-pill"><i class="fa-solid fa-chart-line"></i> +12%</span>
+                        </div>
+                        <span class="stat-label">APPROVED THIS WEEK</span>
+                        <span class="stat-value">142 <span class="sub-label">Validated</span></span>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="card stat-card">
+                        <div class="card-top">
+                            <div class="icon-box red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                            <span class="pill red-pill"><i class="fa-solid fa-triangle-exclamation"></i>
+                                Escalated</span>
+                        </div>
+                        <span class="stat-label">FLAGGED / UNDER AUDIT</span>
+                        <span class="stat-value red-text">04 <span class="sub-label red-text">High
+                                Priority</span></span>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="card stat-card">
+                        <div class="card-top">
+                            <div class="icon-box teal"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                            <span class="pill cyan-pill"><i class="fa-solid fa-bullseye"></i> Target: 24h</span>
+                        </div>
+                        <span class="stat-label">AUTOMATED VERIFICATION</span>
+                        <span class="stat-value">75% <span class="sub-label">SLA</span></span>
+                    </div>
+                </section>
+
+                <!-- Filter and Sort Bar -->
+                <section class="filter-bar">
+                    <div class="filter-tabs">
+                        <button class="tab-btn active">All Submissions <span class="tab-badge">28</span></button>
+                        <button class="tab-btn">Doctor Registrations <span class="tab-badge-light">12</span></button>
+                        <button class="tab-btn">License Renewals <span class="tab-badge-light">8</span></button>
+                    </div>
+                    <div class="filter-inputs">
+                        <div class="search-filter-box">
+                            <i class="fa-solid fa-filter"></i>
+                            <input type="text" placeholder="Filter by Doctor / Facility / BMDC...">
+                        </div>
+                        <button class="btn-sort"><i class="fa-solid fa-arrow-down-short-wide"></i> Sort: SLA
+                            Urgency</button>
+                    </div>
+                </section>
+
+                <!-- Main Workspace Two-Column Grid -->
+                <section class="main-grid">
+                    <!-- Left Column: Request Submissions -->
+                    <div class="request-list">
+
+                        <!-- Request Card 1 -->
+                        <div class="card request-card">
+                            <div class="request-header">
+                                <div class="header-tag-group">
+                                    <span class="pill category-pill">BMDC CREDENTIALING</span>
+                                    <span class="ref-code">REF: #REQ-9941-DMCH</span>
+                                </div>
+                                <span class="timestamp">Submitted: 07-09-2026 • 09:14 AM</span>
+                            </div>
+                            <div class="request-body">
+                                <div class="avatar-box"><i class="fa-solid fa-user-doctor"></i></div>
+                                <div class="request-info">
+                                    <h3 class="applicant-name">Dr. Tanvir Ahmed <span class="applicant-id">(BMDC Reg.
+                                            #9941)</span></h3>
+                                    <p class="applicant-dept">General Surgery Department • Dhaka Medical College
+                                        Hospital</p>
+                                    <div class="verification-badges">
+                                        <span class="pill-badge"><i class="fa-solid fa-circle-check"></i> BMDC Primary
+                                            Match</span>
+                                        <span class="pill-badge"><i class="fa-solid fa-circle-check"></i> NID Biometric
+                                            Ok</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="request-footer">
+                                <span class="confidence-score"><i class="fa-regular fa-circle-check"></i> Verification
+                                    Confidence: 98.4%</span>
+                                <div class="card-actions">
+                                    <button class="btn btn-ghost">Request Notes</button>
+                                    <button class="btn btn-danger">Decline</button>
+                                    <button class="btn btn-teal"><i class="fa-solid fa-check"></i> Approve</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Request Card 2 -->
+                        <div class="card request-card">
+                            <div class="request-header">
+                                <div class="header-tag-group">
+                                    <span class="pill category-pill">BMDC CREDENTIALING</span>
+                                    <span class="ref-code">REF: #REQ-9942-CMCH</span>
+                                </div>
+                                <span class="timestamp">Submitted: 07-09-2026 • 10:02 AM</span>
+                            </div>
+                            <div class="request-body">
+                                <div class="avatar-box"><i class="fa-solid fa-user-doctor"></i></div>
+                                <div class="request-info">
+                                    <h3 class="applicant-name">Dr. Sumaiya Parveen <span class="applicant-id">(BMDC Reg.
+                                            #9942)</span></h3>
+                                    <p class="applicant-dept">Pediatrics & Neonatology • Chittagong Medical College
+                                        Hospital</p>
+                                    <div class="verification-badges">
+                                        <span class="pill-badge"><i class="fa-solid fa-circle-check"></i> BMDC Primary
+                                            Match</span>
+                                        <span class="pill-badge"><i class="fa-solid fa-circle-check"></i> NID Biometric
+                                            Ok</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="request-footer">
+                                <span class="confidence-score"><i class="fa-regular fa-circle-check"></i> Verification
+                                    Confidence: 94.1%</span>
+                                <div class="card-actions">
+                                    <button class="btn btn-ghost">Request Notes</button>
+                                    <button class="btn btn-danger">Decline</button>
+                                    <button class="btn btn-teal"><i class="fa-solid fa-check"></i> Approve</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Request Card 3 -->
+                        <div class="card request-card">
+                            <div class="request-header">
+                                <div class="header-tag-group">
+                                    <span class="pill category-pill-blue">FACILITY EXPANSION</span>
+                                    <span class="ref-code">LIC-2026-EVR-09</span>
+                                </div>
+                                <span class="timestamp">Submitted: 06-09-2026 • 04:30 PM</span>
+                            </div>
+                            <div class="request-body">
+                                <div class="avatar-box blue-box"><i class="fa-solid fa-hospital-user"></i></div>
+                                <div class="request-info">
+                                    <h3 class="applicant-name">Evercare Hospital Dhaka <span
+                                            class="applicant-id">(Tier-1 Tertiary)</span></h3>
+                                    <p class="applicant-dept">Bed Capacity Modification • +50 New Level-3 ICU Units (320
+                                        → 370 Total Licensed Beds)</p>
+                                </div>
+                            </div>
+                            <div class="request-footer">
+                                <span class="confidence-score"><i class="fa-regular fa-circle-check"></i> Regulatory
+                                    Grade: Standard Tier-A</span>
+                                <div class="card-actions">
+                                    <button class="btn btn-ghost">Site Report</button>
+                                    <button class="btn btn-primary-dark"><i class="fa-solid fa-stamp"></i> Issue
+                                        Endorsement</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Request Card 4 -->
+                        <div class="card request-card border-red">
+                            <div class="request-header">
+                                <div class="header-tag-group">
+                                    <span class="pill category-pill-red">PRIORITY ALERT</span>
+                                    <span class="ref-code">DGHS-BC-882</span>
+                                </div>
+                                <span class="timestamp red-text">• SLA Breaching in 42m</span>
+                            </div>
+                            <div class="request-body">
+                                <div class="avatar-box red-box"><i class="fa-solid fa-bullhorn"></i></div>
+                                <div class="request-info">
+                                    <h3 class="applicant-name">DGHS Emergency Dengue Alert Transmission</h3>
+                                    <p class="applicant-dept">Target: 14,200 Clinics & Diagnostic Centers Nationwide •
+                                        NS1 Protocol Update</p>
+                                </div>
+                            </div>
+                            <div class="request-footer">
+                                <span class="confidence-score red-text"><i class="fa-solid fa-triangle-exclamation"></i>
+                                    Scope: Level 1 Emergency Broadcast</span>
+                                <div class="card-actions">
+                                    <button class="btn btn-ghost">Review Copy</button>
+                                    <button class="btn btn-danger-action"><i class="fa-solid fa-paper-plane"></i>
+                                        Authorize & Dispatch</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Application Deep Dive Inspection -->
+                    <aside class="deep-dive-panel">
+                        <div class="card panel-content">
+
+                            <!-- Deep Dive Header -->
+                            <div class="deep-dive-header">
+                                <div class="panel-title-row">
+                                    <i class="fa-solid fa-address-card panel-icon"></i>
+                                    <h2 class="panel-title">Application Deep Dive</h2>
+                                </div>
+                                <span class="id-badge">ID: 2026-BMDC-9941</span>
+                            </div>
+
+                            <!-- Profile Box -->
+                            <div class="doctor-profile-box">
+                                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=200"
+                                    alt="Dr. Tanvir Ahmed" class="doc-photo">
+                                <div class="doc-meta">
+                                    <h3 class="doc-name">Dr. Tanvir Ahmed, MBBS</h3>
+                                    <p class="doc-sub">General Surgery Specialist Fellow</p>
+                                    <span class="status-pass"><i class="fa-solid fa-circle-check"></i> Status: Passed
+                                        All 3 Automated Checks</span>
+                                </div>
+                            </div>
+
+                            <!-- Document Checklist -->
+                            <div class="checklist-section">
+                                <h4 class="checklist-title">DOCUMENT CHECKLIST & INTEGRITY</h4>
+
+                                <div class="doc-item">
+                                    <i class="fa-solid fa-shield-halved doc-icon"></i>
+                                    <div class="doc-details">
+                                        <span class="doc-name">BMDC_Full_Reg_Certificate_signed.pdf</span>
+                                        <span class="doc-meta-text">2.4 MB • SHA256 Hash Matched</span>
+                                    </div>
+                                    <i class="fa-regular fa-eye view-icon"></i>
+                                </div>
+
+                                <div class="doc-item">
+                                    <i class="fa-solid fa-fingerprint doc-icon"></i>
+                                    <div class="doc-details">
+                                        <span class="doc-name">NID_National_Biometric_Validation.xml</span>
+                                        <span class="doc-meta-text">EC Database Live Query • 100% Match</span>
+                                    </div>
+                                    <i class="fa-regular fa-eye view-icon"></i>
+                                </div>
+
+                                <div class="doc-item">
+                                    <i class="fa-solid fa-building-columns doc-icon"></i>
+                                    <div class="doc-details">
+                                        <span class="doc-name">DMCH_Director_Verification_Signed.pdf</span>
+                                        <span class="doc-meta-text">Institutional Stamp Checked</span>
+                                    </div>
+                                    <i class="fa-regular fa-eye view-icon"></i>
+                                </div>
+
+                                <div class="doc-item">
+                                    <i class="fa-solid fa-award doc-icon"></i>
+                                    <div class="doc-details">
+                                        <span class="doc-name">Operating_License_Certificated_signed.pdf</span>
+                                        <span class="doc-meta-text">Institutional Stamp Checked</span>
+                                    </div>
+                                    <i class="fa-regular fa-eye view-icon"></i>
+                                </div>
+                            </div>
+
+                            <!-- Auditor Decision Notes -->
+                            <div class="auditor-notes-section">
+                                <h4 class="notes-title">AUDITOR DECISION NOTES</h4>
+                                <div class="notes-box">
+                                    Credentials corroborated against BMDC 2026 registry ledger. Recommended for
+                                    instantaneous clearance.
+                                </div>
+                            </div>
+
+                            <!-- Decision Buttons -->
+                            <div class="deep-dive-actions">
+                                <button class="btn btn-endorse"><i class="fa-solid fa-circle-check"></i> Endorse &
+                                    Register</button>
+                                <button class="btn btn-flag"><i class="fa-solid fa-ban"></i> Flag</button>
+                            </div>
+                            <p class="crypto-signature">Super Admin Dr. Sarah F. (PKI Encrypted Sign-off #009)</p>
+
+                        </div>
+                    </aside>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

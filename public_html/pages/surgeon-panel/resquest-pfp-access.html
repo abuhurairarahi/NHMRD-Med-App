@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Patient Requests & In-Basket</title>
+    <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Dashboard Stylesheet -->
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/resquest-pfp-access.css">
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/surgoen-panel/features/executive-header.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar surgeon">
+      <div class="brand">
+          <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="/public_html/pages/surgeon-panel/dashboard.html" class="nav-item">
+          <i class="fa-solid fa-chart-pie icon"></i> Dashboard
+        </a>
+        <a href="/public_html/pages/surgeon-panel/clinical-rec.html" class="nav-item">
+          <i class="fa-solid fa-clipboard-list icon"></i> Clinical Records
+        </a>
+        <a href="/public_html/pages/surgeon-panel/paitent-req.html" class="nav-item active">
+          <i class="fa-solid fa-user-group icon"></i> Patient Requests
+        </a>
+        <a href="/public_html/pages/surgeon-panel/doc-profile.html" class="nav-item">
+          <i class="fa-solid fa-user-doctor icon"></i> Doctor Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search patient MRN, name, vitals..." value="">
+        </div>
+        <div class="top-bar-right">
+          <div class="shift-info">
+            <span class="clock-icon">🕒</span> Shift: Morning Clinical Rounds (07:00 - 15:30)[cite: 15]
+          </div>
+          <div class="status-badge">
+            <span class="dot"></span> EMR Synced[cite: 15]
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar">TA</div>
+            <div class="user-info">
+              <div class="user-name">Dr. Tanzim Ahmed, MD[cite: 15]</div>
+              <div class="user-role">Internal Medicine &amp; Therapeutics[cite: 15]</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="content-area">
+        <div class="record-scroll-container">
+          
+          <!-- Breadcrumb & Top Header -->
+          <div class="access-top-header">
+            <div class="breadcrumb-trail">Clinical Inbox / Patient Requests / Profile Access Verification[cite: 15]</div>
+            <div class="header-flex-row">
+              <div>
+                <h2>Patient Profile Access Authorization</h2>
+                <p>Secure HIPAA &amp; EMR Verification Protocol for Restricted Patient Records[cite: 15]</p>
+              </div>
+              <div class="handshake-badge-box">
+                <span class="lock-icon">🔒</span>
+                <div class="handshake-text">
+                  <strong>256-BIT ENCRYPTED HANDSHAKE</strong>
+                  <span>Dual-Factor Patient Consent Enforced[cite: 15]</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Layout Grid -->
+          <div class="access-grid-container">
+            
+            <!-- Left Column: Authorization Form -->
+            <div class="auth-card-main">
+              
+              <!-- Security Banner Callout -->
+              <div class="security-banner-box">
+                <div class="sec-icon">🛡️</div>
+                <div class="sec-text">
+                  <strong>HIPAA SECURITY STANDARD RULE § 164.312</strong>
+                  <p>To protect patient confidentiality and comply with regional health data access protocols, entering a real-time one-time password (OTP) authorized by the patient is required before unlocking full longitudinal medical records.[cite: 15]</p>
+                </div>
+              </div>
+
+              <!-- Input Fields Grid -->
+              <div class="form-inputs-row">
+                <div class="input-group-col">
+                  <label class="input-lbl">Patient Full Name</label>
+                  <div class="input-with-icon">
+                    <span class="ico">👤</span>
+                    <input type="text" value="Farhana Yasmin" readonly>
+                    <span class="verified-tag">✓ Verified Identity[cite: 15]</span>
+                  </div>
+                </div>
+
+                <div class="input-group-col">
+                  <label class="input-lbl">Date of Birth (DOB)</label>
+                  <div class="input-with-icon">
+                    <span class="ico">📅</span>
+                    <input type="text" value="14/08/1988 (DD/MM/YYYY)" readonly>[cite: 15]
+                  </div>
+                </div>
+              </div>
+
+              <!-- MRN Row -->
+              <div class="mrn-reference-box">
+                <div class="mrn-left-lbl">
+                  <span class="ico">📁</span>
+                  <div>
+                    <strong>CLINICAL CONTINUITY REFERENCE</strong>
+                    <span>Medical Record Number (MRN)[cite: 15]</span>
+                  </div>
+                </div>
+                <div class="mrn-value-badge">
+                  <span>MRN - 449102</span>
+                  <span class="copy-ico">📋</span>[cite: 15]
+                </div>
+              </div>
+
+              <!-- OTP Inputs Section -->
+              <div class="otp-section-box">
+                <div class="otp-title-row">
+                  <strong>Patient One-Time Password (OTP)[cite: 15]</strong>
+                  <span>Patient provides this 6-digit verification code via SMS or authenticated health portal app to authorize provider access.[cite: 15]</span>
+                </div>
+
+                <div class="otp-boxes-grid">
+                  <input type="text" maxlength="1" class="otp-box active-box">
+                  <input type="text" maxlength="1" class="otp-box">
+                  <input type="text" maxlength="1" class="otp-box">
+                  <span class="otp-dash">-</span>
+                  <input type="text" maxlength="1" class="otp-box">
+                  <input type="text" maxlength="1" class="otp-box">
+                  <input type="text" maxlength="1" class="otp-box">
+                </div>
+
+                <div class="otp-timers-row">
+                  <span class="timer-left">⏱ Code expires in 04:41[cite: 15]</span>
+                  <button class="resend-btn">🔄 Resend SMS Code[cite: 15]</button>
+                </div>
+              </div>
+
+              <!-- Action Footer Buttons -->
+              <div class="auth-action-footer">
+                <button class="btn-unlock-red">🔓 Access Profile / Verify &amp; Unlock[cite: 15]</button>
+                <button class="btn-cancel-gray">← Cancel[cite: 15]</button>
+              </div>
+
+            </div>
+
+            <!-- Right Column: Request Info & Compliance Log -->
+            <div class="auth-sidebar-col">
+              
+              <!-- Active Request Card -->
+              <div class="side-info-card">
+                <div class="side-card-header">
+                  <span>ACTIVE ACCESS REQUEST</span>
+                  <span class="priority-pill">● High Priority Clearance[cite: 15]</span>
+                </div>
+
+                <div class="patient-mini-profile">
+                  <div class="avatar-circle">FY</div>
+                  <div class="mini-meta">
+                    <strong>Farhana Yasmin</strong>
+                    <span>36 y/o • Female • Blood: A+</span>
+                    <span class="phone-num">📞 +1 (555) 304-8291[cite: 15]</span>
+                  </div>
+                </div>
+
+                <div class="encounter-context-box">
+                  <span class="context-title">ENCOUNTER CONTEXT</span>
+                  <div class="context-body">
+                    <strong>Telehealth Consultation &amp; CGRP Migraine History Review[cite: 15]</strong>
+                    <p>Seeking prescription renewal and neurological evaluation for refractory chronic migraine episodes. Longitudinal chart review needed.[cite: 15]</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Audit & Compliance Log Card -->
+              <div class="side-info-card">
+                <div class="side-card-header">
+                  <span>⚖ Audit &amp; Compliance Log[cite: 15]</span>
+                </div>
+
+                <ul class="compliance-list">
+                  <li>
+                    <span>Access grants a strictly temporary 2-hour audit-logged clinical chart view. Time-stamped to National EMR Registry.[cite: 15]</span>
+                  </li>
+                  <li>
+                    <strong>Authorized Attending Physician: Dr. Tanzim Ahmed, MD (Internal Medicine • Duty Station 04).[cite: 15]</strong>
+                  </li>
+                  <li>
+                    <span>Session keystrokes, diagnostic note downloads, and lab history queries will be logged per CJIS/HIPAA protocols.[cite: 15]</span>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

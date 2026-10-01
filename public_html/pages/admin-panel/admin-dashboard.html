@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHMRD Dashboard</title>
+    <link rel="stylesheet" href="/public_html/assets/css/admin-panel/admin-dashboard.css">
+    <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar admin">
+            <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>NHMRD</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="/public_html/pages/admin-panel/admin-dashboard.html" class="nav-item active"><i
+                        class="fa-solid fa-table-cells-large"></i> Dashboard</a>
+                <a href="/public_html/pages/admin-panel/admin-patient-records.html" class="nav-item"><i
+                        class="fa-solid fa-user-group"></i> Patient Records</a>
+                <a href="/public_html/pages/admin-panel/admin-doctor-records.html" class="nav-item"><i
+                        class="fa-solid fa-user-doctor"></i> Doctor Records</a>
+                <a href="/public_html/pages/admin-panel/admin-hospital-records.html" class="nav-item"><i
+                        class="fa-solid fa-hospital"></i> Hospital Records</a>
+                <a href="/public_html/pages/admin-panel/admin-request-management.html" class="nav-item"><i
+                        class="fa-solid fa-clipboard-check"></i> Request Management</a>
+                <a href="/public_html/pages/admin-panel/admin-analytics.html" class="nav-item"><i
+                        class="fa-solid fa-chart-line"></i> Analytics</a>
+                <a href="/public_html/pages/admin-panel/admin-notice-broadcast.html" class="nav-item"><i
+                        class="fa-solid fa-bullhorn"></i> Notice Broadcast</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="/public_html/pages/login.html"><button class="logout-btn"><i
+                            class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button></a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <!-- Top Navigation Header -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search records, MRNs, clinicians...">
+                </div>
+                <div class="user-profile">
+                    <div class="user-info">
+                        <span class="user-name">Dr. Sarah F.</span>
+                        <span class="user-role">Super Admin</span>
+                    </div>
+                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                </div>
+            </header>
+
+            <!-- Main Dashboard Content -->
+            <main class="dashboard-body">
+                <!-- Sub Header & Action Buttons -->
+                <div class="dashboard-header">
+                    <div>
+                        <div class="breadcrumb">
+                            <span class="badge-tag">TRIAGE LEVEL 1</span>
+                            <span>NATIONAL COMMAND HUB</span>
+                        </div>
+                        <h1>Clinical & Regulatory Command Overview</h1>
+                        <p class="subtitle">Real-time syndromic surveillance, clinician licensing queue, and hospital
+                            tier monitoring across 8 Divisions.</p>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary"><i class="fa-solid fa-id-card"></i> Credential Doctor</button>
+                        <button class="btn btn-secondary"><i class="fa-solid fa-file-contract"></i> License
+                            Hospital</button>
+                        <button class="btn btn-secondary"><i class="fa-solid fa-baby"></i> Register Newborn</button>
+                        <button class="btn btn-danger-soft"><i class="fa-solid fa-triangle-exclamation"></i> Directive
+                            Alert</button>
+                    </div>
+                </div>
+
+                <!-- Metric Stat Cards -->
+                <section class="metrics-grid">
+                    <div class="card metric-card">
+                        <div class="metric-top">
+                            <i class="fa-solid fa-users"></i>
+                            <span class="growth-badge positive">+10% vs last mo</span>
+                        </div>
+                        <span class="metric-label">TOTAL ACTIVE PATIENTS</span>
+                        <span class="metric-value">177,818,044</span>
+                        <div class="metric-sub text-muted">
+                            <span>Inpatient: 1,420,910</span>
+                            <span>Outpatient: 12.4M/mo</span>
+                        </div>
+                    </div>
+
+                    <div class="card metric-card">
+                        <div class="metric-top">
+                            <i class="fa-solid fa-user-doctor"></i>
+                            <span class="growth-badge positive">+5% growth</span>
+                        </div>
+                        <span class="metric-label">TOTAL REGISTERED DOCTORS</span>
+                        <span class="metric-value">30,033</span>
+                        <div class="metric-sub text-muted">
+                            <span>Specialists: 8,420</span>
+                            <span>General Duty: 21,613</span>
+                        </div>
+                    </div>
+
+                    <div class="card metric-card">
+                        <div class="metric-top">
+                            <i class="fa-solid fa-hospital"></i>
+                            <span class="growth-badge positive">+15% expansion</span>
+                        </div>
+                        <span class="metric-label">TOTAL LICENSED HOSPITALS</span>
+                        <span class="metric-value">13,447</span>
+                        <div class="metric-sub text-muted">
+                            <span>Public/Tertiary: 642</span>
+                            <span>Private: 12,805</span>
+                        </div>
+                    </div>
+
+                    <div class="card metric-card">
+                        <div class="metric-top">
+                            <i class="fa-solid fa-bed"></i>
+                            <span class="growth-badge warning"><i class="fa-solid fa-triangle-exclamation"></i> High ICU
+                                Load</span>
+                        </div>
+                        <span class="metric-label">NATIONAL BED OCCUPANCY</span>
+                        <span class="metric-value">88.4%</span>
+                        <div class="metric-sub text-muted">
+                            <span>ICU/CCU: 94.2%</span>
+                            <span>Triage: 81.0%</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Main Grid: Surveillance & Queue -->
+                <section class="content-grid">
+                    <!-- Left Column: Disease Surveillance -->
+                    <div class="card panel-card">
+                        <div class="panel-header">
+                            <div>
+                                <div class="title-with-badge">
+                                    <h2>National Disease Surveillance & Outbreak Threats</h2>
+                                    <span class="alert-pill danger">Vector Alert Elevated</span>
+                                </div>
+                                <p class="panel-subtitle">Real-time epidemiological threshold telemetry aggregated from
+                                    518 Upazila Health Complexes.</p>
+                            </div>
+                            <div class="time-filter">
+                                <button>7 Days</button>
+                                <button class="active">30 Days</button>
+                                <button>90 Days</button>
+                            </div>
+                        </div>
+
+                        <div class="surveillance-list">
+                            <!-- Item 1 -->
+                            <div class="surveillance-item border-danger">
+                                <div class="item-header">
+                                    <div class="item-title text-danger">
+                                        <i class="fa-solid fa-virus"></i>
+                                        <strong>Dengue Hemorrhagic Fever (DEN-4)</strong>
+                                    </div>
+                                    <span class="badge danger-solid">85% Critical Threshold</span>
+                                </div>
+                                <div class="stat-highlight">14,892 active</div>
+                                <div class="item-meta">
+                                    <span>Serotype-4 Predominant | Genomic clade verified</span>
+                                    <span class="text-danger">18 Deaths recorded in past 24h</span>
+                                </div>
+                            </div>
+
+                            <!-- Item 2 -->
+                            <div class="surveillance-item">
+                                <div class="item-header">
+                                    <div class="item-title">
+                                        <i class="fa-solid fa-mask-face"></i>
+                                        <strong>Measles Outbreak (Cox's Bazar & Sylhet Cluster)</strong>
+                                    </div>
+                                    <span class="badge info">76.3% Severity</span>
+                                </div>
+                                <div class="stat-highlight">3,410 active</div>
+                                <div class="item-meta">
+                                    <span>Ring vaccination coverage: 92% complete across targeted camps</span>
+                                    <span class="text-success">Transmission Rate Decreasing (-4.2%)</span>
+                                </div>
+                            </div>
+
+                            <!-- Item 3 -->
+                            <div class="surveillance-item">
+                                <div class="item-header">
+                                    <div class="item-title">
+                                        <i class="fa-solid fa-lungs"></i>
+                                        <strong>Acute Respiratory Infections (Nipah & Seasonal H1N1)</strong>
+                                    </div>
+                                    <span class="badge warning-soft">62.0% Moderate</span>
+                                </div>
+                                <div class="stat-highlight">1,120 active</div>
+                                <div class="item-meta">
+                                    <span>Active surveillance watch active in 8 Northern Districts</span>
+                                    <span>Beds Reserved: 450 Isolated</span>
+                                </div>
+                            </div>
+
+                            <!-- Item 4 -->
+                            <div class="surveillance-item">
+                                <div class="item-header">
+                                    <div class="item-title">
+                                        <i class="fa-solid fa-chart-line"></i>
+                                        <strong>Retroviral & Chronic Pathogen Surveillance</strong>
+                                    </div>
+                                    <span class="badge success">48.0% Stable</span>
+                                </div>
+                                <div class="stat-highlight text-muted">Controlled</div>
+                                <div class="item-meta">
+                                    <span>National Antiretroviral therapy coverage: 84% target achievement</span>
+                                    <span>0 Cluster Breakthroughs</span>
+                                </div>
+                            </div>
+
+                            <!-- Hotspot Pills -->
+                            <div class="hotspots-container">
+                                <span class="hotspot-label">DIVISIONAL VECTOR SEVERITY HOTSPOTS (CURRENT EPIDEMIC
+                                    SHIFT):</span>
+                                <div class="hotspot-tags">
+                                    <span>Dhaka <strong class="text-danger">Severe</strong></span>
+                                    <span>Chittagong <strong class="text-warning">High</strong></span>
+                                    <span>Sylhet <strong class="text-info">Moderate</strong></span>
+                                    <span>Rajshahi <strong class="text-success">Normal</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Regulatory Queue -->
+                    <div class="card panel-card">
+                        <div class="panel-header">
+                            <div>
+                                <h2>Regulatory Queue</h2>
+                            </div>
+                            <a href="#" class="link-btn">View All (48 Pending) <i
+                                    class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+
+                        <div class="queue-list">
+                            <!-- Queue Item 1 -->
+                            <div class="queue-item">
+                                <div class="queue-top">
+                                    <span class="queue-type">PHYSICIAN CREDENTIALING</span>
+                                    <span class="badge warning-soft">Biometrics Pending</span>
+                                </div>
+                                <h3>Dr. Sarah Sabrina Khan</h3>
+                                <p class="queue-sub">Cardiology | BMDC Reg: #A-58291</p>
+                                <p class="queue-meta">Dhaka Medical College Hospital • 07-09-2026 14:20</p>
+                                <div class="queue-actions">
+                                    <button class="btn-sm btn-dark">Scrutinize</button>
+                                    <button class="btn-sm btn-success">Approve</button>
+                                </div>
+                            </div>
+
+                            <!-- Queue Item 2 -->
+                            <div class="queue-item">
+                                <div class="queue-top">
+                                    <span class="queue-type">INSTITUTIONAL LICENSE</span>
+                                    <span class="badge info">Inspection Set</span>
+                                </div>
+                                <h3>Ibn Sina Specialized Trauma Center</h3>
+                                <p class="queue-sub">Class A1 Tertiary • Dhaka North Division</p>
+                                <p class="queue-meta">Scheduled Onsite Audit: 15 Oct 2026</p>
+                                <div class="queue-actions">
+                                    <button class="btn-sm btn-info-soft">Review Dossier</button>
+                                </div>
+                            </div>
+
+                            <!-- Queue Item 3 -->
+                            <div class="queue-item">
+                                <div class="queue-top">
+                                    <span class="queue-type">EMERGENCY BED TRIAGE</span>
+                                    <span class="badge danger-soft">In Transit</span>
+                                </div>
+                                <h3>Md. Ashraful Hoque (Age 38)</h3>
+                                <p class="queue-sub text-danger">Dengue-2 Severe • Platelets: 24,000</p>
+                                <p class="queue-meta">DMCH Ward 4B • Bed Allocated</p>
+                                <div class="queue-actions">
+                                    <button class="btn-sm btn-dark">View Vitals Feed</button>
+                                </div>
+                            </div>
+
+                            <!-- Queue Item 4 -->
+                            <div class="queue-item">
+                                <div class="queue-top">
+                                    <span class="queue-type">CRVS BIRTH REGISTRATION</span>
+                                    <span class="badge success">Verified & Issued</span>
+                                </div>
+                                <h3>Baby of Rahima Begum (Female)</h3>
+                                <p class="queue-sub">Birth Weight: 3.15kg • Token: #CRVS-BGD-2026</p>
+                                <p class="queue-meta">Kurmitola General Hospital • 07-09-2026</p>
+                                <div class="queue-actions">
+                                    <button class="btn-sm btn-info-soft"><i class="fa-solid fa-download"></i> Download
+                                        Certificate</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel-footer">
+                            <span>Average Regulator Scrutiny Turnaround: <strong>4.2 Hours</strong></span>
+                            <span class="text-success">SLA: 98.4% Compliant</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Bottom Grid: Infrastructure & Directives -->
+                <section class="content-grid">
+                    <!-- Infrastructure Matrix -->
+                    <div class="card panel-card">
+                        <div class="panel-header">
+                            <div>
+                                <div class="title-with-badge">
+                                    <h2><i class="fa-solid fa-dharmachakra"></i> Live Hospital Infrastructure Matrix
+                                    </h2>
+                                    <span class="badge success">National Grids Stable</span>
+                                </div>
+                                <p class="panel-subtitle">Real-time status of critical medical reserves, cryogenic
+                                    liquid oxygen plants, and transport grids.</p>
+                            </div>
+                        </div>
+
+                        <div class="infra-stats">
+                            <div class="infra-stat-item">
+                                <span class="infra-status"><i class="fa-solid fa-circle-dot text-success"></i>
+                                    Operational</span>
+                                <span class="infra-value">99.8%</span>
+                                <span class="infra-label">Medical Oxygen Plants</span>
+                                <span class="infra-sub">512/513 Active</span>
+                            </div>
+                            <div class="infra-stat-item">
+                                <span class="infra-status"><i class="fa-solid fa-shield text-info"></i> Reserves</span>
+                                <span class="infra-value">42,100</span>
+                                <span class="infra-label">Blood Bank Units</span>
+                                <span class="infra-sub">Platelets in demand</span>
+                            </div>
+                            <div class="infra-stat-item">
+                                <span class="infra-status"><i class="fa-solid fa-truck-medical text-primary"></i>
+                                    Dispatch</span>
+                                <span class="infra-value">1,840</span>
+                                <span class="infra-label">Emergency Ambulances</span>
+                                <span class="infra-sub text-success">94.8% Fleet Ready</span>
+                            </div>
+                        </div>
+
+                        <div class="infra-footer">
+                            <span><i class="fa-solid fa-check-circle text-success"></i> All central warehouse supply
+                                chains responding normally</span>
+                            <button class="btn-sm btn-outline">Full Asset Audit</button>
+                        </div>
+                    </div>
+
+                    <!-- Ministerial Directives -->
+                    <div class="card panel-card">
+                        <div class="panel-header">
+                            <div>
+                                <div class="title-with-badge">
+                                    <h2><i class="fa-solid fa-bullhorn"></i> Active Ministerial Directives</h2>
+                                    <span class="badge dark">Gazette #DGHS-2026/89</span>
+                                </div>
+                                <p class="panel-subtitle">Issued by Secretary of Health Services Division for immediate
+                                    national enforcement.</p>
+                            </div>
+                        </div>
+
+                        <div class="directive-box">
+                            <div class="directive-top">
+                                <span class="badge danger-solid">CRITICAL ACTION DIRECTIVE • IMMEDIATE EFFECT</span>
+                                <span class="text-muted">Dispatched 2 hrs ago</span>
+                            </div>
+                            <h3>Enhanced Dengue Serotype-4 Surveillance, Platelet Allocation & Pediatric Ward Expansion
+                            </h3>
+                            <p>All private and public tertiary facilities are instructed to allocate a minimum of 15%
+                                surge capacity beds for febrile admissions and report platelet concentrate inventory
+                                hourly.</p>
+                            <div class="directive-meta">
+                                <span><i class="fa-solid fa-chevron-right"></i> Broadcast Active to 30,033 Clinicians •
+                                    13,447 Facilities</span>
+                                <span class="text-success">99.1% Acknowledged</span>
+                            </div>
+                        </div>
+
+                        <div class="directive-actions">
+                            <button class="btn btn-secondary-outline">View Archive Directive Logs</button>
+                            <button class="btn btn-dark">Issue Supplementary Alert</button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

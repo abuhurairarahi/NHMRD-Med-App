@@ -1,0 +1,526 @@
+:root {
+  --primary-crimson: #a81c34;
+  --primary-hover: #8a1529;
+  --bg-sidebar: #8b1528;
+  --bg-main: #f8f9fa;
+  --bg-card: #ffffff;
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --success-color: #16a34a;
+  --danger-color: #dc2626;
+  --warning-color: #d97706;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Content Area Workspace */
+.content-area {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+}
+
+/* Sub Header & Session Bar */
+.sub-header-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+
+}
+
+.breadcrumb-trail {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.breadcrumb-trail span {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.session-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.session-badge-timer {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.session-active-dot {
+  background: #dc2626;
+  color: white;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 9px;
+}
+
+/* Profile Tabs Bar */
+.profile-tabs-bar {
+  display: flex;
+  gap: 4px;
+  background: #e2e8f0;
+  padding: 4px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.tab-item {
+  background: transparent;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.tab-item.active {
+  background: white;
+  color: var(--text-dark);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* Patient Identity Card */
+.patient-id-card {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.patient-avatar-large {
+  width: 54px;
+  height: 54px;
+  background: #cbd5e1;
+  color: #334155;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.patient-details-col {
+  flex: 1;
+}
+
+.patient-name-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.patient-name-row h2 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mrn-badge {
+  background: #f1f5f9;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.otp-badge {
+  background: #f0fdf4;
+  color: #16a34a;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.patient-demographics-row {
+  display: flex;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.email-link {
+  color: #0284c7;
+}
+
+.attending-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.allergy-alert-pill {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+/* Vitals & Donor Grid */
+.vitals-donor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr;
+  gap: 16px;
+  margin-bottom: 20px;
+  margin-left:10;
+   margin-right:10;
+}
+
+.vital-card, .donor-card {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.vital-title {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.vital-value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.vital-main {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.vital-unit {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.vital-sub-value {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.vital-status-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 6px;
+  margin-top: 6px;
+}
+
+.status-dot-green {
+  width: 6px;
+  height: 6px;
+  background: var(--success-color);
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 2px;
+}
+
+/* Donor Card */
+.donor-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.donor-icon-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.donor-active-badge {
+  background: #f0fdf4;
+  color: #16a34a;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.donor-contact-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.donor-contact-info strong {
+  color: var(--text-dark);
+}
+
+.registry-key-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 6px;
+  color: var(--text-muted);
+}
+
+.code-font {
+  font-family: monospace;
+  font-weight: 600;
+}
+
+/* Medications Section */
+.medications-section {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.med-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.med-sec-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.med-sec-title-group h3 {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.total-courses-pill {
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+.med-sec-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.search-mini {
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  width: 220px;
+}
+
+.search-mini input {
+  border: none;
+  background: transparent;
+  outline: none;
+  margin-left: 6px;
+  width: 100%;
+  font-size: 11px;
+}
+
+.med-section-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+/* Era Container */
+.era-container {
+  margin-bottom: 20px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 12px;
+}
+
+.era-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.era-header-bar h4 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.era-header-bar h4 span {
+  font-weight: normal;
+  color: var(--text-muted);
+  margin-left: 6px;
+}
+
+.view-all-link {
+  font-size: 11px;
+  color: #0284c7;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Med History Card */
+.med-history-card {
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+}
+
+.med-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.med-title-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.bullet-active { width: 6px; height: 6px; background: var(--success-color); border-radius: 50%; }
+.bullet-discontinued { width: 6px; height: 6px; background: var(--warning-color); border-radius: 50%; }
+.bullet-completed { width: 6px; height: 6px; background: #64748b; border-radius: 50%; }
+.bullet-archived { width: 6px; height: 6px; background: #94a3b8; border-radius: 50%; }
+.bullet-resolved { width: 6px; height: 6px; background: #0ea5e9; border-radius: 50%; }
+
+.badge-active { background: #dcfce7; color: #15803d; font-size: 9px; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+.badge-maintenance { background: #e0f2fe; color: #0369a1; font-size: 9px; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+.badge-discontinued { background: #fef3c7; color: #b45309; font-size: 9px; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+.badge-completed { background: #f1f5f9; color: #475569; font-size: 9px; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+.badge-inactive { background: #f1f5f9; color: #64748b; font-size: 9px; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+.badge-archived { background: #f1f5f9; color: #94a3b8; font-size: 9px; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+.badge-resolved { background: #e0f2fe; color: #0284c7; font-size: 9px; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+
+.med-body-details p {
+  font-size: 11px;
+  color: var(--text-dark);
+}
+
+.med-meta-text {
+  font-size: 10px !important;
+  color: var(--text-muted) !important;
+  margin-top: 2px;
+}
+
+/* Allergy Warning Box */
+.allergy-warning-box {
+  background: #fff5f5;
+  border: 1px solid #feb2b2;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+.allergy-warn-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.badge-allergy-contra {
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: auto;
+}
+
+.allergy-warn-desc {
+  font-size: 11px;
+  color: #7f1d1d;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.allergy-warn-footer {
+  font-size: 10px;
+  color: #991b1b;
+  border-top: 1px solid #fed7d7;
+  padding-top: 4px;
+}
+
+/* Utility buttons */
+.btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-crimson { background: var(--primary-crimson); color: white; }
+.btn-crimson-solid { background: var(--primary-crimson); color: white; }
+.btn-outline-dark { background: white; border-color: var(--border-color); color: var(--text-dark); font-size: 11px; }
+
+.text-green { color: var(--success-color); font-weight: 600; }
+.text-danger { color: var(--danger-color); font-weight: 600; }
+.text-muted { color: var(--text-muted); }

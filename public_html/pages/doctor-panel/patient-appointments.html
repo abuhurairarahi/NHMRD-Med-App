@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NHMRD - Patient Booking Requests</title>
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/patient-appointments.css">
+  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-header.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar doctor">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>NHMRD</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item">
+          <i class="fa-solid fa-table-cells-large"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="/public_html/pages/Doctor-panel/doctor-clinical-service-records.html" class="nav-item">
+          <i class="fa-solid fa-notes-medical"></i>
+          <span>Clinical Records</span>
+        </a>
+        <a href="/public_html/pages/Doctor-panel/patient-appointments.html" class="nav-item active">
+          <i class="fa-solid fa-user-clock"></i>
+          <span>Patient Appointments</span>
+        </a>
+        <a href="/public_html/pages/doctor-panel/doctor-profile.html" class="nav-item">
+          <i class="fa-solid fa-user-doctor"></i>
+          <span>Doctor Profile</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      <!-- Top Header Bar -->
+      <header class="doc-header">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search patient MRN, name, vitals...">
+        </div>
+
+        <div class="header-right">
+          <div class="header-status-pill">
+            <i class="fa-regular fa-clock"></i>
+            <span>Shift: Morning Clinical Rounds (07:00 - 15:30)</span>
+          </div>
+          <div class="header-status-pill">
+            <i class="fa-solid fa-rotate"></i>
+            <span>EMR Synced</span>
+          </div>
+          <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+          
+          <div class="doctor-profile-badge">
+            <div class="doctor-info-text">
+              <span class="doctor-name">Dr. Nusrat Jahan, MD</span>
+              <span class="doctor-dept">Internal Medicine & Therapeutics</span>
+            </div>
+            <div class="doctor-avatar">
+              <img src="https://i.pravatar.cc/100?img=47" alt="Dr. Nusrat Jahan">
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content Body -->
+      <main class="content-body">
+        <!-- Page Header & Key Metrics -->
+        <div class="page-top-header">
+          <div class="page-title-group">
+            <div class="breadcrumb">CLINICAL INBOX / <span>TRIAGE & ENCOUNTERS</span></div>
+            <div class="title-with-tag">
+              <h1>Patient Requests & In-Basket</h1>
+              <span class="badge-tag red-tag">5 Critical Today</span>
+            </div>
+            <p class="subtitle">Review pending prescription renewals, asynchronous patient updates, diagnostic reviews, and specialist authorizations.</p>
+          </div>
+
+          <div class="metrics-cards">
+            <div class="metric-card">
+              <div class="metric-icon green-icon"><i class="fa-regular fa-clock"></i></div>
+              <div class="metric-info">
+                <span class="metric-label">AVG TURNAROUND</span>
+                <span class="metric-value">1.8 hrs</span>
+              </div>
+            </div>
+
+            <div class="metric-card urgent">
+              <div class="metric-icon red-icon">!</div>
+              <div class="metric-info">
+                <span class="metric-label red-text">DUE IN &lt;2H</span>
+                <span class="metric-value red-text">3 Urgent</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter & Sorting Bar -->
+        <div class="filter-bar">
+          <div class="filter-pills">
+            <button class="filter-btn active">All Requests <span class="pill-count active-count">32</span></button>
+            <button class="filter-btn"><i class="fa-solid fa-file-prescription"></i> Rx Refills <span class="pill-count">14</span></button>
+            <button class="filter-btn"><i class="fa-regular fa-calendar-alt"></i> Appointments <span class="pill-count">8</span></button>
+            <button class="filter-btn"><i class="fa-solid fa-vial"></i> Lab Reviews <span class="pill-count">6</span></button>
+            <button class="filter-btn"><i class="fa-solid fa-share-nodes"></i> Referrals / Forms <span class="pill-count">4</span></button>
+          </div>
+
+          <div class="sort-wrapper">
+            <i class="fa-solid fa-sliders"></i>
+            <select class="sort-select">
+              <option>Sort: All Urgencies</option>
+              <option>Sort: Highest Priority</option>
+              <option>Sort: Newest First</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Bulk Action Banner -->
+        <div class="bulk-action-bar">
+          <div class="bulk-left">
+            <input type="checkbox" id="selectAll">
+            <label for="selectAll">Select All Pending (5 Visible)</label>
+            <span class="bulk-subtext">Bulk actions require EMR audit log record</span>
+          </div>
+
+          <div class="bulk-buttons">
+            <button class="bulk-btn green-btn"><i class="fa-solid fa-check"></i> Approve Selected Refills</button>
+            <button class="bulk-btn outline-btn"><i class="fa-regular fa-envelope"></i> Forward to Nurse Triage</button>
+            <button class="bulk-btn outline-btn"><i class="fa-regular fa-check-circle"></i> Mark Reviewed</button>
+          </div>
+        </div>
+
+        <!-- Patient Request Cards List -->
+        <div class="requests-list">
+
+          <!-- Patient Card 1 -->
+          <div class="request-card">
+            <div class="card-main-info">
+              <div class="patient-header">
+                <div class="patient-title-group">
+                  <input type="checkbox" class="card-checkbox">
+                  <img src="https://i.pravatar.cc/100?img=12" alt="Md. Rafiqul Islam" class="patient-thumb">
+                  <div>
+                    <h2 class="patient-name">Md. Rafiqul Islam, 67M</h2>
+                    <div class="patient-meta-row">
+                      <span class="mrn-badge">MRN-884920</span>
+                      <span>DOB: 04/12/1957</span>
+                    </div>
+                    <div class="patient-condition">Hypertension &bull; Hyperlipidemia &bull; Primary: Dr. Nusrat Jahan</div>
+                  </div>
+                </div>
+
+                <div class="card-status-info">
+                  <span class="status-dot red-dot">&bull; High Priority</span>
+                  <span class="tag-status">Needs visit this week</span>
+                  <span class="time-ago"><i class="fa-regular fa-clock"></i> 18m ago</span>
+                </div>
+              </div>
+
+              <!-- Inner Card Details -->
+              <div class="card-inner-box flex-between">
+                <div class="inner-left-content">
+                  <div class="card-category-tag">OFFICE VISIT</div>
+                  <div class="request-desc">Routine follow-up for hypertension and medication review</div>
+                  
+                  <div class="detail-row">
+                    <div>
+                      <span class="detail-label">Preferred date</span>
+                      <strong class="detail-value">Tue, Apr 16 &bull; Morning</strong>
+                    </div>
+                    <span class="pill-tag sky-pill">Flexible</span>
+                    <div>
+                      <span class="detail-label">Preferred provider</span>
+                      <strong class="detail-value">Dr. Nusrat Jahan or next available PCP</strong>
+                    </div>
+                    <span class="pill-tag light-blue-pill">Primary Care</span>
+                  </div>
+
+                  <div class="location-notes">
+                    <i class="fa-solid fa-hospital"></i> Dhanmondi Primary Care &bull; Road 27, Dhanmondi, Dhaka &nbsp;&bull;&nbsp; Last visit: 45 days ago &bull; BP 128/82 mmHg
+                  </div>
+                </div>
+
+                <div class="action-buttons-group">
+                  <button class="btn-action btn-green"><i class="fa-solid fa-check"></i> Approved Visit</button>
+                  <button class="btn-action btn-outline"><i class="fa-regular fa-clock"></i> Propose Alternative time</button>
+                  <button class="btn-action btn-red"><i class="fa-solid fa-lock"></i> Request Profile Access</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Patient Card 2 -->
+          <div class="request-card">
+            <div class="card-main-info">
+              <div class="patient-header">
+                <div class="patient-title-group">
+                  <input type="checkbox" class="card-checkbox">
+                  <img src="https://i.pravatar.cc/100?img=32" alt="Tanjila Akter Sultana" class="patient-thumb">
+                  <div>
+                    <h2 class="patient-name">Tanjila Akter Sultana, 34F</h2>
+                    <div class="patient-meta-row">
+                      <span class="mrn-badge">MRN-449102</span>
+                      <span>DOB: 11/03/1990</span>
+                    </div>
+                    <div class="patient-condition">Chronic Migraine with Aura &bull; Topiramate 50mg</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Inner Card Details -->
+              <div class="card-inner-box flex-between">
+                <div class="inner-left-content">
+                  <div class="card-category-tag">BOOKING REQUEST DETAILS</div>
+                  <div class="request-desc">Episodes escalated to 4/month; asks to discuss CGRP inhibitors</div>
+                  
+                  <div class="quote-box">
+                    <span class="quote-icon">“</span>
+                    <p>"I would like to book a follow-up appointment for migraine management. I prefer a 20-minute video visit and have availability on Thursday afternoon or Friday morning."</p>
+                  </div>
+
+                  <div class="slots-row">
+                    <span class="detail-label">Preferred Booking Slots:</span>
+                    <span class="slot-pill">Thu, Oct 24 &bull; 14:00 - 14:30 BST</span>
+                    <span class="slot-pill">Fri, Oct 25 &bull; 09:30 - 10:00 BST</span>
+                  </div>
+                </div>
+
+                <div class="action-buttons-group">
+                  <button class="btn-action btn-green" disabled><i class="fa-solid fa-check"></i> Approved Visit</button>
+                  <button class="btn-action btn-outline"><i class="fa-regular fa-clock"></i> Propose Alternative time</button>
+                  <button class="btn-action btn-red" disabled><i class="fa-solid fa-lock"></i> Request Profile Access</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Patient Card 3 -->
+          <div class="request-card">
+            <div class="card-main-info">
+              <div class="patient-header">
+                <div class="patient-title-group">
+                  <input type="checkbox" class="card-checkbox">
+                  <img src="https://i.pravatar.cc/100?img=68" alt="Kazi Tariqul Hossain" class="patient-thumb">
+                  <div>
+                    <h2 class="patient-name">Kazi Tariqul Hossain, 52M</h2>
+                    <div class="patient-meta-row">
+                      <span class="mrn-badge">MRN-301984</span>
+                      <span>DOB: 08/29/1972</span>
+                    </div>
+                    <div class="patient-condition">Pre-diabetes Assessment &bull; Annual Wellness Follow-up</div>
+                  </div>
+                </div>
+
+                <div class="card-status-info">
+                  <span class="status-badge-red"><i class="fa-solid fa-flask"></i> Lab Flag: Glucose 138 mg/dL</span>
+                  <span class="time-ago"><i class="fa-regular fa-clock"></i> 2h ago</span>
+                </div>
+              </div>
+
+              <!-- Inner Card Details -->
+              <div class="card-inner-box flex-between">
+                <div class="inner-left-content">
+                  <div class="flex-row-header">
+                    <div class="card-category-tag">LAB INTERPRETATION REQUEST</div>
+                    <span class="lab-title">Popular Diagnostic Panel (Drawn: Oct 20)</span>
+                    <a href="#" class="pdf-link"><i class="fa-solid fa-file-pdf"></i> Full_Report_Popular_Oct20.pdf (1.2 MB)</a>
+                  </div>
+
+                  <div class="lab-results-grid">
+                    <div class="lab-item">
+                      <span class="lab-label">FASTING GLUCOSE</span>
+                      <strong class="lab-value red-text">138 mg/dL</strong>
+                      <span class="lab-sub red-text">&uarr; High (Norm &lt;99)</span>
+                    </div>
+                    <div class="lab-item">
+                      <span class="lab-label">HBA1C</span>
+                      <strong class="lab-value red-text">6.6%</strong>
+                      <span class="lab-sub red-text">Diabetes Threshold</span>
+                    </div>
+                    <div class="lab-item">
+                      <span class="lab-label">TOTAL TRIGLYCERIDES</span>
+                      <strong class="lab-value">198 mg/dL</strong>
+                      <span class="lab-sub blue-text">Borderline High</span>
+                    </div>
+                    <div class="lab-item">
+                      <span class="lab-label">eGFR (CKD-EPI)</span>
+                      <strong class="lab-value">&gt;90 mL/min</strong>
+                      <span class="lab-sub green-text">Normal Function</span>
+                    </div>
+                  </div>
+
+                  <div class="patient-inquiry">
+                    <strong>Patient Inquiry:</strong> "Doctor, I saw my fasting sugar jumped since last year. Should I start metformin or can we adjust diet first?"
+                  </div>
+                </div>
+
+                <div class="action-buttons-group">
+                  <button class="btn-action btn-green"><i class="fa-solid fa-check"></i> Approved</button>
+                  <button class="btn-action btn-outline" disabled><i class="fa-regular fa-clock"></i> Propose Alternative time</button>
+                  <button class="btn-action btn-red"><i class="fa-solid fa-lock"></i> Request Profile Access</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Patient Card 4 -->
+          <div class="request-card">
+            <div class="card-main-info">
+              <div class="patient-header">
+                <div class="patient-title-group">
+                  <input type="checkbox" class="card-checkbox">
+                  <img src="https://i.pravatar.cc/100?img=59" alt="Sheikh Shahadat Hossain" class="patient-thumb">
+                  <div>
+                    <h2 class="patient-name">Sheikh Shahadat Hossain, 71M</h2>
+                    <div class="patient-meta-row">
+                      <span class="mrn-badge">MRN-551029</span>
+                      <span>DOB: 05/18/1953</span>
+                    </div>
+                    <div class="patient-condition">Type 1 Diabetes Mellitus &bull; Suboptimal glycemic control (HbA1c 8.9%)</div>
+                  </div>
+                </div>
+
+                <div class="card-status-info">
+                  <span class="tag-status-blue"><i class="fa-solid fa-play"></i> Patient Booking Request</span>
+                  <span class="time-ago"><i class="fa-regular fa-clock"></i> 5h ago</span>
+                </div>
+              </div>
+
+              <!-- Inner Card Details -->
+              <div class="card-inner-box flex-between">
+                <div class="inner-left-content">
+                  <div class="flex-row-header">
+                    <div class="card-category-tag">PATIENT BOOKING REQUEST</div>
+                    <span class="facility-title">Square Hospital Endocrinology &bull; New Patient Visit</span>
+                  </div>
+
+                  <p class="request-desc-text">
+                    Patient requested a new visit with Endocrinology for ongoing diabetes management and medication review. Preferred dates are available below.
+                  </p>
+
+                  <div class="insurance-info">
+                    <span>Destination: Endocrinology Department</span> &bull; 
+                    <span>Dr. Golam Sarwar, MD</span> &bull; 
+                    <span>Insurance: MetLife &bull; Active coverage</span>
+                  </div>
+                </div>
+
+                <div class="action-buttons-group">
+                  <button class="btn-action btn-green"><i class="fa-solid fa-check"></i> Approve Visit</button>
+                  <button class="btn-action btn-outline"><i class="fa-regular fa-clock"></i> Propose Alternative time</button>
+                  <button class="btn-action btn-red" disabled><i class="fa-solid fa-lock"></i> Request Profile Access</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="/public_html/assets/js/patient-appointments.js"></script>
+</body>
+</html>
