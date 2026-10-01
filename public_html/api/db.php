@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 session_start();
 
 $host = 'localhost';
@@ -39,5 +40,26 @@ function get_logged_in_patient($pdo) {
         $patient = $stmt->fetch();
     }
     return $patient ?: null;
+=======
+// public_html/api/db.php
+$host = '127.0.0.1';
+$db   = 'nhmrd';
+$user = 'root';
+$pass = ''; // Default empty password for local development
+$charset = 'utf8mb4';
+
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
+
+try {
+    $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+    echo json_encode(['success' => false, 'error' => 'Database connection failed: ' . $e->getMessage()]);
+    exit;
+>>>>>>> 8e034926ccf50eb27ff0f452e34544453bde4e5d
 }
 ?>
