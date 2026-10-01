@@ -1,0 +1,68 @@
+<?php
+echo <<<'HTML'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>National Health & Medical Record Directory</title>
+  <link rel="stylesheet" href="/public_html/assets/css/login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="login-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo-box">
+        <svg class="logo-icon" viewBox="0 0 48 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 0C10.7452 0 0 10.7452 0 24C0 37.5 18 52.5 24 56C30 52.5 48 37.5 48 24C48 10.7452 37.2548 0 24 0Z" fill="#025E73"/>
+          <circle cx="24" cy="22" r="14" fill="#E63946"/>
+          <path d="M15 22H19L21.5 17L24.5 27L27 20L29 22H33" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h1 class="title">National Health & Medical<br>Record Directory</h1>
+    </header>
+
+    <!-- Main Card -->
+    <main class="card">
+      <div id="loginError" style="display:none; color:#e63946; background:#fde8e8; border:1px solid #f8b4b4; padding:10px 14px; border-radius:8px; margin-bottom:16px; font-size:0.875rem;"></div>
+      <form onsubmit="handleLogin(event);">
+        
+        <!-- UserID -->
+        <div class="form-group">
+          <label for="userid" class="form-label">UserID or NID</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-at input-icon-left"></i>
+            <input type="text" id="userid" required>
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <div class="label-row">
+            <label for="password" class="form-label">Password</label>
+            <a href="#" class="forgot-link">Forget Password</a>
+          </div>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-lock input-icon-left"></i>
+            <input type="password" id="password" required>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn-submit">Log In</button>
+      </form>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <i class="fa-solid fa-shield-halved footer-icon"></i>
+      <span>Secure Encrypted Government Health Gateway</span>
+    </footer>
+  </div>
+    <script src="/public_html/assets/js/login.js"></script>
+</body>
+</html>
+HTML;
+?>
