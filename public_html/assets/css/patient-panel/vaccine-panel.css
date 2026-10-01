@@ -127,7 +127,7 @@ body {
   padding: 18px 24px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+ 
   gap: 20px;
   box-shadow: 0 2px 8px rgba(37, 99, 235, 0.05);
   flex-wrap: wrap;
@@ -137,7 +137,7 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
-  flex: 1 1 360px;
+  
 }
 
 .user-avatar-sm {
