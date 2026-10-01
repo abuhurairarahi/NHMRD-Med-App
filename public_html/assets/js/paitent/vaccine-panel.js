@@ -1,31 +1,33 @@
-function handleSearch(event) {
-  const query = event.target.value.toLowerCase().trim();
-  const vaccineCards = document.querySelectorAll('.vaccine-card');
+document.addEventListener('DOMContentLoaded', () => {
+  // Search Filter Implementation
+  const searchInput = document.getElementById('vaccineSearch');
+  const recordRows = document.querySelectorAll('.vaccine-record-row');
 
-  vaccineCards.forEach(card => {
-    const textContent = card.textContent.toLowerCase();
-    card.style.display = textContent.includes(query) ? 'flex' : 'none';
-  });
-}
-
-function handleAddExternalCertificate() {
-  alert('Opening upload modal for external vaccination certificate...');
-}
-
-function handleDigitalPassport() {
-  alert('Generating digital vaccine passport QR code...');
-}
-
-function handleRequestVaccine() {
-  window.location.href = '/public_html/pages/Patient-panel/req-vaccine.html';
-}
-
-function handleScheduleBooster(vaccineName) {
-  alert(`Redirecting to schedule booster for: ${vaccineName}`);
-}
-
-function handleLogout() {
-  if (confirm('Are you sure you want to log out of NHMRD?')) {
-    window.location.href = '/public_html/pages/login.html';
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase().trim();
+      recordRows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(term) ? 'flex' : 'none';
+      });
+    });
   }
-}
+
+  // Logout Handler
+  const logoutBtn = document.getElementById('logoutBtn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      if (confirm('Are you sure you want to log out?')) {
+        window.location.href = '/logout.php';
+      }
+    });
+  }
+
+  // Certificate PDF Download / View Trigger
+  const printCertBtn = document.getElementById('printCertBtn');
+  if (printCertBtn) {
+    printCertBtn.addEventListener('click', () => {
+      window.print();
+    });
+  }
+});

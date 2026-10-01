@@ -1,57 +1,92 @@
-function handleTabFilter(selectedTab) {
-  const tabs = document.querySelectorAll('.filter-tabs .tab-btn');
-  tabs.forEach(tab => tab.classList.remove('active'));
-  selectedTab.classList.add('active');
+/**
+ * NHMRD - Patient Surgery Record Module
+ */
 
-  const filterText = selectedTab.textContent.trim().toLowerCase();
-  const procedureCards = document.querySelectorAll('.procedure-card');
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('Surgery Record module initialized.');
+});
 
-  procedureCards.forEach(card => {
-    const typeBadge = card.querySelector('.type-badge');
-    const badgeText = typeBadge ? typeBadge.textContent.trim().toLowerCase() : '';
+/**
+ * Filter Surgery cards based on tab selection
+ */
+function handleTabFilter(buttonElement) {
+    // 1. Update active state on tab buttons
+    const tabs = document.querySelectorAll('.filter-tabs .tab-btn');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    buttonElement.classList.add('active');
 
-    if (filterText.includes('all')) {
-      card.style.display = 'flex';
-    } else if (filterText.includes('inpatient') && badgeText === 'inpatient') {
-      card.style.display = 'flex';
-    } else if (filterText.includes('outpatient') && badgeText === 'outpatient') {
-      card.style.display = 'flex';
-    } else if (filterText.includes('pre-op')) {
-      card.style.display = 'none';
-    } else {
-      card.style.display = 'flex';
-    }
-  });
+    // 2. Get the filter key
+    const filter = buttonElement.getAttribute('data-filter');
+    const cards = document.querySelectorAll('.procedure-card');
+
+    cards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        if (filter === 'all' || category === filter) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
 }
 
+/**
+ * Handle real-time filtering/search in surgery records
+ */
 function handleGlobalSearch(event) {
-  const query = event.target.value.toLowerCase().trim();
-  const procedureCards = document.querySelectorAll('.procedure-card');
+    const query = event.target.value.toLowerCase().trim();
+    const cards = document.querySelectorAll('.procedure-card');
 
-  procedureCards.forEach(card => {
-    const cardText = card.textContent.toLowerCase();
-    card.style.display = cardText.includes(query) ? 'flex' : 'none';
-  });
+    cards.forEach(card => {
+        const textContent = card.innerText.toLowerCase();
+        if (textContent.includes(query)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
 }
 
-function handleDownloadDocument(fileName) {
-  alert(`Initiating download for: ${fileName}`);
+/**
+ * Handle document downloads
+ */
+function handleDownloadDocument(fileUrl) {
+    if (!fileUrl) {
+        alert('File path not available.');
+        return;
+    }
+    window.open(fileUrl, '_blank');
 }
 
-function handleViewDocument(fileName) {
-  alert(`Opening viewer for: ${fileName}`);
+/**
+ * Handle document viewing
+ */
+function handleViewDocument(fileUrl) {
+    if (!fileUrl) {
+        alert('Document preview unavailable.');
+        return;
+    }
+    window.open(fileUrl, '_blank');
 }
 
+/**
+ * Handle Log Export
+ */
 function handleExportLog() {
-  alert('Exporting surgical records log...');
+    window.print();
 }
 
+/**
+ * Upload external report placeholder
+ */
 function handleUploadReport() {
-  alert('Opening upload modal for external report...');
+    alert('External document upload portal opening...');
 }
 
+/**
+ * Handle User Logout
+ */
 function handleLogout() {
-  if (confirm('Are you sure you want to log out of NHMRD?')) {
-    window.location.href = '/public_html/pages/login.html';
-  }
+    if (confirm('Are you sure you want to log out?')) {
+        window.location.href = '/public_html/pages/logout.php';
+    }
 }
