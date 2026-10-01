@@ -1,67 +1,66 @@
 /**
- * login.js — handles the NHMRD login form submission via fetch()
+ * login.js - handles NHMRD unified login form submission
  */
 async function handleLogin(event) {
-  event.preventDefault();
+    event.preventDefault();
 
-  const form       = event.target;
-  const userId     = document.getElementById('userid').value.trim();
-  const password   = document.getElementById('password').value.trim();
-  const submitBtn  = form.querySelector('button[type="submit"]');
-  const errorEl    = document.getElementById('loginError');
+    const userIdInput = document.getElementById('userid');
+    const passwordInput = document.getElementById('password');
+    const submitBtn = event.target.querySelector('button[type="submit"]');
 
-  // Clear previous errors
-  if (errorEl) errorEl.textContent = '';
+    const identifier = (userIdInput ? userIdInput.value : '').trim();
+    const password = (passwordInput ? passwordInput.value : '').trim();
 
-  if (!userId || !password) {
-    showError(errorEl, 'Please enter your User ID / NID and password.');
-    return;
-  }
-
-  // Disable button to prevent double-submit
-  if (submitBtn) {
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Logging in…';
-  }
-
-  try {
-    const formData = new FormData();
-    formData.append('identifier', userId);
-    formData.append('password', password);
-
-    const response = await fetch('/public_html/controllers/auth/login.php', {
-      method: 'POST',
-      body: formData
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      // Brief success message then redirect
-      if (submitBtn) submitBtn.textContent = 'Redirecting…';
-      window.location.href = data.redirect;
-    } else {
-      showError(errorEl, data.message || 'Login failed. Please try again.');
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Login';
-      }
+    if (!identifier || !password) {
+        alert('Please enter your UserID / NID and password.');
+        return;
     }
-  } catch (err) {
-    console.error('Login fetch error:', err);
-    showError(errorEl, 'Network error. Ensure the server is running and try again.');
+
     if (submitBtn) {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Login';
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Verifying credentials...';
     }
-  }
+
+    try {
+        // Resolve API path relative to current page
+        let apiUrl = '../api/login.php';
+        const path = window.location.pathname;
+        if (path.includes('/public_html/')) {
+            const pubIdx = path.indexOf('/public_html/');
+            apiUrl = path.substring(0, pubIdx) + '/public_html/api/login.php';
+        }
+
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ identifier, password })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            if (submitBtn) submitBtn.textContent = 'Redirecting...';
+            let target = data.redirect;
+            if (window.location.pathname.includes('/pages/') && target.startsWith('../pages/')) {
+                target = target.replace('../pages/', '');
+            }
+            window.location.href = target;
+        } else {
+            alert(data.message || 'Login failed. Please check your credentials.');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Log In';
+            }
+        }
+    } catch (err) {
+        console.error('Login error:', err);
+        alert('Network error communicating with NHMRD authentication service.');
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Log In';
+        }
+    }
 }
 
-function showError(el, message) {
-  if (el) {
-    el.textContent = message;
-    el.style.display = 'block';
-  } else {
-    alert(message);
-  }
-}
+window.handleLogin = handleLogin;
+

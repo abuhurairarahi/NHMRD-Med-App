@@ -139,7 +139,7 @@ ON DUPLICATE KEY UPDATE test_name=VALUES(test_name);
 -- 16. Lab Test Orders & Items & Results
 INSERT INTO lab_test_orders (order_id, patient_id, doctor_id, prescription_id, hospital_id, status, collection_fee, total_amount, ordered_at) VALUES
 (1, 1, 1, 1, 1, 'completed', 0.00, 1650.00, NOW() - INTERVAL 15 DAY),
-(2, 1, 1, 1, 1, 'pending', 200.00, 580.00, NOW() - INTERVAL 1 DAY)
+(2, 1, 1, 1, 1, 'requested', 200.00, 580.00, NOW() - INTERVAL 1 DAY)
 ON DUPLICATE KEY UPDATE status=VALUES(status);
 
 INSERT INTO lab_test_order_items (id, order_id, test_id, price, is_doctor_advised) VALUES

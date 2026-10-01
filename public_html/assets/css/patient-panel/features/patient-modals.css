@@ -1,0 +1,371 @@
+/* ==========================================================================
+   NHMRD PATIENT PANEL - MODALS, TOASTS & PRINTING SYSTEM
+   ========================================================================== */
+
+/* Modal Backdrop & Container */
+.nhmrd-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.nhmrd-modal-backdrop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nhmrd-modal-box {
+  background: #ffffff;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 580px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25), 0 0 0 1px rgba(226, 232, 240, 0.8);
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.nhmrd-modal-box.modal-lg {
+  max-width: 780px;
+}
+
+.nhmrd-modal-backdrop.show .nhmrd-modal-box {
+  transform: translateY(0) scale(1);
+}
+
+.nhmrd-modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  border-radius: 16px 16px 0 0;
+}
+
+.nhmrd-modal-header h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.nhmrd-modal-header h3 i {
+  color: #1d5ec2;
+}
+
+.nhmrd-modal-close {
+  background: #f1f5f9;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nhmrd-modal-close:hover {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.nhmrd-modal-body {
+  padding: 24px;
+  font-size: 13.5px;
+  color: #334155;
+  line-height: 1.5;
+  overflow-y: auto;
+}
+
+.nhmrd-modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid #e2e8f0;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  border-radius: 0 0 16px 16px;
+}
+
+/* Modal Form Controls */
+.nhmrd-form-group {
+  margin-bottom: 18px;
+}
+
+.nhmrd-form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.nhmrd-form-control {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1e293b;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.nhmrd-form-control:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.nhmrd-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Modal Buttons */
+.nhmrd-btn {
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+}
+
+.nhmrd-btn-secondary {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.nhmrd-btn-secondary:hover {
+  background: #cbd5e1;
+  color: #0f172a;
+}
+
+.nhmrd-btn-primary {
+  background: #1d5ec2;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(29, 94, 194, 0.2);
+}
+
+.nhmrd-btn-primary:hover {
+  background: #154aa1;
+}
+
+.nhmrd-btn-danger {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.nhmrd-btn-danger:hover {
+  background: #b91c1c;
+}
+
+/* TOAST NOTIFICATION CONTAINER */
+.nhmrd-toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.nhmrd-toast {
+  pointer-events: auto;
+  min-width: 320px;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 14px 18px;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15), 0 0 0 1px rgba(226, 232, 240, 0.8);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.nhmrd-toast.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.nhmrd-toast-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.nhmrd-toast.success .nhmrd-toast-icon { color: #16a34a; }
+.nhmrd-toast.error .nhmrd-toast-icon { color: #dc2626; }
+.nhmrd-toast.info .nhmrd-toast-icon { color: #2563eb; }
+.nhmrd-toast.warning .nhmrd-toast-icon { color: #d97706; }
+
+.nhmrd-toast-content {
+  flex-grow: 1;
+}
+
+.nhmrd-toast-title {
+  font-weight: 700;
+  font-size: 13.5px;
+  color: #0f172a;
+  margin-bottom: 2px;
+}
+
+.nhmrd-toast-desc {
+  font-size: 12.5px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.nhmrd-toast-close {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0 4px;
+  font-size: 14px;
+}
+
+.nhmrd-toast-close:hover {
+  color: #334155;
+}
+
+/* SMART DIGITAL HEALTH CARD MODAL STYLES */
+.smart-card-print {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  color: white;
+  border-radius: 14px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+}
+
+.smart-card-print::after {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 180px;
+  height: 180px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+}
+
+.smart-card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.smart-card-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.smart-card-details-grid {
+  display: grid;
+  grid-template-columns: 80px 1fr 90px;
+  gap: 16px;
+  align-items: center;
+}
+
+.smart-card-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1e3a8a;
+  font-size: 32px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.smart-card-info h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #ffffff;
+}
+
+.smart-card-info p {
+  font-size: 12px;
+  opacity: 0.9;
+  margin-bottom: 2px;
+}
+
+.smart-card-qr {
+  width: 90px;
+  height: 90px;
+  background: white;
+  padding: 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f172a;
+  font-size: 55px;
+}
+
+/* PRINT MEDIA OVERRIDES */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  .printable-area, .printable-area * {
+    visibility: visible !important;
+  }
+  .printable-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .sidebar, .top-header, .patient-header, .header-actions, .banner-actions, .nhmrd-modal-footer, .nhmrd-modal-close {
+    display: none !important;
+  }
+}
