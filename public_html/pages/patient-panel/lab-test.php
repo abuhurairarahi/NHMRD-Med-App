@@ -231,7 +231,7 @@
                 </p>
               </div>
             </div>
-            <button class="btn-primary-blue btn-sm"><i class="fa-regular fa-file-pdf"></i> View Full Report</button>
+            <button class="btn-primary-blue btn-sm"  onclick="viewTestReport(event)"><i class="fa-regular fa-file-pdf"></i> View Full Report</button>
           </div>
 
           <!-- Serology Results Grid -->
@@ -282,7 +282,7 @@
                 </p>
               </div>
             </div>
-            <button class="btn-primary-blue btn-sm"><i class="fa-regular fa-file-pdf"></i> View Full Report</button>
+            <button class="btn-primary-blue btn-sm"  onclick="viewTestReport(event)"><i class="fa-regular fa-file-pdf"></i> View Full Report</button>
           </div>
 
           <!-- USG Split Body -->
@@ -342,7 +342,7 @@
                 </p>
               </div>
             </div>
-            <button class="btn-primary-blue btn-sm"><i class="fa-regular fa-file-pdf"></i> View Full Report</button>
+            <button class="btn-primary-blue btn-sm"  onclick="viewTestReport(event)"><i class="fa-regular fa-file-pdf"></i> View Full Report</button>
           </div>
 
           <!-- CBC Results Grid (6 Columns) -->

@@ -419,9 +419,9 @@ window.handleSaveVitals = function (e) {
 // View Dossier Records
 window.viewDossierRecords = function (type) {
   if (type.toLowerCase() === 'test') {
-    window.location.href = 'lab-test.html';
+    window.location.href = 'lab-test.php';
   } else {
-    window.location.href = 'prescription-record.html';
+    window.location.href = 'prescription-record.php';
   }
 };
 

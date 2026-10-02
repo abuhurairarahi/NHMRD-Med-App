@@ -180,5 +180,5 @@ window.exportAllRecordsPDF = function () {
 
 // Order New Diagnostic Test Redirect
 window.orderNewTest = function () {
-  window.location.href = 'medical-test-req.html';
+  window.location.href = 'medical-test-req.php';
 };

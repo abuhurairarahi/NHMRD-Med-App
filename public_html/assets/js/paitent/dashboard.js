@@ -369,7 +369,7 @@ window.viewAppointmentDetail = function (apptId) {
     `,
     footerHtml: `
       <button class="nhmrd-btn nhmrd-btn-secondary" onclick="window.closeModal()">Close</button>
-      <a href="req-appointment.html" class="nhmrd-btn nhmrd-btn-primary">Manage Appointments</a>
+      <a href="req-appointment.php" class="nhmrd-btn nhmrd-btn-primary">Manage Appointments</a>
     `
   });
 };

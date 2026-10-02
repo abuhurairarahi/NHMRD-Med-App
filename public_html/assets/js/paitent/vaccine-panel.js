@@ -70,7 +70,7 @@ function renderVaccines(data) {
 
 // Request New Vaccine
 window.handleRequestVaccine = function () {
-  window.location.href = 'req-vaccine.html';
+  window.location.href = 'req-vaccine.php';
 };
 
 // Search Filter

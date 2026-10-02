@@ -216,10 +216,9 @@ window.handleSubmitRequest = function (e) {
     }
   });
 
-  const dateInput = document.querySelector('.date-slot-inputs input[value*="/"]');
-  const slotInput = document.querySelectorAll('.date-slot-inputs input')[1];
-  const scheduledDate = dateInput ? dateInput.value : '2026-09-18';
-  const timeSlot = slotInput ? slotInput.value : '08:00 AM - 09:30 AM';
+  const dateInputs = document.querySelectorAll('.date-slot-inputs input');
+  const scheduledDate = dateInputs[0] ? (dateInputs[0].value.trim() || '2026-09-18') : '2026-09-18';
+  const timeSlot = dateInputs[1] ? (dateInputs[1].value.trim() || '08:00 AM - 09:30 AM') : '08:00 AM - 09:30 AM';
 
   const modeSelect = document.querySelector('.request-left-col select');
   const mode = modeSelect ? (modeSelect.value.toLowerCase().includes('doorstep') ? 'home' : 'hospital') : 'home';
@@ -263,7 +262,7 @@ window.handleSubmitRequest = function (e) {
           `,
           footerHtml: `
             <button class="nhmrd-btn nhmrd-btn-secondary" onclick="window.closeModal()">Close</button>
-            <a href="lab-test.html" class="nhmrd-btn nhmrd-btn-primary">View in Test Records &rarr;</a>
+            <a href="lab-test.php" class="nhmrd-btn nhmrd-btn-primary">View in Test Records &rarr;</a>
           `
         });
       } else {

@@ -107,8 +107,8 @@ window.handleNotificationClick = function () {
         noticesHtml = notices.map(n => `
           <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:14px; margin-bottom:12px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-              <span class="badge ${n.category === 'critical' ? 'bg-danger' : 'bg-primary'}">${n.category.toUpperCase()}</span>
-              <small class="text-muted">${n.reference_code}</small>
+              <span class="badge ${n.category === 'critical' ? 'bg-danger' : 'bg-primary'}">${(n.category || 'NOTICE').toUpperCase()}</span>
+              <small class="text-muted">${n.reference_code || ''}</small>
             </div>
             <strong style="color:#0f172a; display:block; margin-bottom:4px;">${n.title}</strong>
             <p style="font-size:12.5px; color:#475569; margin:0;">${n.description}</p>
@@ -138,15 +138,23 @@ window.syncPatientHeader = function (patient) {
   const names = document.querySelectorAll('.user-name');
   names.forEach(el => el.textContent = patient.full_name);
 
-  const ids = document.querySelectorAll('.patient-id, .id-tag');
-  ids.forEach(el => el.textContent = `Patient ID #${patient.uid || patient.patient_id || '48291'}`);
+  const ids = document.querySelectorAll('.patient-id, .id-tag, .nhmrd-id');
+  ids.forEach(el => {
+    if (el.classList.contains('id-tag')) {
+      el.textContent = `ID #${patient.uid || patient.patient_id || '2042122004'}`;
+    } else if (el.classList.contains('nhmrd-id')) {
+      el.textContent = `NHMRD ID #${patient.uid || patient.patient_id || '2042122004'}`;
+    } else {
+      el.textContent = `Patient ID #${patient.uid || patient.patient_id || '2042122004'}`;
+    }
+  });
 
   // Avatar Initials
-  const parts = (patient.full_name || 'Patient').split(' ');
+  const parts = (patient.full_name || 'Patient').trim().split(/\s+/);
   let initials = parts[0][0];
   if (parts.length > 1) initials += parts[parts.length - 1][0];
   initials = initials.toUpperCase();
 
-  const avatars = document.querySelectorAll('.user-badge-avatar, .avatar, .user-avatar-blue');
+  const avatars = document.querySelectorAll('.user-badge-avatar, .avatar, .user-avatar-blue, .patient-avatar-initials');
   avatars.forEach(el => el.textContent = initials);
 };

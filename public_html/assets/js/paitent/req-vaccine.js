@@ -148,7 +148,7 @@ window.confirmVaccineAppointment = function () {
           `,
           footerHtml: `
             <button class="nhmrd-btn nhmrd-btn-secondary" onclick="window.closeModal()">Close</button>
-            <a href="vaccine-panel.html" class="nhmrd-btn nhmrd-btn-primary">View Vaccine Records &rarr;</a>
+            <a href="vaccine-panel.php" class="nhmrd-btn nhmrd-btn-primary">View Vaccine Records &rarr;</a>
           `
         });
       } else {
