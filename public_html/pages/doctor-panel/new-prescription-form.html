@@ -24,7 +24,7 @@
       </div>
 
       <nav class="nav-menu">
-        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item">
+        <a href="/public_html/pages/Doctor-panel/dashboard.html" class="nav-item">
           <i class="fa-solid fa-table-cells-large"></i>
           <span>Dashboard</span>
         </a>
@@ -197,12 +197,12 @@
                   <span class="acuity-title">Moderate</span>
                   <span class="acuity-desc">Urgent Evaluation</span>
                 </div>
-                <div class="acuity-option danger-acuity">
+                <div class="acuity-option">
                   <i class="fa-solid fa-asterisk"></i>
                   <span class="acuity-title">Critical</span>
                   <span class="acuity-desc">Intensive Care</span>
                 </div>
-                <div class="acuity-option purple-acuity">
+                <div class="acuity-option">
                   <i class="fa-solid fa-hospital-user"></i>
                   <span class="acuity-title">Surgical Needed</span>
                   <span class="acuity-desc">Surgical Consult</span>
@@ -339,7 +339,7 @@
                 <div class="draft-grid-2col">
                   <div class="form-group">
                     <label>MEDICATION NAME &amp; GENERIC / BRAND</label>
-                    <input type="text" placeholder="e.g. Topiramate / Topamax, Rizatriptan, Zmitriptan" class="form-control">
+                    <input type="text" placeholder="e.g. Topiramate / Topamax, Rizatriptan" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>DOSE &amp; STRENGTH</label>
@@ -350,7 +350,7 @@
                 <div class="draft-grid-2col">
                   <div class="form-group">
                     <label>ROUTE &amp; FREQUENCY</label>
-                    <input type="text" value="Oral (PO) &bull; Daily at Bedtime" class="form-control">
+                    <input type="text" placeholder="e.g. Oral (PO) &bull; Daily at Bedtime" class="form-control">
                   </div>
                   <div class="form-group">
                     <label>DISPENSE QUANTITY &amp; REFILLS</label>
@@ -360,7 +360,7 @@
 
                 <div class="form-group">
                   <label>DIRECTIONS / SIG PATIENT INSTRUCTIONS</label>
-                  <input type="text" value="Take 1 capsule by mouth once daily at bedtime for prophylaxis." class="form-control">
+                  <input type="text" placeholder="e.g. Take 1 capsule by mouth once daily at bedtime for prophylaxis." class="form-control">
                 </div>
 
                 <div class="draft-actions">
@@ -423,7 +423,7 @@
                 </div>
               </div>
 
-              <!-- Add New Test Draft Box -->
+              <!-- Add New Test Draft Box (FIXED LABELS) -->
               <div class="draft-med-box">
                 <div class="draft-box-header">
                   <span class="draft-title"><i class="fa-solid fa-circle-plus"></i> Add New Diagnostic Test (Draft)</span>
@@ -432,29 +432,29 @@
 
                 <div class="draft-grid-2col">
                   <div class="form-group">
-                    <label>TEST NAME &amp; CATEGORY / BRAND</label>
+                    <label>TEST NAME &amp; CATEGORY</label>
                     <input type="text" placeholder="e.g. Brain MRI (NC), TSH, Serum Electrolytes" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label>CODE &amp; STRENGTH</label>
+                    <label>DIAGNOSTIC CODE (LOINC/CPT)</label>
                     <input type="text" placeholder="e.g. LOINC: 24323-8, CPT 70551" class="form-control">
                   </div>
                 </div>
 
                 <div class="draft-grid-2col">
                   <div class="form-group">
-                    <label>ROUTE &amp; FREQUENCY</label>
-                    <input type="text" value="Oral (PO) &bull; Daily at Bedtime" class="form-control">
+                    <label>SPECIMEN / BODY SITE</label>
+                    <input type="text" placeholder="e.g. Venous Blood, Head/Brain" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label>DISPENSE QUANTITY &amp; REFILLS</label>
-                    <input type="text" placeholder="e.g. 1 Test Order &bull; Routine" class="form-control">
+                    <label>PRIORITY</label>
+                    <input type="text" placeholder="e.g. Routine, STAT, Fasting" class="form-control">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label>DIRECTIONS / SIG PATIENT INSTRUCTIONS</label>
-                  <input type="text" value="Take 1 capsule by mouth once daily at bedtime for prophylaxis." class="form-control">
+                  <label>CLINICAL REASON / INSTRUCTIONS</label>
+                  <input type="text" placeholder="e.g. Baseline testing prior to medication regimen." class="form-control">
                 </div>
 
                 <div class="draft-actions">
@@ -480,20 +480,9 @@
                 <button class="btn-template-insert"><i class="fa-solid fa-wand-magic-sparkles"></i> Insert Migraine Hygiene Template</button>
               </div>
 
-              <div class="advice-list-box">
-                <div class="advice-item">
-                  <span class="item-num">1.</span>
-                  <p><strong>Maintain adequate hydration:</strong> Consume at least 2.5â€“3.0 liters of water daily.</p>
-                </div>
-                <div class="advice-item">
-                  <span class="item-num">2.</span>
-                  <p><strong>Migraine Aura Protocol:</strong> At earliest sign of aura/flashing lights, rest in a dark, quiet room with minimal sensory stimulation. Apply cold compresses to forehead or occipital region.</p>
-                </div>
-                <div class="advice-item">
-                  <span class="item-num">3.</span>
-                  <p><strong>Dietary Triggers:</strong> Avoid aged cheeses, artificial sweeteners, nitrates, and excessive caffeine.</p>
-                </div>
-              </div>
+              <textarea class="advice-list-box" style="width: 491.991px;">
+                
+              </textarea>
             </div>
 
             <!-- Section 6: Follow-up & Next Visit Scheduling -->
@@ -613,8 +602,7 @@
       </main>
     </div>
   </div>
+  
   <script src="/public_html/assets/js/doctor-panel/new-prescription.js"></script>
 </body>
 </html>
-
-

@@ -1,3 +1,112 @@
+<?php
+require_once __DIR__ . 'public_html/api/db.php';
+
+$doctor_id = 1; 
+// Metric 1: TODAY'S CONSULTATIONS
+$stmt_consultations = $pdo->prepare("
+    SELECT 
+        COUNT(*) AS total_consultations,
+        SUM(CASE WHEN status = 'completed' THEN 1 ELSE 0 END) AS done_consultations,
+        SUM(CASE WHEN status IN ('booked', 'rescheduled') THEN 1 ELSE 0 END) AS pending_consultations
+    FROM appointments 
+    WHERE doctor_id = :doctor_id 
+      AND appointment_date = CURDATE()
+");
+$stmt_consultations->execute(['doctor_id' => $doctor_id]);
+$consultations = $stmt_consultations->fetch();
+
+// Metric 2: RX REVIEWS PENDING
+$stmt_rx = $pdo->prepare("
+    SELECT 
+        COUNT(DISTINCT rx.prescription_id) AS queued_reviews,
+        SUM(CASE WHEN med_counts.total_meds >= 5 THEN 1 ELSE 0 END) AS polypharmacy_check
+    FROM prescriptions rx
+    LEFT JOIN (
+        SELECT prescription_id, COUNT(*) as total_meds 
+        FROM prescription_medications 
+        GROUP BY prescription_id
+    ) med_counts ON rx.prescription_id = med_counts.prescription_id
+    WHERE rx.doctor_id = :doctor_id 
+      AND rx.status IN ('active', 'ongoing')
+");
+$stmt_rx->execute(['doctor_id' => $doctor_id]);
+$rx_reviews = $stmt_rx->fetch();
+
+// Metric 3: DIAGNOSTIC CRITICAL ALERTS
+$stmt_alerts = $pdo->prepare("
+    SELECT 
+        COUNT(*) AS abnormal_alerts,
+        GROUP_CONCAT(c.test_name SEPARATOR ', ') AS sub_text_tests
+    FROM lab_test_results r
+    JOIN lab_test_order_items i ON r.order_item_id = i.id
+    JOIN lab_test_catalog c ON i.test_id = c.test_id
+    JOIN lab_test_orders o ON i.order_id = o.order_id
+    WHERE o.doctor_id = :doctor_id 
+      AND r.result_date = CURDATE()
+      AND (r.remarks LIKE '%critical%' OR r.remarks LIKE '%high%' OR r.remarks LIKE '%abnormal%')
+");
+$stmt_alerts->execute(['doctor_id' => $doctor_id]);
+$critical_alerts = $stmt_alerts->fetch();
+
+// Metric 4: OUTPATIENT CARE INDEX
+$stmt_care = $pdo->prepare("
+    SELECT 
+        ROUND((SUM(CASE WHEN status = 'completed' THEN 1 ELSE 0 END) / NULLIF(COUNT(*), 0)) * 100, 1) AS care_index_percentage,
+        'Quality Tier A' as quality_tier
+    FROM appointments 
+    WHERE doctor_id = :doctor_id 
+      AND appointment_date >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
+");
+$stmt_care->execute(['doctor_id' => $doctor_id]);
+$care_index = $stmt_care->fetch();
+
+// ---------------------------------------------------------------------
+// 2. DASHBOARD SPLIT VIEW QUERIES
+// ---------------------------------------------------------------------
+
+// Left Column 1: Patient Schedule & Encounter Queue
+$stmt_schedule = $pdo->prepare("
+    SELECT 
+        a.time_slot,
+        p.full_name AS patient_name,
+        TIMESTAMPDIFF(YEAR, p.dob, CURDATE()) AS age,
+        p.gender,
+        a.status,
+        rx.chief_complaint,
+        p.blood_pressure,
+        p.bmi
+    FROM appointments a
+    JOIN patients p ON a.patient_id = p.patient_id
+    LEFT JOIN prescriptions rx ON rx.appointment_id = a.appointment_id
+    WHERE a.doctor_id = :doctor_id
+      AND a.appointment_date = CURDATE()
+    ORDER BY a.time_slot ASC
+");
+$stmt_schedule->execute(['doctor_id' => $doctor_id]);
+$patient_schedule = $stmt_schedule->fetchAll();
+
+// Left Column 2: Recent Diagnostic & Lab Telemetry
+$stmt_telemetry = $pdo->prepare("
+    SELECT 
+        p.full_name AS patient_name,
+        p.health_card_no AS mrn,
+        c.test_name AS test_title,
+        c.category AS test_panel,
+        r.remarks AS observed_value,
+        o.status AS clinical_impact
+    FROM lab_test_results r
+    JOIN lab_test_order_items i ON r.order_item_id = i.id
+    JOIN lab_test_catalog c ON i.test_id = c.test_id
+    JOIN lab_test_orders o ON i.order_id = o.order_id
+    JOIN patients p ON o.patient_id = p.patient_id
+    WHERE o.doctor_id = :doctor_id
+    ORDER BY r.result_date DESC, r.result_id DESC
+    LIMIT 10
+");
+$stmt_telemetry->execute(['doctor_id' => $doctor_id]);
+$lab_telemetry = $stmt_telemetry->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -361,3 +470,4 @@
 </body>
 
 </html>
+
