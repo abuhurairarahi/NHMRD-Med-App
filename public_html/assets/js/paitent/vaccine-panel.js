@@ -1,6 +1,6 @@
 /**
  * NHMRD Patient Panel - Vaccination Records Controller
- * Connects vaccine-panel.html with MySQL via /api/patient_vaccines.php
+ * Connects vaccine-panel.php with MySQL via /api/patient_vaccines.php
  */
 
 if (typeof window.showToast !== 'function') {
@@ -70,7 +70,11 @@ function renderVaccines(data) {
 
 // Request New Vaccine
 window.handleRequestVaccine = function () {
-  window.location.href = 'req-vaccine.html';
+<<<<<<< HEAD
+  window.location.href = 'req-vaccine.php';
+=======
+  window.location.href = 'req-vaccine.php';
+>>>>>>> 5d9c9b393e709af26ff5b61cf6fc87882f9aad55
 };
 
 // Search Filter

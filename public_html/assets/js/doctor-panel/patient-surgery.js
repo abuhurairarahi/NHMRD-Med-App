@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetchPatientSurgery();
+    const urlParams = new URLSearchParams(window.location.search);
+    const patient_id = urlParams.get('patient_id') || 1;
+    fetchPatientSurgery(patient_id);
 });
 
-function fetchPatientSurgery() {
-    fetch('/public_html/api/doctor-panel/patient-surgery.php?patient_id=1')
+function fetchPatientSurgery(patient_id) {
+    fetch(`../../api/doctor-panel/patient-surgery.php?patient_id=${patient_id}`)
         .then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -87,3 +89,16 @@ function updateSurgeryUI(surgeries) {
         container.insertAdjacentHTML('beforeend', cardHTML);
     });
 }
+
+window.handleLogout = function () {
+  if (confirm('Are you sure you want to log out of the NHMRD Provider Portal?')) {
+    fetch('../../api/logout.php')
+      .then(res => res.json())
+      .then(data => {
+        window.location.href = data.redirect || '../../../index.php';
+      })
+      .catch(() => {
+        window.location.href = '../../../index.php';
+      });
+  }
+};

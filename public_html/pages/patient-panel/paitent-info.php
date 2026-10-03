@@ -21,39 +21,39 @@
         <span>NHMRD</span>
       </div>
       <nav class="nav-menu">
-        <a href="dashboard.html" class="nav-item">
+        <a href="dashboard.php" class="nav-item">
           <i class="fa-solid fa-table-cells-large"></i>
           <span>Dashboard</span>
         </a>
-        <a href="prescription-record.html" class="nav-item">
+        <a href="prescription-record.php" class="nav-item">
           <i class="fa-solid fa-file-prescription"></i>
           <span>Prescription Records</span>
         </a>
-        <a href="surgary-record.html" class="nav-item">
+        <a href="surgary-record.php" class="nav-item">
           <i class="fa-solid fa-scalpel"></i>
           <span>Surgery Records</span>
         </a>
-        <a href="lab-test.html" class="nav-item">
+        <a href="lab-test.php" class="nav-item">
           <i class="fa-solid fa-vial"></i>
           <span>Test Records</span>
         </a>
-        <a href="vaccine-panel.html" class="nav-item">
+        <a href="vaccine-panel.php" class="nav-item">
           <i class="fa-solid fa-syringe"></i>
           <span>Vaccine Records</span>
         </a>
-        <a href="req-appointment.html" class="nav-item">
+        <a href="req-appointment.php" class="nav-item">
           <i class="fa-solid fa-calendar-plus"></i>
           <span>Request Appointment</span>
         </a>
-        <a href="medical-test-req.html" class="nav-item">
+        <a href="medical-test-req.php" class="nav-item">
           <i class="fa-solid fa-notes-medical"></i>
           <span>Request Medical Test</span>
         </a>
-        <a href="req-vaccine.html" class="nav-item">
+        <a href="req-vaccine.php" class="nav-item">
           <i class="fa-solid fa-shield-virus"></i>
           <span>Request Vaccine</span>
         </a>
-        <a href="paitent-info.html" class="nav-item active">
+        <a href="paitent-info.php" class="nav-item active">
           <i class="fa-solid fa-id-card"></i>
           <span>Patient Info</span>
         </a>
@@ -96,48 +96,55 @@
         </div>
 
         <!-- Patient Info Card -->
-        <div class="card patient-header-card">
-          <div class="patient-main-info">
-            <div class="patient-avatar-box" title="Digital Health Identity">
-              <img src="../../assets/images/patient_avatar.jpg" alt="Patient Avatar" class="patient-avatar-img">
-              <span class="avatar-verified-badge"><i class="fa-solid fa-check"></i></span>
-            </div>
-            <div class="patient-details">
-              <div class="patient-name-row">
-                <h2>Shishir Rahaman</h2>
-                <span class="badge-status">ACTIVE CITIZEN</span>
-              </div>
-              <div class="patient-meta-text">
-                Patient ID: <span class="meta-val">#48291</span> &nbsp;&bull;&nbsp; National ID (NID): <span class="meta-val">0123456789</span> &nbsp;&bull;&nbsp; Citizen Status: <span class="status-enrolled">Enrolled NHPS</span>
-              </div>
-              <div class="pills-container">
-                <span class="pill pill-danger"><i class="fa-solid fa-droplet"></i> Blood Group AB+</span>
-                <span class="pill">Age: 36 Yrs (21-04-1990)</span>
-                <span class="pill">Gender: Male</span>
-                <span class="pill">Marital Status: Married</span>
-              </div>
-            </div>
-          </div>
-          <div class="registry-otp-box" onclick="authenticateOTP()" style="cursor : pointer;">
-            <div class="otp-icon-wrap">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="#0d2e5c">
-                <rect x="3" y="3" width="7" height="7" rx="2" />
-                <rect x="14" y="3" width="7" height="7" rx="2" />
-                <rect x="3" y="14" width="7" height="7" rx="2" />
-                <rect x="14" y="14" width="3" height="3" rx="1" />
-                <rect x="18" y="14" width="3" height="3" rx="1" />
-                <rect x="14" y="18" width="3" height="3" rx="1" />
-                <rect x="18" y="18" width="3" height="3" rx="1" />
-              </svg>
-            </div>
-            <div class="otp-text">
-              <span class="otp-title">REGISTRY OTP</span>
-              <span class="otp-val">NHMRD-<br>VALIDATED</span>
-              <span class="otp-sub">Tap to authenticate</span>
-            </div>
-          </div>
-        </div>
+       <div class="card patient-header-card">
+  <div class="patient-main-info">
+    <div class="patient-avatar-box" title="Digital Health Identity">
+      <img src="../../assets/images/patient_avatar.jpg" alt="Patient Avatar" class="patient-avatar-img">
+      <span class="avatar-verified-badge"><i class="fa-solid fa-check"></i></span>
+    </div>
+    
+    <div class="patient-details">
+      <div class="patient-name-row">
+        <h2>Shishir Rahaman</h2>
+        <span class="badge-status">ACTIVE CITIZEN</span>
+      </div>
+      
+      <div class="patient-meta-text">
+        Patient ID: <span class="meta-val">#48291</span> &nbsp;&bull;&nbsp; 
+        National ID (NID): <span class="meta-val">0123456789</span> &nbsp;&bull;&nbsp; 
+        Citizen Status: <span class="status-enrolled">Enrolled NHPS</span>
+      </div>
+      
+      <div class="pills-container">
+        <span class="pill pill-danger"><i class="fa-solid fa-droplet"></i> Blood Group AB+</span>
+        <span class="pill">Age: 36 Yrs (21&ndash;04&ndash;1990)</span>
+        <span class="pill">Gender: Male</span>
+        <span class="pill">Marital Status: Married</span>
+      </div>
+    </div>
 
+    <div class="registry-otp-box" onclick="authenticateOTP()">
+    <div class="otp-icon-wrap">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="#0d2e5c">
+        <rect x="3" y="3" width="7" height="7" rx="2" />
+        <rect x="14" y="3" width="7" height="7" rx="2" />
+        <rect x="3" y="14" width="7" height="7" rx="2" />
+        <rect x="14" y="14" width="3" height="3" rx="1" />
+        <rect x="18" y="14" width="3" height="3" rx="1" />
+        <rect x="14" y="18" width="3" height="3" rx="1" />
+        <rect x="18" y="18" width="3" height="3" rx="1" />
+      </svg>
+    </div>
+    <div class="otp-text">
+      <span class="otp-title">REGISTRY OTP</span>
+      <span class="otp-val">NHMRD-<br>VALIDATED</span>
+      <span class="otp-sub">Tap to authenticate</span>
+    </div>
+  </div>
+  </div>
+
+
+</div>
         <!-- 2 Grid Panel -->
         <div class="profile-grid">
           <!-- Left Column: Contact & Address & Organ Donors -->

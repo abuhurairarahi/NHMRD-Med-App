@@ -1,3 +1,247 @@
+<?php
+
+declare(strict_types=1);
+
+session_start();
+
+// Database credentials for NHMRD
+$dbHost = '127.0.0.1';
+$dbName = 'nhmrd';
+$dbUser = 'root';
+$dbPass = '';
+
+try {
+  $pdo = new PDO(
+    "mysql:host={$dbHost};dbname={$dbName};charset=utf8mb4",
+    $dbUser,
+    $dbPass,
+    [
+      PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+      PDO::ATTR_EMULATE_PREPARES   => false,
+    ]
+  );
+} catch (PDOException $e) {
+  http_response_code(500);
+  echo json_encode(['success' => false, 'error' => 'Database connection failure.']);
+  exit;
+}
+
+// In production, extract user context from the authenticated session
+$currentUserId  = (int)($_SESSION['user_id'] ?? 1);
+$currentDocId   = (int)($_SESSION['doctor_id'] ?? 1);
+
+$payload = json_decode(file_get_contents('php://input'), true) ?? [];
+$action  = $payload['action'] ?? '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  header('Content-Type: application/json; charset=utf-8');
+  try {
+  switch ($action) {
+    // =================================================================
+    // ACTION 1: Update Doctor Title and Badge (doctors table)
+    // =================================================================
+    case 'update_title_badge':
+      $docTitle = trim($payload['doctor_title'] ?? '');
+      $tagBadge = trim($payload['tag_badge'] ?? '');
+
+      if ($docTitle === '') {
+        throw new InvalidArgumentException('Doctor title cannot be empty.');
+      }
+
+      $pdo->beginTransaction();
+
+      $stmt = $pdo->prepare("
+                UPDATE doctors 
+                SET full_name = :full_name,
+                    designation = :designation
+                WHERE doctor_id = :doctor_id
+            ");
+      $stmt->execute([
+        ':full_name'   => $docTitle,
+        ':designation' => $tagBadge,
+        ':doctor_id'   => $currentDocId
+      ]);
+
+      // Audit Trail Log
+      $auditStmt = $pdo->prepare("
+                INSERT INTO audit_logs (user_id, action, entity_type, entity_id, details)
+                VALUES (:user_id, 'UPDATE_DOCTOR_PROFILE', 'doctors', :entity_id, :details)
+            ");
+      $auditStmt->execute([
+        ':user_id'   => $currentUserId,
+        ':entity_id' => $currentDocId,
+        ':details'   => json_encode(['title' => $docTitle, 'badge' => $tagBadge])
+      ]);
+
+      $pdo->commit();
+      echo json_encode(['success' => true, 'message' => 'Profile updated successfully.']);
+      break;
+
+    // =================================================================
+    // ACTION 2: Add Verified Education
+    // =================================================================
+    case 'add_education':
+      $degreeTitle = trim($payload['degree_title'] ?? '');
+      $degreeDesc  = trim($payload['degree_desc'] ?? '');
+      $instName    = trim($payload['inst_name'] ?? '');
+      $eduYear     = trim($payload['edu_year'] ?? '');
+
+      if ($degreeTitle === '' || $instName === '') {
+        throw new InvalidArgumentException('Degree title and Institution name are required.');
+      }
+
+      $pdo->beginTransaction();
+
+      $stmt = $pdo->prepare("
+                INSERT INTO doctor_qualifications 
+                    (doctor_id, degree_title, degree_description, institution_name, edu_year, is_verified)
+                VALUES 
+                    (:doctor_id, :title, :descr, :inst, :yr, 1)
+            ");
+      $stmt->execute([
+        ':doctor_id' => $currentDocId,
+        ':title'     => $degreeTitle,
+        ':descr'     => $degreeDesc,
+        ':inst'      => $instName,
+        ':yr'        => $eduYear
+      ]);
+      $newQualId = (int)$pdo->lastInsertId();
+
+      // Audit Trail Log
+      $auditStmt = $pdo->prepare("
+                INSERT INTO audit_logs (user_id, action, entity_type, entity_id, details)
+                VALUES (:user_id, 'ADD_DOCTOR_EDUCATION', 'doctor_qualifications', :entity_id, :details)
+            ");
+      $auditStmt->execute([
+        ':user_id'   => $currentUserId,
+        ':entity_id' => $newQualId,
+        ':details'   => json_encode(['degree' => $degreeTitle, 'institution' => $instName])
+      ]);
+
+      $pdo->commit();
+      echo json_encode(['success' => true, 'id' => $newQualId]);
+      break;
+
+    // =================================================================
+    // ACTION 3: Add / Edit Routine Schedule with Conflict Check
+    // =================================================================
+    case 'save_schedule':
+      $scheduleId = !empty($payload['schedule_id']) ? (int)$payload['schedule_id'] : null;
+      $dayText    = trim($payload['day_text'] ?? '');
+      $deptText   = trim($payload['dept_text'] ?? '');
+      $timeRange  = trim($payload['time_range'] ?? '');
+      $locText    = trim($payload['loc_text'] ?? '');
+
+      // Standardize em-dash to regular hyphen for consistency
+      $timeRange = str_replace('—', '-', $timeRange);
+
+      if ($dayText === '' || $timeRange === '') {
+        throw new InvalidArgumentException('Day and Time Range are required.');
+      }
+
+      $pdo->beginTransaction();
+
+      // Check for conflict with existing schedule
+      $conflictQuery = "
+                SELECT schedule_id 
+                FROM doctor_schedules 
+                WHERE doctor_id = :doctor_id 
+                  AND day_of_week = :day_text 
+                  AND time_range = :time_range
+            ";
+      $params = [
+        ':doctor_id'  => $currentDocId,
+        ':day_text'   => $dayText,
+        ':time_range' => $timeRange
+      ];
+
+      if ($scheduleId !== null) {
+        $conflictQuery .= " AND schedule_id != :schedule_id";
+        $params[':schedule_id'] = $scheduleId;
+      }
+
+      $conflictStmt = $pdo->prepare($conflictQuery);
+      $conflictStmt->execute($params);
+
+      if ($conflictStmt->fetch()) {
+        $pdo->rollBack();
+        http_response_code(409); // Conflict
+        echo json_encode([
+          'success' => false,
+          'error'   => "Schedule conflict: Doctor already has an active shift on {$dayText} at {$timeRange}."
+        ]);
+        exit;
+      }
+
+      if ($scheduleId !== null) {
+        // Update
+        $updateStmt = $pdo->prepare("
+                    UPDATE doctor_schedules 
+                    SET day_of_week     = :day_text,
+                        department_name = :dept_text,
+                        time_range      = :time_range,
+                        location        = :loc_text
+                    WHERE schedule_id   = :schedule_id AND doctor_id = :doctor_id
+                ");
+        $updateStmt->execute([
+          ':day_text'    => $dayText,
+          ':dept_text'   => $deptText,
+          ':time_range'  => $timeRange,
+          ':loc_text'    => $locText,
+          ':schedule_id' => $scheduleId,
+          ':doctor_id'   => $currentDocId
+        ]);
+        $finalScheduleId = $scheduleId;
+      } else {
+        // Insert
+        $insertStmt = $pdo->prepare("
+                    INSERT INTO doctor_schedules 
+                        (doctor_id, day_of_week, department_name, time_range, location)
+                    VALUES 
+                        (:doctor_id, :day_text, :dept_text, :time_range, :loc_text)
+                ");
+        $insertStmt->execute([
+          ':doctor_id'  => $currentDocId,
+          ':day_text'   => $dayText,
+          ':dept_text'  => $deptText,
+          ':time_range' => $timeRange,
+          ':loc_text'   => $locText
+        ]);
+        $finalScheduleId = (int)$pdo->lastInsertId();
+      }
+
+      // Audit Trail Log
+      $auditStmt = $pdo->prepare("
+                INSERT INTO audit_logs (user_id, action, entity_type, entity_id, details)
+                VALUES (:user_id, 'SAVE_DOCTOR_SCHEDULE', 'doctor_schedules', :entity_id, :details)
+            ");
+      $auditStmt->execute([
+        ':user_id'   => $currentUserId,
+        ':entity_id' => $finalScheduleId,
+        ':details'   => json_encode(['day' => $dayText, 'time' => $timeRange, 'department' => $deptText])
+      ]);
+
+      $pdo->commit();
+      echo json_encode(['success' => true, 'schedule_id' => $finalScheduleId]);
+      break;
+
+    default:
+      http_response_code(400);
+      echo json_encode(['success' => false, 'error' => 'Invalid action provided.']);
+      break;
+  }
+} catch (Exception $e) {
+  if ($pdo->inTransaction()) {
+    $pdo->rollBack();
+  }
+  http_response_code(400);
+  echo json_encode(['success' => false, 'error' => $e->getMessage()]);
+  }
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,9 +249,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NHMRD - Doctor Profile</title>
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/doctor-profile.css">
-  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-header.css">
+  <link rel="stylesheet" href="../../assets/css/doctor-panel/doctor-profile.css">
+  <link rel="stylesheet" href="../../assets/css/default-structure.css">
+  <link rel="stylesheet" href="../../assets/css/doctor-panel/features/doctor-header.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -22,26 +266,26 @@
       </div>
 
       <nav class="nav-menu">
-        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item">
+        <a href="../../pages/doctor-panel/dashboard.php" class="nav-item">
           <i class="fa-solid fa-table-cells-large"></i>
           <span>Dashboard</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/doctor-clinical-service-records.html" class="nav-item">
+        <a href="../../pages/doctor-panel/doctor-clinical-service-records.php" class="nav-item">
           <i class="fa-solid fa-notes-medical"></i>
           <span>Clinical Records</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/patient-appointments.html" class="nav-item">
+        <a href="../../pages/doctor-panel/patient-appointments.php" class="nav-item">
           <i class="fa-solid fa-user-clock"></i>
           <span>Patient Appointments</span>
         </a>
-        <a href="/public_html/pages/doctor-panel/doctor-profile.html" class="nav-item active">
+        <a href="../../pages/doctor-panel/doctor-profile.php" class="nav-item">
           <i class="fa-solid fa-user-doctor"></i>
           <span>Doctor Profile</span>
         </a>
       </nav>
 
       <div class="sidebar-footer">
-        <button class="logout-btn">
+        <button class="logout-btn" onclick="handleLogout()">
           <i class="fa-solid fa-arrow-right-from-bracket"></i>
           <span>Logout</span>
         </button>
@@ -119,8 +363,7 @@
         <!-- Tab Navigation Bar -->
         <div class="profile-tabs">
           <button class="tab-item active"><i class="fa-solid fa-user-doctor"></i> Professional Overview</button>
-          <button class="tab-item"><i class="fa-regular fa-calendar-alt"></i> Clinic Hours & Availability</button>
-          <button class="tab-item"><i class="fa-solid fa-file-prescription"></i> Prescription & Formulary
+          <button class="tab-item" onclick="openClinicModal()"><i class="fa-regular fa-calendar-alt"></i> Clinic Hours & Availability</button> <button class="tab-item"><i class="fa-solid fa-file-prescription"></i> Prescription & Formulary
             Authority</button>
           <button class="tab-item"><i class="fa-solid fa-sliders"></i> Telehealth & Intake Preferences</button>
         </div>
@@ -307,8 +550,7 @@
             <div class="card-header">
               <h3>Degrees & Education</h3>
               <div class="edu-actions">
-                <button class="btn-outline-xs"><i class="fa-solid fa-pen"></i> Edit</button>
-                <button class="btn-emerald-xs"><i class="fa-solid fa-circle-check"></i> Verify Education</button>
+                <button class="btn-outline-xs" onclick="openEduModal()"><i class="fa-solid fa-pen"></i> Edit</button> <button class="btn-emerald-xs"><i class="fa-solid fa-circle-check"></i> Verify Education</button>
               </div>
             </div>
 
@@ -356,7 +598,59 @@
     </div>
   </div>
 
-  <script src="/public_html/assets/js/doctor-panel/profile.js"></script>
+  <!-- 1. Edit Profile Modal -->
+  <div id="modal-edit-profile" class="modal-overlay">
+    <div class="modal-box">
+      <h3>Edit Profile</h3>
+      <input type="text" id="input-doc-title" placeholder="Doctor Title (e.g., Dr. Jane, MD)">
+      <input type="text" id="input-tag-badge" placeholder="Primary Badge (e.g., ATTENDING PHYSICIAN)">
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeModals()">Cancel</button>
+        <button class="btn-emerald" onclick="saveProfile()">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Add Education Modal -->
+  <div id="modal-add-edu" class="modal-overlay">
+    <div class="modal-box">
+      <h3>Add Education</h3>
+      <input type="text" id="input-deg-title" placeholder="Degree Title (e.g., MD)">
+      <input type="text" id="input-deg-desc" placeholder="Degree Description">
+      <input type="text" id="input-inst-name" placeholder="Institution Name">
+      <input type="text" id="input-edu-year" placeholder="Year (e.g., 2018 - 2022)">
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeModals()">Cancel</button>
+        <button class="btn-emerald" onclick="verifyAndAddEducation()">Verify & Add</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Clinic Hours Modal -->
+  <div id="modal-clinic-hours" class="modal-overlay">
+    <div class="modal-box">
+      <h3>Add/Edit Clinic Hours</h3>
+      <select id="input-day">
+        <option value="Saturday">Saturday</option>
+        <option value="Sunday">Sunday</option>
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+      </select>
+      <input type="text" id="input-dept" placeholder="Department (e.g., Internal Medicine)">
+      <input type="text" id="input-time" placeholder="Time Range (e.g., 08:00 AM - 05:00 PM)">
+      <input type="text" id="input-loc" placeholder="Location">
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeModals()">Cancel</button>
+        <button class="btn-emerald" onclick="saveClinicHours()">Save Schedule</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../assets/js/doctor-panel/profile.js"></script>
 </body>
 
 </html>
+

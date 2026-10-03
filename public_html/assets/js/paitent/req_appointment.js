@@ -1,6 +1,6 @@
 /**
  * NHMRD Patient Panel - Book Doctor Consultation Controller
- * Connects req-appointment.html with MySQL via /api/patient_appointments.php
+ * Connects req-appointment.php with MySQL via /api/patient_appointments.php
  */
 
 if (typeof window.showToast !== 'function') {

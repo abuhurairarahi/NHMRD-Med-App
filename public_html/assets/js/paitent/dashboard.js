@@ -1,6 +1,6 @@
 /**
  * NHMRD Patient Panel - Dashboard Controller
- * Connects dashboard.html with MySQL via /api/patient_dashboard.php
+ * Connects dashboard.php with MySQL via /api/patient_dashboard.php
  */
 
 // Load common utilities if not already loaded
@@ -369,7 +369,11 @@ window.viewAppointmentDetail = function (apptId) {
     `,
     footerHtml: `
       <button class="nhmrd-btn nhmrd-btn-secondary" onclick="window.closeModal()">Close</button>
-      <a href="req-appointment.html" class="nhmrd-btn nhmrd-btn-primary">Manage Appointments</a>
+<<<<<<< HEAD
+      <a href="req-appointment.php" class="nhmrd-btn nhmrd-btn-primary">Manage Appointments</a>
+=======
+      <a href="req-appointment.php" class="nhmrd-btn nhmrd-btn-primary">Manage Appointments</a>
+>>>>>>> 5d9c9b393e709af26ff5b61cf6fc87882f9aad55
     `
   });
 };

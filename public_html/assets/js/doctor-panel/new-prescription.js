@@ -276,3 +276,16 @@
         // Set initial banner state based on default Acuity
         if (consultationBanner) consultationBanner.style.display = 'none'; // Defaulting to hidden unless "Surgical Needed" is active
     });
+
+window.handleLogout = function () {
+  if (confirm('Are you sure you want to log out of the NHMRD Provider Portal?')) {
+    fetch('../../api/logout.php')
+      .then(res => res.json())
+      .then(data => {
+        window.location.href = data.redirect || '../../../index.php';
+      })
+      .catch(() => {
+        window.location.href = '../../../index.php';
+      });
+  }
+};

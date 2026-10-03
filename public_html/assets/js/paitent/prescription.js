@@ -1,6 +1,6 @@
 /**
  * NHMRD Patient Panel - Prescription Records Controller
- * Connects prescription-record.html with MySQL via /api/patient_prescriptions.php
+ * Connects prescription-record.php with MySQL via /api/patient_prescriptions.php
  */
 
 if (typeof window.showToast !== 'function') {

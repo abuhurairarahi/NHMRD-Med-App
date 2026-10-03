@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NHMRD - Patient Booking Requests</title>
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/patient-appointments.css">
-  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-header.css">
+  <link rel="stylesheet" href="../../assets/css/doctor-panel/patient-appointments.css">
+  <link rel="stylesheet" href="../../assets/css/default-structure.css">
+  <link rel="stylesheet" href="../../assets/css/doctor-panel/features/doctor-header.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -20,26 +20,26 @@
       </div>
 
       <nav class="nav-menu">
-        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item">
+        <a href="../../pages/doctor-panel/dashboard.php" class="nav-item">
           <i class="fa-solid fa-table-cells-large"></i>
           <span>Dashboard</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/doctor-clinical-service-records.html" class="nav-item">
+        <a href="../../pages/doctor-panel/doctor-clinical-service-records.php" class="nav-item">
           <i class="fa-solid fa-notes-medical"></i>
           <span>Clinical Records</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/patient-appointments.html" class="nav-item active">
+        <a href="../../pages/doctor-panel/patient-appointments.php" class="nav-item active">
           <i class="fa-solid fa-user-clock"></i>
           <span>Patient Appointments</span>
         </a>
-        <a href="/public_html/pages/doctor-panel/doctor-profile.html" class="nav-item">
+        <a href="../../pages/doctor-panel/doctor-profile.php" class="nav-item">
           <i class="fa-solid fa-user-doctor"></i>
           <span>Doctor Profile</span>
         </a>
       </nav>
 
       <div class="sidebar-footer">
-        <button class="logout-btn">
+        <button class="logout-btn" onclick="handleLogout()">
           <i class="fa-solid fa-arrow-right-from-bracket"></i> 
           <span>Logout</span>
         </button>
@@ -375,6 +375,20 @@
       </main>
     </div>
   </div>
-  <script src="/public_html/assets/js/doctor-panel/appointments.js"></script>
+  <!-- Propose Alternative Time Modal -->
+<div id="modal-propose-time" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
+  <div class="modal-box" style="background:#fff; padding:24px; border-radius:8px; width:400px; max-width:90%; display:flex; flex-direction:column; gap:12px;">
+    <h3>Propose Alternative Time</h3>
+    <input type="text" id="prop-day" placeholder="Day (e.g., Thu, Oct 24)" style="padding:8px; border:1px solid #ddd; border-radius:4px;">
+    <input type="text" id="prop-time" placeholder="Time (e.g., 14:00 - 14:30)" style="padding:8px; border:1px solid #ddd; border-radius:4px;">
+    <input type="text" id="prop-reason" placeholder="Reason for change" style="padding:8px; border:1px solid #ddd; border-radius:4px;">
+    <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:12px;">
+      <button class="btn-secondary" style="padding:8px 16px; cursor:pointer;" onclick="closeProposeModal()">Cancel</button>
+      <button class="btn-emerald" style="padding:8px 16px; cursor:pointer; background:var(--emerald-500); color:#fff; border:none; border-radius:4px;" onclick="saveProposedTime()">Save</button>
+    </div>
+  </div>
+</div>
+  <script src="../../assets/js/doctor-panel/appointments.js"></script>
 </body>
 </html>
+

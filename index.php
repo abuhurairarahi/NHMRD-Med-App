@@ -1,14 +1,12 @@
 <?php
-require_once __DIR__ . '/public_html/api/db.php';
-?>
-
+echo <<<'HTML'
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>National Health & Medical Record Directory</title>
-  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="public_html/assets/css/login.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -63,6 +61,8 @@ require_once __DIR__ . '/public_html/api/db.php';
       <span>Secure Encrypted Government Health Gateway</span>
     </footer>
   </div>
-    <script src="/public_html/assets/js/login.js"></script>
+  <script src="public_html/assets/js/login.js"></script>
 </body>
 </html>
+HTML;
+?>

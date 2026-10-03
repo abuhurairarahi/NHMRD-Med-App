@@ -23,39 +23,39 @@
       </div>
 
          <nav class="nav-menu">
-        <a href="dashboard.html" class="nav-item">
+        <a href="dashboard.php" class="nav-item">
           <i class="fa-solid fa-table-cells-large"></i>
           <span>Dashboard</span>
         </a>
-        <a href="prescription-record.html" class="nav-item">
+        <a href="prescription-record.php" class="nav-item">
           <i class="fa-solid fa-file-prescription"></i>
           <span>Prescription Records</span>
         </a>
-        <a href="surgary-record.html" class="nav-item">
+        <a href="surgary-record.php" class="nav-item">
           <i class="fa-solid fa-scalpel"></i>
           <span>Surgery Records</span>
         </a>
-        <a href="lab-test.html" class="nav-item">
+        <a href="lab-test.php" class="nav-item">
           <i class="fa-solid fa-vial"></i>
           <span>Test Records</span>
         </a>
-        <a href="vaccine-panel.html" class="nav-item">
+        <a href="vaccine-panel.php" class="nav-item">
           <i class="fa-solid fa-syringe"></i>
           <span>Vaccine Records</span>
         </a>
-        <a href="req-appointment.html" class="nav-item active">
+        <a href="req-appointment.php" class="nav-item active">
           <i class="fa-solid fa-calendar-plus"></i>
           <span>Request Appointment</span>
         </a>
-        <a href="medical-test-req.html" class="nav-item">
+        <a href="medical-test-req.php" class="nav-item">
           <i class="fa-solid fa-notes-medical"></i>
           <span>Request Medical Test</span>
         </a>
-        <a href="req-vaccine.html" class="nav-item">
+        <a href="req-vaccine.php" class="nav-item">
           <i class="fa-solid fa-shield-virus"></i>
           <span>Request Vaccine</span>
         </a>
-        <a href="paitent-info.html" class="nav-item">
+        <a href="paitent-info.php" class="nav-item">
           <i class="fa-solid fa-id-card"></i>
           <span>Patient Info</span>
         </a>

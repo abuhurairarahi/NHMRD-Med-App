@@ -1,5 +1,5 @@
-﻿<?php
-require_once __DIR__ . 'public_html/api/db.php';
+<?php
+require_once __DIR__ . '/../../api/db.php';
 
 $doctor_id = 1; // Mock logged-in doctor
 
@@ -72,13 +72,14 @@ $count_sql = "
     FROM patients p
     JOIN prescriptions rx ON p.patient_id = rx.patient_id
     WHERE rx.doctor_id = :doctor_id AND rx.is_long_term = 1
-      AND (p.full_name LIKE :search OR p.health_card_no LIKE :search)
+      AND (p.full_name LIKE :search1 OR p.health_card_no LIKE :search2)
 ";
 if ($filter_keyword) $count_sql .= " AND rx.title LIKE :filter_keyword";
 
 $stmt_count = $pdo->prepare($count_sql);
 $stmt_count->bindValue(':doctor_id', $doctor_id);
-$stmt_count->bindValue(':search', '%' . $search . '%');
+$stmt_count->bindValue(':search1', '%' . $search . '%');
+$stmt_count->bindValue(':search2', '%' . $search . '%');
 if ($filter_keyword) $stmt_count->bindValue(':filter_keyword', $filter_keyword);
 $stmt_count->execute();
 $total_records = $stmt_count->fetch()['total_records'];
@@ -93,14 +94,15 @@ $records_sql = "
     FROM patients p
     JOIN prescriptions rx ON p.patient_id = rx.patient_id
     WHERE rx.doctor_id = :doctor_id AND rx.is_long_term = 1
-      AND (p.full_name LIKE :search OR p.health_card_no LIKE :search)
+      AND (p.full_name LIKE :search1 OR p.health_card_no LIKE :search2)
 ";
 if ($filter_keyword) $records_sql .= " AND rx.title LIKE :filter_keyword";
 $records_sql .= " ORDER BY p.patient_id DESC LIMIT :offset, :limit";
 
 $stmt_records = $pdo->prepare($records_sql);
 $stmt_records->bindValue(':doctor_id', $doctor_id, PDO::PARAM_INT);
-$stmt_records->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+$stmt_records->bindValue(':search1', '%' . $search . '%', PDO::PARAM_STR);
+$stmt_records->bindValue(':search2', '%' . $search . '%', PDO::PARAM_STR);
 if ($filter_keyword) $stmt_records->bindValue(':filter_keyword', $filter_keyword, PDO::PARAM_STR);
 $stmt_records->bindValue(':offset', $offset, PDO::PARAM_INT);
 $stmt_records->bindValue(':limit', $limit, PDO::PARAM_INT);
@@ -115,9 +117,9 @@ $patients = $stmt_records->fetchAll();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NHMRD - Electronic Clinical Records</title>
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/doctor-clinical-service-records.css">
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-header.css">
-  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
+  <link rel="stylesheet" href="../../assets/css/doctor-panel/doctor-clinical-service-records.css">
+  <link rel="stylesheet" href="../../assets/css/doctor-panel/features/doctor-header.css">
+  <link rel="stylesheet" href="../../assets/css/default-structure.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -132,19 +134,19 @@ $patients = $stmt_records->fetchAll();
       </div>
 
       <nav class="nav-menu">
-        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item">
+        <a href="../../pages/doctor-panel/dashboard.php" class="nav-item">
           <i class="fa-solid fa-table-cells-large"></i>
           <span>Dashboard</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/doctor-clinical-service-records.html" class="nav-item active">
+        <a href="../../pages/doctor-panel/doctor-clinical-service-records.php" class="nav-item active">
           <i class="fa-solid fa-notes-medical"></i>
           <span>Clinical Records</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/patient-appointments.html" class="nav-item">
+        <a href="../../pages/doctor-panel/patient-appointments.php" class="nav-item">
           <i class="fa-solid fa-user-clock"></i>
           <span>Patient Appointments</span>
         </a>
-        <a href="/public_html/pages/doctor-panel/doctor-profile.html" class="nav-item">
+        <a href="../../pages/doctor-panel/doctor-profile.php" class="nav-item">
           <i class="fa-solid fa-user-doctor"></i>
           <span>Doctor Profile</span>
         </a>
@@ -330,7 +332,7 @@ $patients = $stmt_records->fetchAll();
     </div>
   </div>
 
-  <script src="/public_html/assets/js/doctor-panel/clinical-records.js"></script>
+  <script src="../../assets/js/doctor-panel/clinical-records.js"></script>
 </body>
 
 </html>

@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NHMRD - Prescription Records</title>
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/patient-prescription-records.css">
-  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-header.css">
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-subheader.css">
+  <link rel="stylesheet" href="../../assets/css/doctor-panel/patient-prescription-records.css">
+  <link rel="stylesheet" href="../../assets/css/default-structure.css">
+  <link rel="stylesheet" href="../../assets/css/doctor-panel/features/doctor-header.css">
+  <link rel="stylesheet" href="../../assets/css/doctor-panel/features/doctor-subheader.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -21,26 +21,26 @@
       </div>
 
       <nav class="nav-menu">
-        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item">
+        <a href="../../pages/doctor-panel/dashboard.php" class="nav-item">
           <i class="fa-solid fa-table-cells-large"></i> 
           <span>Dashboard</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/clinical-rec.html" class="nav-item active">
+        <a href="../../pages/doctor-panel/clinical-rec.php" class="nav-item active">
           <i class="fa-solid fa-notes-medical"></i> 
           <span>Clinical Records</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/patient-book-req.html" class="nav-item">
+        <a href="../../pages/doctor-panel/patient-book-req.php" class="nav-item">
           <i class="fa-solid fa-user-clock"></i> 
           <span>Patient Requests</span>
         </a>
-        <a href="/public_html/pages/doctor-panel/doctor-profile.html" class="nav-item">
+        <a href="../../pages/doctor-panel/doctor-profile.php" class="nav-item">
           <i class="fa-solid fa-user-doctor"></i> 
           <span>Doctor Profile</span>
         </a>
       </nav>
 
       <div class="sidebar-footer">
-        <button class="logout-btn">
+        <button class="logout-btn" onclick="handleLogout()">
           <i class="fa-solid fa-arrow-right-from-bracket"></i> 
           <span>Logout</span>
         </button>
@@ -97,11 +97,11 @@
 
       <!-- Module Navigation Tabs -->
       <nav class="module-tabs">
-        <a href="/public_html/pages/doctor-panel/patient-medical-profile.html" class="tab-btn"><i class="fa-solid fa-user"></i> Patient Profile</a>
-        <a href="/public_html/pages/doctor-panel/patient-prescription-records.html" class="tab-btn active"><i class="fa-solid fa-capsules"></i> Prescription Records</a>
-        <a href="/public_html/pages/doctor-panel/patient-surgary-records.html" class="tab-btn"><i class="fa-solid fa-scalpel"></i> Surgery Records</a>
-        <a href="/public_html/pages/doctor-panel/patient-test-records.html" class="tab-btn"><i class="fa-solid fa-vial"></i> Test Records</a>
-        <a href="/public_html/pages/doctor-panel/patient-vaccine-records.html" class="tab-btn"><i class="fa-solid fa-syringe"></i> Vaccine Records</a>
+        <a href="../../pages/doctor-panel/patient-medical-profile.php" class="tab-btn"><i class="fa-solid fa-user"></i> Patient Profile</a>
+        <a href="../../pages/doctor-panel/patient-prescription-records.php" class="tab-btn active"><i class="fa-solid fa-capsules"></i> Prescription Records</a>
+        <a href="../../pages/doctor-panel/patient-surgary-records.php" class="tab-btn"><i class="fa-solid fa-scalpel"></i> Surgery Records</a>
+        <a href="../../pages/doctor-panel/patient-test-records.php" class="tab-btn"><i class="fa-solid fa-vial"></i> Test Records</a>
+        <a href="../../pages/doctor-panel/patient-vaccine-records.php" class="tab-btn"><i class="fa-solid fa-syringe"></i> Vaccine Records</a>
       </nav>
 
       <!-- Main Content Body -->
@@ -297,7 +297,8 @@
       </main>
     </div>
   </div>
-  <script src="/public_html/assets/js/doctor-panel/patient-prescriptions.js"></script>
+  <script src="../../assets/js/doctor-panel/patient-prescriptions.js"></script>
 </body>
 </html>
+
 

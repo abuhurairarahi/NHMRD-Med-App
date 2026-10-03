@@ -1,6 +1,6 @@
 /**
  * NHMRD Patient Panel - Patient Profile & Bio-Identification Controller
- * Connects paitent-info.html with MySQL via /api/patient_profile.php
+ * Connects paitent-info.php with MySQL via /api/patient_profile.php
  */
 
 if (typeof window.showToast !== 'function') {
@@ -419,9 +419,15 @@ window.handleSaveVitals = function (e) {
 // View Dossier Records
 window.viewDossierRecords = function (type) {
   if (type.toLowerCase() === 'test') {
-    window.location.href = 'lab-test.html';
+<<<<<<< HEAD
+    window.location.href = 'lab-test.php';
   } else {
-    window.location.href = 'prescription-record.html';
+    window.location.href = 'prescription-record.php';
+=======
+    window.location.href = 'lab-test.php';
+  } else {
+    window.location.href = 'prescription-record.php';
+>>>>>>> 5d9c9b393e709af26ff5b61cf6fc87882f9aad55
   }
 };
 

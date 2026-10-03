@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetchPatientVaccines();
+    const urlParams = new URLSearchParams(window.location.search);
+    const patient_id = urlParams.get('patient_id') || 1;
+    fetchPatientVaccines(patient_id);
 });
 
-function fetchPatientVaccines() {
-    fetch('/public_html/api/doctor-panel/patient-vaccines.php?patient_id=1')
+function fetchPatientVaccines(patient_id) {
+    fetch(`../../api/doctor-panel/patient-vaccines.php?patient_id=${patient_id}`)
         .then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -61,3 +63,16 @@ function updateVaccineUI(vaccines) {
         container.insertAdjacentHTML('beforeend', cardHTML);
     });
 }
+
+window.handleLogout = function () {
+  if (confirm('Are you sure you want to log out of the NHMRD Provider Portal?')) {
+    fetch('../../api/logout.php')
+      .then(res => res.json())
+      .then(data => {
+        window.location.href = data.redirect || '../../../index.php';
+      })
+      .catch(() => {
+        window.location.href = '../../../index.php';
+      });
+  }
+};

@@ -1,6 +1,6 @@
 /**
  * NHMRD Patient Panel - Surgery & Procedure Records Controller
- * Connects surgary-record.html with MySQL via /api/patient_surgeries.php
+ * Connects surgary-record.php with MySQL via /api/patient_surgeries.php
  */
 
 if (typeof window.showToast !== 'function') {

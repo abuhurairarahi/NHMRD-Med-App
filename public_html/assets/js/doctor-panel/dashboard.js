@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function fetchDashboardData() {
-    fetch('/public_html/api/doctor-panel/dashboard.php?doctor_id=1')
+    fetch('../../api/doctor-panel/dashboard.php?doctor_id=1')
         .then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -81,3 +81,16 @@ function updateDashboardUI(data) {
         });
     }
 }
+
+window.handleLogout = function () {
+  if (confirm('Are you sure you want to log out of the NHMRD Provider Portal?')) {
+    fetch('../../api/logout.php')
+      .then(res => res.json())
+      .then(data => {
+        window.location.href = data.redirect || '../../../index.php';
+      })
+      .catch(() => {
+        window.location.href = '../../../index.php';
+      });
+  }
+};

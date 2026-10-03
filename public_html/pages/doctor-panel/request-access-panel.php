@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -9,9 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/request-access-panel.css">
-  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-header.css">
+  <link rel="stylesheet" href="../../assets/css/doctor-panel/request-access-panel.css">
+  <link rel="stylesheet" href="../../assets/css/default-structure.css">
+  <link rel="stylesheet" href="../../assets/css/doctor-panel/features/doctor-header.css">
 </head>
 <body>
 
@@ -25,26 +25,26 @@
       </div>
 
       <nav class="nav-menu">
-        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item">
+        <a href="../../pages/doctor-panel/dashboard.php" class="nav-item">
           <i class="fa-solid fa-table-cells-large"></i>
           <span>Dashboard</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/doctor-clinical-service-records.html" class="nav-item">
+        <a href="../../pages/doctor-panel/doctor-clinical-service-records.php" class="nav-item">
           <i class="fa-solid fa-notes-medical"></i>
           <span>Clinical Records</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/patient-appointments.html" class="nav-item active">
+        <a href="../../pages/doctor-panel/patient-appointments.php" class="nav-item active">
           <i class="fa-solid fa-user-clock"></i>
           <span>Patient Appointments</span>
         </a>
-        <a href="/public_html/pages/doctor-panel/doctor-profile.html" class="nav-item">
+        <a href="../../pages/doctor-panel/doctor-profile.php" class="nav-item">
           <i class="fa-solid fa-user-doctor"></i>
           <span>Doctor Profile</span>
         </a>
       </nav>
 
       <div class="sidebar-footer">
-        <button class="logout-btn">
+        <button class="logout-btn" onclick="handleLogout()">
           <i class="fa-solid fa-arrow-right-from-bracket"></i> 
           <span>Logout</span>
         </button>
@@ -123,7 +123,7 @@
             <div class="security-banner">
               <i class="fa-solid fa-shield-halved"></i>
               <div>
-                <strong>HIPAA SECURITY STANDARD RULE Â§ 164.312</strong>
+                <strong>HIPAA SECURITY STANDARD RULE § 164.312</strong>
                 <p>To protect patient confidentiality and comply with regional health data access protocols, entering a real-time one-time password (OTP) authorized by the patient is required before unlocking full longitudinal medical records.</p>
               </div>
             </div>
@@ -272,8 +272,9 @@
     </div>
   </div>
 
-  <script src="/public_html/assets/js/doctor-panel/request-access.js"></script>
+  <script src="../../assets/js/doctor-panel/request-access.js"></script>
 </body>
 </html>
+
 
 

@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetchPatientPrescriptions();
+    const urlParams = new URLSearchParams(window.location.search);
+    const patient_id = urlParams.get('patient_id') || 1;
+    fetchPatientPrescriptions(patient_id);
 });
 
-function fetchPatientPrescriptions() {
-    fetch('/public_html/api/doctor-panel/patient-prescriptions.php?patient_id=1&doctor_id=1')
+function fetchPatientPrescriptions(patient_id) {
+    fetch(`../../api/doctor-panel/patient-prescriptions.php?patient_id=${patient_id}&doctor_id=1`)
         .then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -95,3 +97,16 @@ function updatePatientPrescriptionsUI(data) {
         });
     }
 }
+
+window.handleLogout = function () {
+  if (confirm('Are you sure you want to log out of the NHMRD Provider Portal?')) {
+    fetch('../../api/logout.php')
+      .then(res => res.json())
+      .then(data => {
+        window.location.href = data.redirect || '../../../index.php';
+      })
+      .catch(() => {
+        window.location.href = '../../../index.php';
+      });
+  }
+};

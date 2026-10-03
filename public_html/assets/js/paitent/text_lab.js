@@ -1,6 +1,6 @@
 /**
  * NHMRD Patient Panel - Diagnostic & Lab Test Records Controller
- * Connects lab-test.html with MySQL via /api/patient_lab_tests.php
+ * Connects lab-test.php with MySQL via /api/patient_lab_tests.php
  */
 
 if (typeof window.showToast !== 'function') {
@@ -180,5 +180,9 @@ window.exportAllRecordsPDF = function () {
 
 // Order New Diagnostic Test Redirect
 window.orderNewTest = function () {
-  window.location.href = 'medical-test-req.html';
+<<<<<<< HEAD
+  window.location.href = 'medical-test-req.php';
+=======
+  window.location.href = 'medical-test-req.php';
+>>>>>>> 5d9c9b393e709af26ff5b61cf6fc87882f9aad55
 };

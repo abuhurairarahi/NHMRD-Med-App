@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function fetchPatientProfile(patient_id) {
-    fetch(`/public_html/api/doctor-panel/patient-profile.php?patient_id=${patient_id}`)
+    fetch(`../../api/doctor-panel/patient-profile.php?patient_id=${patient_id}`)
         .then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -87,3 +87,16 @@ function updatePatientProfileUI(data) {
         });
     }
 }
+
+window.handleLogout = function () {
+  if (confirm('Are you sure you want to log out of the NHMRD Provider Portal?')) {
+    fetch('../../api/logout.php')
+      .then(res => res.json())
+      .then(data => {
+        window.location.href = data.redirect || '../../../index.php';
+      })
+      .catch(() => {
+        window.location.href = '../../../index.php';
+      });
+  }
+};

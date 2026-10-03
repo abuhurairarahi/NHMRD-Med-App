@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . 'public_html/api/db.php';
+require_once __DIR__ . '/../../api/db.php';
 
 $doctor_id = 1; 
 // Metric 1: TODAY'S CONSULTATIONS
@@ -114,9 +114,9 @@ $lab_telemetry = $stmt_telemetry->fetchAll();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NHMRD - Admin & Clinical Dashboard</title>
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/dashboard.css">
-  <link rel="stylesheet" href="/public_html/assets/css/default-structure.css">
-  <link rel="stylesheet" href="/public_html/assets/css/doctor-panel/features/doctor-header.css">
+  <link rel="stylesheet" href="../../assets/css/doctor-panel/dashboard.css">
+  <link rel="stylesheet" href="../../assets/css/default-structure.css">
+  <link rel="stylesheet" href="../../assets/css/doctor-panel/features/doctor-header.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -130,19 +130,19 @@ $lab_telemetry = $stmt_telemetry->fetchAll();
       </div>
 
       <nav class="nav-menu">
-        <a href="/public_html/pages/Doctor-panel/Dashboard.html" class="nav-item active">
+        <a href="../../pages/doctor-panel/dashboard.php" class="nav-item active">
           <i class="fa-solid fa-table-cells-large"></i>
           <span>Dashboard</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/doctor-clinical-service-records.html" class="nav-item">
+        <a href="../../pages/doctor-panel/doctor-clinical-service-records.php" class="nav-item">
           <i class="fa-solid fa-notes-medical"></i>
           <span>Clinical Records</span>
         </a>
-        <a href="/public_html/pages/Doctor-panel/patient-appointments.html" class="nav-item">
+        <a href="../../pages/doctor-panel/patient-appointments.php" class="nav-item">
           <i class="fa-solid fa-user-clock"></i>
           <span>Patient Appointments</span>
         </a>
-        <a href="/public_html/pages/doctor-panel/doctor-profile.html" class="nav-item">
+        <a href="../../pages/doctor-panel/doctor-profile.php" class="nav-item">
           <i class="fa-solid fa-user-doctor"></i>
           <span>Doctor Profile</span>
         </a>
@@ -466,7 +466,7 @@ $lab_telemetry = $stmt_telemetry->fetchAll();
     </div>
   </div>
 
-  <script src="/public_html/assets/js/doctor-panel/dashboard.js"></script>
+  <script src="../../assets/js/doctor-panel/dashboard.js"></script>
 </body>
 
 </html>
